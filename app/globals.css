@@ -1,3 +1,28 @@
+@font-face {
+  font-family: 'inter';
+  src: url('../src/styles/fonts/Inter/Inter-VariableFont_slnt\,wght.ttf');
+}
+
+@font-face {
+  font-family: 'heveltica';
+  src: url('../src/styles/fonts/Provisional/Helvetica-Neue-LT-Com-63-Medium-Extended\ 2.ttf');
+}
+
+@font-face {
+  font-family: 'swis';
+  src: url('../src/styles/fonts/swis/swis721_.ttf');
+}
+
+.inter {
+  font-family: 'inter';
+}
+.heveltica {
+  font-family: 'heveltica';
+}
+.swis {
+  font-family: 'swis';
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,8 +31,8 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+    Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 a {
@@ -24,6 +49,6 @@ a {
     color-scheme: dark;
   }
   body {
-    @apply bg-black text-white
+    @apply bg-black text-white;
   }
 }
