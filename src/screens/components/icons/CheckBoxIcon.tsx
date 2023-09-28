@@ -12,7 +12,7 @@ interface Params {
 const CheckBoxIcon = ({ color = ColorExtensions.BLUE, size = '20px', checked }: Params) => {
   const bg = checked ? `bg${color}` : 'bg-transparent'
   const border = `border${color}`
-  const sizeClass = `w-[${size}] h-[${size}]`
+  const sizeClass = `min-w-[${size}] w-[${size}] min-h-[${size}] h-[${size}]`
   return (
     <div
       className={`${sizeClass} ${bg} ${border} border cursor-pointer flex justify-center items-center`}

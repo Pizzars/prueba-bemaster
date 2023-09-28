@@ -15,10 +15,7 @@ import TextIcon, { SizeIcons, TextIcons } from 'src/screens/components/icons/Tex
 export default function StylePage() {
   return (
     <div className='p-12'>
-      <TitleHome
-        text={`TÍTULO
-      HOME`}
-      />
+      <TitleHome text={`TÍTULO HOME`} />
       <br />
       <TitleSection
         text={`TÍTULO
@@ -76,7 +73,11 @@ export default function StylePage() {
       <br />
       <br />
       <br />
-      <TitleMedium text={`ICONOS`} color={TextColors.blue} className='mb-4' />
+      <TitleMedium
+        text={`ICONOS`}
+        color={TextColors.blue}
+        className='mb-4 p-6 bg-black rounded-lg w-[15rem]'
+      />
       <div className='flex gap-2'>
         <CalendarIcon />
         <CheckBoxIcon checked={true} />
@@ -87,8 +88,8 @@ export default function StylePage() {
         <TextIcon icon={TextIcons.CLOSE} />
       </div>
       <div className='my-8 flex justify-start items-center'>
-        <TitleSection text='BOOK' />
-        <TextIcon icon={TextIcons.RIGHT_ARROW} size={SizeIcons.TITLE} color={TextColors.black} />
+        <TitleSection text='BOOK' color={TextColors.yellow} />
+        <TextIcon icon={TextIcons.RIGHT_ARROW} size={SizeIcons.TITLE} color={TextColors.yellow} />
       </div>
     </div>
   )
