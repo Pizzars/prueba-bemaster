@@ -1,0 +1,58 @@
+import React, { useState, useEffect } from 'react';
+import { useSpring, animated } from 'react-spring';
+import TitleSection from '../components/texts/TitleSection';
+import { TextColors } from 'src/utils/Colors';
+import './styles.css';
+import TextIcon, { SizeIcons, TextIcons } from '../components/icons/TextIcon';
+
+const carouselTexts = ['WORLDWIDE', 'FOR EUROPE', 'FOR SPAIN', 'LATIN AMERICA', 'SPAIN & LATAM'];
+
+const AnimatedText = ({ artists }: any) => {
+    const [index, setIndex] = useState(0);
+
+    const props = useSpring({
+        transform: `translateX(-${index * 100}%)`,
+        from: { transform: `translateX(-${index * 100}%)` },
+        config: { tension: 220, friction: 120 }
+    });
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setIndex((prevIndex) => (prevIndex + 1) % carouselTexts.length);
+        }, 2000);
+        return () => clearInterval(interval);
+    }, []);
+
+    return (
+        <div className="relative h-screen bg-black overflow-hidden">
+            <div className="animated-text z-10">
+                {artists.map((artist: string, index: React.Key | null | undefined) => (
+                    <TitleSection key={index} text={artist.toUpperCase()} color={TextColors.gray} className='mb-2' />
+                ))}
+            </div>
+            <div className="animated-text animated-text-delayed z-10">
+                {artists.map((artist: string, index: any) => (
+                    <TitleSection key={index + artists.length} text={artist.toUpperCase()} color={TextColors.gray} className='mb-2' />
+                ))}
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black z-20" />
+            <div className="absolute bottom-0 z-30 text-white pl-4">
+                <div className='flex flex-row'>
+                    <TitleSection text={`ARTISTS`} color={TextColors.white} />
+                    <TextIcon icon={TextIcons.RIGHT_ARROW} size={SizeIcons.TITLE} color={TextColors.white} />
+                </div>
+                <div className="overflow-hidden" style={{ width: '100%' }}>
+                    <animated.div style={props} className="flex transition-all duration-500">
+                        {carouselTexts.map((text, i) => (
+                            <div key={i} className="flex-shrink-0" style={{ whiteSpace: 'nowrap', minWidth: '100%' }}>
+                                <TitleSection text={text} color={TextColors.white} />
+                            </div>
+                        ))}
+                    </animated.div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default AnimatedText;
