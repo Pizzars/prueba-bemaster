@@ -1,0 +1,20 @@
+@keyframes moveUp {
+    0% {
+      transform: translateY(100%);
+    }
+    100% {
+      transform: translateY(-100%);
+    }
+  }
+  
+  .animated-text {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    animation: moveUp 15s linear infinite; /* Aumenta la duración aquí */
+  }
+  
+  .animated-text-delayed {
+    animation-delay: -7.5s; /* Ajusta el delay según la nueva duración */
+  }
+  
