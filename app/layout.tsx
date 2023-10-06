@@ -1,4 +1,6 @@
+import Footer from 'src/screens/components/general/Footer'
 import './globals.css'
+import Navbar from 'src/screens/components/general/Navbar'
 
 export default function RootLayout({
   children,
@@ -12,7 +14,11 @@ export default function RootLayout({
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body>{children}</body>
+      <body>
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
     </html>
   )
 }
