@@ -7,8 +7,7 @@ import TextIcon, { SizeIcons, TextIcons } from '../components/icons/TextIcon';
 
 const carouselTexts = ['WORLDWIDE', 'FOR EUROPE', 'FOR SPAIN', 'LATIN AMERICA', 'SPAIN & LATAM'];
 
-
-const artists = [
+export const artists = [
     'DAFT PUNK',
     'THE CHEMICAL BROTHERS',
     'DEADMAU5',

@@ -3,6 +3,7 @@ const WHITE = '#FFF'
 const YELLOW = '#D2FF37'
 const BLUE = '#46D'
 const GRAY = '#333'
+const YELLOW_LIME = '#D2FF37';
 
 module.exports = {
   content: [
@@ -17,7 +18,8 @@ module.exports = {
         'white-app': WHITE,
         'yellow-app': YELLOW,
         'blue-app': BLUE,
-        'gray-app': GRAY
+        'gray-app': GRAY,
+        'yellow-lime-app': YELLOW_LIME,
       }
     }
   },

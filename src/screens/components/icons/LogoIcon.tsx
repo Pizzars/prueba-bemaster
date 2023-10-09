@@ -6,7 +6,7 @@ interface Params {
     size?: string;
 }
 
-const LogoIcon = ({ color = Colors.BLACK, size = '20' }: Params) => {
+const LogoIcon = ({ size = '20' }: Params) => {
     return (
         <svg
             width={size}

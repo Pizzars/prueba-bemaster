@@ -17,7 +17,7 @@ const MenuSection: FC<MenuSectionProps> = ({ language, toggleLanguage }) => {
     };
 
     return (
-        <div style={{ background: '#D2FF37' }} className="flex w-full items-center pl-4">
+        <section style={{ background: '#D2FF37' }} className="flex w-full items-center pl-4">
             <div className='my-8 flex w-full flex-col items-start space-y-8'>
                 {menuItemsForHome.map(item => (
                     <div key={item.key} className='flex'>
@@ -29,7 +29,7 @@ const MenuSection: FC<MenuSectionProps> = ({ language, toggleLanguage }) => {
                     <TitleSection text={language} color={TextColors.black} />
                 </button>
             </div>
-        </div>
+        </section>
     );
 };
 

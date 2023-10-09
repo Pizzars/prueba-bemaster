@@ -8,7 +8,7 @@ import TitleMedium from '../texts/TitleMedium';
 
 const SocialMediaLinks = () => {
     return (
-        <div className="flex w-full items-center pl-4">
+        <div className="flex w-full bg-white items-center pl-8">
             <div className='my-8 flex flex-column w-full flex-col items-start'>
                 <div className='mb-8'>
                     <LogoIcon size="22" />
