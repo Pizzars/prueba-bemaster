@@ -2,12 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import TitleHome from '../components/texts/TitleHome';
 import AnimatedText from './AnimatedText';
-import Footer from '../components/general/Footer';
-import SocialMediaLinks from '../components/general/SocialMediaLinks';
 import MenuSection from './MenuSection';
 import MainHeader from './MainHeader';
 import { animated, useSpring } from 'react-spring';
-import Navbar from '../components/general/Navbar';
 
 const Home = () => {
   const [count, setCount] = useState(0);
@@ -59,7 +56,7 @@ const Home = () => {
           <div className="h-screen flex-1 items-center justify-center">
             <AnimatedText />
           </div>
-          <MenuSection language={'EN'} toggleLanguage={setLanguage} />
+          <MenuSection language={language} toggleLanguage={setLanguage} />
         </animated.div>
       )}
     </>
