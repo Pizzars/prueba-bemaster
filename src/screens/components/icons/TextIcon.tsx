@@ -28,9 +28,10 @@ interface Params {
   icon: TextIcons
   color?: TextColors
   size?: SizeIcons
+  className?: string;
 }
 
-const TextIcon = ({ icon, color = TextColors.blue, size = SizeIcons.TEXT_PARAGRAPH }: Params) => {
+const TextIcon = ({ icon, color = TextColors.blue, size = SizeIcons.TEXT_PARAGRAPH, className }: Params) => {
   switch (size) {
     case SizeIcons.TITLE_HOME: {
       return <TitleHome tag={TextTags.SPAN} text={icon} color={color} font={Fonts.inter} />
@@ -53,7 +54,7 @@ const TextIcon = ({ icon, color = TextColors.blue, size = SizeIcons.TEXT_PARAGRA
           text={icon}
           color={color}
           font={Fonts.inter}
-          className='font-bold'
+          className={`${className} font-bold`}
         />
       )
     }
@@ -64,7 +65,7 @@ const TextIcon = ({ icon, color = TextColors.blue, size = SizeIcons.TEXT_PARAGRA
           text={icon}
           color={color}
           font={Fonts.inter}
-          className='font-bold'
+          className={`${className} font-bold`}
         />
       )
     }
@@ -75,7 +76,7 @@ const TextIcon = ({ icon, color = TextColors.blue, size = SizeIcons.TEXT_PARAGRA
           text={icon}
           color={color}
           font={Fonts.inter}
-          className='font-bold'
+          className={`${className} font-bold`}
         />
       )
     }
@@ -91,7 +92,7 @@ const TextIcon = ({ icon, color = TextColors.blue, size = SizeIcons.TEXT_PARAGRA
       )
     }
     default: {
-      return <TextBase text={icon} className={`text-[14px] inter font-bold ${color}`} />
+      return <TextBase text={icon} className={`text-[14px] inter font-bold ${color} ${className}`} />
     }
   }
 }
