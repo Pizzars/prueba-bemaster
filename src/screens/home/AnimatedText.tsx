@@ -4,6 +4,7 @@ import TitleSection from '../components/texts/TitleSection';
 import { TextColors } from 'src/utils/Colors';
 import './styles.css';
 import TextIcon, { SizeIcons, TextIcons } from '../components/icons/TextIcon';
+import Link from 'next/link'
 
 const carouselTexts = ['WORLDWIDE', 'FOR EUROPE', 'FOR SPAIN', 'LATIN AMERICA', 'SPAIN & LATAM'];
 
@@ -124,7 +125,7 @@ const AnimatedText = () => {
     return (
         <div className="relative h-screen bg-black overflow-hidden">
             <div className="animated-text z-10">
-                {artists.map((artist: string, index: React.Key | null | undefined) => (
+                {artists.map((artist, index) => (
                     <TitleSection key={index} text={artist.toUpperCase()} color={TextColors.gray} className='mb-2' />
                 ))}
             </div>
@@ -135,10 +136,10 @@ const AnimatedText = () => {
             </div>
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black z-20" />
             <div className="absolute bottom-0 z-30 text-white pl-4">
-                <div className='flex flex-row'>
+                <Link href="/artists" className='flex flex-row'>
                     <TitleSection text={`ARTISTS`} color={TextColors.white} />
                     <TextIcon icon={TextIcons.RIGHT_ARROW} size={SizeIcons.TITLE} color={TextColors.white} />
-                </div>
+                </Link>
                 <div className="overflow-hidden" style={{ width: '100%' }}>
                     <animated.div style={props} className="flex transition-all duration-500">
                         {carouselTexts.map((text, i) => (

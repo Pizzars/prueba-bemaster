@@ -54,7 +54,7 @@ const TextIcon = ({ icon, color = TextColors.blue, size = SizeIcons.TEXT_PARAGRA
           text={icon}
           color={color}
           font={Fonts.inter}
-          className='font-bold'
+          className={`${className} font-bold`}
         />
       )
     }
@@ -65,7 +65,7 @@ const TextIcon = ({ icon, color = TextColors.blue, size = SizeIcons.TEXT_PARAGRA
           text={icon}
           color={color}
           font={Fonts.inter}
-          className='font-bold'
+          className={`${className} font-bold`}
         />
       )
     }

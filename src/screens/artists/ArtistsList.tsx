@@ -1,10 +1,10 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import { useSpring, animated } from 'react-spring';
-import Image from 'next/image';
 import TextIcon, { TextIcons } from '../components/icons/TextIcon';
 import TitleMedium from '../components/texts/TitleMedium';
 import { artists } from '../home/AnimatedText';
+import ArtistInfoMobile from './ArtistInfoMobile/ArtistInfoMobile';
 
 const ArtistsList: React.FC = () => {
     const [selectedArtist, setSelectedArtist] = useState<string | null>(null);
@@ -12,7 +12,7 @@ const ArtistsList: React.FC = () => {
     const [nextArtist, setNextArtist] = useState<string | null>(null);
 
     const props = useSpring({
-        height: open ? 200 : 0,
+        height: open ? 900 : 0,
         opacity: open ? 1 : 0,
         onRest: () => {
             if (!open) {
@@ -57,16 +57,7 @@ const ArtistsList: React.FC = () => {
 
                     {(selectedArtist === artist) && (
                         <animated.div style={props} className="overflow-hidden">
-                            <Image
-                                src="https://via.placeholder.com/150"
-                                alt="Placeholder"
-                                width={150}
-                                height={150}
-                            />
-                            <p>Texto placeholder 1</p>
-                            <p>Texto placeholder 2</p>
-                            <p>Texto placeholder 3</p>
-                            {/* Agrega más elementos según sea necesario */}
+                            <ArtistInfoMobile />
                         </animated.div>
                     )}
                 </div>
