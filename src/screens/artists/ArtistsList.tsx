@@ -4,7 +4,7 @@ import { useSpring, animated } from 'react-spring';
 import TextIcon, { TextIcons } from '../components/icons/TextIcon';
 import TitleMedium from '../components/texts/TitleMedium';
 import { artists } from '../home/AnimatedText';
-import ArtistInfoMobile from './ArtistInfoMobile/ArtistInfoMobile';
+import ArtistDetailsMobile from './ArtistDetails/ArtistDetailsMobile';
 
 const ArtistsList: React.FC = () => {
     const [selectedArtist, setSelectedArtist] = useState<string | null>(null);
@@ -57,7 +57,7 @@ const ArtistsList: React.FC = () => {
 
                     {(selectedArtist === artist) && (
                         <animated.div style={props} className="overflow-hidden">
-                            <ArtistInfoMobile />
+                            <ArtistDetailsMobile />
                         </animated.div>
                     )}
                 </div>
