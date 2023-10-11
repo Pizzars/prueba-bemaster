@@ -1,10 +1,12 @@
 import React from 'react';
 import Divider from 'src/screens/components/general/Divider';
 import profilePic from './artist.jpg'
+import profilePic2 from './artist2.jpeg'
 import ArtistDates from '../ArtistDates';
 import ArtistSocialLinks from '../ArtistSocialLinks';
 import ArtistImage from '../ArtistImage';
 import ArtistInfo from '../ArtistInfo';
+import ArtistImageCarousel from '../ArtistImageCarousel';
 
 const socialLinks = [
     { type: 'PRESS KIT', url: 'https://www.presskit.to/artist' },
@@ -21,8 +23,8 @@ const socialLinks = [
 const ArtistDetailsMobile = () => {
     return (
         <div className="relative py-8">
-            <ArtistImage
-                profilePic={profilePic}
+            <ArtistImageCarousel
+                profilePics={[profilePic, profilePic2, profilePic]}
                 altText="Artist Name"
             />
             {[1, 2, 3].map(number => (
