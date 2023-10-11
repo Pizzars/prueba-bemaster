@@ -12,17 +12,6 @@ const initialState: typeReducer = {
   ...baseState
 }
 
-// const call = async () => {
-//   const data = await getAbout()
-//   state.loading = false
-//   if (data) {
-//     state.data = data
-//   } else {
-//     state.error = true
-//   }
-// }
-// call()
-
 export const getAboutData = createAsyncThunk(
   'get-about',
   // if you type your function argument here

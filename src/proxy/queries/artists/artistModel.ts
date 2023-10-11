@@ -1,63 +1,67 @@
+import { ImageModel } from 'src/proxy/general/imageModel'
 import { EventModel } from '../events/eventModel'
 import { NewModel } from '../news/newModel'
 import { PodcastModel } from '../podcasts/podcastModel'
 
 export class ArtistModel {
-  name: string
-  info: string
-  territory: string
-  image: string
+  id: number
+  name: string | null
+  info: string | null
+  territory: string | null
+  image: ImageModel | null
   active: boolean
-  description_en: string
-  description_es: string
-  media: string[]
-  beatport: string
-  SoundCloud: string
-  website: string
-  facebook: string
-  twitter: string
-  youtube: string
-  instagram: string
-  spotify: string
-  last_fm: string
-  tumblr: string
-  facebook_id: string
-  twitter_id: string
-  press_kit: string
-  artwork: string
-  podcasts: PodcastModel[]
-  news: NewModel[]
-  id_migration: number
-  events: EventModel[]
+  description_en: string | null
+  description_es: string | null
+  media: string[] | null
+  beatport: string | null
+  SoundCloud: string | null
+  website: string | null
+  facebook: string | null
+  twitter: string | null
+  youtube: string | null
+  instagram: string | null
+  spotify: string | null
+  last_fm: string | null
+  tumblr: string | null
+  facebook_id: string | null
+  twitter_id: string | null
+  press_kit: string | null
+  artwork: string | null
+  podcasts: PodcastModel[] | null
+  news: NewModel[] | null
+  id_migration: number | null
+  events: EventModel[] | null
 
   constructor(
-    name: string,
-    info: string,
-    territory: string,
-    image: string,
+    id: number,
+    name: string | null,
+    info: string | null,
+    territory: string | null,
+    image: ImageModel | null,
     active: boolean,
-    description_en: string,
-    description_es: string,
-    media: string[],
-    beatport: string,
-    SoundCloud: string,
-    website: string,
-    facebook: string,
-    twitter: string,
-    youtube: string,
-    instagram: string,
-    spotify: string,
-    last_fm: string,
-    tumblr: string,
-    facebook_id: string,
-    twitter_id: string,
-    press_kit: string,
-    artwork: string,
-    podcasts: PodcastModel[],
-    news: NewModel[],
-    id_migration: number,
-    events: EventModel[]
+    description_en: string | null,
+    description_es: string | null,
+    media: string[] | null,
+    beatport: string | null,
+    SoundCloud: string | null,
+    website: string | null,
+    facebook: string | null,
+    twitter: string | null,
+    youtube: string | null,
+    instagram: string | null,
+    spotify: string | null,
+    last_fm: string | null,
+    tumblr: string | null,
+    facebook_id: string | null,
+    twitter_id: string | null,
+    press_kit: string | null,
+    artwork: string | null,
+    podcasts: PodcastModel[] | null,
+    news: NewModel[] | null,
+    id_migration: number | null,
+    events: EventModel[] | null
   ) {
+    this.id = id
     this.name = name
     this.info = info
     this.territory = territory
@@ -86,12 +90,28 @@ export class ArtistModel {
     this.events = events
   }
 
-  static fromJson(json: any): ArtistModel {
+  static listFromJson(json: any[]): ArtistModel[] {
+    const list = json.map(obj => ArtistModel.fromJson(obj))
+    return list
+  }
+
+  static fromJson(data: any): ArtistModel {
+    const json = data.attributes
+    const id = data.id
+
+    const image = json.image ? ImageModel.fromJson(json.image.data.attributes) : null
+
+    const podcasts =
+      json.podcasts && json.podcasts.data ? PodcastModel.listFromJson(json.podcasts.data) : []
+    const news = json.news && json.news.data ? NewModel.listFromJson(json.news.data) : []
+    const events = json.events && json.events.data ? EventModel.listFromJson(json.events.data) : []
+
     return new ArtistModel(
+      id,
       json.name,
       json.info,
       json.territory,
-      json.image,
+      image,
       json.active,
       json.description_en,
       json.description_es,
@@ -110,10 +130,10 @@ export class ArtistModel {
       json.twitter_id,
       json.press_kit,
       json.artwork,
-      json.podcasts || [],
-      json.news || [],
+      podcasts || [],
+      news || [],
       json.id_migration || 0,
-      json.events || []
+      events || []
     )
   }
 }

@@ -17,7 +17,11 @@ const AboutExample = () => {
       <div>
         Status: <StatusComponent status={aboutStatus} />
       </div>
-      <h1>About Data: {JSON.stringify(aboutState)}</h1>
+      <div>
+        About Data:
+        <div className='text-orange-600'>{aboutState?.bio_en}</div>
+        <div className='text-pink-600'>{aboutState?.bio_es}</div>
+      </div>
     </div>
   )
 }

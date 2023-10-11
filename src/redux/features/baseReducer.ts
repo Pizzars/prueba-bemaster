@@ -6,8 +6,10 @@ export enum StateRequest {
 }
 export interface BaseReducerProps {
   status: StateRequest
+  page: number
 }
 
 export const baseState: BaseReducerProps = {
-  status: StateRequest.EMPTY
+  status: StateRequest.EMPTY,
+  page: 1
 }

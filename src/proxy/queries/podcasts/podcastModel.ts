@@ -1,49 +1,53 @@
+import { ImageModel } from 'src/proxy/general/imageModel'
 import { ArtistModel } from '../artists/artistModel'
 import { EventModel } from '../events/eventModel'
 import { NewModel } from '../news/newModel'
 
 export class PodcastModel {
-  title: string
-  subtitle: string
-  square_image: string
-  banner_image: string
+  id: number
+  title: string | null
+  subtitle: string | null
+  square_image: ImageModel | null
+  banner_image: ImageModel | null
   active: boolean
-  description_en: string
-  url: string
-  platform: string
-  type: string
-  artwork: boolean
-  autoplay: boolean
-  height: number
-  artists: ArtistModel[]
-  color: string
-  id_migration: number
-  description_es: string
-  tags: string
-  events: EventModel[]
-  news: NewModel[]
+  description_en: string | null
+  url: string | null
+  platform: string | null
+  type: string | null
+  artwork: boolean | null
+  autoplay: boolean | null
+  height: number | null
+  artists: ArtistModel[] | null
+  color: string | null
+  id_migration: number | null
+  description_es: string | null
+  tags: string | null
+  events: EventModel[] | null
+  news: NewModel[] | null
 
   constructor(
-    title: string,
-    subtitle: string,
-    square_image: string,
-    banner_image: string,
+    id: number,
+    title: string | null,
+    subtitle: string | null,
+    square_image: ImageModel | null,
+    banner_image: ImageModel | null,
     active: boolean,
-    description_en: string,
-    url: string,
-    platform: string,
-    type: string,
-    artwork: boolean,
-    autoplay: boolean,
-    height: number,
-    artists: ArtistModel[],
-    color: string,
-    id_migration: number,
-    description_es: string,
-    tags: string,
-    events: EventModel[],
-    news: NewModel[]
+    description_en: string | null,
+    url: string | null,
+    platform: string | null,
+    type: string | null,
+    artwork: boolean | null,
+    autoplay: boolean | null,
+    height: number | null,
+    artists: ArtistModel[] | null,
+    color: string | null,
+    id_migration: number | null,
+    description_es: string | null,
+    tags: string | null,
+    events: EventModel[] | null,
+    news: NewModel[] | null
   ) {
+    this.id = id
     this.title = title
     this.subtitle = subtitle
     this.square_image = square_image
@@ -65,12 +69,24 @@ export class PodcastModel {
     this.news = news
   }
 
-  static fromJson(json: any): PodcastModel {
+  static listFromJson(json: any[]): PodcastModel[] {
+    const list = json.map(obj => PodcastModel.fromJson(obj))
+    return list
+  }
+
+  static fromJson(data: any): PodcastModel {
+    const json = data.attributes
+    const id = data.id
+
+    const square_image = json.square_image ? ImageModel.fromJson(json.image.data.attributes) : null
+    const banner_image = json.banner_image ? ImageModel.fromJson(json.image.data.attributes) : null
+
     return new PodcastModel(
+      id,
       json.title,
       json.subtitle,
-      json.square_image,
-      json.banner_image,
+      square_image,
+      banner_image,
       json.active,
       json.description_en,
       json.url,

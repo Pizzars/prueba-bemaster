@@ -1,13 +1,15 @@
+import { ImageModel } from 'src/proxy/general/imageModel'
 import { ArtistModel } from '../artists/artistModel'
 import { PodcastModel } from '../podcasts/podcastModel'
 
 export class NewModel {
+  id: number
   title: string
   active: boolean
   featured: boolean
   content_en: string
   content_es: string
-  images: string[]
+  images: ImageModel[]
   videos: string[]
   artists: ArtistModel[]
   id_migration: number
@@ -15,18 +17,20 @@ export class NewModel {
   podcasts: PodcastModel[]
 
   constructor(
+    id: number,
     title: string,
     active: boolean,
     featured: boolean,
     content_en: string,
     content_es: string,
-    images: string[],
+    images: ImageModel[],
     videos: string[],
     artists: ArtistModel[],
     id_migration: number,
     tags: string,
     podcasts: PodcastModel[]
   ) {
+    this.id = id
     this.title = title
     this.active = active
     this.featured = featured
@@ -40,19 +44,34 @@ export class NewModel {
     this.podcasts = podcasts
   }
 
-  static fromJson(json: any): NewModel {
+  static listFromJson(json: any[]): NewModel[] {
+    const list = json.map(obj => NewModel.fromJson(obj))
+    return list
+  }
+
+  static fromJson(data: any): NewModel {
+    const json = data.attributes
+    const id = data.id
+
+    const images = json.square_image ? ImageModel.listFromJson(json.image.data) : []
+
+    const podcasts =
+      json.podcasts && json.podcasts.data ? PodcastModel.listFromJson(json.podcasts.data) : []
+    const artists =
+      json.artists && json.artists.data ? ArtistModel.listFromJson(json.artists.data) : []
     return new NewModel(
+      id,
       json.title,
       json.active,
       json.featured,
       json.content_en,
       json.content_es,
-      json.images || [],
+      images || [],
       json.videos || [],
-      json.artists || [],
+      artists || [],
       json.id_migration || 0,
       json.tags,
-      json.podcasts || []
+      podcasts || []
     )
   }
 }

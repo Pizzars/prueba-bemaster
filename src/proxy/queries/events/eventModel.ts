@@ -1,10 +1,12 @@
+import { ImageModel } from 'src/proxy/general/imageModel'
 import { ArtistModel } from '../artists/artistModel'
 import { PodcastModel } from '../podcasts/podcastModel'
 
 export class EventModel {
+  id: number
   artists: ArtistModel[]
   name: string
-  image: string | number
+  image: ImageModel | null
   description_en: string
   description_es: string
   tags: string
@@ -16,9 +18,10 @@ export class EventModel {
   id_migration: number
 
   constructor(
+    id: number,
     artists: ArtistModel[],
     name: string,
-    image: string | number,
+    image: ImageModel | null,
     description_en: string,
     description_es: string,
     tags: string,
@@ -29,6 +32,7 @@ export class EventModel {
     date: Date,
     id_migration: number
   ) {
+    this.id = id
     this.artists = artists
     this.name = name
     this.image = image
@@ -43,15 +47,29 @@ export class EventModel {
     this.id_migration = id_migration
   }
 
-  static fromJson(json: any): EventModel {
+  static listFromJson(json: any[]): EventModel[] {
+    const list = json.map(obj => EventModel.fromJson(obj))
+    return list
+  }
+
+  static fromJson(data: any): EventModel {
+    const json = data.attributes
+    const id = data.id
+
+    const image = json.square_image ? ImageModel.fromJson(json.image.data) : null
+
+    const podcasts =
+      json.podcasts && json.podcasts.data ? PodcastModel.listFromJson(json.podcasts.data) : []
+
     return new EventModel(
+      id,
       json.artists || [],
       json.name,
-      json.image,
+      image,
       json.description_en,
       json.description_es,
       json.tags,
-      json.podcasts || [],
+      podcasts || [],
       json.place,
       json.city,
       json.country,
