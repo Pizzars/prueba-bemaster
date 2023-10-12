@@ -12,7 +12,8 @@ const Filter = () => {
     opacity: scrollY > 50 ? 0 : 1
   })
   const fade2 = useSpring({
-    opacity: scrollY > 50 ? 1 : 0
+    opacity: scrollY > 50 ? 1 : 0,
+    height: scrollY > 50 ? 'auto' : 0
   })
 
   const shrink = useSpring({
