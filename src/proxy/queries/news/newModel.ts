@@ -1,4 +1,4 @@
-import { ImageModel } from 'src/proxy/general/imageModel'
+import { ImageModel } from 'src/proxy/queries/general/imageModel'
 import { ArtistModel } from '../artists/artistModel'
 import { PodcastModel } from '../podcasts/podcastModel'
 
@@ -53,7 +53,7 @@ export class NewModel {
     const json = data.attributes
     const id = data.id
 
-    const images = json.square_image ? ImageModel.listFromJson(json.image.data) : []
+    const images = json.images ? ImageModel.listFromJson(json.images.data) : []
 
     const podcasts =
       json.podcasts && json.podcasts.data ? PodcastModel.listFromJson(json.podcasts.data) : []

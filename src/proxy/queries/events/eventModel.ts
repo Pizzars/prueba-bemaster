@@ -1,4 +1,4 @@
-import { ImageModel } from 'src/proxy/general/imageModel'
+import { ImageModel } from 'src/proxy/queries/general/imageModel'
 import { ArtistModel } from '../artists/artistModel'
 import { PodcastModel } from '../podcasts/podcastModel'
 

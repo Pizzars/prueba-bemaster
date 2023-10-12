@@ -1,4 +1,4 @@
-import { ImageModel } from 'src/proxy/general/imageModel'
+import { ImageModel } from 'src/proxy/queries/general/imageModel'
 import { ArtistModel } from '../artists/artistModel'
 import { EventModel } from '../events/eventModel'
 import { NewModel } from '../news/newModel'
@@ -78,8 +78,12 @@ export class PodcastModel {
     const json = data.attributes
     const id = data.id
 
-    const square_image = json.square_image ? ImageModel.fromJson(json.image.data.attributes) : null
-    const banner_image = json.banner_image ? ImageModel.fromJson(json.image.data.attributes) : null
+    const square_image = json.square_image
+      ? ImageModel.fromJson(json.square_image.data.attributes)
+      : null
+    const banner_image = json.banner_image
+      ? ImageModel.fromJson(json.banner_image.data.attributes)
+      : null
 
     return new PodcastModel(
       id,
