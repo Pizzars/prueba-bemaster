@@ -5,8 +5,8 @@ export class AboutModel {
   title_es: string
   bio_en: string
   bio_es: string
-  email_en: string
-  email_es: string
+  email_press: string
+  email_inquiries: string
   createdAt: Date
   updatedAt: Date
   publishedAt: Date
@@ -17,8 +17,8 @@ export class AboutModel {
     title_es: string,
     bio_en: string,
     bio_es: string,
-    email_en: string,
-    email_es: string,
+    email_press: string,
+    email_inquiries: string,
     logos: ImageModel[] | null,
     createdAt: Date,
     updatedAt: Date,
@@ -28,8 +28,8 @@ export class AboutModel {
     this.title_es = title_es
     this.bio_en = bio_en
     this.bio_es = bio_es
-    this.email_en = email_en
-    this.email_es = email_es
+    this.email_press = email_press
+    this.email_inquiries = email_inquiries
     this.logos = logos
     this.createdAt = createdAt
     this.updatedAt = updatedAt
@@ -43,8 +43,8 @@ export class AboutModel {
       json.title_es,
       json.bio_en,
       json.bio_es,
-      json.email_en,
-      json.email_es,
+      json.email_press,
+      json.email_inquiries,
       logos,
       new Date(json.createdAt),
       new Date(json.updatedAt),

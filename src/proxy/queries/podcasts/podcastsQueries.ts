@@ -4,7 +4,9 @@ import { PodcastModel } from './podcastModel'
 export const getPodcasts = async (page = 1): Promise<PodcastModel[] | null> => {
   const response = await getData(`podcasts`, {
     'pagination[page]': page,
-    'sort[0]': 'createdAt:desc'
+    'sort[0]': 'createdAt:desc',
+    'populate[0]': 'square_image',
+    'populate[1]': 'banner_image'
   })
   if (response.statusCode == 200) {
     const data = response.data.data
