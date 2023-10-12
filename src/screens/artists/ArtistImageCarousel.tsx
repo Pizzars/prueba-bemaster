@@ -20,7 +20,7 @@ const ArtistImageCarousel: React.FC<ArtistImageCarouselProps> = ({
 }) => {
     const [activeIndex, setActiveIndex] = useState(0);
     const start = useRef(0);
-    const containerRef = useRef(null);
+    const containerRef = useRef<HTMLDivElement>(null);
 
     const onTouchStart = (e: React.TouchEvent) => {
         start.current = e.touches[0].clientX;

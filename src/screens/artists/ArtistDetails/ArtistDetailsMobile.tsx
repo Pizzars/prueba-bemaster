@@ -23,8 +23,8 @@ const socialLinks = [
 const ArtistDetailsMobile = () => {
     return (
         <div className="relative py-8">
-            <ArtistImageCarousel
-                profilePics={[profilePic, profilePic2, profilePic]}
+            <ArtistImage
+                profilePic={profilePic}
                 altText="Artist Name"
             />
             {[1, 2, 3].map(number => (

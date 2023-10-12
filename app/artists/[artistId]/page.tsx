@@ -1,5 +1,12 @@
-import ArtistInfoMobile from 'src/screens/artists/ArtistDetails/ArtistDetailsMobile'
+import React from 'react'
+import ArtistById from 'src/screens/artists/ArtistById/ArtistById'
 
-export default function AboutPage() {
-  return <ArtistInfoMobile />
+const ArtistByIdPage = () => {
+  return (
+    <>
+      <ArtistById />
+    </>
+  )
 }
+
+export default ArtistByIdPage
