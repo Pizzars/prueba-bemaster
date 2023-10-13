@@ -11,10 +11,10 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-    animation: moveUp 15s linear infinite; /* Aumenta la duración aquí */
+    animation: moveUp 15s linear infinite;
   }
   
   .animated-text-delayed {
-    animation-delay: -7.5s; /* Ajusta el delay según la nueva duración */
+    animation-delay: -7.5s;
   }
   
