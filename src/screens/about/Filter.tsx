@@ -33,7 +33,7 @@ const Filter = () => {
 
   return (
     <div
-      className='fixed w-full bg-gradient-to-r from-green-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% pl-8 z-10'
+      className='fixed w-full bg-gradient-to-r from-rose-900 from-10% via-red-600 via-30% to-pink-900 to-90% pl-8 z-10'
       style={{}}
     >
       <animated.div style={shrink} className='py-8'>

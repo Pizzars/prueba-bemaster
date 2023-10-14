@@ -3,8 +3,10 @@
 import axios from 'axios'
 import queryString from 'query-string'
 import { ResponseModel, ResponseType } from './responseData'
+import { ulrBack } from 'src/utils/consts'
 
-const path = 'http://localhost:1337/api'
+// const path = 'http://localhost:1337/api'
+const path = `${ulrBack}/api`
 
 const baseHeaders = {
   Accept: 'application/json',

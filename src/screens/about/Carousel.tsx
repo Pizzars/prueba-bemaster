@@ -1,5 +1,6 @@
 import { useAppSelector } from 'src/redux/hooks'
 import { useSpring, animated } from 'react-spring'
+import { ulrBack } from 'src/utils/consts'
 
 const Carousel = () => {
   const state = useAppSelector(state => state.aboutReducer.data)
@@ -33,7 +34,7 @@ const Carousel = () => {
                   <div className='w-24 h-10 mx-4' key={`logo-${i}`}>
                     <img
                       className='w-full h-full object-contain '
-                      src={`http://localhost:1337${logo.url}`}
+                      src={`${ulrBack}${logo.url}`}
                       alt={logo.alternativeText ?? 'logo'}
                     />
                   </div>
