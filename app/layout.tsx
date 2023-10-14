@@ -11,7 +11,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body>
+      <body className='bg-white'>
         <ProviderRedux>
           <Navbar />
           <div style={{ paddingTop: 72 }}>{children}</div>

@@ -85,6 +85,8 @@ export class PodcastModel {
       ? ImageModel.fromJson(json.banner_image.data.attributes)
       : null
 
+    const artists = json.artists ? ArtistModel.listFromJson(json.artists.data) : null
+
     return new PodcastModel(
       id,
       json.title,
@@ -99,7 +101,7 @@ export class PodcastModel {
       json.artwork,
       json.autoplay,
       json.height || 0,
-      json.artists || [],
+      artists || [],
       json.color,
       json.id_migration || 0,
       json.description_es,
