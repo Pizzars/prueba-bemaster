@@ -6,6 +6,7 @@ import ArtistDates from '../ArtistDates';
 import ArtistSocialLinks from '../ArtistSocialLinks';
 import ArtistInfo from '../ArtistInfo';
 import ArtistImageCarousel from '../ArtistImageCarousel';
+import SwipeForMore from 'src/screens/components/general/SwipeForMore';
 
 const socialLinks = [
     { type: 'PRESS KIT', url: 'https://www.presskit.to/artist' },
@@ -49,6 +50,7 @@ const ArtistById = () => {
                     longInfo={largeInfo}
                 />
             </div>
+            <SwipeForMore />
         </div >
     );
 };
