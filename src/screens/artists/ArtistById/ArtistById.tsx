@@ -23,9 +23,8 @@ const largeInfo = `Brisotti began his career as a DJ in 2018, but it was in 2021
 Bibi and Pawsa, that his name established itself as a major breakthrough.
  The artist has ac hieved numerous accomplishments, with support from Jamie Jones, 
  Michael Bibi, Chris Lake, Clonee, Loco Dice, and reaching 7-digit streams with the track "Tripasia" on streaming platforms.
-  Additionally, he has been making appear ances at the biggest events and festivals in the country.
-Hailing from the interior of São Paulo, Brisotti possesses technique, charisma, and stage presence as his trademarks
-, which make him acclaimed by the crowds he commands, under a strong influence of House Music and its subgenres.`
+ Additionally, he has been making appear ances at the biggest events and festivals in the country.
+ \nHailing from the interior of São Paulo, Brisotti possesses technique, charisma, and stage presence as his trademarks, which make him acclaimed by the crowds he commands, under a strong influence of House Music and its subgenres.`
 
 
 const ArtistById = () => {
