@@ -13,8 +13,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head />
       <body className='bg-white'>
         <ProviderRedux>
-          <Navbar />
-          <div style={{ paddingTop: 72 }}>{children}</div>
+          <div>{children}</div>
           <Footer />
         </ProviderRedux>
       </body>
