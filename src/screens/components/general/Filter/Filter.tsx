@@ -9,9 +9,10 @@ import styles from './Filter.module.css';
 interface FilterProps {
     title: string;
     options: Array<{ title: string; option: string }>;
+    className?: string;
 }
 
-const Filter: React.FC<FilterProps> = ({ title, options }) => {
+const Filter: React.FC<FilterProps> = ({ title, options, className }) => {
     const [scrollY, setScrollY] = useState<number>(0);
     const [activeTab, setActiveTab] = useState<string>(options?.[0]?.option || 'WORLDWIDE');
     const navRef = useRef<HTMLDivElement>(null);
@@ -21,7 +22,7 @@ const Filter: React.FC<FilterProps> = ({ title, options }) => {
     });
 
     const shrink = useSpring({
-        marginTop: scrollY > 50 ? '-60px' : '0px',
+        marginTop: scrollY > 50 ? '-30px' : '0px',
     });
 
     const handleScroll = () => {
@@ -49,8 +50,8 @@ const Filter: React.FC<FilterProps> = ({ title, options }) => {
     };
 
     return (
-        <div className='fixed w-full bg-gradient-to-r from-green-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% pl-8 z-10'>
-            <animated.div style={shrink} className='py-8'>
+        <div className={`fixed w-full ${className} bg-gradient-to-r from-green-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% pl-8 z-10 py-8`}>
+            <animated.div style={shrink}>
                 <animated.div style={fade}>
                     <TitleSection text={title} color={TextColors.white} className='uppercase' />
                 </animated.div>
