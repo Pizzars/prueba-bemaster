@@ -2,7 +2,6 @@ import NoTag from '../general/NoTag'
 
 interface Params {
   text: string
-  textPosition?: number
 }
 const SplitText = ({ text }: Params) => {
   return (

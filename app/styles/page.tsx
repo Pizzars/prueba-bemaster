@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import TitleHome from 'src/screens/components/texts/TitleHome'
 import TitleSection from 'src/screens/components/texts/TitleSection'
@@ -13,23 +13,29 @@ import TextIcon, { SizeIcons, TextIcons } from 'src/screens/components/icons/Tex
 import { useState } from 'react'
 
 const StylePage = () => {
-  const [copySuccess, setCopySuccess] = useState('');
+  const [copySuccess, setCopySuccess] = useState('')
 
   const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text).then(() => {
-      setCopySuccess('Copied!');
-      setTimeout(() => setCopySuccess(''), 1000);
-    }).catch(()=> {
-      setCopySuccess('Failed to copy text');
-    });
-  };
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        setCopySuccess('Copied!')
+        setTimeout(() => setCopySuccess(''), 1000)
+      })
+      .catch(() => {
+        setCopySuccess('Failed to copy text')
+      })
+  }
 
   return (
     <div className='p-12'>
       {copySuccess && (
-        <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-2 rounded absolute top-1/8 left-1/2 transform -translate-x-1/2 -translate-y-1/2" role="alert">
-          <strong className="font-bold">Success!</strong>
-          <span className="block sm:inline"> {copySuccess}</span>
+        <div
+          className='bg-green-100 border border-green-400 text-green-700 px-4 py-2 rounded absolute top-1/8 left-1/2 transform -translate-x-1/2 -translate-y-1/2'
+          role='alert'
+        >
+          <strong className='font-bold'>Success!</strong>
+          <span className='block sm:inline'> {copySuccess}</span>
         </div>
       )}
 
@@ -49,23 +55,47 @@ const StylePage = () => {
         <TitleSmall text={`ENLACES Y MINITÍTULOS`} />
       </div>
       <br />
-      <div onClick={() => copyToClipboard('<TextParagraph text={`TEXTOS FOOTER, EJEMPLO DE DOS LÍNEAS`} />')}>
+      <div
+        onClick={() =>
+          copyToClipboard('<TextParagraph text={`TEXTOS FOOTER, EJEMPLO DE DOS LÍNEAS`} />')
+        }
+      >
         <TextParagraph text={`TEXTOS FOOTER, EJEMPLO DE DOS LÍNEAS`} />
       </div>
       <br />
-      <div onClick={() => copyToClipboard('<TextParagraph text={`Texto bloque pequeño. Lorem ipsum cander sit amet consectetur.`} />')}>
+      <div
+        onClick={() =>
+          copyToClipboard(
+            '<TextParagraph text={`Texto bloque pequeño. Lorem ipsum cander sit amet consectetur.`} />'
+          )
+        }
+      >
         <TextParagraph text={`Texto bloque pequeño. Lorem ipsum cander sit amet consectetur.`} />
       </div>
       <br />
-      <div onClick={() => copyToClipboard('<TextSmall text={`Texto bloque pequeño. Lorem ipsum cander sit amet consectetur.`} />')}>
+      <div
+        onClick={() =>
+          copyToClipboard(
+            '<TextSmall text={`Texto bloque pequeño. Lorem ipsum cander sit amet consectetur.`} />'
+          )
+        }
+      >
         <TextSmall text={`Texto bloque pequeño. Lorem ipsum cander sit amet consectetur.`} />
       </div>
       <br />
-      <div onClick={() => copyToClipboard('<TextSmall text={`CABECERAS CON IMAGEN ABOUT, ARTISTS...`} />')}>
+      <div
+        onClick={() =>
+          copyToClipboard('<TextSmall text={`CABECERAS CON IMAGEN ABOUT, ARTISTS...`} />')
+        }
+      >
         <TextSmall text={`CABECERAS CON IMAGEN ABOUT, ARTISTS...`} />
       </div>
       <br />
-      <div onClick={() => copyToClipboard('<TextSmall text={`NOMBRES TERRITORIOS, LISTADO ARTISTAS...`} />')}>
+      <div
+        onClick={() =>
+          copyToClipboard('<TextSmall text={`NOMBRES TERRITORIOS, LISTADO ARTISTAS...`} />')
+        }
+      >
         <TextSmall text={`NOMBRES TERRITORIOS, LISTADO ARTISTAS...`} />
       </div>
       <br />
@@ -73,11 +103,23 @@ const StylePage = () => {
         <TextSmall text={`REDES SOCIALES, PRESS KIT...`} />
       </div>
       <br />
-      <div onClick={() => copyToClipboard('<TextSmall text={`PÁRRAFOS LARGOS TIPO ABOUT. TODO UPPERCASE MENOS ESTOS.`} />')}>
+      <div
+        onClick={() =>
+          copyToClipboard(
+            '<TextSmall text={`PÁRRAFOS LARGOS TIPO ABOUT. TODO UPPERCASE MENOS ESTOS.`} />'
+          )
+        }
+      >
         <TextSmall text={`PÁRRAFOS LARGOS TIPO ABOUT. TODO UPPERCASE MENOS ESTOS.`} />
       </div>
       <br />
-      <div onClick={() => copyToClipboard('<TitleMedium text={`ICONOS`} color={TextColors.blue} className=\'mb-4\' />')}>
+      <div
+        onClick={() =>
+          copyToClipboard(
+            "<TitleMedium text={`ICONOS`} color={TextColors.blue} className='mb-4' />"
+          )
+        }
+      >
         <TitleMedium text={`ICONOS`} color={TextColors.blue} className='mb-4' />
       </div>
       <div className='flex gap-2'>
@@ -107,7 +149,13 @@ const StylePage = () => {
         <div onClick={() => copyToClipboard('<TitleSection text={`BOOK`} />')}>
           <TitleSection text={'BOOK'} />
         </div>
-        <div onClick={() => copyToClipboard('<TextIcon icon={TextIcons.RIGHT_ARROW} size={SizeIcons.TITLE} color={TextColors.black} />')}>
+        <div
+          onClick={() =>
+            copyToClipboard(
+              '<TextIcon icon={TextIcons.RIGHT_ARROW} size={SizeIcons.TITLE} color={TextColors.black} />'
+            )
+          }
+        >
           <TextIcon icon={TextIcons.RIGHT_ARROW} size={SizeIcons.TITLE} color={TextColors.black} />
         </div>
       </div>
@@ -115,4 +163,4 @@ const StylePage = () => {
   )
 }
 
-export default StylePage;
+export default StylePage
