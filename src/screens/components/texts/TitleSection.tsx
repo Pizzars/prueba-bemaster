@@ -7,6 +7,7 @@ interface Params {
   tag?: TextTags
   color?: TextColors
   font?: Fonts
+  size?: string
 }
 
 const TitleSection = ({
@@ -14,15 +15,10 @@ const TitleSection = ({
   tag = TextTags.H1,
   className = '',
   color = TextColors.black,
-  font = Fonts.swis
+  font = Fonts.swis,
+  size = 'text-[38px] leading-[34.2px] desk:text-[48px] desk:leading-[48px] big:text-[90px] big:leading-[90px]'
 }: Params) => {
-  return (
-    <TextBase
-      text={text}
-      tag={tag}
-      className={`text-[38px] leading-[34.2px] desk:text-[48px] desk:leading-[48px] big:text-[90px] big:leading-[90px] ${color} ${font} ${className}`}
-    />
-  )
+  return <TextBase text={text} tag={tag} className={`${size} ${color} ${font} ${className}`} />
 }
 
 export default TitleSection

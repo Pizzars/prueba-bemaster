@@ -7,6 +7,7 @@ interface Params {
   tag?: TextTags
   color?: TextColors
   font?: Fonts
+  size?: string
 }
 
 const TextSmall = ({

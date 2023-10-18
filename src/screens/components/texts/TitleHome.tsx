@@ -7,6 +7,7 @@ interface Params {
   tag?: TextTags
   color?: TextColors
   font?: Fonts
+  size?: string
 }
 
 const TitleHome = ({
@@ -14,15 +15,10 @@ const TitleHome = ({
   tag = TextTags.H1,
   className = '',
   color = TextColors.black,
-  font = Fonts.swis
+  font = Fonts.swis,
+  size = 'text-[48px] leading-[43.2px] desk:text-[90px] desk:leading-[81px] big:text-[180px] big:leading-[162px]'
 }: Params) => {
-  return (
-    <TextBase
-      text={text}
-      tag={tag}
-      className={`text-[48px] leading-[43.2px] desk:text-[90px] desk:leading-[81px] big:text-[180px] big:leading-[162px] ${color} ${font} ${className}`}
-    />
-  )
+  return <TextBase text={text} tag={tag} className={`${size} ${color} ${font} ${className}`} />
 }
 
 export default TitleHome

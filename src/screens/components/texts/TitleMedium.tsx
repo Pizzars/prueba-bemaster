@@ -7,6 +7,7 @@ interface Params {
   tag?: TextTags
   color?: TextColors
   font?: Fonts
+  size?: string
 }
 
 const TitleMedium = ({
@@ -14,15 +15,10 @@ const TitleMedium = ({
   tag = TextTags.H2,
   className = '',
   color = TextColors.black,
-  font = Fonts.swis
+  font = Fonts.swis,
+  size = 'text-[22px] leading-[19.8px] desk:text-[24px] desk:leading-[21.6px] big:text-[48px] big:leading-[43.2px]'
 }: Params) => {
-  return (
-    <TextBase
-      text={text}
-      tag={tag}
-      className={`text-[22px] leading-[19.8px] desk:text-[24px] desk:leading-[21.6px] big:text-[48px] big:leading-[43.2px] ${color} ${font} ${className}`}
-    />
-  )
+  return <TextBase text={text} tag={tag} className={`${size} ${color} ${font} ${className}`} />
 }
 
 export default TitleMedium

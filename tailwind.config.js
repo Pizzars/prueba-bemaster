@@ -23,7 +23,7 @@ module.exports = {
       }
     },
     screens: {
-      desk: '1024px',
+      desk: '1023px',
       big: '1401px'
     }
   },
