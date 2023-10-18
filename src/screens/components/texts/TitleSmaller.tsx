@@ -11,7 +11,7 @@ interface Params {
 
 const TitleSmaller = ({
   text,
-  tag = TextTags.H3,
+  tag = TextTags.H4,
   className = '',
   color = TextColors.black,
   font = Fonts.swis
