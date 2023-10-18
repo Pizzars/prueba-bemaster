@@ -20,7 +20,7 @@ const TitleMedium = ({
     <TextBase
       text={text}
       tag={tag}
-      className={`text-[22px] leading-[19.8px] ${color} ${font} ${className}`}
+      className={`text-[22px] leading-[19.8px] lg:text-[24px] lg:leading-[21.6px] big:text-[48px] big:leading-[43.2px] ${color} ${font} ${className}`}
     />
   )
 }

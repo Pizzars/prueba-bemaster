@@ -3,7 +3,7 @@ const WHITE = '#FFF'
 const YELLOW = '#D2FF37'
 const BLUE = '#46D'
 const GRAY = '#333'
-const YELLOW_LIME = '#D2FF37';
+const YELLOW_LIME = '#D2FF37'
 
 module.exports = {
   content: [
@@ -19,8 +19,12 @@ module.exports = {
         'yellow-app': YELLOW,
         'blue-app': BLUE,
         'gray-app': GRAY,
-        'yellow-lime-app': YELLOW_LIME,
+        'yellow-lime-app': YELLOW_LIME
       }
+    },
+    screens: {
+      big: '1401px'
+      // => @media (min-width: 1280px) { ... }
     }
   },
   plugins: []

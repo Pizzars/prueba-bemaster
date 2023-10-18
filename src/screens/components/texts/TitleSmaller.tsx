@@ -9,9 +9,9 @@ interface Params {
   font?: Fonts
 }
 
-const TitleSection = ({
+const TitleSmaller = ({
   text,
-  tag = TextTags.H1,
+  tag = TextTags.H3,
   className = '',
   color = TextColors.black,
   font = Fonts.swis
@@ -20,9 +20,9 @@ const TitleSection = ({
     <TextBase
       text={text}
       tag={tag}
-      className={`text-[38px] leading-[34.2px] lg:text-[48px] lg:leading-[48px] big:text-[90px] big:leading-[90px] ${color} ${font} ${className}`}
+      className={`text-[12px] leading-[12px] lg:text-[24px] lg:leading-[21.6px] big:text-[32px] big:leading-[35.2px]  ${color} ${font} ${className}`}
     />
   )
 }
 
-export default TitleSection
+export default TitleSmaller
