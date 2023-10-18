@@ -20,7 +20,7 @@ const TextParagraph = ({
     <TextBase
       text={text}
       tag={tag}
-      className={`text-[14px] leading-[19.6px] ${color} ${font} ${className}`}
+      className={`text-[14px] leading-[19.6px] big:text-[24px] big:leading-[33.6px] ${color} ${font} ${className}`}
     />
   )
 }

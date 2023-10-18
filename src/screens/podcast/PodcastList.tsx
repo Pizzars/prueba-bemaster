@@ -13,6 +13,26 @@ import TextIcon, { SizeIcons, TextIcons } from '../components/icons/TextIcon'
 // import bg from '../../assets/general/back_colors.png'
 import Link from 'next/link'
 
+export const replaceTitle = (title: string, artists?: ArtistModel[]) => {
+  let names = ''
+  if (artists) {
+    artists.forEach((artist, i) => {
+      const name = (artist.name ?? '').toUpperCase()
+      names = `${names}${i === 0 ? '' : ' & '}${name}`
+    })
+  }
+
+  const titleList_p = title.split('. ')
+  const newTitle_p = titleList_p[titleList_p.length - 1]
+  const titleList = newTitle_p.split(' - ')
+  const newTitle = titleList[titleList.length - 1]
+  if (names.length === 0) {
+    const nTitleList = titleList_p[0].split(' - ')
+    names = nTitleList[0]
+  }
+  return { names, title: newTitle.toUpperCase() }
+}
+
 const PodcastList = () => {
   const list = useAppSelector(state => state.podcastsReducer.data)
   const status = useAppSelector(state => state.podcastsReducer.status)
@@ -21,26 +41,6 @@ const PodcastList = () => {
     if (status === StateRequest.EMPTY) dispatch(getPodcastsData(1))
   }, [status])
   if (!list) return <></>
-
-  const replaceTitle = (title: string, artists?: ArtistModel[]) => {
-    let names = ''
-    if (artists) {
-      artists.forEach((artist, i) => {
-        const name = (artist.name ?? '').toUpperCase()
-        names = `${names}${i === 0 ? '' : ' & '}${name}`
-      })
-    }
-
-    const titleList_p = title.split('. ')
-    const newTitle_p = titleList_p[titleList_p.length - 1]
-    const titleList = newTitle_p.split(' - ')
-    const newTitle = titleList[titleList.length - 1]
-    if (names.length === 0) {
-      const nTitleList = titleList_p[0].split(' - ')
-      names = nTitleList[0]
-    }
-    return { names, title: newTitle.toUpperCase() }
-  }
 
   return (
     <div>

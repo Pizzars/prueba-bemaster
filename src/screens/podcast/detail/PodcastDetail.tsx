@@ -6,6 +6,9 @@ import { StateRequest } from 'src/redux/features/baseReducer'
 import { getPodcastsData } from 'src/redux/features/podcastsSlice'
 import { useAppDispatch, useAppSelector } from 'src/redux/hooks'
 import TextParagraph from 'src/screens/components/texts/TextParagraph'
+import TitleMedium from 'src/screens/components/texts/TitleMedium'
+import TitleSmall from 'src/screens/components/texts/TitleSmall'
+import { replaceTitle } from '../PodcastList'
 // import TitleMedium from 'src/screens/components/texts/TitleMedium'
 
 const PodcastDetail = () => {
@@ -26,9 +29,11 @@ const PodcastDetail = () => {
 
   if (!podcast) return <></>
 
+  const title = replaceTitle(podcast.title ?? '', podcast.artists ?? [])
+
   return (
-    <div>
-      <div className='w-full mb-2 h-[80vw] bg-black-app p-4 relative'>
+    <div className='flex flex-col desk:flex-row-reverse desk:p-16 big:p-24'>
+      <div className='w-full mb-2 h-[80vw] bg-black-app relative desk:w-[452px] desk:h-[452px] big:w-[600px] big:h-[600px] desk:sticky desk:top-24'>
         <iframe
           // allowTransparency={true}
           scrolling='no'
@@ -43,10 +48,15 @@ const PodcastDetail = () => {
           style={{ width: '100%', height: '100%' }}
         ></iframe>
       </div>
-      <div className='p-8'>
+      <div className='p-8 flex flex-col desk:pl-0 desk:py-4 desk:pr-16 desk:flex-1 max-w-[768px] desk:mr-auto'>
+        <TitleMedium
+          text={`${title.names}
+        ${title.title}`}
+          className='hidden desk:block mb-auto'
+        />
         {/* <TextParagraph text={podcast.description_en ?? ''} /> */}
         <TextParagraph
-          className='font-normal'
+          className='font-light desk:mt-12'
           text={`Nico Moreno delivers B4’s latest musical voyage, stamping her dynamic tech-house signature on a very fresh mix session.
 
 Nico is a connoisseur of the dance-floor, having cultivated much of her experience for a decade as resident of Cafe Mambo Ibiza and touting around Europe. In this mix Sara melts the Island’s sultry sounds and positive energy, with neat and powerful tech tunes, minimal-house sounds and progressive-house music.
