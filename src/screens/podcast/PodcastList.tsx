@@ -10,7 +10,7 @@ import { ulrBack } from 'src/utils/consts'
 import { ArtistModel } from 'src/proxy/queries/artists/artistModel'
 import TitleSmall from '../components/texts/TitleSmall'
 import TextIcon, { SizeIcons, TextIcons } from '../components/icons/TextIcon'
-import bg from '../../assets/general/back_colors.png'
+// import bg from '../../assets/general/back_colors.png'
 import Link from 'next/link'
 
 const PodcastList = () => {
@@ -47,7 +47,7 @@ const PodcastList = () => {
       {list.map((podcast, i) => {
         const title = replaceTitle(podcast.title ?? '', podcast.artists ?? [])
         return (
-          <Link key={`podcast-${i}`} href={`/podcast/${podcast.id}`}>
+          <Link key={`podcast-${i}`} href={`/podcasts/${podcast.id}`}>
             <div className='my-8'>
               <div className='w-full mb-2 h-[80vw] bg-black-app p-4 relative'>
                 <div className='absolute w-full h-full top-0 left-0'>
@@ -56,15 +56,6 @@ const PodcastList = () => {
                     src={`${ulrBack}${podcast.square_image?.url ?? ''}`}
                     alt={podcast.square_image?.alternativeText ?? podcast.title ?? ''}
                   />
-                  {/* <div className='absolute top-0 left-0 w-full h-full bg-gradient-to-r from-rose-900 from-10% via-red-600 via-30% to-pink-900 to-90% opacity-50'></div>
-                <div className='absolute top-0 left-0 w-full h-full bg-black-app bg-opacity-40'></div> */}
-                  <div
-                    className='absolute top-0 left-0 w-full h-full opacity-50'
-                    style={{
-                      backgroundImage: `url(${bg.src})`,
-                      backgroundSize: 'cover'
-                    }}
-                  ></div>
                   <div className='absolute top-0 left-0 w-full h-full bg-black-app bg-opacity-40'></div>
                 </div>
                 <div className='relative p-4'>
@@ -73,12 +64,12 @@ const PodcastList = () => {
                     color={TextColors.white}
                     className='text-[33px] leading-[33px]'
                   />
-                  {/* <TitleSmall text={title.title ?? ''} color={TextColors.white} className='mt-2' /> */}
-                  <TitleSmall
+                  <TitleSmall text={title.title ?? ''} color={TextColors.white} className='mt-2' />
+                  {/* <TitleSmall
                     text={`B4PODCAST ${podcast.id}`}
                     color={TextColors.white}
                     className='mt-2'
-                  />
+                  /> */}
                 </div>
               </div>
               <div className='relative'>
