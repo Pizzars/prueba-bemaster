@@ -20,7 +20,7 @@ const TitleSection = ({
     <TextBase
       text={text}
       tag={tag}
-      className={`text-[38px] leading-[34.2px] lg:text-[48px] lg:leading-[48px] big:text-[90px] big:leading-[90px] ${color} ${font} ${className}`}
+      className={`text-[38px] leading-[34.2px] desk:text-[48px] desk:leading-[48px] big:text-[90px] big:leading-[90px] ${color} ${font} ${className}`}
     />
   )
 }

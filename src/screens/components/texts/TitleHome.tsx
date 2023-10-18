@@ -20,7 +20,7 @@ const TitleHome = ({
     <TextBase
       text={text}
       tag={tag}
-      className={`text-[48px] leading-[43.2px] lg:text-[90px] lg:leading-[81px] big:text-[180px] big:leading-[162px] ${color} ${font} ${className}`}
+      className={`text-[48px] leading-[43.2px] desk:text-[90px] desk:leading-[81px] big:text-[180px] big:leading-[162px] ${color} ${font} ${className}`}
     />
   )
 }

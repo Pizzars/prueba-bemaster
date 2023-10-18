@@ -20,7 +20,7 @@ const TitleSmall = ({
     <TextBase
       text={text}
       tag={tag}
-      className={`text-[14px] leading-[14px] lg:text-[24px] lg:leading-[21.6px] ${color} ${font} ${className}`}
+      className={`text-[14px] leading-[14px] desk:text-[24px] desk:leading-[21.6px] ${color} ${font} ${className}`}
     />
   )
 }

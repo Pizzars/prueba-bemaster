@@ -23,8 +23,8 @@ module.exports = {
       }
     },
     screens: {
+      desk: '1024px',
       big: '1401px'
-      // => @media (min-width: 1280px) { ... }
     }
   },
   plugins: []
