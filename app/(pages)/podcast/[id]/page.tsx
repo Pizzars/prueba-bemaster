@@ -1,5 +1,5 @@
 import PodcastDetail from 'src/screens/podcast/detail/PodcastDetail'
 
-export default function PodcastPage() {
+export default function DetailPodcastPage() {
   return <PodcastDetail />
 }
