@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import React from 'react'
-import LogoIcon from 'src/screens/components/icons/LogoIcon'
 import TextIcon, { TextIcons, SizeIcons } from 'src/screens/components/icons/TextIcon'
 import TitleSmall from 'src/screens/components/texts/TitleSmall'
 import { TextColors } from 'src/utils/Colors'
