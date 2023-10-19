@@ -1,9 +1,9 @@
 import React from 'react';
 import { TextColors } from 'src/utils/Colors';
 import { footerButtonsInfo } from 'src/utils/consts';
-import TextIcon, { TextIcons, SizeIcons } from '../icons/TextIcon';
-import TextParagraph from '../texts/TextParagraph';
-import SocialMediaLinks from './SocialMediaLinks';
+import TextIcon, { TextIcons, SizeIcons } from '../../../icons/TextIcon';
+import TextParagraph from '../../../texts/TextParagraph';
+import SocialMediaLinks from '../../SocialMediaLinks';
 
 const Footer = () => {
     return (
@@ -26,8 +26,6 @@ const Footer = () => {
                     <TextParagraph text={"WEBSITE BY PROMOKORE"} color={TextColors.white} className='opacity-40' />
                     <TextIcon icon={TextIcons.DIAGONAL_ARROW} size={SizeIcons.TEXT_PARAGRAPH} color={TextColors.white} className='opacity-40' />
                 </a>
-
-
             </div>
         </div>
     );

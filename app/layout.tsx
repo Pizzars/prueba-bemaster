@@ -1,6 +1,5 @@
-import Footer from 'src/screens/components/general/Footer'
+import Footer from 'src/screens/components/general/Footer/Footer'
 import './globals.css'
-import Navbar from 'src/screens/components/general/Navbar'
 import ProviderRedux from 'src/redux/provider'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

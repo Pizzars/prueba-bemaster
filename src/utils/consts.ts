@@ -61,3 +61,31 @@ export const footerButtonsInfo: MenuItemForHome[] = [
     to: '/privacy-policy'
   }
 ]
+
+export const itemsForNavbar: MenuItemForHome[] = [
+  {
+    key: 'artists',
+    to: '/artists',
+    name: { EN: 'ARTISTS', ES: 'ARTISTAS' }
+  },
+  {
+    key: 'gigs',
+    to: '/gigs',
+    name: { EN: 'GIGS', ES: 'EVENTOS' }
+  },
+  {
+    key: 'podcast',
+    to: '/podcast',
+    name: { EN: 'PODCAST', ES: 'PODCAST' }
+  },
+  {
+    key: 'about',
+    to: '/about',
+    name: { EN: 'ABOUT', ES: 'NOSOTROS' }
+  },
+  {
+    key: 'book',
+    to: '/book',
+    name: { EN: 'BOOK', ES: 'RESERVAR' }
+  }
+]
