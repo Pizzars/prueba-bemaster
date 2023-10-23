@@ -52,3 +52,15 @@ a {
     @apply bg-black text-white;
   }
 }
+
+/* Esconde scrollbar para Chrome, Safari y Opera */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}
+
+/* Esconde scrollbar para IE, Edge, and Firefox */
+html, body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}

@@ -17,7 +17,7 @@ const ArtistDates: React.FC<ArtistDatesProps> = ({
     customClassName,
 }) => {
     return (
-        <section className={`flex flex-col mt-3 ${customClassName}`}>
+        <section className={`flex flex-col ${customClassName}`}>
             <div className='flex flex-col mt-5'>
                 <TitleMedium text={date} className='uppercase' />
                 <TitleSmall text={venue} className='uppercase mt-1' />

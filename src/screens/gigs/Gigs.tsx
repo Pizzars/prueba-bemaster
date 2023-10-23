@@ -1,5 +1,4 @@
 
-import ArtistsList from '../artists/ArtistsList';
 import Filter from '../components/general/Filter/Filter';
 import GigsList from './GigsList';
 

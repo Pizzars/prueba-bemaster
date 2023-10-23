@@ -1,12 +1,10 @@
 import React from 'react';
 import Divider from 'src/screens/components/general/Divider';
 import profilePic from './artist.jpg'
-import profilePic2 from './artist2.jpeg'
-import ArtistDates from '../ArtistDates';
-import ArtistSocialLinks from '../ArtistSocialLinks';
-import ArtistImage from '../ArtistImage';
-import ArtistInfo from '../ArtistInfo';
-import ArtistImageCarousel from '../ArtistImageCarousel';
+import ArtistDates from '../../ArtistDates';
+import ArtistSocialLinks from '../../ArtistSocialLinks';
+import ArtistImage from '../../ArtistImage';
+import ArtistInfo from '../../ArtistInfo';
 
 const socialLinks = [
     { type: 'PRESS KIT', url: 'https://www.presskit.to/artist' },
