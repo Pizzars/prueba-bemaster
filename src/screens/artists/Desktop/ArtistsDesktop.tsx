@@ -1,7 +1,7 @@
 
-import ArtistImageCarousel from '../ArtistImageCarousel';
-import profilePic from '../ArtistById/artist.jpg'
-import profilePic2 from '../ArtistById/artist2.jpeg'
+import ArtistImageCarousel from '../Components/ArtistImageCarousel';
+import profilePic from '../Mobile/artist.jpg'
+import profilePic2 from '../Mobile/artist2.jpeg'
 import ArtistList from './ArtistList/ArtistsList';
 import ArtistDetails from './ArtistsDetails';
 

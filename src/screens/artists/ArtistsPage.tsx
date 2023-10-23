@@ -2,7 +2,7 @@ import React from 'react';
 import ArtistsMobile from './Mobile/ArtistsMobile';
 import ArtistsDesktop from './Desktop/ArtistsDesktop';
 
-const Artists = () => {
+const ArtistsPage = () => {
     return (
         <div className="w-full">
             <div className="sm:block md:hidden">
@@ -15,4 +15,4 @@ const Artists = () => {
     );
 };
 
-export default Artists;
+export default ArtistsPage;

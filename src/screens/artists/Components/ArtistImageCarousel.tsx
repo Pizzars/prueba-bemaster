@@ -1,11 +1,11 @@
 'use client';
 import React, { useState, useRef } from 'react';
 import Image, { StaticImageData } from 'next/image';
-import TextIcon, { SizeIcons, TextIcons } from '../components/icons/TextIcon';
-import TitleSmall from '../components/texts/TitleSmall';
+import TextIcon, { SizeIcons, TextIcons } from '../../components/icons/TextIcon';
+import TitleSmall from '../../components/texts/TitleSmall';
 import { TextColors } from 'src/utils/Colors';
-import TitleMedium from '../components/texts/TitleMedium';
-import TextParagraph from '../components/texts/TextParagraph';
+import TitleMedium from '../../components/texts/TitleMedium';
+import TextParagraph from '../../components/texts/TextParagraph';
 
 interface ArtistImageCarouselProps {
     profilePics: (string | StaticImageData)[];

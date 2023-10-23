@@ -1,8 +1,8 @@
 import React from 'react';
 import Divider from 'src/screens/components/general/Divider';
-import ArtistDates from '../ArtistDates';
-import ArtistInfo from '../ArtistInfo';
-import ArtistSocialLinks from '../ArtistSocialLinks';
+import ArtistDates from '../Components/ArtistDates';
+import ArtistInfo from '../Components/ArtistInfo';
+import ArtistSocialLinks from '../Components/ArtistSocialLinks';
 import TitleHome from 'src/screens/components/texts/TitleHome';
 import TitleMedium from 'src/screens/components/texts/TitleMedium';
 import TextIcon, { TextIcons, SizeIcons } from 'src/screens/components/icons/TextIcon';

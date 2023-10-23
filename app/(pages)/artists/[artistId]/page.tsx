@@ -1,5 +1,5 @@
 import React from 'react'
-import ArtistById from 'src/screens/artists/ArtistById/ArtistById'
+import ArtistById from 'src/screens/artists/ArtistByIdPage'
 
 const ArtistByIdPage = () => {
   return (

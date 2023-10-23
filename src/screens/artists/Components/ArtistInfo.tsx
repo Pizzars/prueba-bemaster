@@ -1,8 +1,8 @@
 import React from 'react';
 import { TextColors } from 'src/utils/Colors';
-import TextIcon, { TextIcons, SizeIcons } from '../components/icons/TextIcon';
-import TextParagraph from '../components/texts/TextParagraph';
-import TitleSmall from '../components/texts/TitleSmall';
+import TextIcon, { TextIcons, SizeIcons } from '../../components/icons/TextIcon';
+import TextParagraph from '../../components/texts/TextParagraph';
+import TitleSmall from '../../components/texts/TitleSmall';
 import Link from 'next/link';
 
 interface ArtistInfoProps {
