@@ -1,3 +1,4 @@
+'use client'
 import React from 'react';
 import Divider from 'src/screens/components/general/Divider';
 import profilePic from '../Mobile/artist.jpg'
@@ -8,6 +9,8 @@ import ArtistInfo from '../Components/ArtistInfo';
 import ArtistImageCarousel from '../Components/ArtistImageCarousel';
 import TextParagraph from 'src/screens/components/texts/TextParagraph';
 import TitleHome from 'src/screens/components/texts/TitleHome';
+import TextIcon, { TextIcons, SizeIcons } from 'src/screens/components/icons/TextIcon';
+import { TextColors } from 'src/utils/Colors';
 
 const socialLinks = [
     { type: 'PRESS KIT', url: 'https://www.presskit.to/artist' },
@@ -30,16 +33,22 @@ Bibi and Pawsa, that his name established itself as a major breakthrough.
 
 const ArtistByIdDesktop = () => {
     return (
-        <div className="flex px-10 py-14 w-full">
-            <div className="w-3/5 flex flex-col mr-10"> 
-            <div className='flex flex-col'>
-                <TitleHome text={`VIVIANA\n CASANOVA`} />
-                <TextParagraph text={'WORLDWIDE'} className='uppercase mt-2 opacity-40' />
-                <TextParagraph text={'EXCLUDING BRAZIL'} className='uppercase opacity-40' />
-            </div>
-                <Divider/>
+        <div className="relative flex px-10 py-14 w-full">
+            {/* Flecha izquierda */}
+            <button className="absolute top-1/3 left-8 transform -translate-y-1/2 text-4xl"
+                onClick={() => console.log('4')}>
+                <TextIcon icon={TextIcons.LEFT_ARROW} size={SizeIcons.TITLE_MEDIUM} />
+            </button>
 
-                <div className="w-full flex mt-4">
+            <div className="w-3/5 flex flex-col ml-8 mr-10">
+                <div className='flex flex-col'>
+                    <TitleHome text={`VIVIANA\n CASANOVA`} />
+                    <TextParagraph text={'WORLDWIDE'} className='uppercase mt-2 opacity-40' />
+                    <TextParagraph text={'EXCLUDING BRAZIL'} className='uppercase opacity-40' />
+                </div>
+                <Divider />
+
+                <div className="w-full flex mt-4 ">
                     <div className='w-1/3'>
                         <ArtistSocialLinks links={socialLinks} column />
                     </div>
@@ -62,14 +71,20 @@ const ArtistByIdDesktop = () => {
                 </div>
             </div>
 
-            <div className='w-2/5'>
+            <div className='w-2/5 mr-8'>
                 <ArtistImageCarousel
                     profilePics={[profilePic, profilePic2, profilePic]}
                     altText="Artist Name"
                 />
             </div>
+
+            {/* Flecha derecha */}
+            <button className="absolute top-1/3 right-8 transform -translate-y-1/2 text-4xl"
+                onClick={() => console.log('4')}>
+                <TextIcon icon={TextIcons.RIGHT_ARROW} size={SizeIcons.TITLE_MEDIUM} />
+
+            </button>
         </div>
     );
 };
-
 export default ArtistByIdDesktop;

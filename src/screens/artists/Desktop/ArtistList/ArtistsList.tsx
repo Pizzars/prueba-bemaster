@@ -7,9 +7,6 @@ import styles from './ArtistsList.module.css';
 const ArtistList = () => {
     const [selectedArtist, setSelectedArtist] = React.useState(false);
 
-    
-
-
     const artists = [
         'DAFT PUNK',
         'THE CHEMICAL BROTHERS',
@@ -107,22 +104,31 @@ const ArtistList = () => {
         'HOT SINCE 82',
         'JORIS VOORN',]
 
-    return (
-        <div className={`relative h-screen ${styles.artistListContainer} text-center`} style={{
-            flexBasis: "28.125%"
-        }}>
-            <div className={`overflow-y-scroll h-full ${styles.scrollContainer}`}>
-            <ul className="space-y-2 p-4 flex flex-col items-center">
-                    {artists.map((artist: string, index: number) => (
-                        <TitleMedium key={index} text={artist} color={TextColors.white} className={`opacity-40 hover:opacity-100`} />
-                    ))}
-                </ul>
+        return (
+            <div className={`relative h-screen ${styles.artistListContainer} text-center`} style={{
+                flexBasis: "28.125%"
+            }}>
+                <div className={`overflow-y-scroll h-full ${styles.scrollContainer}`}>
+                    <div className="flex items-center justify-center h-full">
+                        <ul className="space-y-2 p-4 text-left">
+                            {artists.map((artist: string, index: number) => (
+                                <li key={index}>
+                                    <TitleMedium 
+                                        text={artist} 
+                                        color={TextColors.white} 
+                                        className={`opacity-40 hover:opacity-100`} 
+                                    />
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+        
+                <div className={`${styles.mask} ${styles.maskTop}`}></div>
+                <div className={`${styles.mask} ${styles.maskBottom}`}></div>
             </div>
-
-            <div className={`${styles.mask} ${styles.maskTop}`}></div>
-            <div className={`${styles.mask} ${styles.maskBottom}`}></div>
-        </div>
-    );
+        );
+        
 }
 
 export default ArtistList
