@@ -7,7 +7,6 @@ import { getPodcastsData } from 'src/redux/features/podcastsSlice'
 import { useAppDispatch, useAppSelector } from 'src/redux/hooks'
 import TextParagraph from 'src/screens/components/texts/TextParagraph'
 import TitleMedium from 'src/screens/components/texts/TitleMedium'
-import TitleSmall from 'src/screens/components/texts/TitleSmall'
 import { replaceTitle } from '../PodcastList'
 // import TitleMedium from 'src/screens/components/texts/TitleMedium'
 
