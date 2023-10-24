@@ -15,15 +15,10 @@ const TextParagraph = ({
   tag = TextTags.P,
   className = '',
   color = TextColors.black,
-  font = Fonts.heveltica
+  font = Fonts.heveltica,
+  size = 'text-small leading-small big:text-[24px] big:leading-[33.6px]'
 }: Params) => {
-  return (
-    <TextBase
-      text={text}
-      tag={tag}
-      className={`text-[14px] leading-[19.6px] big:text-[24px] big:leading-[33.6px] ${color} ${font} ${className}`}
-    />
-  )
+  return <TextBase text={text} tag={tag} className={`${size} ${color} ${font} ${className}`} />
 }
 
 export default TextParagraph

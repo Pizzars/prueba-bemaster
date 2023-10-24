@@ -21,7 +21,7 @@ const TextSmall = ({
     <TextBase
       text={text}
       tag={tag}
-      className={`text-[10px] leading-[10px] ${color} ${font}  ${className}`}
+      className={`text-little leading-little ${color} ${font}  ${className}`}
     />
   )
 }

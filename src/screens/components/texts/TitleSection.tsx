@@ -16,8 +16,9 @@ const TitleSection = ({
   className = '',
   color = TextColors.black,
   font = Fonts.swis,
-  size = 'text-[38px] leading-[34.2px] desk:text-[48px] desk:leading-[48px] big:text-[90px] big:leading-[90px]'
-}: Params) => {
+  size = 'text-big leading-big desk:text-[48px] desk:leading-[48px] big:text-[90px] big:leading-[90px]'
+}: // size = 'text-[clamp(32px, 8.5vw, 38px)] leading-[34.2px] desk:text-[48px] desk:leading-[48px] big:text-[90px] big:leading-[90px]'
+Params) => {
   return <TextBase text={text} tag={tag} className={`${size} ${color} ${font} ${className}`} />
 }
 
