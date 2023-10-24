@@ -3,7 +3,7 @@ const WHITE = '#FFF'
 const YELLOW = '#D2FF37'
 const BLUE = '#46D'
 const GRAY = '#333'
-const YELLOW_LIME = '#D2FF37';
+const YELLOW_LIME = '#D2FF37'
 
 module.exports = {
   content: [
@@ -19,7 +19,25 @@ module.exports = {
         'yellow-app': YELLOW,
         'blue-app': BLUE,
         'gray-app': GRAY,
-        'yellow-lime-app': YELLOW_LIME,
+        'yellow-lime-app': YELLOW_LIME
+      },
+      screens: {
+        desk: '1023px',
+        big: '1401px'
+      },
+      fontSize: {
+        larger: 'clamp(38px, 11.6vw, 48px)',
+        big: 'clamp(32px, 9.2vw, 38px)',
+        medium: 'clamp(16px, 4.6vw, 22px)',
+        small: 'clamp(8px, 3.4vw, 14px)',
+        little: 'clamp(6px, 2.8vw, 12px)'
+      },
+      lineHeight: {
+        larger: 'clamp(33px, 11vw, 43.2px)',
+        big: 'clamp(28.2px, 7.5vw, 34.2px)',
+        medium: 'clamp(13.8px, 4vw, 19.8px)',
+        small: 'clamp(8px, 3.4vw, 14px)',
+        little: 'clamp(6px, 2.8vw, 12px)'
       }
     }
   },
