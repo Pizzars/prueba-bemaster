@@ -16,7 +16,7 @@ const SocialMediaLinks = () => {
           <TitleSmall text={`BE FOR THE MUSIC.`} />
           <TitleSmall text={`BE FOR THE BOOKING.`} />
         </div>
-        <div className='space-y-8'>
+        <div className='flex flex-col space-y-4'>
           {socialMediaLinks.map(social => (
             <div className='inline-flex items-center' key={social.name}>
               <a
