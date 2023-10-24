@@ -10,7 +10,18 @@
 
 @font-face {
   font-family: 'swis';
-  src: url('../src/styles/fonts/swis/swis721_.ttf');
+  /* src: url('../src/styles/fonts/swis/swis721_.ttf'); */
+  src: url('../src/styles/fonts/swis/Swiss721BT-Extended.otf');
+}
+@font-face {
+  font-family: 'swis';
+  src: url('../src/styles/fonts/swis/Swiss721BT-BoldExtended.otf');
+  font-weight: bold;
+}
+@font-face {
+  font-family: 'swis';
+  src: url('../src/styles/fonts/swis/Swiss721BT-BlackExtended.otf');
+  font-weight: bolder;
 }
 
 .inter {

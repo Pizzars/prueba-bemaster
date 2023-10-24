@@ -10,15 +10,15 @@ interface Params {
   size?: string
 }
 
-const TitleHome = ({
+const TitleSmaller = ({
   text,
-  tag = TextTags.H1,
+  tag = TextTags.H4,
   className = '',
   color = TextColors.black,
   font = Fonts.swis,
-  size = 'text-larger leading-larger desk:text-[90px] desk:leading-[81px] big:text-[180px] big:leading-[162px]'
+  size = 'text-[12px] leading-[12px] desk:text-[24px] desk:leading-[21.6px] big:text-[32px] big:leading-[35.2px]'
 }: Params) => {
   return <TextBase text={text} tag={tag} className={`${size} ${color} ${font} ${className}`} />
 }
 
-export default TitleHome
+export default TitleSmaller

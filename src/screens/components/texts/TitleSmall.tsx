@@ -7,6 +7,7 @@ interface Params {
   tag?: TextTags
   color?: TextColors
   font?: Fonts
+  size?: string
 }
 
 const TitleSmall = ({
@@ -14,15 +15,10 @@ const TitleSmall = ({
   tag = TextTags.H3,
   className = '',
   color = TextColors.black,
-  font = Fonts.swis
+  font = Fonts.swis,
+  size = 'text-small leading-small desk:text-[24px] desk:leading-[21.6px]'
 }: Params) => {
-  return (
-    <TextBase
-      text={text}
-      tag={tag}
-      className={`text-[14px] leading-[14px] ${color} ${font} ${className}`}
-    />
-  )
+  return <TextBase text={text} tag={tag} className={`${size} ${color} ${font} ${className}`} />
 }
 
 export default TitleSmall
