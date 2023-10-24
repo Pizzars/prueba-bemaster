@@ -1,12 +1,16 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import { useSpring, animated } from 'react-spring';
-import TextIcon, { TextIcons } from '../components/icons/TextIcon';
-import TitleMedium from '../components/texts/TitleMedium';
-import { artists } from '../home/AnimatedText';
+import TextIcon, { TextIcons } from '../../components/icons/TextIcon';
+import TitleMedium from '../../components/texts/TitleMedium';
+import { artists } from '../../home/AnimatedText';
 import ArtistDetailsMobile from './ArtistDetails/ArtistDetailsMobile';
 
-const ArtistsList: React.FC = () => {
+interface Props {
+    customClassname?: string;
+}
+
+const ArtistsList: React.FC<Props> = ({ customClassname }) => {
     const [selectedArtist, setSelectedArtist] = useState<string | null>(null);
     const [open, setOpen] = useState(false);
     const [nextArtist, setNextArtist] = useState<string | null>(null);
@@ -44,7 +48,9 @@ const ArtistsList: React.FC = () => {
     };
 
     return (
-        <div className='flex flex-col w-full pl-8 pr-6 space-y-5' style={{ paddingTop: 200 }}>
+        <div className={`flex flex-col ${customClassname} w-full pl-8 pr-6 space-y-5`} style={{
+            paddingTop: 200,
+        }}>
             {artists.map(artist => (
                 <div key={artist} className="flex flex-col">
                     <div

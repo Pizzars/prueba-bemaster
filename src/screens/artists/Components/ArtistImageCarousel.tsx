@@ -1,22 +1,24 @@
 'use client';
 import React, { useState, useRef } from 'react';
 import Image, { StaticImageData } from 'next/image';
-import TextIcon, { SizeIcons, TextIcons } from '../components/icons/TextIcon';
-import TitleSmall from '../components/texts/TitleSmall';
+import TextIcon, { SizeIcons, TextIcons } from '../../components/icons/TextIcon';
+import TitleSmall from '../../components/texts/TitleSmall';
 import { TextColors } from 'src/utils/Colors';
-import TitleMedium from '../components/texts/TitleMedium';
-import TextParagraph from '../components/texts/TextParagraph';
+import TitleMedium from '../../components/texts/TitleMedium';
+import TextParagraph from '../../components/texts/TextParagraph';
 
 interface ArtistImageCarouselProps {
     profilePics: (string | StaticImageData)[];
     altText?: string;
-    customClassName?: string;
+    customClassname?: string;
+    desktop?: boolean;
 }
 
 const ArtistImageCarousel: React.FC<ArtistImageCarouselProps> = ({
     profilePics,
     altText = 'Artist',
-    customClassName,
+    customClassname,
+    desktop
 }) => {
     const [activeIndex, setActiveIndex] = useState(0);
     const start = useRef(0);
@@ -59,8 +61,8 @@ const ArtistImageCarousel: React.FC<ArtistImageCarouselProps> = ({
     };
 
     return (
-        <div className={customClassName} ref={containerRef} onClick={onClick}>
-            <div className="relative h-[410px]" onTouchStart={onTouchStart} onTouchMove={onTouchMove}>
+        <div className={`${customClassname} flex flex-col md:h-screen h-[435px]`} ref={containerRef} onClick={onClick} style={{ flexBasis: "43.75%" }}>
+            <div className="relative flex-grow" onTouchStart={onTouchStart} onTouchMove={onTouchMove}>
                 {profilePics.map((pic, index) => (
                     <div
                         key={index}
@@ -82,11 +84,11 @@ const ArtistImageCarousel: React.FC<ArtistImageCarouselProps> = ({
                             }}
                             className="absolute inset-0"
                         ></div>
-                        <div className="absolute bottom-8 left-8">
+                        {!desktop && <div className="absolute bottom-8 left-8">
                             <TitleMedium text={`Brisotti`} className='uppercase' color={TextColors.white} />
                             <TextParagraph text={`WORLDWIDE`} className='uppercase' color={TextColors.white} />
                             <TextParagraph text={`EXCLUDING BRAZIL`} className='uppercase mt-0 pt-0' color={TextColors.white} />
-                        </div>
+                        </div>}
                     </div>
                 ))}
                 <div className="absolute top-8 left-8 right-8 border-t-2 border-opacity-30 border-white">
@@ -94,10 +96,10 @@ const ArtistImageCarousel: React.FC<ArtistImageCarouselProps> = ({
                 </div>
             </div>
 
-            <div className="flex justify-between items-center bg-[#222222] text-white px-7 py-5">
+            {!desktop && <div className="flex-shrink-0 flex justify-between items-center bg-[#222222] text-white px-7 py-5">
                 <TitleSmall text={`Book Artist`} color={TextColors.white} className="uppercase" />
                 <TextIcon icon={TextIcons.RIGHT_ARROW} size={SizeIcons.TITLE_SMALL} color={TextColors.white} />
-            </div>
+            </div>}
         </div>
     );
 };

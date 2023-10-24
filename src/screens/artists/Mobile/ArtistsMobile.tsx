@@ -1,5 +1,5 @@
 import ArtistsList from './ArtistsList';
-import Filter from '../components/general/Filter/Filter';
+import Filter from '../../components/general/Filter/Filter';
 
 const optionPlaceholders = [
   { title: 'WORLDWIDE', option: 'worldwide' },
@@ -9,7 +9,7 @@ const optionPlaceholders = [
 ];
 
 
-const Artists: React.FC = () => {
+const ArtistsMobile: React.FC = () => {
   return (
     <div className='flex w-full mb-4'>
       <Filter title='Artists' options={optionPlaceholders}/>
@@ -18,4 +18,4 @@ const Artists: React.FC = () => {
   );
 };
 
-export default Artists;
+export default ArtistsMobile;

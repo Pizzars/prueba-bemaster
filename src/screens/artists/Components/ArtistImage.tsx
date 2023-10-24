@@ -1,8 +1,8 @@
 import React from 'react';
 import Image, { StaticImageData } from 'next/image';
 import { TextColors } from 'src/utils/Colors';
-import TextIcon, { TextIcons, SizeIcons } from '../components/icons/TextIcon';
-import TitleSmall from '../components/texts/TitleSmall';
+import TextIcon, { TextIcons, SizeIcons } from '../../components/icons/TextIcon';
+import TitleSmall from '../../components/texts/TitleSmall';
 
 interface ArtistImageProps {
     profilePic: string | StaticImageData;
