@@ -15,15 +15,10 @@ const TextSmall = ({
   tag = TextTags.P,
   className = '',
   color = TextColors.blue,
-  font = Fonts.heveltica
+  font = Fonts.heveltica,
+  size = 'text-[10px] leading-[10px]'
 }: Params) => {
-  return (
-    <TextBase
-      text={text}
-      tag={tag}
-      className={`text-little leading-little ${color} ${font}  ${className}`}
-    />
-  )
+  return <TextBase text={text} tag={tag} className={`${size} ${color} ${font}  ${className}`} />
 }
 
 export default TextSmall

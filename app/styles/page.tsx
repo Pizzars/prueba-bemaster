@@ -106,7 +106,15 @@ const StylePage = () => {
           )
         }
       >
-        <TextSmall text={`Texto bloque pequeño. Lorem ipsum cander sit amet consectetur.`} />
+        <TextSmall
+          text={`Texto bloque pequeño. Lorem
+        ipsum cander sit amet consectetur.`}
+        />
+        <TextSmall
+          text={`Texto bloque pequeño. Lorem
+        ipsum cander sit amet consectetur.`}
+          size='text-little leading-little'
+        />
       </div>
       <br />
       <div

@@ -120,10 +120,10 @@ body {
 }
 
 .text-little {
-  font-size: clamp(6px, 2.8vw, 12px);
+  font-size: clamp(6px, 2.56vw, 10px);
 }
 .leading-little {
-  line-height: 1.4;
+  line-height: 100%;
 }
 
 @media (min-width: 1024px) and (max-width: 1400px) {
@@ -170,11 +170,11 @@ body {
   }
 
   .text-little {
-    font-size: clamp(6px, 2.8vw, 12px);
+    font-size: clamp(8px, 0.975vw, 14px);
   }
-  .leading-little {
-    line-height: clamp(6px, 2.8vw, 12px);
-  }
+  /* .leading-little {
+    line-height: clamp(6px, 2.8vw, 10px);
+  } */
 }
 
 /* max = 1920 */
@@ -222,9 +222,6 @@ body {
   }
 
   .text-little {
-    font-size: clamp(6px, 2.8vw, 12px);
-  }
-  .leading-little {
-    line-height: clamp(6px, 2.8vw, 12px);
+    font-size: clamp(14px, 1.38vw, 17.5px);
   }
 }
