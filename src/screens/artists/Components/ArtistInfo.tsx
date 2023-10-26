@@ -1,8 +1,8 @@
 import React from 'react';
 import { TextColors } from 'src/utils/Colors';
-import TextIcon, { TextIcons, SizeIcons } from '../components/icons/TextIcon';
-import TextParagraph from '../components/texts/TextParagraph';
-import TitleSmall from '../components/texts/TitleSmall';
+import TextIcon, { TextIcons, SizeIcons } from '../../components/icons/TextIcon';
+import TextParagraph from '../../components/texts/TextParagraph';
+import TitleSmall from '../../components/texts/TitleSmall';
 import Link from 'next/link';
 
 interface ArtistInfoProps {
@@ -20,16 +20,15 @@ const ArtistInfo: React.FC<ArtistInfoProps> = ({ shortInfo, longInfo, customClas
                 <TextParagraph text={longInfo} className='mt-1' />
             ) : (
                 <>
-                    <TextParagraph text={shortInfo || ''} className='mt-1 opacity-40' />
-                    <div className='flex items-center mt-0.5'>
+                    <TextParagraph text={shortInfo || ''} className='mt-1 opacity-40 md:opacity-100' />
+                    <div className='flex items-center mt-0.5 md:mt-6'>
                         <Link href={'artists/2'}>
-                            <TitleSmall text={`MORE`} className='uppercase' />
+                            <TitleSmall text={`VIEW MORE`} className='uppercase md:opacity-80' />
                         </Link>
                         <TextIcon
                             icon={TextIcons.RIGHT_ARROW}
                             size={SizeIcons.TITLE_MEDIUM}
-                            color={TextColors.black}
-                            className='self-center opacity-40 ml-0.5'
+                            className='self-center opacity-40 ml-0.5 md:purple-app md:opacity-100'
                         />
                     </div>
                 </>

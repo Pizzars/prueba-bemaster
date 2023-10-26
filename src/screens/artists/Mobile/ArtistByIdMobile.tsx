@@ -27,7 +27,7 @@ Bibi and Pawsa, that his name established itself as a major breakthrough.
  \nHailing from the interior of São Paulo, Brisotti possesses technique, charisma, and stage presence as his trademarks, which make him acclaimed by the crowds he commands, under a strong influence of House Music and its subgenres.`
 
 
-const ArtistById = () => {
+const ArtistByIdMobile = () => {
     return (
         <div className="relative">
             <ArtistImageCarousel
@@ -44,7 +44,7 @@ const ArtistById = () => {
                     />
                 ))}
                 <Divider className='my-5' />
-                <ArtistSocialLinks links={socialLinks} column />
+                <ArtistSocialLinks links={socialLinks} />
                 <ArtistInfo
                     longInfo={largeInfo}
                 />
@@ -54,4 +54,4 @@ const ArtistById = () => {
     );
 };
 
-export default ArtistById;
+export default ArtistByIdMobile;

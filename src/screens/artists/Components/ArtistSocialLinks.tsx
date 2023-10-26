@@ -1,7 +1,7 @@
 import React from 'react';
 import { TextColors } from 'src/utils/Colors';
-import TextIcon, { TextIcons, SizeIcons } from '../components/icons/TextIcon';
-import TitleSmall from '../components/texts/TitleSmall';
+import TextIcon, { TextIcons, SizeIcons } from '../../components/icons/TextIcon';
+import TitleSmall from '../../components/texts/TitleSmall';
 
 interface ArtistSocialLink {
     type: string;
@@ -11,11 +11,12 @@ interface ArtistSocialLink {
 interface ArtistSocialLinksProps {
     links: ArtistSocialLink[];
     customClassName?: string;
+    column?: boolean;
 }
 
-const ArtistSocialLinks: React.FC<ArtistSocialLinksProps> = ({ links, customClassName }) => {
+const ArtistSocialLinks: React.FC<ArtistSocialLinksProps> = ({ links, customClassName, column }) => {
     return (
-        <div className={`flex flex-wrap ${customClassName}`}>
+        <div className={`flex flex-wrap ${customClassName} ${column ? 'flex-col' : ''}`}>
             {links.map((link, index) => (
                 <div key={index} className='w-1/2 flex mb-3'>
                     <a href={link.url} target="_blank" rel="noopener noreferrer" className='uppercase flex'>
