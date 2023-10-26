@@ -16,7 +16,7 @@ const TitleMedium = ({
   className = '',
   color = TextColors.black,
   font = Fonts.swis,
-  size = 'text-medium leading-medium desk:text-[24px] desk:leading-[21.6px] big:text-[48px] big:leading-[43.2px]'
+  size = 'text-medium leading-medium'
 }: Params) => {
   return <TextBase text={text} tag={tag} className={`${size} ${color} ${font} ${className}`} />
 }

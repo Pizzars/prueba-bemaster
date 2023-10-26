@@ -16,7 +16,7 @@ const TextParagraph = ({
   className = '',
   color = TextColors.black,
   font = Fonts.heveltica,
-  size = 'text-small leading-small big:text-[24px] big:leading-[33.6px]'
+  size = 'text-basic leading-basic'
 }: Params) => {
   return <TextBase text={text} tag={tag} className={`${size} ${color} ${font} ${className}`} />
 }
