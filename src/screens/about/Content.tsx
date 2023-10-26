@@ -22,9 +22,7 @@ const Content = () => {
     <div>
       <div className='px-8'>
         <TitleMedium text={state?.title_en ?? ''} />
-        <TitleMedium text={state?.title_en ?? ''} size='text-medium' />
         <TextParagraph text={state?.bio_en ?? ''} className='mt-8' />
-        <TextParagraph text={state?.bio_en ?? ''} size='text-small' className='mt-8' />
       </div>
       {state && state.logos && (
         <div className='my-8 w-full overflow-hidden'>
