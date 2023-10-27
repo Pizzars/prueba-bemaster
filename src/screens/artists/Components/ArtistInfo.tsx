@@ -17,18 +17,18 @@ const ArtistInfo: React.FC<ArtistInfoProps> = ({ shortInfo, longInfo, customClas
     return (
         <div className={`flex flex-col ${customClassName}`}>
             {longInfo ? (
-                <TextParagraph text={longInfo} className='mt-1' />
+                <TextParagraph text={longInfo} className='mt-1 big:text-[14px]' />
             ) : (
                 <>
-                    <TextParagraph text={shortInfo || ''} className='mt-1 opacity-40 md:opacity-100' />
-                    <div className='flex items-center mt-0.5 md:mt-6'>
+                    <TextParagraph text={shortInfo || ''} className=' opacity-40 md:opacity-100 big:text-[14px] big:leading-[15.4px]' />
+                    <div className='flex items-center mt-0.5 md:mt-2'>
                         <Link href={'artists/2'}>
-                            <TitleSmall text={`VIEW MORE`} className='uppercase md:opacity-80' />
+                            <TitleSmall text={`VIEW MORE`} className='uppercase md:opacity-80 big:text-[14px]' />
                         </Link>
                         <TextIcon
                             icon={TextIcons.RIGHT_ARROW}
-                            size={SizeIcons.TITLE_MEDIUM}
-                            className='self-center opacity-40 ml-0.5 md:purple-app md:opacity-100'
+                            size={SizeIcons.TITLE_SMALL}
+                            className='self-center opacity-40 ml-0.5 md:purple-app md:opacity-100 big:text-[14px]'
                         />
                     </div>
                 </>

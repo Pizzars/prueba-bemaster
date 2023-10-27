@@ -3,6 +3,7 @@ import React from 'react';
 import TitleMedium from 'src/screens/components/texts/TitleMedium';
 import { TextColors } from 'src/utils/Colors';
 import styles from './ArtistsList.module.css';
+import TitleSmall from 'src/screens/components/texts/TitleSmall';
 
 const ArtistList = () => {
     const [selectedArtist, setSelectedArtist] = React.useState(false);
@@ -104,31 +105,31 @@ const ArtistList = () => {
         'HOT SINCE 82',
         'JORIS VOORN',]
 
-        return (
-            <div className={`relative h-screen ${styles.artistListContainer} text-center`} style={{
-                flexBasis: "28.125%"
-            }}>
-                <div className={`overflow-y-scroll h-full ${styles.scrollContainer}`}>
-                    <div className="flex items-center justify-center h-full">
-                        <ul className="space-y-2 p-4 text-left">
-                            {artists.map((artist: string, index: number) => (
-                                <li key={index}>
-                                    <TitleMedium 
-                                        text={artist} 
-                                        color={TextColors.white} 
-                                        className={`opacity-40 hover:opacity-100`} 
-                                    />
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+    return (
+        <div className={`relative h-screen ${styles.artistListContainer} text-center`} style={{
+            flexBasis: "28.125%"
+        }}>
+            <div className={`overflow-y-scroll h-full ${styles.scrollContainer}`}>
+                <div className="flex items-center justify-center h-full">
+                    <ul className="space-y-2 p-4 text-left">
+                        {artists.map((artist: string, index: number) => (
+                            <li key={index}>
+                                <TitleSmall
+                                    text={artist}
+                                    color={TextColors.white}
+                                    className={`opacity-40 hover:opacity-100`}
+                                />
+                            </li>
+                        ))}
+                    </ul>
                 </div>
-        
-                <div className={`${styles.mask} ${styles.maskTop}`}></div>
-                <div className={`${styles.mask} ${styles.maskBottom}`}></div>
             </div>
-        );
-        
+
+            <div className={`${styles.mask} ${styles.maskTop}`}></div>
+            <div className={`${styles.mask} ${styles.maskBottom}`}></div>
+        </div>
+    );
+
 }
 
 export default ArtistList
