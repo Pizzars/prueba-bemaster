@@ -41,8 +41,8 @@ const ArtistDetails = () => {
                     <ArtistDates
                         key={number}
                         date="31·07·23"
-                        venue="Social Club Mallorca"
-                        location="Palma, España"
+                        venue="Neopop festival"
+                        location="Viana Do Castelo, Portugal"
                         index={index}
                     />
                 ))}

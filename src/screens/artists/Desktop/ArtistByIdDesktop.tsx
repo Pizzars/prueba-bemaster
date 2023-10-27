@@ -37,14 +37,13 @@ const ArtistByIdDesktop = () => {
             {/* Flecha izquierda */}
             <button className="absolute top-1/3 left-8 transform -translate-y-1/2 text-4xl"
                 onClick={() => console.log('4')}>
-                <TextIcon icon={TextIcons.LEFT_ARROW} size={SizeIcons.TITLE_MEDIUM} />
+                <TextIcon icon={TextIcons.LEFT_ARROW} size={SizeIcons.TITLE_MEDIUM} className='desk:text-[24px] desk:leading-[24px]' />
             </button>
 
-            <div className="w-3/5 flex flex-col ml-8 mr-10">
+            <div className="w-[70%] flex flex-col ml-8 mr-10">
                 <div className='flex flex-col'>
-                    <TitleHome text={`VIVIANA\n CASANOVA`} />
-                    <TextParagraph text={'WORLDWIDE'} className='uppercase mt-2 opacity-40' />
-                    <TextParagraph text={'EXCLUDING BRAZIL'} className='uppercase opacity-40' />
+                    <TitleHome text={`VIVIANA\n CASANOVA`} className='desk:text-[48px] desk:leading-[44px]' />
+                    <TextParagraph text={'WORLDWIDE EXCLUDING BRAZIL'} className='uppercase mt-2 opacity-40 desk:text-[24px] desk:leading-[24px]' />
                 </div>
                 <Divider />
 
@@ -60,7 +59,7 @@ const ArtistByIdDesktop = () => {
                                 date="31·07·23"
                                 venue="Social Club Mallorca"
                                 location="Palma, España"
-                                customClassName='mt-0'
+                                customClassName='mt-6'
                             />
                         ))}
                         <ArtistInfo
@@ -71,18 +70,18 @@ const ArtistByIdDesktop = () => {
                 </div>
             </div>
 
-            <div className='w-2/5 mr-8'>
+            <div className='w-[30%] mr-8'>
                 <ArtistImageCarousel
                     profilePics={[profilePic, profilePic2, profilePic]}
                     altText="Artist Name"
+                    byId
                 />
             </div>
 
             {/* Flecha derecha */}
             <button className="absolute top-1/3 right-8 transform -translate-y-1/2 text-4xl"
                 onClick={() => console.log('4')}>
-                <TextIcon icon={TextIcons.RIGHT_ARROW} size={SizeIcons.TITLE_MEDIUM} />
-
+                <TextIcon icon={TextIcons.RIGHT_ARROW} size={SizeIcons.TITLE_MEDIUM} className='desk:text-[24px] desk:leading-[24px]' />
             </button>
         </div>
     );

@@ -20,7 +20,7 @@ const ArtistInfo: React.FC<ArtistInfoProps> = ({ shortInfo, longInfo, customClas
                 <TextParagraph text={longInfo} className='mt-1 big:text-[14px]' />
             ) : (
                 <>
-                    <TextParagraph text={shortInfo || ''} className=' opacity-40 md:opacity-100 big:text-[14px] big:leading-[15.4px]' />
+                    <TextParagraph text={shortInfo || ''} className='helvetica opacity-40 md:opacity-100 big:text-[14px] big:leading-[15.4px]' />
                     <div className='flex items-center mt-0.5 md:mt-2'>
                         <Link href={'artists/2'}>
                             <TitleSmall text={`VIEW MORE`} className='uppercase md:opacity-80 big:text-[14px]' />
