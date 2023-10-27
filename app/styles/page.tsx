@@ -11,6 +11,7 @@ import CalendarIcon from 'src/screens/components/icons/CalendarIcon'
 import CheckBoxIcon from 'src/screens/components/icons/CheckBoxIcon'
 import TextIcon, { SizeIcons, TextIcons } from 'src/screens/components/icons/TextIcon'
 import { useState } from 'react'
+import TitleSmaller from 'src/screens/components/texts/TitleSmaller'
 
 const StylePage = () => {
   const [copySuccess, setCopySuccess] = useState('')
@@ -40,19 +41,38 @@ const StylePage = () => {
       )}
 
       <div onClick={() => copyToClipboard('<TitleHome text={`TÍTULO HOME`} />')}>
-        <TitleHome text={`TÍTULO HOME`} />
+        <TitleHome
+          text={`TÍTULO
+        HOME`}
+        />
       </div>
       <br />
       <div onClick={() => copyToClipboard('<TitleSection text={`TÍTULO SECCIÓN`} />')}>
-        <TitleSection text={`TÍTULO SECCIÓN`} />
+        <TitleSection
+          text={`TÍTULO
+        SECCIÓN`}
+        />
       </div>
       <br />
       <div onClick={() => copyToClipboard('<TitleMedium text={`TÍTULO MEDIANO`} />')}>
-        <TitleMedium text={`TÍTULO MEDIANO`} />
+        <TitleMedium
+          text={`TÍTULO
+        MEDIANO`}
+        />
       </div>
       <br />
       <div onClick={() => copyToClipboard('<TitleSmall text={`ENLACES Y MINITÍTULOS`} />')}>
-        <TitleSmall text={`ENLACES Y MINITÍTULOS`} />
+        <TitleSmall
+          text={`ENLACES Y
+        MINITÍTULOS`}
+        />
+      </div>
+      <br />
+      <div onClick={() => copyToClipboard('<TitleSmaller text={`TITULOS PEQUEÑOS 2`} />')}>
+        <TitleSmaller
+          text={`TITULOS
+        PEQUEÑOS 2`}
+        />
       </div>
       <br />
       <div
@@ -60,7 +80,10 @@ const StylePage = () => {
           copyToClipboard('<TextParagraph text={`TEXTOS FOOTER, EJEMPLO DE DOS LÍNEAS`} />')
         }
       >
-        <TextParagraph text={`TEXTOS FOOTER, EJEMPLO DE DOS LÍNEAS`} />
+        <TextParagraph
+          text={`TEXTOS FOOTER,
+        EJEMPLO DE DOS LÍNEAS`}
+        />
       </div>
       <br />
       <div
@@ -70,7 +93,10 @@ const StylePage = () => {
           )
         }
       >
-        <TextParagraph text={`Texto bloque pequeño. Lorem ipsum cander sit amet consectetur.`} />
+        <TextParagraph
+          text={`Texto bloque pequeño. Lorem
+        ipsum cander sit amet consectetur.`}
+        />
       </div>
       <br />
       <div
@@ -80,7 +106,15 @@ const StylePage = () => {
           )
         }
       >
-        <TextSmall text={`Texto bloque pequeño. Lorem ipsum cander sit amet consectetur.`} />
+        <TextSmall
+          text={`Texto bloque pequeño. Lorem
+        ipsum cander sit amet consectetur.`}
+        />
+        <TextSmall
+          text={`Texto bloque pequeño. Lorem
+        ipsum cander sit amet consectetur.`}
+          size='text-little leading-little'
+        />
       </div>
       <br />
       <div

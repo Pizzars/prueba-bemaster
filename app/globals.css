@@ -71,7 +71,157 @@ a {
 }
 
 /* Esconde scrollbar para IE, Edge, and Firefox */
-html, body {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+html,
+body {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Calses con los tamaños e interlienados de las fuentes */
+.text-larger {
+  font-size: clamp(38px, 11.6vw, 48px);
+}
+.leading-larger {
+  line-height: clamp(33.2px, 11vw, 43.2px);
+}
+
+.text-big {
+  font-size: clamp(32px, 9.2vw, 38px);
+}
+.leading-big {
+  line-height: clamp(28.2px, 7.5vw, 34.2px);
+}
+
+.text-medium {
+  font-size: clamp(16px, 4.6vw, 22px);
+}
+.leading-medium {
+  line-height: clamp(13.8px, 4vw, 19.8px);
+}
+
+.text-small {
+  font-size: clamp(8px, 3.4vw, 14px);
+}
+.leading-small {
+  line-height: clamp(8px, 3.4vw, 14px);
+}
+.text-smaller {
+  font-size: clamp(8px, 3.4vw, 14px);
+}
+.leading-smaller {
+  line-height: clamp(8px, 3.4vw, 14px);
+}
+
+.text-basic {
+  font-size: clamp(8px, 3.4vw, 14px);
+}
+.leading-basic {
+  line-height: clamp(8px, 4vw, 19.6px);
+}
+
+.text-little {
+  font-size: clamp(6px, 2.56vw, 10px);
+}
+.leading-little {
+  line-height: 100%;
+}
+
+@media (min-width: 1024px) and (max-width: 1400px) {
+  .text-larger {
+    font-size: clamp(90px, 8.8vw, 123px);
+  }
+  .leading-larger {
+    line-height: clamp(81px, 8vw, 114px);
+  }
+
+  .text-big {
+    font-size: clamp(48px, 4.65vw, 65px);
+  }
+  .leading-big {
+    line-height: clamp(48px, 4.65vw, 65px);
+  }
+
+  .text-medium {
+    font-size: clamp(24px, 2.2vw, 33px);
+  }
+  .leading-medium {
+    line-height: clamp(21.6px, 2vw, 29.5px);
+  }
+
+  .text-small {
+    font-size: clamp(14px, 1.4vw, 19px);
+  }
+  .leading-small {
+    line-height: clamp(12.8px, 2vw, 23px);
+  }
+
+  .text-smaller {
+    font-size: clamp(24px, 2.35vw, 33px);
+  }
+  .leading-smaller {
+    line-height: clamp(21.6px, 2.5vw, 34px);
+  }
+
+  .text-basic {
+    font-size: clamp(14px, 1.38vw, 17.5px);
+  }
+  .leading-basic {
+    line-height: 140%;
+  }
+
+  .text-little {
+    font-size: clamp(8px, 0.975vw, 14px);
+  }
+  /* .leading-little {
+    line-height: clamp(6px, 2.8vw, 10px);
+  } */
+}
+
+/* max = 1920 */
+@media (min-width: 1401px) {
+  .text-larger {
+    font-size: clamp(131px, 9.4vw, 180px);
+  }
+  .leading-larger {
+    line-height: clamp(113px, 8.5vw, 162px);
+  }
+
+  .text-big {
+    font-size: clamp(66px, 4.75vw, 90px);
+  }
+  .leading-big {
+    line-height: clamp(66px, 4.75vw, 90px);
+  }
+
+  .text-medium {
+    font-size: clamp(35px, 2.6vw, 48px);
+  }
+  .leading-medium {
+    line-height: clamp(31.5px, 2.2vw, 43.2px);
+  }
+
+  .text-small {
+    font-size: clamp(17.5px, 1.25vw, 24px);
+  }
+  .leading-small {
+    line-height: clamp(21px, 1.5vw, 38.8px);
+  }
+
+  .text-smaller {
+    font-size: clamp(17.5px, 1.65vw, 32px);
+  }
+  .leading-smaller {
+    line-height: clamp(21px, 1.8vw, 35.2px);
+  }
+
+  .text-basic {
+    font-size: clamp(17.5px, 1.25vw, 24px);
+  }
+  .leading-basic {
+    line-height: 120%;
+  }
+
+  .text-little {
+    font-size: clamp(14px, 1.38vw, 17.5px);
+  }
 }

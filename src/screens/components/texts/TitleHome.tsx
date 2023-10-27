@@ -16,7 +16,7 @@ const TitleHome = ({
   className = '',
   color = TextColors.black,
   font = Fonts.swis,
-  size = 'text-larger leading-larger desk:text-[90px] desk:leading-[81px] big:text-[180px] big:leading-[162px]'
+  size = 'text-larger leading-larger'
 }: Params) => {
   return <TextBase text={text} tag={tag} className={`${size} ${color} ${font} ${className}`} />
 }
