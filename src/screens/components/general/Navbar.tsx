@@ -17,11 +17,11 @@ const Navbar = () => {
             <div className="hidden md:flex items-center space-x-4 pr-7">
                 {itemsForNavbar.map(item => (
                     <Link key={item.key} href={item.to}>
-                        <TitleSmall text={item.name.EN} className="cursor-pointer" color={TextColors.white} />
+                        <TitleSmall text={item.name.EN} className="cursor-pointer big:text-[14px]" color={TextColors.white}   />
                     </Link>
                 ))}
                 <button onClick={() => console.log('Language switch clicked!')} className="py-2 cursor-pointer">
-                    <TitleSmall text={`EN`} color={TextColors.white} />
+                    <TitleSmall text={`EN`} color={TextColors.white} className="cursor-pointer big:text-[14px]"/>
                 </button>
             </div>
             <button onClick={() => console.log('Menu clicked!')} className="px-5 py-2 cursor-pointer sm:flex md:hidden pr-7">
