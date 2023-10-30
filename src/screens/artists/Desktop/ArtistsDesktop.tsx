@@ -1,4 +1,6 @@
 
+'use client'
+import { useAppSelector } from 'src/redux/hooks';
 import ArtistImageCarousel from '../Components/ArtistImageCarousel';
 import profilePic from '../Mobile/artist.jpg'
 import profilePic2 from '../Mobile/artist2.jpeg'
@@ -6,12 +8,18 @@ import ArtistList from './ArtistList/ArtistsList';
 import ArtistDetails from './ArtistsDetails';
 
 const ArtistsDesktop: React.FC = () => {
+    const selectedArtist = useAppSelector(state => state.artistsReducer.artist);
+
     return (
         <div className='flex w-full'>
             <div className='flex h-screen w-full bg-black-app'>
                 <ArtistList />
-                <ArtistImageCarousel profilePics={[profilePic, profilePic2, profilePic]} customClassname={"flex-3 h-screen"} desktop/>
-                <ArtistDetails />
+                {
+                    selectedArtist && <>
+                        <ArtistImageCarousel profilePics={[profilePic, profilePic2, profilePic]} customClassname={"flex-3 h-screen"} desktop />
+                        <ArtistDetails />
+                    </>
+                }
             </div>
         </div>
     );

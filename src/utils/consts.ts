@@ -9,9 +9,9 @@ export const menuItemsForHome: MenuItemForHome[] = [
     name: { EN: 'GIGS', ES: 'EVENTOS' }
   },
   {
-    key: 'podcast',
-    to: '/podcast',
-    name: { EN: 'PODCAST', ES: 'PODCAST' }
+    key: 'podcasts',
+    to: '/podcasts',
+    name: { EN: 'PODCASTS', ES: 'PODCASTS' }
   },
   {
     key: 'about',
@@ -50,7 +50,7 @@ export const footerButtonsInfo: MenuItemForHome[] = [
       EN: 'LEGAL NOTICE',
       ES: 'AVISO LEGAL'
     },
-    to: '/legal-notice'
+    to: '/terms'
   },
   {
     key: '2',
@@ -74,9 +74,9 @@ export const itemsForNavbar: MenuItemForHome[] = [
     name: { EN: 'GIGS', ES: 'EVENTOS' }
   },
   {
-    key: 'podcast',
-    to: '/podcast',
-    name: { EN: 'PODCAST', ES: 'PODCAST' }
+    key: 'podcasts',
+    to: '/podcasts',
+    name: { EN: 'PODCASTS', ES: 'PODCASTS' }
   },
   {
     key: 'about',

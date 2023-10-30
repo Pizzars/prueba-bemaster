@@ -23,7 +23,7 @@ const MainHeader: React.FC = () => {
     };
 
     return (
-<header className="h-screen bg-red-500 desk:bg-blue-app flex flex-col justify-between relative">
+        <header className="h-screen bg-red-500 desk:bg-blue-app flex flex-col justify-between relative">
             <div className='h-full pl-10 pt-48 desk:pl-20 desk:pt-24'>
                 <div className="mt-auto mb-auto">
                     <TitleSmall text='b4bookings' className='text-white' />
