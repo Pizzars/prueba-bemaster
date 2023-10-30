@@ -16,7 +16,7 @@ const ArtistsList: React.FC<Props> = ({ customClassname }) => {
     const [nextArtist, setNextArtist] = useState<string | null>(null);
 
     const props = useSpring({
-        height: open ? 900 : 0,
+        height: open ? 800 : 0,
         opacity: open ? 1 : 0,
         onRest: () => {
             if (!open) {
