@@ -10,6 +10,7 @@ import TitleSmall from '../components/texts/TitleSmall'
 import TextIcon, { SizeIcons, TextIcons } from '../components/icons/TextIcon'
 // import bg from '../../assets/general/back_colors.png'
 import Link from 'next/link'
+import TextWithIcon from '../components/icons/TextWithIcon'
 
 export const replaceTitle = (title: string, artists?: ArtistModel[]) => {
   let names = ''
@@ -41,9 +42,8 @@ const PodcastList = () => {
   if (!list) return <></>
 
   return (
-    <div className='desk:grid desk:grid-cols-2 desk:gap-12 big:grid-cols-4'>
+    <div className='desk:grid desk:grid-cols-2 desk:gap-12 big:gap-[4vw] big:grid-cols-4'>
       {list.map((podcast, i) => {
-        const title = replaceTitle(podcast.title ?? '', podcast.artists ?? [])
         return (
           <div
             key={`podcast-${i}`}
@@ -52,34 +52,30 @@ const PodcastList = () => {
             } big:mx-0`}
           >
             <Link href={`/podcasts/${podcast.id}`}>
-              <div className='w-full mb-2 h-[80vw] bg-black-app p-4 relative desk:h-[43vw] big:h-[26vw]'>
+              <div className='w-full mb-2 h-[80vw] bg-black-app p-4 relative desk:h-[43vw] big:h-[18.6vw]'>
                 <div className='absolute w-full h-full top-0 left-0'>
                   <img
                     className='w-full h-full object-cover'
                     src={`${ulrBack}${podcast.square_image?.url ?? ''}`}
                     alt={podcast.square_image?.alternativeText ?? podcast.title ?? ''}
                   />
-                  {/* <div className='absolute top-0 left-0 w-full h-full bg-black-app bg-opacity-40'></div> */}
                 </div>
-                {/* <div className='relative p-4'>
-                  <TitleMedium
-                    text={title.names ?? ''}
-                    color={TextColors.white}
-                    className='text-[33px] leading-[33px] big:text-[24px]'
-                  />
-                  <TitleSmall text={title.title ?? ''} color={TextColors.white} className='mt-2' />
-                </div> */}
               </div>
               <div className='relative'>
-                <TitleSmall text={title.names ?? ''} />
                 <div className=''>
                   {/* <TitleSmall text={`B4PODCAST ${podcast.id}`} /> */}
-                  <TitleSmall text={`B4PODCAST ${title.title}`} className='inline-block' />
+                  <TextWithIcon
+                    text={`B4PODCAST ${podcast.title} `}
+                    className='inline-block'
+                    icon={TextIcons.RIGHT_ARROW}
+                    size={SizeIcons.TITLE_SMALL}
+                  />
+                  {/* <TitleSmall text={`B4PODCAST ${podcast.title}`} className='inline-block' />
                   <TextIcon
                     icon={TextIcons.RIGHT_ARROW}
                     size={SizeIcons.TITLE_SMALL}
                     className='ml-2 inline-block'
-                  />
+                  /> */}
                 </div>
               </div>
             </Link>

@@ -28,8 +28,6 @@ const PodcastDetail = () => {
 
   if (!podcast) return <></>
 
-  const title = replaceTitle(podcast.title ?? '', podcast.artists ?? [])
-
   return (
     <div className='flex flex-col desk:flex-row-reverse desk:p-16 big:p-24'>
       <div className='w-full mb-2 h-[80vw] bg-black-app relative desk:w-[452px] desk:h-[452px] big:w-[600px] big:h-[600px] desk:sticky desk:top-24'>
@@ -48,12 +46,7 @@ const PodcastDetail = () => {
         ></iframe>
       </div>
       <div className='p-8 flex flex-col desk:pl-0 desk:py-4 desk:pr-16 desk:flex-1 max-w-[768px] desk:mr-auto'>
-        <TitleMedium
-          text={`${title.names}
-        ${title.title}`}
-          className='hidden desk:block mb-auto'
-        />
-        {/* <TextParagraph text={podcast.description_en ?? ''} /> */}
+        <TitleMedium text={`${podcast.title}`} className='hidden desk:block mb-auto' />
         <TextParagraph
           className='font-light desk:mt-12'
           text={`Nico Moreno delivers B4’s latest musical voyage, stamping her dynamic tech-house signature on a very fresh mix session.

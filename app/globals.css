@@ -225,3 +225,29 @@ body {
     font-size: clamp(14px, 1.38vw, 17.5px);
   }
 }
+
+.bg-about-mobile {
+  background-image: url(../src/assets/about/back_mobile.jpg);
+  background-size: cover;
+}
+
+@media (min-width: 1024px) {
+  .bg-about-mobile {
+    background-image: none;
+  }
+
+  .bg-about {
+    background-image: url(../src/assets/about/back_desktop.jpg);
+    background-size: cover;
+  }
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin-left: -0.14ex;
+  margin-right: -0.1ex;
+}
