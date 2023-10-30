@@ -8,6 +8,7 @@ import TitleMedium from 'src/screens/components/texts/TitleMedium';
 import TextIcon, { TextIcons, SizeIcons } from 'src/screens/components/icons/TextIcon';
 import { TextColors } from 'src/utils/Colors';
 import TextParagraph from 'src/screens/components/texts/TextParagraph';
+import TitleSmall from 'src/screens/components/texts/TitleSmall';
 
 const socialLinks = [
     { type: 'PRESS KIT', url: 'https://www.presskit.to/artist' },
@@ -27,9 +28,8 @@ const ArtistDetails = () => {
             flexBasis: "28.125%"
         }}>
             <div className='flex flex-col pl-8 pt-6'>
-                <TitleHome text={`VIVIANA CASANOVA`} />
-                <TextParagraph text={'WORLDWIDE'} className='uppercase mt-2 opacity-40' />
-                <TextParagraph text={'EXCLUDING BRAZIL'} className='uppercase opacity-40' />
+                <TitleMedium text={`VIVIANA CASANOVA`} />
+                <TextParagraph text={'WORLDWIDE EXCLUDING BRAZIL'} className='uppercase mt-2 opacity-40 big:text-[14px]' />
             </div>
 
             <Divider className='my-5' />
@@ -37,16 +37,17 @@ const ArtistDetails = () => {
 
             <Divider className='mt-2' />
             <div className='pl-8'>
-                {[1, 2, 3].map(number => (
+                {[1, 2].map((number, index) => (
                     <ArtistDates
                         key={number}
                         date="31·07·23"
-                        venue="Social Club Mallorca"
-                        location="Palma, España"
+                        venue="Neopop festival"
+                        location="Viana Do Castelo, Portugal"
+                        index={index}
                     />
                 ))}
             </div>
-            <Divider className='my-5' />
+            <Divider className='my-3' />
             <div className='pl-8'>
                 <ArtistInfo
                     shortInfo="Mejor DJ de House de Brasil."
@@ -58,10 +59,10 @@ const ArtistDetails = () => {
                     backgroundColor: '#D2FF37',
                 }}
             >
-                <TitleMedium text='BOOK ARTIST' />
+                <TitleSmall text='BOOK ARTIST' />
                 <TextIcon
                     icon={TextIcons.RIGHT_ARROW}
-                    size={SizeIcons.TITLE_MEDIUM}
+                    size={SizeIcons.TITLE_SMALL}
                     color={TextColors.black}
                     className='self-center'
                 />
