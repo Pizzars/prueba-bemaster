@@ -2,7 +2,7 @@ import { TextColors } from 'src/utils/Colors'
 import TextBase, { Fonts, TextTags } from './TextBase'
 
 interface Params {
-  text: string
+  text: string | any
   className?: string
   tag?: TextTags
   color?: TextColors
