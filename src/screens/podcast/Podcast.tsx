@@ -14,11 +14,7 @@ const Podcast = () => {
         className='uppercase text-[12px] font-bold'
       />
       <TitleSection text='PODCAST' className='desk:hidden' />
-      <TitleHome
-        text='PODCAST'
-        className='hidden desk:block mb-12'
-        size='text-[48px] leading-[43.2px] desk:text-[90px] desk:leading-[81px] big:text-[180px] big:leading-[162px]'
-      />
+      <TitleHome text='PODCAST' className='hidden desk:block mb-12' />
       <PodcastList />
     </div>
   )

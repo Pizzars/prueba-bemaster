@@ -19,7 +19,7 @@ export enum Fonts {
 
 interface Params {
   tag?: TextTags
-  text: string
+  text: string | any
   className: string
 }
 
@@ -28,7 +28,7 @@ const TextBase = ({ tag = TextTags.SPAN, text, className }: Params) => {
 
   return (
     <ElementoEncabezado className={className}>
-      <SplitText text={text} />
+      {typeof text === 'string' ? <SplitText text={text} /> : text}
     </ElementoEncabezado>
   )
 }
