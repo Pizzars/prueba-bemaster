@@ -6,9 +6,7 @@ import { getPodcastsData } from 'src/redux/features/podcastsSlice'
 import { useAppDispatch, useAppSelector } from 'src/redux/hooks'
 import { ulrBack } from 'src/utils/consts'
 import { ArtistModel } from 'src/proxy/queries/artists/artistModel'
-import TitleSmall from '../components/texts/TitleSmall'
-import TextIcon, { SizeIcons, TextIcons } from '../components/icons/TextIcon'
-// import bg from '../../assets/general/back_colors.png'
+import { SizeIcons, TextIcons } from '../components/icons/TextIcon'
 import Link from 'next/link'
 import TextWithIcon from '../components/icons/TextWithIcon'
 
@@ -35,10 +33,13 @@ export const replaceTitle = (title: string, artists?: ArtistModel[]) => {
 const PodcastList = () => {
   const list = useAppSelector(state => state.podcastsReducer.data)
   const status = useAppSelector(state => state.podcastsReducer.status)
+
   const dispatch = useAppDispatch()
+
   useEffect(() => {
     if (status === StateRequest.EMPTY) dispatch(getPodcastsData(1))
   }, [status])
+
   if (!list) return <></>
 
   return (
@@ -63,19 +64,12 @@ const PodcastList = () => {
               </div>
               <div className='relative'>
                 <div className=''>
-                  {/* <TitleSmall text={`B4PODCAST ${podcast.id}`} /> */}
                   <TextWithIcon
                     text={`B4PODCAST ${podcast.title} `}
                     className='inline-block'
                     icon={TextIcons.RIGHT_ARROW}
                     size={SizeIcons.TITLE_SMALL}
                   />
-                  {/* <TitleSmall text={`B4PODCAST ${podcast.title}`} className='inline-block' />
-                  <TextIcon
-                    icon={TextIcons.RIGHT_ARROW}
-                    size={SizeIcons.TITLE_SMALL}
-                    className='ml-2 inline-block'
-                  /> */}
                 </div>
               </div>
             </Link>

@@ -230,9 +230,14 @@ body {
   background-image: url(../src/assets/about/back_mobile.jpg);
   background-size: cover;
 }
+.bg-form-mobile {
+  background-image: url(../src/assets/form/back_mobile.jpg);
+  background-size: cover;
+}
 
 @media (min-width: 1024px) {
-  .bg-about-mobile {
+  .bg-about-mobile,
+  .bg-form-mobile {
     background-image: none;
   }
 
@@ -250,4 +255,14 @@ h4,
 h5 {
   margin-left: -0.14ex;
   margin-right: -0.1ex;
+}
+
+.scrollDiv {
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollDiv::-webkit-scrollbar {
+  width: 0px;
 }
