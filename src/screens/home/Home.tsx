@@ -11,8 +11,7 @@ import { StateRequest } from 'src/redux/features/baseReducer';
 
 const Home = () => {
   const artistsStatus = useAppSelector(state => state.artistsReducer.status);
-  const artists = useAppSelector(state => state.artistsReducer.data);
-  const dispatch = useAppDispatch();
+const dispatch = useAppDispatch();
   const [count, setCount] = useState(0);
   const [showHomeContent, setShowHomeContent] = useState(false);
   const [language, setLanguage] = useState<'EN' | 'ES'>('EN');

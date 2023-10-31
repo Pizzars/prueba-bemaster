@@ -22,10 +22,8 @@ const ArtistList = () => {
         return null;
     }
 
-    const artistData = artists.map(artist => ({
-        id: artist.id,
-        name: artist.name
-    }));
+    const artistData = [...artists];
+    
     artistData.sort((a, b) => (a.name || '').localeCompare(b.name || ''));
     const [items, setItems] = React.useState(artistData);
 
@@ -48,7 +46,7 @@ const ArtistList = () => {
     };
 
     return (
-        <div className={`relative h-screen ${styles.artistListContainer} text-center`} style={{ flexBasis: "28.125%" }}>
+        <div className={`relative h-screen ${styles.artistListContainer} text-center ${styles.customCursor}`} style={{ flexBasis: "28.125%" }}>
             <div ref={scrollContainerRef} className={`overflow-y-scroll h-full ${styles.scrollContainer}`}>
                 <InfiniteScroll
                     pageStart={0}
@@ -58,6 +56,7 @@ const ArtistList = () => {
                     useWindow={false}
                     threshold={10}
                 >
+
                     <div className="flex items-center justify-center h-full">
                         <ul className="space-y-2 p-4 text-left">
                             {items.map((item) => (
@@ -65,12 +64,13 @@ const ArtistList = () => {
                                     <TitleSmall
                                         text={item.name}
                                         color={TextColors.white}
-                                        className={item === selectedArtist ? `hover:opacity-100` : `opacity-40 hover:opacity-100`}
+                                        className={`opacity-40 hover:opacity-100`}
                                     />
                                 </li>
                             ))}
                         </ul>
                     </div>
+
                 </InfiniteScroll>
             </div>
 
@@ -81,3 +81,4 @@ const ArtistList = () => {
 }
 
 export default ArtistList;
+

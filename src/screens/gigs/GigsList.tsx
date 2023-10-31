@@ -38,12 +38,12 @@ const gigs = [
 
 const GigsList: React.FC = () => {
     return (
-        <div className='flex flex-col w-full pl-6 pr-6 space-y-5' style={{ paddingTop: 200 }}>
-            <div className="flex flex-wrap -mx-2"> {/* Wrap the gigs and use flex-wrap */}
+        <div className='flex flex-col w-full px-6 space-y-2 desk:my-12 md:space-y-5' style={{ paddingTop: 200 }}>
+            <div className="flex flex-wrap -mx-2"> 
                 {gigs.map(gig => (
-                    <div key={gig.date} className="w-full desk:w-1/2 p-2">
+                    <div key={gig.date} className="w-full desk:w-1/2 desk:p-2">
                         <div className="flex flex-col p-3 ">
-                            <section className={`flex flex-col mt-3`}>
+                            <section className={`flex flex-col`}>
                                 <div className='flex flex-col mt-5'>
                                     <TitleMedium text={gig.date} className='uppercase text-[24px] desk:text-[36px] desk:leading-[39.6px] desk:text-white' />
                                     <div className='ml-5 mt-2'>
@@ -60,5 +60,6 @@ const GigsList: React.FC = () => {
         </div>
     );
 };
+
 
 export default GigsList;
