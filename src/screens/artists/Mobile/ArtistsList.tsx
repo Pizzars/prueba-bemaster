@@ -3,20 +3,38 @@ import React, { useState, useEffect } from 'react';
 import { useSpring, animated } from 'react-spring';
 import TextIcon, { TextIcons } from '../../components/icons/TextIcon';
 import TitleMedium from '../../components/texts/TitleMedium';
-import { artists } from '../../home/AnimatedText';
 import ArtistDetailsMobile from './ArtistDetails/ArtistDetailsMobile';
+import { ArtistModel } from 'src/proxy/queries/artists/artistModel';
+import { useAppSelector } from 'src/redux/hooks';
+import { useDispatch } from 'react-redux';
+import { selectArtist } from 'src/redux/features/artistsSlice';
+import { useRouter } from 'next/navigation';
 
 interface Props {
     customClassname?: string;
 }
 
 const ArtistsList: React.FC<Props> = ({ customClassname }) => {
-    const [selectedArtist, setSelectedArtist] = useState<string | null>(null);
+    const artists = useAppSelector(state => state.artistsReducer.data);
+    const [selectedArtist, setSelectedArtist] = useState<null | ArtistModel>(null);
+    const dispatch = useDispatch();
     const [open, setOpen] = useState(false);
     const [nextArtist, setNextArtist] = useState<string | null>(null);
+    const router = useRouter();
+
+
+    if (!artists) {
+        router.push('/');
+        return null;
+    }
+
+    const artistData = [...artists];
+
+
+    const sortedArtists = [...artistData].sort((a, b) => (a.name || '').localeCompare(b.name || ''));
 
     const props = useSpring({
-        height: open ? 900 : 0,
+        height: open ? 800 : 0,
         opacity: open ? 1 : 0,
         onRest: () => {
             if (!open) {
@@ -35,33 +53,38 @@ const ArtistsList: React.FC<Props> = ({ customClassname }) => {
         }
     }, [selectedArtist]);
 
-    const handleArtistClick = (artist: string) => {
-        if (selectedArtist === artist) {
+    const handleArtistClick = (artist: ArtistModel) => {
+        if (selectedArtist?.id === artist.id) {
             setOpen(!open);
-            setNextArtist(null);
         } else if (open) {
             setOpen(false);
-            setNextArtist(artist);
+            setSelectedArtist(artist);
         } else {
             setSelectedArtist(artist);
         }
+
+        dispatch(selectArtist(artist));
     };
+
+    if (!artists) {
+        return null;
+    }
 
     return (
         <div className={`flex flex-col ${customClassname} w-full pl-8 pr-6 space-y-5`} style={{
             paddingTop: 200,
         }}>
-            {artists.map(artist => (
-                <div key={artist} className="flex flex-col">
+            {sortedArtists?.map(artist => (
+                <div key={artist.id} className="flex flex-col">
                     <div
                         onClick={() => handleArtistClick(artist)}
                         className="flex flex-row justify-between items-center"
                     >
-                        <TitleMedium text={artist} />
+                        <TitleMedium text={artist.name} />
                         <TextIcon icon={TextIcons.DOWN_TRIANGLE} />
                     </div>
 
-                    {(selectedArtist === artist) && (
+                    {(selectedArtist?.id === artist.id) && (
                         <animated.div style={props} className="overflow-hidden">
                             <ArtistDetailsMobile />
                         </animated.div>

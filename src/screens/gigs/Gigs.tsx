@@ -12,8 +12,8 @@ const optionPlaceholders = [
 
 const Gigs: React.FC = () => {
   return (
-    <div className='flex w-full mb-4'>
-      <Filter title='Gigs' options={optionPlaceholders} className='py-6' />
+    <div className='flex w-full desk:bg-sky-900'>
+      <Filter title='Gigs' options={optionPlaceholders} className='py-4' />
       <GigsList />
     </div>
   );

@@ -6,6 +6,7 @@ import TitleSection from 'src/screens/components/texts/TitleSection';
 import TitleSmaller from 'src/screens/components/texts/TitleSmaller';
 import TextSmall from 'src/screens/components/texts/TextSmall';
 import { TextColors } from 'src/utils/Colors';
+import TextBase from 'src/screens/components/texts/TextBase';
 
 interface ArtistDatesProps {
     date: string;
@@ -25,9 +26,9 @@ const ArtistDates: React.FC<ArtistDatesProps> = ({
     return (
         <section className={`flex flex-col ${index !== 0 && 'mt-5'} ${customClassName}`}>
             <div className='flex flex-col'>
-                <TitleSmall text={date} className='uppercase desk:text-[24px]' />
-                <TitleSmall text={venue} className='uppercase mt-1 desk:text-[15px]' />
-                <TextSmall text={location} color={TextColors.black} className='helvetica mt-1 opacity-40 desk:text-[15px]' />
+                <TitleMedium text={date} className='uppercase text-[22px] desk:text-[24px]' />
+                <TitleSmall text={venue} className='uppercase mt-1 text-[14px] desk:text-[15px]' />
+                <TextSmall text={location} color={TextColors.black} className='helvetica mt-1 text-[14px] opacity-40 desk:text-[15px]' />
             </div>
         </section>
     );

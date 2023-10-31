@@ -37,26 +37,29 @@ const gigs = [
 ]
 
 const GigsList: React.FC = () => {
-
-
     return (
-        <div className='flex flex-col w-full pl-6 pr-6 space-y-5' style={{ paddingTop: 200 }}>
-            {gigs.map(gig => (
-                <div key={gig.date} className="flex flex-col">
-                    <section className={`flex flex-col mt-3`}>
-                        <div className='flex flex-col mt-5'>
-                            <TitleMedium text={gig.date} className='uppercase text-[24px]' />
-                            <div className='ml-5 mt-2'>
-                                <TitleMedium text={gig.artist} className='uppercase text-[24px]' />
-                                <TextParagraph text={gig.venue} className='mt-1 opacity-40' />
-                                <TextParagraph text={gig.location} className='opacity-40' />
-                            </div>
+        <div className='flex flex-col w-full px-6 space-y-2 desk:my-12 md:space-y-5' style={{ paddingTop: 200 }}>
+            <div className="flex flex-wrap -mx-2"> 
+                {gigs.map(gig => (
+                    <div key={gig.date} className="w-full desk:w-1/2 desk:p-2">
+                        <div className="flex flex-col p-3 ">
+                            <section className={`flex flex-col`}>
+                                <div className='flex flex-col mt-5'>
+                                    <TitleMedium text={gig.date} className='uppercase text-[24px] desk:text-[36px] desk:leading-[39.6px] desk:text-white' />
+                                    <div className='ml-5 mt-2'>
+                                        <TitleMedium text={gig.artist} className='uppercase text-[24px] desk:text-[36px] desk:leading-[39.6px] desk:text-white' />
+                                        <TextParagraph text={gig.venue} className='mt-1 opacity-40 desk:text-[21px] desk:leading-[23.1px] desk:text-white' />
+                                        <TextParagraph text={gig.location} className='opacity-40 desk:text-[21px] desk:leading-[23.1px] desk:text-white' />
+                                    </div>
+                                </div>
+                            </section>
                         </div>
-                    </section>
-                </div>
-            ))}
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };
+
 
 export default GigsList;
