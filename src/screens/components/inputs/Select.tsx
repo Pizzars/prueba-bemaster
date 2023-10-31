@@ -11,21 +11,13 @@ import { TextTags } from 'src/screens/components/texts/TextBase'
 import TitleSmall from 'src/screens/components/texts/TitleSmall'
 import { useSpring, animated } from 'react-spring'
 
-interface Value {
-  name: string
-  value: any
-}
-
 interface Params {
-  value: Value
-  height: string
+  value: string
+  height?: string
+  options: string[]
 }
 
-const Select = ({
-  value,
-  height: '17rem'
-}: Params) => {
-  
+const Select = ({ value, height = '17rem', options }: Params) => {
   const [opened, setOpened] = useState(false)
 
   const [pickerValue, setPickerValue] = useState({
@@ -50,20 +42,7 @@ const Select = ({
     return <></>
   }
 
-  const names = list
-    .map(artist => {
-      return artist.name ?? ''
-    })
-    .sort((a, b) => {
-      if (a < b) {
-        return -1
-      }
-      return 0
-    })
-
-  const selections = {
-    names: ['MAKE A SELECTION', ...names]
-  }
+  const selections = options
 
   return (
     <Label
@@ -72,7 +51,10 @@ const Select = ({
       icon={TextIcons.DOWN_TRIANGLE}
       onClick={() => setOpened(!opened)}
     >
-      <animated.div className='bg-black flex flex-col items-end overflow-hidden' style={heightStyle}>
+      <animated.div
+        className='bg-black flex flex-col items-end overflow-hidden'
+        style={heightStyle}
+      >
         <Picker value={pickerValue} onChange={setPickerValue} style={{ color: 'white' }}>
           {Object.keys(selections).map(name => (
             <Picker.Column key={name} name={name} frameBorder={0}>
