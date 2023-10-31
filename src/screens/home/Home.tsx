@@ -5,44 +5,73 @@ import AnimatedText from './AnimatedText';
 import MenuSection from './MenuSection';
 import MainHeader from './MainHeader';
 import { animated, useSpring } from 'react-spring';
+import { useAppDispatch, useAppSelector } from 'src/redux/hooks';
+import { getArtistsData } from 'src/redux/features/artistsSlice';
+import { StateRequest } from 'src/redux/features/baseReducer';
 
 const Home = () => {
+  const artistsStatus = useAppSelector(state => state.artistsReducer.status);
+const dispatch = useAppDispatch();
   const [count, setCount] = useState(0);
   const [showHomeContent, setShowHomeContent] = useState(false);
   const [language, setLanguage] = useState<'EN' | 'ES'>('EN');
 
   useEffect(() => {
-    let startTimestamp: number;
-    const duration = 2000; // Duración de la animación en milisegundos
+    dispatch(getArtistsData());
+  }, [dispatch]);
 
-    const animateCount = (timestamp: number) => {
-      if (!startTimestamp) startTimestamp = timestamp;
-      const elapsed = timestamp - startTimestamp;
+ useEffect(() => {
+  const lastFetched = localStorage.getItem('lastArtistsFetchDate');
+  const cachedData = localStorage.getItem('artistsData');
+  const currentTime = new Date().getTime();
 
-      // Calcular el progreso de la animación como un valor entre 0 y 1
-      let progress = Math.min(elapsed / duration, 1);
+  // Si los datos están en localStorage y no han pasado 24 horas
+  if (lastFetched && (currentTime - Number(lastFetched)) <= 24 * 60 * 60 * 1000 && cachedData) {
+    setShowHomeContent(true);
+    return; // Finalizamos el useEffect aquí
+  } else {
+    dispatch(getArtistsData());
+  }
 
-      // Aplicar una función de easing para acelerar progresivamente
-      progress = Math.sin((progress * Math.PI) / 2); // Easing out sine
+  let startTimestamp: number;
+  const animationDuration = 2000;
+  
+  const animateCount = (timestamp: number) => {
+    if (!startTimestamp) startTimestamp = timestamp;
+    const elapsed = timestamp - startTimestamp;
 
-      setCount(Math.floor(progress * 100));
+    let progress = Math.min(elapsed / animationDuration, 1);
+    progress = Math.sin((progress * Math.PI) / 2);
 
-      if (progress < 1) {
-        window.requestAnimationFrame(animateCount);
-      } else {
-        setShowHomeContent(true);
-      }
-    };
+    const newCount = Math.floor(progress * 100);
 
-    window.requestAnimationFrame(animateCount);
-  }, []);
+    if (newCount < 99) {
+      setCount(newCount);
+      window.requestAnimationFrame(animateCount);
+    } else if (artistsStatus === StateRequest.SUCCESS) {
+      setCount(100);
+      setShowHomeContent(true);
+    } else {
+      setCount(99);
+    }
+  };
+
+  window.requestAnimationFrame(animateCount);
+}, [dispatch, artistsStatus]);
+  
+
+  useEffect(() => {
+    if (count === 99 && artistsStatus === StateRequest.SUCCESS) {
+      setCount(100);
+      setShowHomeContent(true);
+    }
+  }, [artistsStatus]);
 
   const props = useSpring({
     opacity: showHomeContent ? 1 : 0,
     transform: showHomeContent ? 'translateY(0)' : 'translateY(20px)',
     config: { duration: 500 },
   });
-
 
   return (
     <>

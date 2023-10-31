@@ -5,109 +5,16 @@ import { TextColors } from 'src/utils/Colors';
 import './styles.css';
 import TextIcon, { SizeIcons, TextIcons } from '../components/icons/TextIcon';
 import Link from 'next/link'
+import { useAppSelector } from 'src/redux/hooks';
 
 const carouselTexts = ['WORLDWIDE', 'FOR EUROPE', 'FOR SPAIN', 'LATIN AMERICA', 'SPAIN & LATAM'];
 
-export const artists = [
-    'DAFT PUNK',
-    'THE CHEMICAL BROTHERS',
-    'DEADMAU5',
-    'AVICII',
-    'SKRILLEX',
-    'CALVIN HARRIS',
-    'TIËSTO',
-    'ARMIN VAN BUUREN',
-    'DAVID GUETTA',
-    'ZEDD',
-    'DIPLO',
-    'MARSHMELLO',
-    'MARTIN GARRIX',
-    'KYGO',
-    'ALESSO',
-    'AFROJACK',
-    'STEVE AOKI',
-    'HARDWELL',
-    'KASKADE',
-    'BASSNECTAR',
-    'MOBY',
-    'FATBOY SLIM',
-    'CARL COX',
-    'ERIC PRYDZ',
-    'ABOVE & BEYOND',
-    'PORTER ROBINSON',
-    'DISCLOSURE',
-    'FLUME',
-    'AXWELL Λ INGROSSO',
-    'SWEDISH HOUSE MAFIA',
-    'ODESZA',
-    'DJ SNAKE',
-    'MAJOR LAZER',
-    'ALISON WONDERLAND',
-    'DILLON FRANCIS',
-    'RL GRIME',
-    'ILLENIUM',
-    'MADEON',
-    'ZHU',
-    'GESAFFELSTEIN',
-    'JUSTICE',
-    'BOYS NOIZE',
-    'THE PRODIGY',
-    'UNDERWORLD',
-    'ORBITAL',
-    'APHEX TWIN',
-    'FOUR TET',
-    'RICHIE HAWTIN',
-    'JAMIE XX',
-    'THE CRYSTAL METHOD',
-    'PAUL VAN DYK',
-    'PAUL OAKENFOLD',
-    'BT',
-    'ATB',
-    'OLIVER HELDENS',
-    'DON DIABLO',
-    'DUKE DUMONT',
-    'GALANTIS',
-    'CASHMERE CAT',
-    'THE CHAINSMOKERS',
-    'LOUIS THE CHILD',
-    'GRYFFIN',
-    'RÜFÜS DU SOL',
-    'BONOBO',
-    'JON HOPKINS',
-    'NICOLAS JAAR',
-    'FLYING LOTUS',
-    'TYCHO',
-    'SQUAREPUSHER',
-    'AUTECHRE',
-    'BOARDS OF CANADA',
-    'BURIAL',
-    'JLIN',
-    'NINA KRAVIZ',
-    'CHARLOTTE DE WITTE',
-    'AMELIE LENS',
-    'PEGGY GOU',
-    'TALE OF US',
-    'SOLOMUN',
-    'ADAM BEYER',
-    'BORIS BREJCHA',
-    'BEN KLOCK',
-    'MARCEL DETTMANN',
-    'CHRIS LIEBING',
-    'SVEN VÄTH',
-    'RICARDO VILLALOBOS',
-    'JEFF MILLS',
-    'LAURENT GARNIER',
-    'JOHN DIGWEED',
-    'SASHA',
-    'HERNAN CATTANEO',
-    'JAMES ZABIELA',
-    'EATS EVERYTHING',
-    'HOT SINCE 82',
-    'JORIS VOORN',]
 
 const AnimatedText = () => {
-
     const [index, setIndex] = useState(0);
+    const artists = useAppSelector(state => state.artistsReducer.data);
+
+    const artistData = [...artists];
 
     const props = useSpring({
         transform: `translateX(-${index * 100}%)`,
@@ -125,13 +32,13 @@ const AnimatedText = () => {
     return (
         <div className="relative h-screen bg-black overflow-hidden">
             <div className="animated-text z-10">
-                {artists.map((artist, index) => (
-                    <TitleSection key={index} text={artist.toUpperCase()} color={TextColors.gray} className='mb-2' />
+                {artistData.map((artist, index) => (
+                    <TitleSection key={index} text={artist.name.toUpperCase()} color={TextColors.gray} className='mb-2' />
                 ))}
             </div>
             <div className="animated-text animated-text-delayed z-10">
-                {artists.map((artist: string, index: any) => (
-                    <TitleSection key={index + artists.length} text={artist.toUpperCase()} color={TextColors.gray} className='mb-2' />
+                {artistData.map((artist) => (
+                    <TitleSection key={artist.id} text={artist.name.toUpperCase()} color={TextColors.gray} className='mb-2' />
                 ))}
             </div>
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black z-20" />

@@ -64,7 +64,7 @@ const Filter: React.FC<FilterProps> = ({ title, options, className }) => {
                             className={`p-2 mr-2 cursor-pointer ${activeTab === option ? 'border-b-2 border-white' : ''}`}
                             style={{ opacity: activeTab === option ? 1 : 0.2 }}
                         >
-                            <TitleMedium text={title} color={TextColors.white} className='text-[24px] uppercase' />
+                            <TitleMedium text={title} color={TextColors.white} className='text-[24px] uppercase desk:text-[24px]' />
                         </div>
                     ))}
                 </div>

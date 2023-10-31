@@ -41,12 +41,15 @@ const ArtistByIdMobile = () => {
                         date="31·07·23"
                         venue="Social Club Mallorca"
                         location="Palma, España"
+                        customClassName='mt-9'
                     />
                 ))}
-                <Divider className='my-5' />
-                <ArtistSocialLinks links={socialLinks} />
+                <div className='mt-7 mb-4'>
+                <ArtistSocialLinks links={socialLinks} gap={14}/>
+                </div>
                 <ArtistInfo
                     longInfo={largeInfo}
+                    customClassName='mb-0'
                 />
             </div>
             <SwipeForMore />

@@ -5,6 +5,9 @@ module.exports = {
     appDir: true
   },
   images: {
+    domains: [
+      "localhost"
+    ],
     remotePatterns: [
       {
         protocol: "https",

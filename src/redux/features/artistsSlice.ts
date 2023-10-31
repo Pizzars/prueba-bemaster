@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
 import { BaseReducerProps, StateRequest, baseState } from './baseReducer'
 import { ArtistModel } from 'src/proxy/queries/artists/artistModel'
 import { getArtist, getArtists } from 'src/proxy/queries/artists/artistQueries'
@@ -17,9 +17,28 @@ const initialState: typeReducer = {
 }
 
 export const getArtistsData = createAsyncThunk('get-artists', async () => {
-  const data = await getArtists()
-  return data
-})
+  // 1. Verificar en localStorage la fecha de la última llamada
+  const lastFetched = localStorage.getItem('lastArtistsFetchDate');
+  const currentTime = new Date().getTime();
+  
+  // Si la última llamada fue hace menos de 24 horas y hay datos en localStorage, retorna esos datos
+  if (lastFetched && (currentTime - Number(lastFetched)) <= 24 * 60 * 60 * 1000) {
+    const cachedData = localStorage.getItem('artistsData');
+    if (cachedData) {
+      return JSON.parse(cachedData);
+    }
+  }
+  
+  // 2. Si no hay datos en localStorage o ya pasaron 24 horas, haz la llamada
+  const data = await getArtists();
+  
+  // 3. Guarda los datos y la fecha de la llamada en localStorage
+  localStorage.setItem('artistsData', JSON.stringify(data));
+  localStorage.setItem('lastArtistsFetchDate', String(currentTime));
+  
+  return data;
+});
+
 
 export const getArtistData = createAsyncThunk('get-artists/{id}', async (id: number) => {
   const data = await getArtist(id)
@@ -29,7 +48,11 @@ export const getArtistData = createAsyncThunk('get-artists/{id}', async (id: num
 export const artistsSlice = createSlice({
   name: 'artists',
   initialState,
-  reducers: {},
+  reducers: {
+    selectArtist: (state, action: PayloadAction<ArtistModel>) => {
+      state.artist = action.payload;
+    }
+  },
   extraReducers: builder => {
     builder.addCase(getArtistsData.pending, state => {
       state.status = StateRequest.LOADING
@@ -62,5 +85,5 @@ export const artistsSlice = createSlice({
   }
 })
 
-export const {} = artistsSlice.actions
+export const { selectArtist } = artistsSlice.actions
 export default artistsSlice.reducer

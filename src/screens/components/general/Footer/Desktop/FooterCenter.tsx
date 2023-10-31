@@ -12,11 +12,11 @@ const FooterCenter = () => {
                     {itemsForNavbar.map(item => (
                         <Link key={item.key} href={item.to} className='inline-flex items-center'>
 
-                            <TitleSmall text={item.name['EN']} color={TextColors.white} />
+                            <TitleSmall text={item.name['EN']} color={TextColors.white} className='desk:text-[24px] desk:leading-[28.8px]'/>
                             <TextIcon
                                 icon={TextIcons.RIGHT_ARROW}
                                 size={SizeIcons.TEXT_SMALL}
-                                className='ml-2 self-center'
+                                className='ml-2 self-center desk:text-[24px] desk:leading-[28.8px]'
                                 color={TextColors.white}
                             />
                         </Link>
@@ -24,11 +24,11 @@ const FooterCenter = () => {
                     ))}
                     <button className='flex items-center'>
 
-                        <TitleSmall text={'ESPAÑOL'} color={TextColors.white} />
+                        <TitleSmall text={'ESPAÑOL'} color={TextColors.white} className='desk:text-[24px] desk:leading-[28.8px]'/>
                         <TextIcon
                             icon={TextIcons.RIGHT_ARROW}
                             size={SizeIcons.TEXT_SMALL}
-                            className='ml-2 self-center'
+                            className='ml-2 self-center desk:text-[24px] desk:leading-[28.8px]'
                             color={TextColors.white}
                         />
                     </button>
@@ -43,11 +43,11 @@ const FooterCenter = () => {
                             rel='noopener noreferrer'
                             className='inline-flex'
                         >
-                            <TitleSmall text={social.name} color={TextColors.white} />
+                            <TitleSmall text={social.name} color={TextColors.white} className='desk:text-[24px] desk:leading-[28.8px]'/>
                             <TextIcon
                                 icon={TextIcons.DIAGONAL_ARROW}
                                 size={SizeIcons.TITLE_MEDIUM}
-                                className='ml-2 self-center'
+                                className='ml-2 self-center desk:text-[24px] desk:leading-[28.8px]'
                                 color={TextColors.white}
                             />
                         </a>
