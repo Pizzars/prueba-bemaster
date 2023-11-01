@@ -13,16 +13,17 @@ import { useSpring, animated } from 'react-spring'
 
 interface Params {
   value: string
+  onChange: (value: string) => void
   height?: string
   options: string[]
 }
 
-const Select = ({ value, height = '17rem', options }: Params) => {
+const Select = ({ value, height = '17rem', options, onChange }: Params) => {
   const [opened, setOpened] = useState(false)
 
-  const [pickerValue, setPickerValue] = useState({
-    names: value
-  })
+  // const [pickerValue, setPickerValue] = useState({
+  //   options: value
+  // })
 
   const heightStyle = useSpring({
     height: opened ? height : '0rem'
@@ -42,12 +43,13 @@ const Select = ({ value, height = '17rem', options }: Params) => {
     return <></>
   }
 
-  const selections = options
+  const pickerValue = { options: value }
+  const selections = { options }
 
   return (
     <Label
       name='Artist*'
-      value={pickerValue.names}
+      value={value}
       icon={TextIcons.DOWN_TRIANGLE}
       onClick={() => setOpened(!opened)}
     >
@@ -55,11 +57,16 @@ const Select = ({ value, height = '17rem', options }: Params) => {
         className='bg-black flex flex-col items-end overflow-hidden'
         style={heightStyle}
       >
-        <Picker value={pickerValue} onChange={setPickerValue} style={{ color: 'white' }}>
-          {Object.keys(selections).map(name => (
-            <Picker.Column key={name} name={name} frameBorder={0}>
-              {(selections as any)[name].map((option: any) => (
-                <Picker.Item key={option} value={option}>
+        <Picker
+          value={pickerValue}
+          onChange={picker => onChange(picker.options)}
+          style={{ color: 'white' }}
+        >
+          {Object.keys(selections).map((key, i) => {
+            const option = (selections as any)[key]
+            return (
+              <Picker.Column key={`option-${i}`} name={`option-${i}`}>
+                <Picker.Item value={option}>
                   {({ selected }) => (
                     <div style={{ opacity: selected ? 1 : 0.5 }}>
                       <TitleMedium
@@ -71,9 +78,9 @@ const Select = ({ value, height = '17rem', options }: Params) => {
                     </div>
                   )}
                 </Picker.Item>
-              ))}
-            </Picker.Column>
-          ))}
+              </Picker.Column>
+            )
+          })}
         </Picker>
         <button className='mx-8 my-4'>
           <TitleSmall text='DONE' tag={TextTags.SPAN} />
