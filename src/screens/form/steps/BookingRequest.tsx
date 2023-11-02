@@ -1,15 +1,15 @@
 'use client'
-import FilterAlt from 'src/screens/components/general/Filter/FilterAlt'
-import { TextIcons } from 'src/screens/components/icons/TextIcon'
-import TextParagraph from 'src/screens/components/texts/TextParagraph'
-import Label from '../components/Label'
-
 import { useEffect, useState } from 'react'
 
 import { useAppDispatch, useAppSelector } from 'src/redux/hooks'
 import { getArtistsData } from 'src/redux/features/artistsSlice'
 import { StateRequest } from 'src/redux/features/baseReducer'
-import Select from '../components/Select'
+import { booking } from '../formTypes'
+import Select from 'src/screens/components/inputs/Select'
+import CalendarForm from 'src/screens/components/inputs/CalendarForm'
+import TextAreaForm from 'src/screens/components/inputs/TextAreaForm'
+import BaseStep from './BaseStep'
+// import Select from '../components/Select'
 
 interface Params {
   updateData: (data: any, newStep: number) => void
@@ -20,31 +20,55 @@ const optionPlaceholders = [
 ]
 
 const BookingRequest = ({ updateData }: Params) => {
+  const [form, setForm] = useState<Partial<booking>>({})
+
+  const list = useAppSelector(state => state.artistsReducer.data)
+  const status = useAppSelector(state => state.artistsReducer.status)
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    if (!list && status === StateRequest.EMPTY) {
+      dispatch(getArtistsData())
+    }
+  }, [status, list])
+
+  if (!list) {
+    return <></>
+  }
+
+  const names = list
+    .map(artist => {
+      return artist.name ?? ''
+    })
+    .sort((a, b) => {
+      if (a < b) {
+        return -1
+      }
+      return 0
+    })
+  const options = ['MAKE A SELECTION', ...names]
+
   return (
-    <div>
-      <FilterAlt
-        text={`BOOKing
-        request`}
-        alt='1/7'
-        options={optionPlaceholders}
-        className='bg-form-mobile uppercase'
-      />
-      <div className='pt-[15rem]'>
-        <TextParagraph
-          text='Please provide the following information to make an artist inquiry.'
-          className='mx-8 my-4'
+    <BaseStep
+      onClick={() => updateData({ booking: form }, 2)}
+      options={optionPlaceholders}
+      title={`BOOKing
+    request`}
+      alt='1/7'
+    >
+      <div className='pt-6'>
+        <Select
+          options={options}
+          value={form.artist ?? options[0]}
+          onChange={artist => setForm({ ...form, artist })}
         />
-        <div className='py-8'>
-          <Select />
-          <Label name='PREFERRED date' value='10-08-2023' icon={TextIcons.CALENDAR}>
-            <div className='bg-black'>Hola</div>
-          </Label>
-          <Label name='ADDITIONAL INFORMATION'>
-            <div className='bg-black'>Hola</div>
-          </Label>
-        </div>
+        <CalendarForm value={form.date} onChange={date => setForm({ ...form, date })} />
+        <TextAreaForm
+          value={form.aditionalInformation ?? ''}
+          onChange={aditionalInformation => setForm({ ...form, aditionalInformation })}
+        />
       </div>
-    </div>
+    </BaseStep>
   )
 }
 
