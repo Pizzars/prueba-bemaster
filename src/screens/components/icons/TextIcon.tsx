@@ -6,13 +6,18 @@ import TitleMedium from '../texts/TitleMedium'
 import TitleSmall from '../texts/TitleSmall'
 import TextParagraph from '../texts/TextParagraph'
 import TextSmall from '../texts/TextSmall'
+import CalendarIcon from './CalendarIcon'
+import CheckBoxIcon from './CheckBoxIcon'
 
 export enum TextIcons {
   DIAGONAL_ARROW = '↗',
   LEFT_ARROW = '←',
   RIGHT_ARROW = '→',
   DOWN_TRIANGLE = '▽',
-  CLOSE = '×'
+  CLOSE = '×',
+  CALENDAR = 'CALENDAR',
+  CHECK = 'CHECK',
+  LOGO = 'LOGO'
 }
 
 export enum SizeIcons {
@@ -28,10 +33,24 @@ interface Params {
   icon: TextIcons
   color?: TextColors
   size?: SizeIcons
-  className?: string;
+  className?: string
+  checked?: boolean
 }
 
-const TextIcon = ({ icon, color = TextColors.blue, size = SizeIcons.TEXT_PARAGRAPH, className }: Params) => {
+const TextIcon = ({
+  icon,
+  color = TextColors.blue,
+  size = SizeIcons.TEXT_PARAGRAPH,
+  className,
+  checked = false
+}: Params) => {
+  if (icon === TextIcons.CALENDAR) {
+    return <CalendarIcon />
+  }
+  if (icon === TextIcons.CHECK) {
+    return <CheckBoxIcon checked={checked} className={className} />
+  }
+
   switch (size) {
     case SizeIcons.TITLE_HOME: {
       return <TitleHome tag={TextTags.SPAN} text={icon} color={color} font={Fonts.inter} />
@@ -92,7 +111,9 @@ const TextIcon = ({ icon, color = TextColors.blue, size = SizeIcons.TEXT_PARAGRA
       )
     }
     default: {
-      return <TextBase text={icon} className={`text-[14px] inter font-bold ${color} ${className}`} />
+      return (
+        <TextBase text={icon} className={`text-[14px] inter font-bold ${color} ${className}`} />
+      )
     }
   }
 }

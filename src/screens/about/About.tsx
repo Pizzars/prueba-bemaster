@@ -1,10 +1,14 @@
+import FilterAlt from '../components/general/Filter/FilterAlt'
 import Content from './Content'
-import Filter from './Filter'
 
 const About = () => {
   return (
     <div className='bg-about'>
-      <Filter />
+      <FilterAlt
+        text={`ABOUT
+          US`}
+        className='bg-about-mobile'
+      />
       <div className='pt-[200px] desk:pt-0 backdrop-blur-sm bg-white/10'>
         <Content />
       </div>

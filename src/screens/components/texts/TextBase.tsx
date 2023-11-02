@@ -8,7 +8,8 @@ export enum TextTags {
   H5 = 'h5',
   H6 = 'h6',
   P = 'p',
-  SPAN = 'span'
+  SPAN = 'span',
+  DIV = 'div'
 }
 
 export enum Fonts {

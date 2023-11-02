@@ -1,14 +1,11 @@
 'use client'
 import { useParams } from 'next/navigation'
 import { useEffect } from 'react'
-// import { ArtistModel } from 'src/proxy/queries/artists/artistModel'
 import { StateRequest } from 'src/redux/features/baseReducer'
 import { getPodcastsData } from 'src/redux/features/podcastsSlice'
 import { useAppDispatch, useAppSelector } from 'src/redux/hooks'
 import TextParagraph from 'src/screens/components/texts/TextParagraph'
 import TitleMedium from 'src/screens/components/texts/TitleMedium'
-import { replaceTitle } from '../PodcastList'
-// import TitleMedium from 'src/screens/components/texts/TitleMedium'
 
 const PodcastDetail = () => {
   const { id } = useParams()
