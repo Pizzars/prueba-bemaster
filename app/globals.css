@@ -312,3 +312,18 @@ button.customLink,
 a.customLink:hover .arrowMove {
   transform: translateX(10px);
 }
+
+.pointer:hover {
+  cursor: url(../src/assets/cursors/pointer.svg) 9 9, auto;
+}
+
+.drag {
+  cursor: url(../src/assets/cursors/grab.svg) 17 17, auto;
+}
+
+.noSelect {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}

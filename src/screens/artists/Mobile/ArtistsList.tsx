@@ -22,6 +22,7 @@ const ArtistsList: React.FC<Props> = ({ customClassname }) => {
     const [nextArtist, setNextArtist] = useState<string | null>(null);
     const router = useRouter();
 
+    console.log(artists, 'artists')
 
     if (!artists) {
         router.push('/');
