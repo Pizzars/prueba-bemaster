@@ -1,20 +1,22 @@
 @keyframes moveUp {
-    0% {
-      transform: translateY(100%);
-    }
-    100% {
-      transform: translateY(-100%);
-    }
+  0% {
+    transform: translateY(100%);
   }
-  
-  .animated-text {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    animation: moveUp 15s linear infinite;
+  100% {
+    transform: translateY(-100%);
   }
-  
-  .animated-text-delayed {
-    animation-delay: -7.5s;
-  }
-  
+}
+
+.animated-text {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  animation: moveUp 15s linear infinite;
+}
+
+.animated-text-delayed {
+  animation-delay: -7.5s;
+}
+.animated-text-delayed-2 {
+  animation-delay: -7.5s;
+}

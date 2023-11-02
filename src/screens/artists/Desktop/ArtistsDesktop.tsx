@@ -10,6 +10,7 @@ import { ulrBack } from 'src/utils/consts';
 
 const ArtistsDesktop: React.FC = () => {
     const selectedArtist = useAppSelector(state => state.artistsReducer.artist);
+    console.log(`${ulrBack}${selectedArtist?.image?.url}`, 'photo')
     console.log(`selectedArtist`, selectedArtist)
     return (
         <div className='flex w-full'>
@@ -17,7 +18,7 @@ const ArtistsDesktop: React.FC = () => {
                 <ArtistList />
                 {
                     selectedArtist && <>
-                        <ArtistImageCarousel profilePics={[`${ulrBack}/${selectedArtist.image?.url ?? ''}`]}
+                        <ArtistImageCarousel profilePics={[`${ulrBack}${selectedArtist.image?.url ?? ''}`]}
                             customClassname={"flex-3 h-screen"} desktop />
                         <ArtistDetails />
                     </>
