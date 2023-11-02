@@ -1,5 +1,10 @@
+import BasePage from 'src/screens/components/general/base/BasePage'
 import Form from 'src/screens/form/Form'
 
 export default function PodcastPage() {
-  return <Form />
+  return (
+    <BasePage className='bg-form'>
+      <Form />
+    </BasePage>
+  )
 }

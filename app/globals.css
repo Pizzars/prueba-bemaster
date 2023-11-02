@@ -267,16 +267,47 @@ body {
   background-image: url(../src/assets/form/back_mobile.jpg);
   background-size: cover;
 }
+.bg-gigs-mobile,
+.bg-artists-mobile {
+  background-image: url(../src/assets/artists/back_mobile.jpg);
+  background-size: cover;
+}
+.bg-podcasts-mobile {
+  background-image: url(../src/assets/podcasts/back_mobile.jpg);
+  background-size: cover;
+}
 
 @media (min-width: 1024px) {
   .bg-about-mobile,
-  .bg-form-mobile {
+  .bg-form-mobile,
+  .bg-gigs-mobile,
+  .bg-artists-mobile,
+  .bg-podcasts-mobile {
     background-image: none;
   }
 
+  .bg-about,
+  .bg-form,
+  .bg-gigs,
+  .bg-artists,
+  .bg-podcasts {
+    background-size: cover;
+    background-attachment: fixed;
+  }
   .bg-about {
     background-image: url(../src/assets/about/back_desktop.jpg);
-    background-size: cover;
+  }
+  .bg-form {
+    background-image: url(../src/assets/form/back_desktop.jpg);
+  }
+  .bg-gigs {
+    background-image: url(../src/assets/artists/back_desktop.jpg);
+  }
+  .bg-artists {
+    background-image: url(../src/assets/artists/back_desktop.jpg);
+  }
+  .bg-podcasts {
+    background-image: url(../src/assets/podcasts/back_desktop.jpg);
   }
 }
 

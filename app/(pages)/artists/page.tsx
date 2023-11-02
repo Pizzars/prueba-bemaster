@@ -1,6 +1,10 @@
-import Artists from "src/screens/artists/ArtistsPage";
+import Artists from 'src/screens/artists/ArtistsPage'
+import BasePage from 'src/screens/components/general/base/BasePage'
 
 export default function ArtistPage() {
-  return <Artists />
-
+  return (
+    <BasePage className='bg-artists'>
+      <Artists />
+    </BasePage>
+  )
 }
