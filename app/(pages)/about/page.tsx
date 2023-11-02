@@ -3,7 +3,7 @@ import BasePage from 'src/screens/components/general/base/BasePage'
 
 const AboutPage = () => {
   return (
-    <BasePage className='bg-about'>
+    <BasePage className='bg-about' title='About Us'>
       <About />
     </BasePage>
   )

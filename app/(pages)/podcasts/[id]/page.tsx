@@ -3,7 +3,7 @@ import PodcastDetail from 'src/screens/podcast/detail/PodcastDetail'
 
 export default function DetailPodcastPage() {
   return (
-    <BasePage className='bg-podcasts'>
+    <BasePage className='bg-podcasts' title='Podcasts'>
       <PodcastDetail />
     </BasePage>
   )

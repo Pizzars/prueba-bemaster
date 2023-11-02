@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import Footer from '../Footer/Footer'
 import Navbar from '../Navbar'
 
@@ -21,15 +20,15 @@ const BasePage = ({
 }: Params) => {
   return (
     <>
-      <Head>
+      <head>
         <title>{title}</title>
         <meta name='description' content={description} />
-      </Head>
-      <div className={className} style={{ paddingTop: navbar ? 72 : 0 }}>
+      </head>
+      <body className={className} style={{ paddingTop: navbar ? 72 : 0 }}>
         {navbar && <Navbar />}
         {children}
         {footer && <Footer />}
-      </div>
+      </body>
     </>
   )
 }

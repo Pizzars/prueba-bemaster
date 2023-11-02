@@ -26,7 +26,7 @@ const PodcastDetail = () => {
   if (!podcast) return <></>
 
   return (
-    <div className='flex flex-col desk:flex-row-reverse desk:p-16 big:p-24'>
+    <div className='flex flex-col desk:flex-row-reverse desk:p-16 big:p-24 bg-white'>
       <div className='w-full mb-2 h-[80vw] bg-black-app relative desk:w-[452px] desk:h-[452px] big:w-[600px] big:h-[600px] desk:sticky desk:top-24'>
         <iframe
           // allowTransparency={true}

@@ -3,7 +3,7 @@ import BasePage from 'src/screens/components/general/base/BasePage'
 
 export default function ArtistPage() {
   return (
-    <BasePage className='bg-artists'>
+    <BasePage className='bg-artists' title='Artists'>
       <Artists />
     </BasePage>
   )

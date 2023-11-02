@@ -19,7 +19,7 @@ const ArtistByIdPage = () => {
   }, [dispatch, artistId])
 
   return (
-    <BasePage className='bg-artists'>
+    <BasePage className='bg-artists' title='Artists'>
       <ArtistById />
     </BasePage>
   )
