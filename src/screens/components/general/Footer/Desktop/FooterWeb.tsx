@@ -5,7 +5,7 @@ import FooterCenter from './FooterCenter';
 
 const Footer = () => {
     return (
-        <div className="flex flex-col w-full bg-orange-300">
+        <div className="flex flex-col w-full bg-transparent">
             <div className="flex flex-col w-full p-12">
             <FooterHeader />
             <FooterCenter />

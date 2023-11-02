@@ -71,13 +71,12 @@ const ArtistImageCarousel: React.FC<ArtistImageCarouselProps> = ({
                         className="absolute inset-0"
                         style={{ display: index === activeIndex ? 'block' : 'none' }}
                     >
-                        <Image
-                            src={typeof pic === 'string' ? pic : pic.src}
+                        <img 
+                            src={typeof pic === 'string' ? pic : pic.src} 
                             alt={altText}
-                            layout="fill"
-                            objectFit="cover"
-                            quality={100}
+                            style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
                         />
+
                         <div
                             style={{
                                 backgroundColor: '#00E482',

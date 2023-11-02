@@ -10,8 +10,8 @@ const FooterBottom = () => {
             <div className='flex flex-row'>
                 {footerButtonsInfo.map(button => (
                     <div key={button.key} className='mr-4 flex items-center'>
-                        <a href={button.to} id={button.key} className='flex items-center'>
-                            <TextParagraph text={button.name['EN']} color={TextColors.white} className='desk:text-[14px]'/>
+                        <a href={button.to} id={button.key} className=' w-[170px] flex items-center customLink'>
+                            <TextParagraph text={button.name['EN']} color={TextColors.white} className='desk:text-[14px] textBesideIcon'/>
                             <TextIcon icon={TextIcons.RIGHT_ARROW} size={SizeIcons.TEXT_PARAGRAPH} color={TextColors.white} className='ml-2 desk:text-[14px]' />
                         </a>
                     </div>
