@@ -7,7 +7,7 @@ import TitleHome from '../components/texts/TitleHome'
 
 const Podcast = () => {
   return (
-    <div className='px-8 py-12 desk:p-12 big:p-24'>
+    <div className='px-8 py-12 desk:p-12 big:p-24 bg-white'>
       <TitleSmall
         text='b4bookings'
         color={TextColors.black}
