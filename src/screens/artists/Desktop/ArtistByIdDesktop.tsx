@@ -11,17 +11,8 @@ import TextParagraph from 'src/screens/components/texts/TextParagraph';
 import TitleHome from 'src/screens/components/texts/TitleHome';
 import TextIcon, { TextIcons, SizeIcons } from 'src/screens/components/icons/TextIcon';
 import { TextColors } from 'src/utils/Colors';
+import { useAppSelector } from 'src/redux/hooks';
 
-const socialLinks = [
-    { type: 'PRESS KIT', url: 'https://www.presskit.to/artist' },
-    { type: 'ARTWORK REQ.', url: 'https://www.artwork-req.com/artist' },
-    { type: 'Facebook', url: 'https://www.facebook.com/artist' },
-    { type: 'Twitter', url: 'https://www.twitter.com/artist' },
-    { type: 'Instagram', url: 'https://www.instagram.com/artist' },
-    { type: 'Soundcloud', url: 'https://www.soundcloud.com/artist' },
-    { type: 'Spotify', url: 'https://www.spotify.com/artist' },
-    { type: 'Beatport', url: 'https://www.beatport.com/artist' }
-];
 
 const largeInfo = `Brisotti began his career as a DJ in 2018, but it was in 2021, with the release by Solid Grooves, the label of British artists Michael 
 Bibi and Pawsa, that his name established itself as a major breakthrough.
@@ -32,18 +23,46 @@ Bibi and Pawsa, that his name established itself as a major breakthrough.
 
 
 const ArtistByIdDesktop = () => {
+
+    const artist = useAppSelector(state => state.artistsReducer.artistById);
+    const socialLinks = [
+        { type: 'PRESS KIT', url: artist?.press_kit || 'N/A' },
+        { type: 'ARTWORK REQ.', url: artist?.artwork || 'N/A' },
+        { type: 'Facebook', url: artist?.facebook || 'https://www.facebook.com/' },
+        { type: 'Twitter', url: artist?.twitter || 'https://www.twitter.com/' },
+        { type: 'Instagram', url: artist?.instagram || 'https://www.instagram.com/' },
+        { type: 'Soundcloud', url: artist?.SoundCloud || 'https://www.soundcloud.com/' },
+        { type: 'Spotify', url: artist?.spotify || 'https://www.spotify.com/' },
+        { type: 'Beatport', url: artist?.beatport || 'https://www.beatport.com/' }
+    ];
+
+    const formattedDescription = artist?.description_en?.replace(/<\/p><p>&nbsp;<\/p><p>/g, '\n\n')
+        .replace(/<p>|<\/p>/g, '')
+        .replace(/&amp;/g, '&')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&nbsp;/g, ' ')
+        .replace(/&ntilde;/g, 'ñ')
+        .replace(/&aacute;/g, 'á')
+        .replace(/&eacute;/g, 'é')
+        .replace(/&iacute;/g, 'í')
+        .replace(/&oacute;/g, 'ó')
+        .replace(/&uacute;/g, 'ú');
+
+    if (!artist) return null;
+
     return (
         <div className="relative flex px-10 py-14 w-full">
             {/* Flecha izquierda */}
-            <button className="absolute top-1/3 left-8 transform -translate-y-1/2 text-4xl"
+            <button className="absolute top-1/4 left-8 transform -translate-y-1/2 text-4xl"
                 onClick={() => console.log('4')}>
                 <TextIcon icon={TextIcons.LEFT_ARROW} size={SizeIcons.TITLE_MEDIUM} className='desk:text-[24px] desk:leading-[24px]' />
             </button>
 
             <div className="w-[70%] flex flex-col ml-8 mr-10">
                 <div className='flex flex-col'>
-                    <TitleHome text={`VIVIANA\n CASANOVA`} className='desk:text-[48px] desk:leading-[44px]' />
-                    <TextParagraph text={'WORLDWIDE EXCLUDING BRAZIL'} className='uppercase mt-2 opacity-40 desk:text-[24px] desk:leading-[24px]' />
+                    <TitleHome text={`${artist?.name?.replace(' ', '\n')}`} className='desk:text-[48px] desk:leading-[44px]' />
+                    <TextParagraph text={`${artist?.territory?.data?.attributes.Territory}`} className='uppercase mt-2 opacity-40 desk:text-[24px] desk:leading-[24px]' />
                 </div>
                 <Divider />
 
@@ -63,7 +82,7 @@ const ArtistByIdDesktop = () => {
                             />
                         ))}
                         <ArtistInfo
-                            longInfo={largeInfo}
+                            longInfo={formattedDescription}
                             customClassName='mt-5'
                         />
                     </div>
@@ -79,7 +98,7 @@ const ArtistByIdDesktop = () => {
             </div>
 
             {/* Flecha derecha */}
-            <button className="absolute top-1/3 right-8 transform -translate-y-1/2 text-4xl"
+            <button className="absolute top-1/4 right-8 transform -translate-y-1/2 text-4xl"
                 onClick={() => console.log('4')}>
                 <TextIcon icon={TextIcons.RIGHT_ARROW} size={SizeIcons.TITLE_MEDIUM} className='desk:text-[24px] desk:leading-[24px]' />
             </button>

@@ -18,12 +18,12 @@ const ArtistDetails = () => {
     const socialLinks = [
         { type: 'PRESS KIT', url: selectedArtist?.press_kit || 'N/A' },
         { type: 'ARTWORK REQ.', url: selectedArtist?.artwork || 'N/A' },
-        { type: 'Facebook', url: selectedArtist?.facebook || 'N/A' },
-        { type: 'Twitter', url: selectedArtist?.twitter || 'N/A' },
-        { type: 'Instagram', url: selectedArtist?.instagram || 'N/A' },
-        { type: 'Soundcloud', url: selectedArtist?.SoundCloud || 'N/A' },
-        { type: 'Spotify', url: selectedArtist?.spotify || 'N/A' },
-        { type: 'Beatport', url: selectedArtist?.beatport || 'N/A' }
+        { type: 'Facebook', url: selectedArtist?.facebook || 'https://www.facebook.com/' },
+        { type: 'Twitter', url: selectedArtist?.twitter || 'https://www.twitter.com/' },
+        { type: 'Instagram', url: selectedArtist?.instagram || 'https://www.instagram.com/' },
+        { type: 'Soundcloud', url: selectedArtist?.SoundCloud || 'https://www.soundcloud.com/' },
+        { type: 'Spotify', url: selectedArtist?.spotify || 'https://www.spotify.com/' },
+        { type: 'Beatport', url: selectedArtist?.beatport || 'https://www.beatport.com/' }
     ];
 
     return (

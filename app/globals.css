@@ -13,11 +13,13 @@
   /* src: url('../src/styles/fonts/swis/swis721_.ttf'); */
   src: url('../src/styles/fonts/swis/Swiss721BT-Extended.otf');
 }
+
 @font-face {
   font-family: 'swis';
   src: url('../src/styles/fonts/swis/Swiss721BT-BoldExtended.otf');
   font-weight: bold;
 }
+
 @font-face {
   font-family: 'swis';
   src: url('../src/styles/fonts/swis/Swiss721BT-BlackExtended.otf');
@@ -27,9 +29,11 @@
 .inter {
   font-family: 'inter';
 }
+
 .heveltica {
   font-family: 'heveltica';
 }
+
 .swis {
   font-family: 'swis';
 }
@@ -59,6 +63,7 @@ a {
   html {
     color-scheme: dark;
   }
+
   body {
     @apply bg-black text-white;
   }
@@ -67,20 +72,24 @@ a {
 /* Esconde scrollbar para Chrome, Safari y Opera */
 ::-webkit-scrollbar {
   width: 0px;
-  background: transparent; /* make scrollbar transparent */
+  background: transparent;
+  /* make scrollbar transparent */
 }
 
 /* Esconde scrollbar para IE, Edge, and Firefox */
 html,
 body {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 /* Calses con los tamaños e interlienados de las fuentes */
 .text-larger {
   font-size: clamp(38px, 11.6vw, 48px);
 }
+
 .leading-larger {
   line-height: clamp(33.2px, 11vw, 43.2px);
 }
@@ -88,6 +97,7 @@ body {
 .text-big {
   font-size: clamp(32px, 9.2vw, 38px);
 }
+
 .leading-big {
   line-height: clamp(28.2px, 7.5vw, 34.2px);
 }
@@ -95,6 +105,7 @@ body {
 .text-medium {
   font-size: clamp(16px, 4.6vw, 22px);
 }
+
 .leading-medium {
   line-height: clamp(13.8px, 4vw, 19.8px);
 }
@@ -102,12 +113,15 @@ body {
 .text-small {
   font-size: clamp(8px, 3.4vw, 14px);
 }
+
 .leading-small {
   line-height: clamp(8px, 3.4vw, 14px);
 }
+
 .text-smaller {
   font-size: clamp(8px, 3.4vw, 14px);
 }
+
 .leading-smaller {
   line-height: clamp(8px, 3.4vw, 14px);
 }
@@ -115,6 +129,7 @@ body {
 .text-basic {
   font-size: clamp(8px, 3.4vw, 14px);
 }
+
 .leading-basic {
   line-height: clamp(8px, 4vw, 19.6px);
 }
@@ -122,6 +137,7 @@ body {
 .text-little {
   font-size: clamp(6px, 2.56vw, 10px);
 }
+
 .leading-little {
   line-height: 100%;
 }
@@ -130,6 +146,7 @@ body {
   .text-larger {
     font-size: clamp(90px, 8.8vw, 123px);
   }
+
   .leading-larger {
     line-height: clamp(81px, 8vw, 114px);
   }
@@ -137,6 +154,7 @@ body {
   .text-big {
     font-size: clamp(48px, 4.65vw, 65px);
   }
+
   .leading-big {
     line-height: clamp(48px, 4.65vw, 65px);
   }
@@ -144,6 +162,7 @@ body {
   .text-medium {
     font-size: clamp(24px, 2.2vw, 33px);
   }
+
   .leading-medium {
     line-height: clamp(21.6px, 2vw, 29.5px);
   }
@@ -151,6 +170,7 @@ body {
   .text-small {
     font-size: clamp(14px, 1.4vw, 19px);
   }
+
   .leading-small {
     line-height: clamp(12.8px, 2vw, 23px);
   }
@@ -158,6 +178,7 @@ body {
   .text-smaller {
     font-size: clamp(24px, 2.35vw, 33px);
   }
+
   .leading-smaller {
     line-height: clamp(21.6px, 2.5vw, 34px);
   }
@@ -165,6 +186,7 @@ body {
   .text-basic {
     font-size: clamp(14px, 1.38vw, 17.5px);
   }
+
   .leading-basic {
     line-height: 140%;
   }
@@ -172,6 +194,7 @@ body {
   .text-little {
     font-size: clamp(8px, 0.975vw, 14px);
   }
+
   /* .leading-little {
     line-height: clamp(6px, 2.8vw, 10px);
   } */
@@ -182,6 +205,7 @@ body {
   .text-larger {
     font-size: clamp(131px, 9.4vw, 180px);
   }
+
   .leading-larger {
     line-height: clamp(113px, 8.5vw, 162px);
   }
@@ -189,6 +213,7 @@ body {
   .text-big {
     font-size: clamp(66px, 4.75vw, 90px);
   }
+
   .leading-big {
     line-height: clamp(66px, 4.75vw, 90px);
   }
@@ -196,6 +221,7 @@ body {
   .text-medium {
     font-size: clamp(35px, 2.6vw, 48px);
   }
+
   .leading-medium {
     line-height: clamp(31.5px, 2.2vw, 43.2px);
   }
@@ -203,6 +229,7 @@ body {
   .text-small {
     font-size: clamp(17.5px, 1.25vw, 24px);
   }
+
   .leading-small {
     line-height: clamp(21px, 1.5vw, 38.8px);
   }
@@ -210,6 +237,7 @@ body {
   .text-smaller {
     font-size: clamp(17.5px, 1.65vw, 32px);
   }
+
   .leading-smaller {
     line-height: clamp(21px, 1.8vw, 35.2px);
   }
@@ -217,6 +245,7 @@ body {
   .text-basic {
     font-size: clamp(17.5px, 1.25vw, 24px);
   }
+
   .leading-basic {
     line-height: 120%;
   }
@@ -250,4 +279,36 @@ h4,
 h5 {
   margin-left: -0.14ex;
   margin-right: -0.1ex;
+}
+
+button.customLink,
+.customLink {
+  border: none;
+  outline: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  cursor: url(../src/assets/cursors/pointer.svg), auto;
+  display: inline-flex;
+  align-items: center;
+  transition: all .2s ease-in-out;
+}
+
+.customLink .textBesideIcon {
+  margin-right: 4px;
+  transition: all .2s ease-in-out;
+}
+
+.customLink:hover .textBesideIcon {
+  margin-right: 10px;
+}
+
+.arrowMove {
+  display: inline-block;
+  transition: transform 0.2s ease-in-out;
+  transform: translateX(0);
+}
+
+a.customLink:hover .arrowMove {
+  transform: translateX(10px);
 }
