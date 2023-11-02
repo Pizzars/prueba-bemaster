@@ -26,6 +26,10 @@
   font-weight: bolder;
 }
 
+* {
+  font-family: 'heveltica';
+}
+
 .inter {
   font-family: 'inter';
 }
@@ -259,9 +263,14 @@ body {
   background-image: url(../src/assets/about/back_mobile.jpg);
   background-size: cover;
 }
+.bg-form-mobile {
+  background-image: url(../src/assets/form/back_mobile.jpg);
+  background-size: cover;
+}
 
 @media (min-width: 1024px) {
-  .bg-about-mobile {
+  .bg-about-mobile,
+  .bg-form-mobile {
     background-image: none;
   }
 
@@ -281,6 +290,15 @@ h5 {
   margin-right: -0.1ex;
 }
 
+.scrollDiv {
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollDiv::-webkit-scrollbar {
+  width: 0px;
+}
 button.customLink,
 .customLink {
   border: none;
@@ -291,12 +309,12 @@ button.customLink,
   cursor: url(../src/assets/cursors/pointer.svg), auto;
   display: inline-flex;
   align-items: center;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .customLink .textBesideIcon {
   margin-right: 4px;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .customLink:hover .textBesideIcon {

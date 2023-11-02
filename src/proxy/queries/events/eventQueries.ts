@@ -1,12 +1,8 @@
 import { getData } from 'src/proxy/BackendREST'
+import { addZero } from 'src/utils/functions'
 import { EventModel } from './eventModel'
 
-const addZero = (value: number) => {
-  if (value < 10) {
-    return `0${value}`
-  }
-  return `${value}`
-}
+
 
 export const getEvents = async (page = 1): Promise<EventModel[] | null> => {
   const date = new Date()
