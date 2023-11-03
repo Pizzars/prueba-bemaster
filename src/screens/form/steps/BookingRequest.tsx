@@ -59,6 +59,7 @@ const BookingRequest = ({ updateData }: Params) => {
       options={optionPlaceholders}
       title={`BOOKing
     request`}
+      description='Please provide the following information to make an artist inquiry.'
       alt='1/7'
       active={form.artist && form.artist !== emptyArtist && form.date ? true : false}
     >
@@ -71,6 +72,7 @@ const BookingRequest = ({ updateData }: Params) => {
         />
         <CalendarForm value={form.date} onChange={date => setForm({ ...form, date })} />
         <TextAreaForm
+          label='ADDITIONAL INFORMATION'
           value={form.aditionalInformation ?? ''}
           onChange={aditionalInformation => setForm({ ...form, aditionalInformation })}
         />

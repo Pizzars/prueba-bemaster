@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from 'src/redux/hooks'
 import { getArtistsData } from 'src/redux/features/artistsSlice'
 import { StateRequest } from 'src/redux/features/baseReducer'
-import { FormRequest, promoter } from '../formTypes'
+import { FormRequest, inputForm, promoter } from '../formTypes'
 import Select from 'src/screens/components/inputs/Select'
 import BaseStep from './BaseStep'
 import InputTextForm from 'src/screens/components/inputs/InputTextForm'
@@ -13,17 +13,10 @@ import InputTextForm from 'src/screens/components/inputs/InputTextForm'
 interface Params {
   updateData: (data: Partial<FormRequest>, newStep: number) => void
 }
-type input = {
-  name: string
-  label: string
-  type: number
-  placeholder?: string
-  options?: string[]
-}
 
 const emptyItem = 'MAKE A SELECTION'
 const options = [emptyItem, ...['SPAIN', 'UNITED KINGDOM']]
-const inputs: input[] = [
+const inputs: inputForm[] = [
   { label: 'FIRST NAME*', type: 0, placeholder: 'YOUR FIRST NAME', name: 'firstName' },
   { label: 'LAST NAME*', type: 0, placeholder: 'YOUR LAST NAME', name: 'lastName' },
   { label: 'EMAIL*', type: 0, placeholder: 'you@example.com', name: 'email' },
@@ -71,7 +64,13 @@ const Promoter = ({ updateData }: Params) => {
       : false
 
   return (
-    <BaseStep onClick={callUpdateData} title={`PROMOTER`} alt='2/7' active={active}>
+    <BaseStep
+      onClick={callUpdateData}
+      title={`PROMOTER`}
+      alt='2/7'
+      active={active}
+      description='Please provide the following information to make an artist inquiry.'
+    >
       <div className='pt-6'>
         {inputs.map((input, i) => {
           switch (input.type) {

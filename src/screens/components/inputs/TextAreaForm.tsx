@@ -6,11 +6,12 @@ import { useSpring, animated } from 'react-spring'
 
 interface Params {
   value?: string
+  label: string
   onChange: (value: string) => void
   height?: number
 }
 
-const TextAreaForm = ({ value, height = 12, onChange }: Params) => {
+const TextAreaForm = ({ value, height = 12, onChange, label }: Params) => {
   const [opened, setOpened] = useState(false)
 
   const heightAnimation = useSpring({
@@ -19,7 +20,7 @@ const TextAreaForm = ({ value, height = 12, onChange }: Params) => {
   })
 
   return (
-    <Label name='ADDITIONAL INFORMATION' onClick={() => setOpened(!opened)}>
+    <Label name={label} onClick={() => setOpened(!opened)}>
       <animated.div
         className='bg-black flex flex-col items-end overflow-hidden'
         style={heightAnimation}

@@ -37,3 +37,11 @@ export interface FormRequest {
   venue: venue
   event: event
 }
+
+export interface inputForm {
+  name: string
+  label: string
+  type: number
+  placeholder?: string
+  options?: string[]
+}

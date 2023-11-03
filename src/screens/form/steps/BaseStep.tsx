@@ -10,18 +10,28 @@ interface Params {
   title: string
   alt?: string
   active?: boolean
+  description?: string
 }
-const BaseStep = ({ onClick, children, options, title, alt, active = true }: Params) => {
+const BaseStep = ({
+  onClick,
+  children,
+  options,
+  title,
+  alt,
+  active = true,
+  description
+}: Params) => {
   return (
     <div>
       <FilterAlt text={title} alt={alt} options={options} className='bg-form-mobile uppercase' />
       <div className='bg-white'>
-        <div className={`${options ? 'pt-[15rem]' : 'pt-[9rem]'}`}>
-          <TextParagraph
-            text='Please provide the following information to make an artist inquiry.'
-            className='mx-8 my-4'
-          />
-        </div>
+        {description ? (
+          <div className={`${options ? 'pt-[15rem]' : 'pt-[9rem]'}`}>
+            <TextParagraph text={description} className='mx-8 my-4' />
+          </div>
+        ) : (
+          <div className='h-[9rem]'></div>
+        )}
         {children}
         <div className='h-16 bg-yellow-app w-full flex justify-end px-8 items-center'>
           <button className='bg-none' disabled={!active} onClick={active ? onClick : () => null}>

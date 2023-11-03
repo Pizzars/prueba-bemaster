@@ -6,19 +6,13 @@ import { Fonts } from '../texts/TextBase'
 interface Params {
   color?: ColorExtensions
   className?: string
-  size?: string
   checked: boolean
 }
 
-const CheckBoxIcon = ({
-  color = ColorExtensions.BLUE,
-  size = '20px',
-  checked,
-  className = ''
-}: Params) => {
-  const bg = checked ? `bg${color}` : 'bg-transparent'
+const CheckBoxIcon = ({ color = ColorExtensions.BLUE, checked, className = '' }: Params) => {
+  const bg = checked ? `bg${color} border${color}` : `bg-transparent  border${color}`
   const border = `border${color}`
-  const sizeClass = `min-w-[${size}] w-[${size}] min-h-[${size}] h-[${size}]`
+  const sizeClass = `min-w-[20px] w-[20px] min-h-[20px] h-[20px]`
   return (
     <div
       className={`${sizeClass} ${bg} ${border} border cursor-pointer flex justify-center items-center ${className}`}
