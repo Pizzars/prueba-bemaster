@@ -71,18 +71,18 @@ const ArtistImageCarousel: React.FC<ArtistImageCarouselProps> = ({
                         className="absolute inset-0"
                         style={{ display: index === activeIndex ? 'block' : 'none' }}
                     >
-                        <img 
-                            src={typeof pic === 'string' ? pic : pic.src} 
+                        <img
+                            src={typeof pic === 'string' ? pic : pic.src}
                             alt={altText}
                             style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
                         />
 
                         <div
-                            style={{
-                                backgroundColor: '#00E482',
-                                opacity: 0.4,
-                                mixBlendMode: 'multiply',
-                            }}
+                            // style={{
+                            // backgroundColor: '#00E482',
+                            //   opacity: 0.4,
+                            //   mixBlendMode: 'multiply',
+                            //  }}
                             className="absolute inset-0"
                         ></div>
                         {!desktop && !byId && <div className="absolute bottom-8 left-8">

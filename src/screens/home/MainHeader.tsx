@@ -23,12 +23,12 @@ const MainHeader: React.FC = () => {
     };
 
     return (
-        <header className="h-screen bg-red-500 desk:bg-blue-app flex flex-col justify-between relative">
+        <header className="h-screen backdrop-blur-sm flex flex-col justify-between relative">
             <div className='h-full pl-10 pt-48 desk:pl-20 desk:pt-24'>
                 <div className="mt-auto mb-auto">
-                    <TitleSmall text='b4bookings' className='text-white' />
-                    <TitleHome text='BE FOR' className='text-white' />
-                    <TitleHome text='THE' className='text-white ml-8' />
+                    <TitleSmall text='b4bookings' className='text-white max-w-max' />
+                    <TitleHome text='BE FOR' className='text-white max-w-max' />
+                    <TitleHome text='THE' className='text-white max-w-max' />
 
                     <div className="topbar_text_slider ml-4">
                         <Slider {...settings}>

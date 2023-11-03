@@ -2,8 +2,6 @@
 'use client'
 import { useAppSelector } from 'src/redux/hooks';
 import ArtistImageCarousel from '../Components/ArtistImageCarousel';
-import profilePic from '../Mobile/artist.jpg'
-import profilePic2 from '../Mobile/artist2.jpeg'
 import ArtistList from './ArtistList/ArtistsList';
 import ArtistDetails from './ArtistsDetails';
 import { ulrBack } from 'src/utils/consts';

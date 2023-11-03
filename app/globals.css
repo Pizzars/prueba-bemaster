@@ -364,3 +364,31 @@ button.customLink,
 a.customLink:hover .arrowMove {
   transform: translateX(10px);
 }
+
+.pointer:hover {
+  cursor: url(../src/assets/cursors/pointer.svg) 9 9, auto;
+}
+
+.drag {
+  cursor: url(../src/assets/cursors/grab.svg) 17 17, auto;
+}
+
+.noSelect {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.big3D {
+  position: fixed;
+  background: none;
+  top: -10%;
+  left: -5%;
+  width: 140vw;
+  height: 120vh;
+  overflow: hidden;
+  z-index: -1000;
+  margin: none;
+  padding: none;
+}

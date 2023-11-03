@@ -12,6 +12,7 @@ import TitleHome from 'src/screens/components/texts/TitleHome';
 import TextIcon, { TextIcons, SizeIcons } from 'src/screens/components/icons/TextIcon';
 import { TextColors } from 'src/utils/Colors';
 import { useAppSelector } from 'src/redux/hooks';
+import { ulrBack } from 'src/utils/consts';
 
 
 const largeInfo = `Brisotti began his career as a DJ in 2018, but it was in 2021, with the release by Solid Grooves, the label of British artists Michael 
@@ -91,7 +92,7 @@ const ArtistByIdDesktop = () => {
 
             <div className='w-[30%] mr-8'>
                 <ArtistImageCarousel
-                    profilePics={[profilePic, profilePic2, profilePic]}
+                    profilePics={[`${ulrBack}${artist.image?.url ?? ''}`]}
                     altText="Artist Name"
                     byId
                 />

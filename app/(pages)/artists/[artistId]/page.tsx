@@ -7,8 +7,6 @@ import { getArtistData } from 'src/redux/features/artistsSlice'
 import BasePage from 'src/screens/components/general/base/BasePage'
 
 const ArtistByIdPage = () => {
-  const artist = useAppSelector(state => state.artistsReducer.artistById)
-  console.log(artist, 'artist')
   const dispatch = useAppDispatch()
   const { artistId } = useParams()
 
