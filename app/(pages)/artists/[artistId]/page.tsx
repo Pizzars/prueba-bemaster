@@ -9,7 +9,6 @@ import { useRouter } from 'next/navigation'
 
 const ArtistByIdPage = () => {
   const artist = useAppSelector(state => state.artistsReducer.artistById);
-  console.log(artist, 'artist')
   const dispatch = useAppDispatch()
   const { artistId } = useParams()
   const router = useRouter()

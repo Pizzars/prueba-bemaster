@@ -345,3 +345,16 @@ a.customLink:hover .arrowMove {
   -moz-user-select: none;
   -ms-user-select: none;
 }
+
+.big3D {
+  position: fixed;
+  background: none;
+  top: -10%;
+  left: -5%;
+  width: 140vw;
+  height: 120vh;
+  overflow: hidden;
+  z-index: -1000;
+  margin: none;
+  padding: none;
+}

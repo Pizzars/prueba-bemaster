@@ -8,13 +8,17 @@ import { animated, useSpring } from 'react-spring';
 import { useAppDispatch, useAppSelector } from 'src/redux/hooks';
 import { getArtistsData } from 'src/redux/features/artistsSlice';
 import { StateRequest } from 'src/redux/features/baseReducer';
+import { usePathname } from 'next/navigation'
 
 const Home = () => {
+
   const artistsStatus = useAppSelector(state => state.artistsReducer.status);
   const dispatch = useAppDispatch();
   const [count, setCount] = useState(0);
   const [showHomeContent, setShowHomeContent] = useState(false);
   const [language, setLanguage] = useState<'EN' | 'ES'>('EN');
+  const pathname = usePathname()
+
 
   useEffect(() => {
     if (artistsStatus === StateRequest.EMPTY) {
@@ -77,6 +81,7 @@ const Home = () => {
 
   return (
     <>
+
       {!showHomeContent ? (
         <div className="h-screen bg-gray-100 flex items-end">
           <TitleHome text={count.toString()} className='ml-10 mb-8' />
@@ -87,7 +92,7 @@ const Home = () => {
           <div className="h-screen flex-1 items-center justify-center">
             <AnimatedText />
           </div>
-          <MenuSection language={language} toggleLanguage={setLanguage} />
+          {pathname !== '/' && <MenuSection language={language} toggleLanguage={setLanguage} />}
         </animated.div>
       )}
     </>

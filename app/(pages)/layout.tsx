@@ -1,3 +1,4 @@
+import Footer from "src/screens/components/general/Footer/Footer"
 import Navbar from "src/screens/components/general/Navbar"
 
 export default function DashboardLayout({
@@ -9,6 +10,7 @@ export default function DashboardLayout({
     <>
       <Navbar />
       <div style={{ paddingTop: 72 }}>{children}</div>
+      <Footer />
     </>
   )
 }
