@@ -3,7 +3,7 @@ import Form from 'src/screens/form/Form'
 
 export default function PodcastPage() {
   return (
-    <BasePage className='bg-form' title='Book'>
+    <BasePage className='bg-form' title='Book' footer={false}>
       <Form />
     </BasePage>
   )

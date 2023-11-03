@@ -93,6 +93,9 @@ body {
 .text-larger {
   font-size: clamp(38px, 11.6vw, 48px);
 }
+.text-larger2 {
+  font-size: clamp(38px, 11.6vw, 43px);
+}
 
 .leading-larger {
   line-height: clamp(33.2px, 11vw, 43.2px);
