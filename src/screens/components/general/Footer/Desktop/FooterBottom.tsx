@@ -6,7 +6,7 @@ import { footerButtonsInfo } from 'src/utils/consts'
 
 const FooterBottom = () => {
     return (
-        <section className='flex bg-transparent py-4 justify-between items-center mt-60'>
+        <section className='flex py-4 justify-between items-center mt-60'>
             <div className='flex flex-row'>
                 {footerButtonsInfo.map(button => (
                     <div key={button.key} className='mr-4 flex items-center'>

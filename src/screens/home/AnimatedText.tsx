@@ -14,6 +14,7 @@ const AnimatedText = () => {
     const artists = useAppSelector(state => state.artistsReducer.data);
 
     const groupedArtists = [];
+    if (!artists) return <></>   
     for (let i = 0; i < artists.length; i += 4) {
         groupedArtists.push(artists.slice(i, i + 4));
     }
