@@ -3,7 +3,7 @@ import Content from './Content'
 
 const About = () => {
   return (
-    <div className='bg-about'>
+    <div className=''>
       <FilterAlt
         text={`ABOUT
           US`}

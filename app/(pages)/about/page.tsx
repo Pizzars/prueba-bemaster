@@ -1,6 +1,12 @@
 import About from 'src/screens/about/About'
-import './page.css'
+import BasePage from 'src/screens/components/general/base/BasePage'
 
-export default function AboutPage() {
-  return <About />
+const AboutPage = () => {
+  return (
+    <BasePage className='bg-about' title='About Us'>
+      <About />
+    </BasePage>
+  )
 }
+
+export default AboutPage
