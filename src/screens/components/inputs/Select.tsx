@@ -10,12 +10,13 @@ import { useSpring, animated } from 'react-spring'
 
 interface Params {
   value: string
+  label: string
   onChange: (value: string) => void
   height?: string
   options: string[]
 }
 
-const Select = ({ value, height = '17rem', options, onChange }: Params) => {
+const Select = ({ label, value, height = '17rem', options, onChange }: Params) => {
   const [opened, setOpened] = useState(false)
 
   const pickerValue = {
@@ -31,7 +32,7 @@ const Select = ({ value, height = '17rem', options, onChange }: Params) => {
 
   return (
     <Label
-      name='Artist*'
+      name={label}
       value={pickerValue.names}
       icon={TextIcons.DOWN_TRIANGLE}
       onClick={() => setOpened(!opened)}
