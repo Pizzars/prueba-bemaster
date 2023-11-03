@@ -11,14 +11,12 @@ import { StateRequest } from 'src/redux/features/baseReducer';
 import { usePathname } from 'next/navigation'
 
 const Home = () => {
-
   const artistsStatus = useAppSelector(state => state.artistsReducer.status);
   const dispatch = useAppDispatch();
   const [count, setCount] = useState(0);
   const [showHomeContent, setShowHomeContent] = useState(false);
   const [language, setLanguage] = useState<'EN' | 'ES'>('EN');
   const pathname = usePathname()
-
 
   useEffect(() => {
     if (artistsStatus === StateRequest.EMPTY) {
@@ -83,7 +81,7 @@ const Home = () => {
     <>
 
       {!showHomeContent ? (
-        <div className="h-screen bg-gray-100 flex items-end">
+        <div className="h-screen bg-gray-100 flex items-end z-20">
           <TitleHome text={count.toString()} className='ml-10 mb-8' />
         </div>
       ) : (
