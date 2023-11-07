@@ -27,8 +27,6 @@ jobs:
           exclude: |
             **/.git*
             **/.git*/**
-            **/public/asset/Images/**
-            **/public/asset/Images/**
           server-dir: .ftp-users/beta/b4-24
   ssh-trigger:
     name: start-server
