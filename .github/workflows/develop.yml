@@ -23,11 +23,7 @@ jobs:
           server: ${{ secrets.TEST_FTP_HOST }}
           username: ${{ secrets.TEST_FTP_USERNAME }}
           password: ${{ secrets.TEST_FTP_PASSWORD }}
-          local-dir: ./
-          exclude: |
-            **/.git*
-            **/.git*/**
-          server-dir: .ftp-users/beta/b4-24
+          server-dir: /.ftp-users/beta/b4-24
   ssh-trigger:
     name: start-server
 
@@ -37,7 +33,7 @@ jobs:
 
     steps:
       - name: Connect to Dinahosting SSH
-        uses: cross-the-world/ssh-pipeline@master
+        uses: cross-the-world/ssh-pipeline@develop
         with:
           host: ${{ secrets.TEST_FTP_HOST }}
           user: ${{ secrets.TEST_FTP_USERNAME }}
