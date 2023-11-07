@@ -29,7 +29,7 @@ jobs:
             **/.git*/**
             **/public/asset/Images/**
             **/public/asset/Images/**
-          server-dir: www/configclimatika/
+          server-dir: .ftp-users/beta/b4-24
   ssh-trigger:
     name: start-server
 
@@ -54,7 +54,7 @@ jobs:
           #     npx pm2 delete all
           #     npx pm2 start "next start -p 3002"
           script: |
-            cd /.ftp-users/beta/b4-24
+            cd .ftp-users/beta/b4-24
             rm -r node_modules
             npm install
             npm run build                      
