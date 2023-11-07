@@ -48,10 +48,10 @@ jobs:
           #     npx pm2 delete all
           #     npx pm2 start "next start -p 3002"
           script: |
-            cd www/test/b4-24/
+            cd www/test/b4-24
             rm -r node_modules
             npm install
-            npm run build                      
+            npm run build
             npx pm2 stop b4bookings
             npx pm2 delete b4bookings
             npx pm2 start npm --name "b4bookings" -- run start -- -p 3002
