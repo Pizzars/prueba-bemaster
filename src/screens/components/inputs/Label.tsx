@@ -25,7 +25,10 @@ const Label = ({
 }: Params) => {
   return (
     <>
-      <div className='border-b-2 border-black px-8 py-6 flex items-center' onClick={onClick}>
+      <div
+        className='border-b-2 border-black px-8 py-6 flex items-center relative'
+        onClick={onClick}
+      >
         <div className='flex-1'>
           <TextParagraph className='uppercase' text={name} tag={TextTags.SPAN} />
           {value && <TitleSmall text={value} tag={TextTags.SPAN} />}

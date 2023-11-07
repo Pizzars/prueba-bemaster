@@ -8,6 +8,7 @@ import { TextTags } from 'src/screens/components/texts/TextBase'
 import TitleSmall from 'src/screens/components/texts/TitleSmall'
 import { useSpring, animated } from 'react-spring'
 import { addZero } from 'src/utils/functions'
+import useWindowSize from 'src/hooks/useWindowSize'
 
 interface Params {
   hour: string
@@ -39,13 +40,15 @@ const TimeForm = ({
   placeholder = ''
 }: Params) => {
   const [opened, setOpened] = useState(false)
+  const size = useWindowSize().width ?? 0
 
   const pickerValue = {
     hours: hour,
     minutes: minute
   }
   const heightAnimation = useSpring({
-    height: opened ? height : '0rem'
+    height: size > 1023 ? height : opened ? height : '0rem',
+    display: size > 1023 ? (opened ? 'block' : 'none') : 'block'
   })
 
   const selections = {
@@ -61,41 +64,52 @@ const TimeForm = ({
       onClick={() => setOpened(!opened)}
       checked={hour && minute ? true : false}
     >
-      <animated.div
-        className='bg-black flex flex-col items-end overflow-hidden w-full'
-        style={heightAnimation}
-      >
-        <Picker
-          value={pickerValue}
-          onChange={values => {
-            onChange(`${values.hours ?? '00'}:${values.minutes ?? '00'}`)
-          }}
-          style={{ color: 'white' }}
-          className='w-full'
+      <>
+        <div
+          className={`absolute h-6 w-6 left-[-20px] top-[2rem] hidden ${
+            opened ? 'desk:block' : ''
+          }`}
         >
-          {Object.keys(selections).map(name => (
-            <Picker.Column key={name} name={name} frameBorder={0}>
-              {(selections as any)[name].map((option: any) => (
-                <Picker.Item key={option} value={option}>
-                  {({ selected }) => (
-                    <div style={{ opacity: selected ? 1 : 0.5 }}>
-                      <TitleMedium
-                        tag={TextTags.SPAN}
-                        text={option}
-                        className='uppercase '
-                        color={TextColors.white}
-                      />
-                    </div>
-                  )}
-                </Picker.Item>
-              ))}
-            </Picker.Column>
-          ))}
-        </Picker>
-        <button className='mx-8 my-4' onClick={() => setOpened(false)}>
-          <TitleSmall text='DONE' tag={TextTags.SPAN} />
-        </button>
-      </animated.div>
+          <svg width='100%' viewBox='0 0 21 25' fill='none' xmlns='http://www.w3.org/2000/svg'>
+            <path d='M21 12.5L0.749999 24.1913L0.75 0.808656L21 12.5Z' fill='black' />
+          </svg>
+        </div>
+        <animated.div
+          className='bg-black flex flex-col items-end overflow-hidden w-full desk:absolute desk:w-[300px] desk:left-[-315px] desk:top-[-4rem] z-10'
+          style={heightAnimation}
+        >
+          <Picker
+            value={pickerValue}
+            onChange={values => {
+              onChange(`${values.hours ?? '00'}:${values.minutes ?? '00'}`)
+            }}
+            style={{ color: 'white' }}
+            className='w-full'
+          >
+            {Object.keys(selections).map(name => (
+              <Picker.Column key={name} name={name} frameBorder={0}>
+                {(selections as any)[name].map((option: any) => (
+                  <Picker.Item key={option} value={option}>
+                    {({ selected }) => (
+                      <div style={{ opacity: selected ? 1 : 0.5 }}>
+                        <TitleMedium
+                          tag={TextTags.SPAN}
+                          text={option}
+                          className='uppercase desk:text-small big:text-small'
+                          color={TextColors.white}
+                        />
+                      </div>
+                    )}
+                  </Picker.Item>
+                ))}
+              </Picker.Column>
+            ))}
+          </Picker>
+          <button className='mx-8 my-4' onClick={() => setOpened(false)}>
+            <TitleSmall text='DONE' tag={TextTags.SPAN} />
+          </button>
+        </animated.div>
+      </>
     </Label>
   )
 }

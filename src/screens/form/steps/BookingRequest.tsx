@@ -64,13 +64,17 @@ const BookingRequest = ({ updateData }: Params) => {
       active={form.artist && form.artist !== emptyArtist && form.date ? true : false}
     >
       <div className='pt-6'>
-        <Select
-          options={options}
-          value={form.artist ?? options[0]}
-          onChange={artist => setForm({ ...form, artist })}
-          label='Artist*'
-        />
-        <CalendarForm value={form.date} onChange={date => setForm({ ...form, date })} />
+        <div className='relative'>
+          <Select
+            options={options}
+            value={form.artist ?? options[0]}
+            onChange={artist => setForm({ ...form, artist })}
+            label='Artist*'
+          />
+        </div>
+        <div className='relative'>
+          <CalendarForm value={form.date} onChange={date => setForm({ ...form, date })} />
+        </div>
         <TextAreaForm
           label='ADDITIONAL INFORMATION'
           value={form.aditionalInformation ?? ''}

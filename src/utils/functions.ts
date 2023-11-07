@@ -6,5 +6,5 @@ export const addZero = (value: number) => {
 }
 
 export const formatDate = (date: Date) => {
-  return `${addZero(date.getDay())}-${addZero(date.getMonth() + 1)}-${date.getFullYear()}`
+  return `${addZero(date.getDate())}-${addZero(date.getMonth() + 1)}-${date.getFullYear()}`
 }

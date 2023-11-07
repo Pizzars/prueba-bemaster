@@ -69,12 +69,14 @@ const Venue = ({ updateData }: Params) => {
           switch (input.type) {
             case 1:
               return (
-                <Select
-                  label={input.label}
-                  options={input.options ?? []}
-                  value={(form as any)[input.name] ?? options[0]}
-                  onChange={value => setForm({ ...form, [input.name]: value })}
-                />
+                <div className='relative' key={`input-${i}`}>
+                  <Select
+                    label={input.label}
+                    options={input.options ?? []}
+                    value={(form as any)[input.name] ?? options[0]}
+                    onChange={value => setForm({ ...form, [input.name]: value })}
+                  />
+                </div>
               )
             case 2:
               return (
@@ -88,14 +90,15 @@ const Venue = ({ updateData }: Params) => {
               )
             case 3:
               return (
-                <TimeForm
-                  key={`input-${i}`}
-                  label={input.label}
-                  placeholder={input.placeholder}
-                  hour={((form as any)[input.name] ?? '').split(':')[0]}
-                  minute={((form as any)[input.name] ?? '').split(':')[1]}
-                  onChange={value => setForm({ ...form, [input.name]: value })}
-                />
+                <div className='relative' key={`input-${i}`}>
+                  <TimeForm
+                    label={input.label}
+                    placeholder={input.placeholder}
+                    hour={((form as any)[input.name] ?? '').split(':')[0]}
+                    minute={((form as any)[input.name] ?? '').split(':')[1]}
+                    onChange={value => setForm({ ...form, [input.name]: value })}
+                  />
+                </div>
               )
             default:
               return (

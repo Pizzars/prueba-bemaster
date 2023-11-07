@@ -76,12 +76,14 @@ const Promoter = ({ updateData }: Params) => {
           switch (input.type) {
             case 1:
               return (
-                <Select
-                  label={input.label}
-                  options={input.options ?? []}
-                  value={(form as any)[input.name] ?? options[0]}
-                  onChange={value => setForm({ ...form, [input.name]: value })}
-                />
+                <div className='relative' key={`input-${i}`}>
+                  <Select
+                    label={input.label}
+                    options={input.options ?? []}
+                    value={(form as any)[input.name] ?? options[0]}
+                    onChange={value => setForm({ ...form, [input.name]: value })}
+                  />
+                </div>
               )
             default:
               return (
