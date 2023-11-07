@@ -29,7 +29,7 @@ jobs:
             **/.git*/**
             **/public/asset/Images/**
             **/public/asset/Images/**
-          server-dir: www/configclimatika/
+          server-dir: .ftp-users/beta/b4-24
   ssh-trigger:
     name: start-server
 
@@ -41,10 +41,10 @@ jobs:
       - name: Connect to Dinahosting SSH
         uses: cross-the-world/ssh-pipeline@master
         with:
-          host: ${{ secrets.PROD_FTP_HOST }}
-          user: ${{ secrets.PROD_FTP_USERNAME }}
-          pass: ${{ secrets.PROD_FTP_PASSWORD }}
-          port: ${{ secrets.PROD_FTP_PORT }}
+          host: ${{ secrets.TEST_FTP_HOST }}
+          user: ${{ secrets.TEST_FTP_USERNAME }}
+          pass: ${{ secrets.TEST_FTP_PASSWORD }}
+          port: ${{ secrets.TEST_FTP_PORT }}
           # script: |
           #     cd /.ftp-users/beta/b4-24
           #     rm -r node_modules
@@ -54,7 +54,7 @@ jobs:
           #     npx pm2 delete all
           #     npx pm2 start "next start -p 3002"
           script: |
-            cd /.ftp-users/beta/b4-24
+            cd .ftp-users/beta/b4-24
             rm -r node_modules
             npm install
             npm run build                      
