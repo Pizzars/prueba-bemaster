@@ -10,7 +10,7 @@ interface WindowSize {
  * @returns An array containing the width and height of the window.
  */
 
-const useWindowSize = (): [number | undefined, number | undefined] => {
+const useWindowSize = (): WindowSize => {
   const [windowSize, setWindowSize] = useState<WindowSize>({
     width: undefined,
     height: undefined
@@ -25,13 +25,13 @@ const useWindowSize = (): [number | undefined, number | undefined] => {
     }
 
     window.addEventListener('resize', handleResize)
-
+    handleResize()
     return () => {
       window.removeEventListener('resize', handleResize)
     }
   }, [])
 
-  return [windowSize.width, windowSize.height]
+  return { width: windowSize.width, height: windowSize.height }
 }
 
 export default useWindowSize

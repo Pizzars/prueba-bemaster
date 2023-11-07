@@ -3,23 +3,27 @@ import Label from './Label'
 import { TextTags } from 'src/screens/components/texts/TextBase'
 import TitleSmall from 'src/screens/components/texts/TitleSmall'
 import { useSpring, animated } from 'react-spring'
+import useWindowSize from 'src/hooks/useWindowSize'
 
 interface Params {
   value?: string
+  label: string
   onChange: (value: string) => void
   height?: number
 }
 
-const TextAreaForm = ({ value, height = 12, onChange }: Params) => {
+const TextAreaForm = ({ value, height = 12, onChange, label }: Params) => {
   const [opened, setOpened] = useState(false)
 
+  const size = useWindowSize().width ?? 0
+
   const heightAnimation = useSpring({
-    height: opened ? `${height}rem` : '0rem',
-    padding: opened ? `2rem 2rem` : '0rem 2rem'
+    height: opened || size > 1023 ? `${height}rem` : '0rem',
+    padding: opened || size > 1023 ? `2rem 2rem` : '0rem 2rem'
   })
 
   return (
-    <Label name='ADDITIONAL INFORMATION' onClick={() => setOpened(!opened)}>
+    <Label name={label} onClick={() => setOpened(!opened)}>
       <animated.div
         className='bg-black flex flex-col items-end overflow-hidden'
         style={heightAnimation}

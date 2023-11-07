@@ -8,21 +8,35 @@ interface Params {
   name: string
   value?: string
   icon?: TextIcons
+  isInput?: boolean
+  checked?: boolean
   children?: ReactElement<any, any>
   onClick?: () => void
 }
 
-const Label = ({ name, value, icon, onClick = () => null, children }: Params) => {
+const Label = ({
+  name,
+  value,
+  icon,
+  onClick = () => null,
+  children,
+  isInput = false,
+  checked = false
+}: Params) => {
   return (
     <>
-      <div className='border-b-2 border-black px-8 py-6 flex items-center' onClick={onClick}>
+      <div
+        className='border-b-2 border-black px-8 py-6 flex items-center relative'
+        onClick={onClick}
+      >
         <div className='flex-1'>
           <TextParagraph className='uppercase' text={name} tag={TextTags.SPAN} />
           {value && <TitleSmall text={value} tag={TextTags.SPAN} />}
+          {isInput ? children : <></>}
         </div>
-        {icon && <TextIcon icon={icon} />}
+        {icon && <TextIcon icon={icon} checked={checked} />}
       </div>
-      {children}
+      {!isInput ? children : <></>}
     </>
   )
 }
