@@ -38,7 +38,7 @@ jobs:
           host: ${{ secrets.TEST_FTP_HOST }}
           user: ${{ secrets.TEST_FTP_USERNAME }}
           pass: ${{ secrets.TEST_FTP_PASSWORD }}
-          port: ${{ secrets.TEST_FTP_PORT }}
+          # port: ${{ secrets.TEST_FTP_PORT }}
           # script: |
           #     cd /www/test/b4-24/
           #     rm -r node_modules
