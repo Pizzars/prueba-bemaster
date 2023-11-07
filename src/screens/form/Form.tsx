@@ -7,7 +7,7 @@ import Promoter from './steps/Promoter'
 import Venue from './steps/Venue'
 
 const Form = () => {
-  const [step, setStep] = useState(1)
+  const [step, setStep] = useState(0)
   const [form, setForm] = useState<Partial<FormRequest>>({})
 
   const updateData = (data: Partial<FormRequest>, newStep: number) => {
