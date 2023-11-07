@@ -33,7 +33,7 @@ jobs:
 
     steps:
       - name: Connect to Dinahosting SSH
-        uses: cross-the-world/ssh-pipeline@develop
+        uses: cross-the-world/ssh-pipeline@master
         with:
           host: ${{ secrets.TEST_FTP_HOST }}
           user: ${{ secrets.TEST_FTP_USERNAME }}
