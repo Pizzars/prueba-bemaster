@@ -82,20 +82,26 @@ export function truncateText(text: string | null | undefined, maxChars: number) 
 
 export const filterFutureEvents = (events: EventModel[] | null | undefined, limit: number): FormattedEvent[] | [] => {
   if (!events) return [];
-  
+
   const today = new Date();
 
-  const futureEvents = events.filter(event => new Date(event.date) > today)
+  const futureEvents = events.filter(event => event.date && new Date(event.date) > today)
     .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
     .slice(0, limit);
 
-  return futureEvents.map((event, index): FormattedEvent => ({
-    date: formatEventDate(event.date),
-    venue: event.place,
-    location: `${event.city}, ${event.country}`,
-    id: index
-  }));
+  const formattedEvents = futureEvents.map((event, index): FormattedEvent | undefined => {
+    if (!event.date) return undefined; // Skip mapping if event.date does not exist
+    return {
+      date: formatEventDate(new Date(event.date)),
+      venue: event.place,
+      location: `${event.city}, ${event.country}`,
+      id: index
+    };
+  });
+
+  return formattedEvents.filter(event => event) as FormattedEvent[]; // Filter out undefined values
 };
+
 const formatEventDate = (date: Date): string => {
   // Convertimos la fecha a un string en formato ISO
   const isoDate = date?.toISOString(); // '2022-06-17T03:00:00.000Z'

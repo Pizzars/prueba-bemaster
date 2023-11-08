@@ -26,9 +26,9 @@ const ArtistDates: React.FC<ArtistDatesProps> = ({
     return (
         <section className={`flex flex-col ${index !== 0 && 'mt-5'} ${customClassName}`}>
             <div className='flex flex-col'>
-                <TitleMedium text={date} className='uppercase text-[22px] desk:text-[24px]' />
-                <TitleSmall text={venue} className='uppercase mt-1 text-[14px] desk:text-[15px]' />
-                <TextSmall text={location} color={TextColors.black} className='helvetica mt-1 text-[14px] opacity-40 desk:text-[15px]' />
+                <TitleMedium text={date} className='uppercase text-[22px] desk:text-[24px] desk:leading-[26px]' />
+                <TitleSmaller text={venue} className='uppercase mt-1 text-[14px] desk:text-[15px] desk:leading-[17px]' />
+                <TextSmall text={location} color={TextColors.black} className='helvetica mt-1 text-[14px] opacity-40 desk:text-[15px] desk:leading-[17px]' />
             </div>
         </section>
     );

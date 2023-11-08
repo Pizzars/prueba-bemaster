@@ -56,7 +56,6 @@ const ArtistDetails = () => {
                             date={event.date}
                             venue={event.venue}
                             location={event.location}
-                            customClassName='mt-6'
                         />
                     ))
                 ) : (
@@ -65,7 +64,7 @@ const ArtistDetails = () => {
                     </div>
                 )}
             </div>
-            <Divider className='mt-3  mx-8' />
+            <Divider className='mt-3 mx-8' />
             <div className='px-8'>
                 <ArtistInfo
                     shortInfo={formattedDescription}
