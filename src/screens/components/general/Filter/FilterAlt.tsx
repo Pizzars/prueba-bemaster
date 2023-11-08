@@ -33,8 +33,7 @@ const FilterAlt = ({ text, alt, options, className = '' }: Params) => {
 
   return (
     <div
-      className={`fixed w-full pl-8 z-10 desk:px-16 desk:pt-8 desk:pb-16 desk:static big:p-24 big:pt-16 ${className}`}
-      style={{}}
+      className={`fixed w-full px-6 z-10 desk:px-16 desk:pt-8 desk:pb-16 desk:static big:p-24 big:pt-16 ${className}`}
     >
       {options && (
         <div
@@ -73,7 +72,7 @@ const FilterAlt = ({ text, alt, options, className = '' }: Params) => {
       )}
       <div className='py-8 desk:pb-0'>
         {alt && <TitleSmall text={alt} color={TextColors.white} />}
-        <TitleHome text={text} color={TextColors.white} />
+        <TitleHome className='text-larger2' text={text} color={TextColors.white} />
       </div>
     </div>
   )

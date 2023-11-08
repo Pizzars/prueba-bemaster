@@ -10,7 +10,7 @@ import ReactDOM from 'react-dom';
 import TitleSmaller from '../components/texts/TitleSmaller';
 import { usePathname } from 'next/navigation';
 
-const carouselTexts = ['WORLDWIDE', 'FOR EUROPE', 'FOR SPAIN', 'LATIN AMERICA', 'SPAIN & LATAM'];
+const carouselTexts = ['WORLDWIDE', 'FOR EUROPE', 'FOR SPAIN', 'LATIN AMERICA', 'SPAIN & LATAM']
 
 const AnimatedText = () => {
     const [index, setIndex] = useState(0);
@@ -19,29 +19,29 @@ const AnimatedText = () => {
     const containerRef = useRef(null);
     const pathname = usePathname()
 
-    useEffect(() => {
-        const moveCursor = (e) => {
-            setCursorPosition({ x: e.clientX, y: e.clientY });
-        };
-        window.addEventListener('mousemove', moveCursor);
-        return () => {
-            window.removeEventListener('mousemove', moveCursor);
-        };
-    }, []);
-
-    const groupedArtists = [];
-
-    if (!artists) return <></>;
-
-    for (let i = 0; i < artists.length; i += 4) {
-        groupedArtists.push(artists.slice(i, i + 4));
+  useEffect(() => {
+    const moveCursor = (e: any) => {
+      setCursorPosition({ x: e.clientX, y: e.clientY })
     }
+    window.addEventListener('mousemove', moveCursor)
+    return () => {
+      window.removeEventListener('mousemove', moveCursor)
+    }
+  }, [])
 
-    const props = useSpring({
-        transform: `translateX(-${index * 100}%)`,
-        from: { transform: `translateX(-${index * 100}%)` },
-        config: { tension: 220, friction: 120 }
-    });
+  const groupedArtists = []
+
+  if (!artists) return <></>
+
+  for (let i = 0; i < artists.length; i += 4) {
+    groupedArtists.push(artists.slice(i, i + 4))
+  }
+
+  const props = useSpring({
+    transform: `translateX(-${index * 100}%)`,
+    from: { transform: `translateX(-${index * 100}%)` },
+    config: { tension: 220, friction: 120 }
+  })
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -58,12 +58,16 @@ const AnimatedText = () => {
             zIndex: 9999
         }}
     >
-        <TitleSmaller text={'EXPLORE'} className="inter opacity-100 desk:text-[14px] absolute top-[50%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white" />
-    </div>)
+      <TitleSmaller
+        text={'EXPLORE'}
+        className='inter opacity-100 desk:text-[14px] absolute top-[50%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white'
+      />
+    </div>
+  )
 
-    return (
-        <div className="relative h-screen bg-black overflow-hidden pointer" >
-            {ReactDOM.createPortal(cursorComponent, document.body)}
+  return (
+    <div className='relative h-screen bg-black overflow-hidden pointer'>
+      {ReactDOM.createPortal(cursorComponent, document.body)}
 
             <div className="animated-text z-10">
                 {groupedArtists.map((group, index) => (
@@ -125,4 +129,4 @@ const AnimatedText = () => {
     );
 };
 
-export default AnimatedText;
+export default AnimatedText

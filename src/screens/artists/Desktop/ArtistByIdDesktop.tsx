@@ -51,7 +51,7 @@ const ArtistByIdDesktop = () => {
         }
     };
 
-    if (!artist) return null;
+  if (!artist) return null
 
     return (
         <div className="bg-white relative flex px-10 py-14 w-full" style={{ minHeight: '100vh' }}>
@@ -61,17 +61,23 @@ const ArtistByIdDesktop = () => {
                 <TextIcon icon={TextIcons.LEFT_ARROW} size={SizeIcons.TITLE_MEDIUM} className='desk:text-[24px] desk:leading-[24px]' />
             </button>
 
-            <div className="w-[70%] flex flex-col ml-8 mr-10">
-                <div className='flex flex-col'>
-                    <TitleHome text={`${artist?.name?.replace(' ', '\n')}`} className='desk:text-[48px] desk:leading-[44px]' />
-                    <TextParagraph text={`${artist?.territory?.data?.attributes.Territory}`} className='uppercase mt-2 opacity-40 desk:text-[24px] desk:leading-[24px]' />
-                </div>
-                <Divider />
+      <div className='w-[70%] flex flex-col ml-8 mr-10'>
+        <div className='flex flex-col'>
+          <TitleHome
+            text={`${artist?.name?.replace(' ', '\n')}`}
+            className='desk:text-[48px] desk:leading-[44px]'
+          />
+          <TextParagraph
+            text={`${(artist?.territory as any)?.data?.attributes.Territory}`}
+            className='uppercase mt-2 opacity-40 desk:text-[24px] desk:leading-[24px]'
+          />
+        </div>
+        <Divider />
 
-                <div className="w-full flex mt-4 ">
-                    <div className='w-1/3'>
-                        <ArtistSocialLinks links={socialLinks} column />
-                    </div>
+        <div className='w-full flex mt-4 '>
+          <div className='w-1/3'>
+            <ArtistSocialLinks links={socialLinks} column />
+          </div>
 
                     <div className='w-2/3 px-10'>
                         {filteredEvents.length > 0 ? (
@@ -97,13 +103,13 @@ const ArtistByIdDesktop = () => {
                 </div>
             </div>
 
-            <div className='w-[30%] mr-8'>
-                <ArtistImageCarousel
-                    profilePics={[`${ulrBack}${artist.image?.url ?? ''}`]}
-                    altText="Artist Name"
-                    byId
-                />
-            </div>
+      <div className='w-[30%] mr-8'>
+        <ArtistImageCarousel
+          profilePics={[`${ulrBack}${artist.image?.url ?? ''}`]}
+          altText='Artist Name'
+          byId
+        />
+      </div>
 
             {/* Flecha derecha */}
             <button className="absolute top-[300px] right-8 transform -translate-y-1/2 text-4xl"
