@@ -33,17 +33,17 @@ const ArtistsList: React.FC<Props> = ({ customClassname }) => {
 
   const sortedArtists = [...artistData].sort((a, b) => (a.name || '').localeCompare(b.name || ''))
 
-  const props = useSpring({
-    height: open ? 800 : 0,
-    opacity: open ? 1 : 0,
-    onRest: () => {
-      if (!open) {
-        setSelectedArtist(nextArtist as any)
-        setNextArtist(null)
-      }
-    },
-    reset: true
-  })
+    const props = useSpring({
+        minHeight: open ? 400 : 0,
+        opacity: open ? 1 : 0,
+        onRest: () => {
+            if (!open) {
+                setSelectedArtist(nextArtist);
+                setNextArtist(null);
+            }
+        },
+        reset: true,
+    });
 
   useEffect(() => {
     if (selectedArtist !== null) {

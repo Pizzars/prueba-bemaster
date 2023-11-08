@@ -1,59 +1,111 @@
-import React from 'react';
-import Divider from 'src/screens/components/general/Divider';
-import profilePic from './artist.jpg'
-import profilePic2 from './artist2.jpeg'
+import React, { useEffect, useState } from 'react';
+import { useAppSelector } from 'src/redux/hooks';
 import ArtistDates from '../Components/ArtistDates';
 import ArtistSocialLinks from '../Components/ArtistSocialLinks';
 import ArtistInfo from '../Components/ArtistInfo';
 import ArtistImageCarousel from '../Components/ArtistImageCarousel';
 import SwipeForMore from 'src/screens/components/general/SwipeForMore';
-
-const socialLinks = [
-    { type: 'PRESS KIT', url: 'https://www.presskit.to/artist' },
-    { type: 'ARTWORK REQ.', url: 'https://www.artwork-req.com/artist' },
-    { type: 'Facebook', url: 'https://www.facebook.com/artist' },
-    { type: 'Twitter', url: 'https://www.twitter.com/artist' },
-    { type: 'Instagram', url: 'https://www.instagram.com/artist' },
-    { type: 'Soundcloud', url: 'https://www.soundcloud.com/artist' },
-    { type: 'Spotify', url: 'https://www.spotify.com/artist' },
-    { type: 'Beatport', url: 'https://www.beatport.com/artist' }
-];
-
-const largeInfo = `Brisotti began his career as a DJ in 2018, but it was in 2021, with the release by Solid Grooves, the label of British artists Michael 
-Bibi and Pawsa, that his name established itself as a major breakthrough.
- The artist has ac hieved numerous accomplishments, with support from Jamie Jones, 
- Michael Bibi, Chris Lake, Clonee, Loco Dice, and reaching 7-digit streams with the track "Tripasia" on streaming platforms.
- Additionally, he has been making appear ances at the biggest events and festivals in the country.
- \nHailing from the interior of São Paulo, Brisotti possesses technique, charisma, and stage presence as his trademarks, which make him acclaimed by the crowds he commands, under a strong influence of House Music and its subgenres.`
-
+import { filterFutureEvents, formatDescription } from 'src/utils/functions';
+import { noEventsMessage, ulrBack } from 'src/utils/consts';
+import TitleSmall from 'src/screens/components/texts/TitleSmall';
+import { useRouter } from 'next/navigation';
+import { useSwipeable } from 'react-swipeable';
 
 const ArtistByIdMobile = () => {
+    const artist = useAppSelector(state => state.artistsReducer.artistById);
+    const currentLanguage = useAppSelector(state => state.languageReducer.language);
+    const [showSwipeForMore, setShowSwipeForMore] = useState(false);
+    const filteredEvents = filterFutureEvents(artist?.events, 3);
+    const profilePics = [`${ulrBack}${artist?.image?.url ?? ''}`]
+    const description = currentLanguage === 'EN' ? artist?.description_en : artist?.description_es;
+    const formattedDescription = formatDescription(description)
+    const minId = useAppSelector(state => state.artistsReducer.minId);
+    const maxId = useAppSelector(state => state.artistsReducer.maxId);
+
+    const router = useRouter();
+
+    const handlers = useSwipeable({
+        onSwipedRight: () => goToNextArtist(),
+        onSwipedLeft: () => goToPrevArtist(),
+        preventScrollOnSwipe: true,
+        trackMouse: true
+    });
+
+    const currentArtistId = artist?.id;
+    const goToPrevArtist = () => {
+        if (currentArtistId && minId && maxId) {
+            const prevArtistId = currentArtistId > minId ? currentArtistId - 1 : maxId;
+            router.replace(`/artists/${prevArtistId}`);
+        }
+    };
+
+    const goToNextArtist = () => {
+        if (currentArtistId && minId && maxId) {
+            const nextArtistId = currentArtistId < maxId ? currentArtistId + 1 : minId;
+            router.push(`/artists/${nextArtistId}`);
+        }
+    };
+
+    const socialLinks = artist ? [
+        { type: 'PRESS KIT', url: artist.press_kit || 'N/A' },
+        { type: 'ARTWORK REQ.', url: artist.artwork || 'N/A' },
+        { type: 'Facebook', url: artist.facebook || 'https://www.facebook.com/' },
+        { type: 'Twitter', url: artist.twitter || 'https://www.twitter.com/' },
+        { type: 'Instagram', url: artist.instagram || 'https://www.instagram.com/' },
+        { type: 'Soundcloud', url: artist.SoundCloud || 'https://www.soundcloud.com/' },
+        { type: 'Spotify', url: artist.spotify || 'https://www.spotify.com/' },
+        { type: 'Beatport', url: artist.beatport || 'https://www.beatport.com/' },
+    ] : [];
+
+    useEffect(() => {
+        const lastShownTime = localStorage.getItem('swipeForMoreLastShown');
+        const currentTime = new Date().getTime();
+        const twentyFourHours = 24 * 60 * 60 * 1000;
+
+        if (lastShownTime) {
+            const timeSinceLastShown = currentTime - parseInt(lastShownTime);
+            if (timeSinceLastShown > twentyFourHours) {
+                setShowSwipeForMore(true);
+                localStorage.setItem('swipeForMoreLastShown', currentTime.toString());
+            }
+        } else {
+            setShowSwipeForMore(true);
+            localStorage.setItem('swipeForMoreLastShown', currentTime.toString());
+        }
+    }, []);
+
     return (
-        <div className="relative">
+        <div {...handlers} className="relative">
             <ArtistImageCarousel
-                profilePics={[profilePic, profilePic2, profilePic]}
-                altText="Artist Name"
+                profilePics={profilePics.length > 0 ? profilePics : ['defaultProfilePic.jpg']}
+                altText={`${artist?.name} Profile`}
             />
             <div className='px-8'>
-                {[1, 2, 3].map(number => (
-                    <ArtistDates
-                        key={number}
-                        date="31·07·23"
-                        venue="Social Club Mallorca"
-                        location="Palma, España"
-                        customClassName='mt-9'
-                    />
-                ))}
+                {filteredEvents.length > 0 ? (
+                    filteredEvents.map((event) => (
+                        <ArtistDates
+                            key={event.id}
+                            date={event.date}
+                            venue={event.venue}
+                            location={event.location}
+                            customClassName='mt-6'
+                        />
+                    ))
+                ) : (
+                    <div className='mt-6'>
+                        <TitleSmall text={noEventsMessage[currentLanguage]} className='desk:text-[24px] desk:leading-[24px]' />
+                    </div>
+                )}
                 <div className='mt-7 mb-4'>
-                <ArtistSocialLinks links={socialLinks} gap={14}/>
+                    <ArtistSocialLinks links={socialLinks} gap={14} />
                 </div>
                 <ArtistInfo
-                    longInfo={largeInfo}
+                    longInfo={formattedDescription}
                     customClassName='mb-0'
                 />
             </div>
-            <SwipeForMore />
-        </div >
+            {showSwipeForMore && <SwipeForMore />}
+        </div>
     );
 };
 

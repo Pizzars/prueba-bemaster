@@ -38,7 +38,7 @@ const Navbar: React.FC<Props> = ({ position = 'top' }) => {
                     </Link>
                 ))}
                 <button onClick={() => toggleLanguage()} className="py-2 cursor-pointer">
-                    <TitleSmall text={`EN`} color={TextColors.white} className="cursor-pointer big:text-[14px]" />
+                    <TitleSmall text={currentLanguage} color={TextColors.white} className="cursor-pointer big:text-[14px]" />
                 </button>
             </div>
             <button onClick={() => console.log('Menu clicked!')} className="px-5 py-2 cursor-pointer sm:flex md:hidden pr-7">

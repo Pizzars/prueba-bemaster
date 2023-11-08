@@ -74,7 +74,7 @@ const ArtistImageCarousel: React.FC<ArtistImageCarouselProps> = ({
                         <img
                             src={typeof pic === 'string' ? pic : pic.src}
                             alt={altText}
-                            style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
+                            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                         />
 
                         <div
@@ -86,7 +86,7 @@ const ArtistImageCarousel: React.FC<ArtistImageCarouselProps> = ({
                             className="absolute inset-0"
                         ></div>
                         {!desktop && !byId && <div className="absolute bottom-8 left-8">
-                            <TitleMedium text={`Brisotti`} className='uppercase' color={TextColors.white} />
+                            <TitleMedium text={`${altText}`} className='uppercase' color={TextColors.white} />
                             <TextParagraph text={`WORLDWIDE`} className='uppercase' color={TextColors.white} />
                             <TextParagraph text={`EXCLUDING BRAZIL`} className='uppercase mt-0 pt-0' color={TextColors.white} />
                         </div>}

@@ -7,7 +7,7 @@ import TitleSmall from '../texts/TitleSmall'
 
 const SocialMediaLinks = () => {
   return (
-    <div className='flex w-full bg-white items-center pl-8'>
+    <div className='flex w-full bg-white items-center pl-8 z-50'>
       <div className='my-8 flex flex-column w-full flex-col items-start'>
         <div className='mb-8'>
           <LogoIcon size='22' />
