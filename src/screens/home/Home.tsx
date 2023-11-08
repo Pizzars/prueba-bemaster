@@ -15,7 +15,6 @@ const Home = () => {
   const dispatch = useAppDispatch();
   const [count, setCount] = useState(0);
   const [showHomeContent, setShowHomeContent] = useState(false);
-  const [language, setLanguage] = useState<'EN' | 'ES'>('EN');
   const pathname = usePathname()
 
   useEffect(() => {
@@ -90,7 +89,7 @@ const Home = () => {
           <div className="h-screen flex-1 items-center justify-center">
             <AnimatedText />
           </div>
-          {pathname !== '/' && <MenuSection language={language} toggleLanguage={setLanguage} />}
+          {pathname === '/' && <MenuSection />}
         </animated.div>
       )}
     </>

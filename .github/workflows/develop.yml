@@ -20,14 +20,10 @@ jobs:
       - name: Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
-          server: ${{ secrets.PROD_FTP_HOST }}
-          username: ${{ secrets.PROD_FTP_USERNAME }}
-          password: ${{ secrets.PROD_FTP_PASSWORD }}
-          local-dir: ./
-          exclude: |
-            **/.git*
-            **/.git*/**
-          server-dir: .ftp-users/beta/b4-24
+          server: ${{ secrets.TEST_FTP_HOST }}
+          username: ${{ secrets.TEST_FTP_USERNAME }}
+          password: ${{ secrets.TEST_FTP_PASSWORD }}
+          server-dir: /www/test/b4-24/
   ssh-trigger:
     name: start-server
 
@@ -42,9 +38,9 @@ jobs:
           host: ${{ secrets.TEST_FTP_HOST }}
           user: ${{ secrets.TEST_FTP_USERNAME }}
           pass: ${{ secrets.TEST_FTP_PASSWORD }}
-          port: ${{ secrets.TEST_FTP_PORT }}
+          # port: ${{ secrets.TEST_FTP_PORT }}
           # script: |
-          #     cd /.ftp-users/beta/b4-24
+          #     cd /www/test/b4-24/
           #     rm -r node_modules
           #     npm install
           #     npm run build
@@ -52,10 +48,10 @@ jobs:
           #     npx pm2 delete all
           #     npx pm2 start "next start -p 3002"
           script: |
-            cd .ftp-users/beta/b4-24
+            cd www/test/b4-24
             rm -r node_modules
             npm install
-            npm run build                      
-            npx pm2 stop all
-            npx pm2 delete all
-            npx pm2 start npm --name "next" -- run start -- -p 3002
+            npm run build
+            npx pm2 stop b4bookings
+            npx pm2 delete b4bookings
+            npx pm2 start npm --name "b4bookings" -- run start -- -p 3003

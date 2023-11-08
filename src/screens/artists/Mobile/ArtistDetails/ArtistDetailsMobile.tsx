@@ -9,9 +9,16 @@ import Link from 'next/link';
 import TextIcon, { TextIcons, SizeIcons } from 'src/screens/components/icons/TextIcon';
 import TitleSmall from 'src/screens/components/texts/TitleSmall';
 import { useAppSelector } from 'src/redux/hooks';
+import { noEventsMessage, ulrBack } from 'src/utils/consts';
+import { filterFutureEvents, formatDescription, truncateText } from 'src/utils/functions';
+import TitleHome from 'src/screens/components/texts/TitleHome';
 
 const ArtistDetailsMobile = () => {
     const selectedArtist = useAppSelector(state => state.artistsReducer.artist);
+    const currentLanguage = useAppSelector(state => state.languageReducer.language);
+    const filteredEvents = filterFutureEvents(selectedArtist?.events, 3);
+    const description = currentLanguage === 'EN' ? selectedArtist?.description_en : selectedArtist?.description_es;
+    const formattedDescription =  truncateText(formatDescription(description), 70)
 
     const socialLinks = [
         { type: 'PRESS KIT', url: selectedArtist?.press_kit || 'N/A' },
@@ -25,27 +32,34 @@ const ArtistDetailsMobile = () => {
     ];
 
     return (
-        <div className="relative py-8">
+        <div className="relative pt-6">
             <ArtistImage
-                profilePic={profilePic}
+                profilePic={`${ulrBack}${selectedArtist?.image?.url ?? ''}`}
                 altText="Artist Name"
             />
-            {[1, 2, 3].map(number => (
-                <ArtistDates
-                    key={number}
-                    date="31·07·23"
-                    venue="Social Club Mallorca"
-                    location="Palma, España"
-                />
-            ))}
+              {filteredEvents.length > 0 ? (
+                            filteredEvents.map((event) => (
+                                <ArtistDates
+                                    key={event.id}
+                                    date={event.date}
+                                    venue={event.venue}
+                                    location={event.location}
+                                    customClassName='mt-6'
+                                />
+                            ))
+                        ) : (
+                            <div className='mt-6'>
+                                <TitleSmall text={noEventsMessage[currentLanguage]} className='desk:text-[24px] desk:leading-[24px]' />
+                            </div>
+                        )}
             <Divider className='my-5' />
             <ArtistSocialLinks links={socialLinks} customClassName="optional-styles" gap={14} />
             <ArtistInfo
-                shortInfo="Mejor DJ de House de Brasil."
+                shortInfo={formattedDescription}
             />
             <div className='flex items-center mt-0.5 md:mt-2'>
                 <Link href={`artists/${selectedArtist?.id}`}>
-                    <TitleSmall text={`MORE`} className='uppercase md:opacity-80 big:text-[14px]' />
+                    <TitleSmall text={`MORE`} className='mt-1 uppercase md:opacity-80 big:text-[14px]' />
                 </Link>
                 <TextIcon
                     icon={TextIcons.RIGHT_ARROW}
@@ -53,9 +67,10 @@ const ArtistDetailsMobile = () => {
                     className='self-center opacity-40 ml-0.5 md:purple-app md:opacity-100 big:text-[14px]'
                 />
             </div>
-            <Divider className='my-5' />
+            <Divider className='my-3' />
         </div >
     );
 };
 
 export default ArtistDetailsMobile;
+

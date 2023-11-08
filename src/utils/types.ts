@@ -12,3 +12,11 @@ export interface SocialMediaItems {
     url: string;
     key: string;
 }
+
+export interface FormattedEvent {
+    date: string;
+    venue: string;
+    location: string;
+    id: number;
+  }
+  

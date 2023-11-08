@@ -9,12 +9,16 @@ interface typeReducer extends BaseReducerProps {
   artistById: ArtistModel | null;
   artistByIdStatus: StateRequest;
   signleStatus: StateRequest;
+  minId: number | null,
+  maxId: number | null,
 }
 
 const initialState: typeReducer = {
   data: null,
   artist: null,
   artistById: null,
+  minId: null,
+  maxId: null,
   artistByIdStatus: StateRequest.EMPTY,
   signleStatus: StateRequest.EMPTY,
   ...baseState,
@@ -47,7 +51,14 @@ export const artistsSlice = createSlice({
   reducers: {
     selectArtist: (state, action: PayloadAction<ArtistModel>) => {
       state.artist = action.payload;
+    },
+    setMinId: (state, action: PayloadAction<number>) => {
+      state.minId = action.payload;
+    },
+    setMaxId: (state, action: PayloadAction<number>) => {
+      state.maxId = action.payload;
     }
+
   },
   extraReducers: builder => {
     builder
@@ -70,9 +81,10 @@ export const artistsSlice = createSlice({
       .addCase(getArtistData.fulfilled, (state, action) => {
         state.artistById = action.payload;
         state.artistByIdStatus = action.payload ? StateRequest.SUCCESS : StateRequest.ERROR;
-      });
+      })
+
   },
 });
 
-export const { selectArtist } = artistsSlice.actions;
+export const { selectArtist, setMinId, setMaxId } = artistsSlice.actions;
 export default artistsSlice.reducer;

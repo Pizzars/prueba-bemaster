@@ -13,11 +13,19 @@ const SwipeForMore: React.FC = () => {
     });
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            setHide(true);
-        }, 2000);
+        const lastHideTime = localStorage.getItem('lastHideTime');
+        const currentTime = new Date().getTime();
 
-        return () => clearTimeout(timer);
+        if (lastHideTime && (currentTime - parseInt(lastHideTime)) < 24 * 60 * 60 * 1000) {
+            setHide(true);
+        } else {
+            const timer = setTimeout(() => {
+                setHide(true);
+                localStorage.setItem('lastHideTime', currentTime.toString());
+            }, 2000);
+
+            return () => clearTimeout(timer);
+        }
     }, []);
 
     return (
