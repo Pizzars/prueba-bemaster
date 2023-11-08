@@ -1780,6 +1780,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-infinite-scroller@^1.2.5":
+  "integrity" "sha512-fJU1jhMgoL6NJFrqTM0Ob7tnd2sQWGxe2ESwiU6FZWbJK/VO/Er5+AOhc+e2zbT0dk5pLygqctsulOLJ8xnSzw=="
+  "resolved" "https://registry.npmjs.org/@types/react-infinite-scroller/-/react-infinite-scroller-1.2.5.tgz"
+  "version" "1.2.5"
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-reconciler@^0.26.7":
   "integrity" "sha512-mBDYl8x+oyPX/VBb3E638N0B7xG+SPk/EAMcVPeexqus/5aTpTphQi0curhhshOqRrc9t6OPoJfEUkbymse/lQ=="
   "resolved" "https://registry.npmjs.org/@types/react-reconciler/-/react-reconciler-0.26.7.tgz"
@@ -1798,6 +1805,13 @@
   "integrity" "sha512-Qrwgl4NxNYH1oAJSJtlMGu95uaeMqrGiKzxwI90VvofBkJAj4GxcCAsJMZkwdR/qAxlm84YEXa8Fqu2xXk0arw=="
   "resolved" "https://registry.npmjs.org/@types/react-reconciler/-/react-reconciler-0.28.5.tgz"
   "version" "0.28.5"
+  dependencies:
+    "@types/react" "*"
+
+"@types/react-slick@^0.23.12":
+  "integrity" "sha512-WjY/wIjzgXCh6gXRZL75OC9n/Hn4MwKWI7ZJ4iA2OxavN9eKvkV5MPFjSgH5sofabq78Ucrl6u3okiBUNNIrDQ=="
+  "resolved" "https://registry.npmjs.org/@types/react-slick/-/react-slick-0.23.12.tgz"
+  "version" "0.23.12"
   dependencies:
     "@types/react" "*"
 
