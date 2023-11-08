@@ -89,3 +89,8 @@ export const itemsForNavbar: MenuItemForHome[] = [
     name: { EN: 'BOOK', ES: 'RESERVAR' }
   }
 ]
+
+export const noEventsMessage = {
+  EN: 'No upcoming events scheduled.',
+  ES: 'No hay eventos programados próximamente.'
+};

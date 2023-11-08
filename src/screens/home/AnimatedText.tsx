@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { useAppSelector } from 'src/redux/hooks';
 import ReactDOM from 'react-dom';
 import TitleSmaller from '../components/texts/TitleSmaller';
+import { usePathname } from 'next/navigation';
 
 const carouselTexts = ['WORLDWIDE', 'FOR EUROPE', 'FOR SPAIN', 'LATIN AMERICA', 'SPAIN & LATAM'];
 
@@ -16,6 +17,7 @@ const AnimatedText = () => {
     const artists = useAppSelector(state => state.artistsReducer.data);
     const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
     const containerRef = useRef(null);
+    const pathname = usePathname()
 
     useEffect(() => {
         const moveCursor = (e) => {
@@ -49,7 +51,7 @@ const AnimatedText = () => {
     }, []);
 
     const cursorComponent = (<div
-        className="fixed w-32 h-32 bg-white bg-opacity-10 rounded-full pointer-events-none z-50 pointer"
+        className="hidden desk:block fixed w-32 h-32 bg-white bg-opacity-10 rounded-full pointer-events-none z-50 pointer"
         style={{
             top: `${cursorPosition.y - 78}px`,
             left: `${cursorPosition.x - 64}px`,
@@ -67,7 +69,7 @@ const AnimatedText = () => {
                 {groupedArtists.map((group, index) => (
                     <TitleSection
                         key={index}
-                        text={group.map(artist => artist.name.toUpperCase()).join('. ')}
+                        text={group.map(artist => artist?.name.toUpperCase()).join('. ')}
                         color={TextColors.gray}
                         className='mb-2 whitespace-nowrap overflow-hidden ml-[-25%]'
                     />
@@ -106,7 +108,7 @@ const AnimatedText = () => {
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black z-20" />
             <div className="absolute bottom-0 z-30 text-white pl-4">
                 <Link href="/artists" className='flex flex-row customLink'>
-                    <TitleSection text={`ARTISTS`} color={TextColors.white}  className='textBesideIcon'/>
+                    <TitleSection text={`ARTISTS`} color={TextColors.white} className='textBesideIcon' />
                     <TextIcon icon={TextIcons.RIGHT_ARROW} size={SizeIcons.TITLE} color={TextColors.white} />
                 </Link>
                 <div className="overflow-hidden" style={{ width: '100%' }}>

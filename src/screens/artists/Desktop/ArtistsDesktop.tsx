@@ -8,8 +8,7 @@ import { ulrBack } from 'src/utils/consts';
 
 const ArtistsDesktop: React.FC = () => {
     const selectedArtist = useAppSelector(state => state.artistsReducer.artist);
-    console.log(`${ulrBack}${selectedArtist?.image?.url}`, 'photo')
-    console.log(`selectedArtist`, selectedArtist)
+    
     return (
         <div className='flex w-full'>
             <div className='flex h-screen w-full bg-black-app'>

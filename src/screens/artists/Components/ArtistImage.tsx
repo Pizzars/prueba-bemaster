@@ -20,12 +20,10 @@ const ArtistImage: React.FC<ArtistImageProps> = ({
         <>
 
             <div className={`relative h-[325px] w-full ${customClassName}`}>
-                <Image
+                <img
                     src={profilePic}
                     alt={altText}
-                    layout="fill"
-                    objectFit="cover"
-                    quality={100}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
                 <div
                     style={{

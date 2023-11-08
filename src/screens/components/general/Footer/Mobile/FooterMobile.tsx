@@ -9,7 +9,7 @@ const Footer = () => {
     return (
         <div className="flex flex-col w-full">
             <SocialMediaLinks />
-            <div className='flex flex-col bg-black-app py-4 px-10'>
+            <div className='flex flex-col bg-black-app py-4 px-10 z-50'>
                 <div className='flex flex-row '>
                     {footerButtonsInfo.map(button => (
                         <div key={button.key} className='mr-4 flex items-center'>

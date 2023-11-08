@@ -10,10 +10,17 @@ import TextParagraph from 'src/screens/components/texts/TextParagraph';
 import TitleSmall from 'src/screens/components/texts/TitleSmall';
 import { useAppSelector } from 'src/redux/hooks';
 import Link from 'next/link';
+import { filterFutureEvents, formatDescription, truncateText } from 'src/utils/functions';
+import TitleHome from 'src/screens/components/texts/TitleHome';
+import { noEventsMessage } from 'src/utils/consts';
 
 
 const ArtistDetails = () => {
     const selectedArtist = useAppSelector(state => state.artistsReducer.artist);
+    const currentLanguage = useAppSelector((state) => state.languageReducer.language);
+    const description = currentLanguage === 'EN' ? selectedArtist?.description_en : selectedArtist?.description_es
+    const formattedDescription = truncateText(formatDescription(description), 90)
+
 
     const socialLinks = [
         { type: 'PRESS KIT', url: selectedArtist?.press_kit || 'N/A' },
@@ -26,6 +33,8 @@ const ArtistDetails = () => {
         { type: 'Beatport', url: selectedArtist?.beatport || 'https://www.beatport.com/' }
     ];
 
+    const upcomingEvents = filterFutureEvents(selectedArtist?.events, 2);
+
     return (
         <div className="flex flex-col justify-between h-screen bg-white" style={{
             flexBasis: "28.125%"
@@ -35,25 +44,31 @@ const ArtistDetails = () => {
                 <TextParagraph text={'WORLDWIDE EXCLUDING BRAZIL'} className='uppercase mt-2 opacity-40 big:text-[14px]' />
             </div>
 
-            <Divider className='my-5' />
+            <Divider className='my-5 mx-8' />
             <ArtistSocialLinks links={socialLinks} customClassName="pl-8" />
 
-            <Divider className='mt-2' />
+            <Divider className='mt-2 mx-8' />
             <div className='pl-8'>
-                {[1, 2].map((number, index) => (
-                    <ArtistDates
-                        key={number}
-                        date="31·07·23"
-                        venue="Neopop festival"
-                        location="Viana Do Castelo, Portugal"
-                        index={index}
-                    />
-                ))}
+                {upcomingEvents.length > 0 ? (
+                    upcomingEvents.map((event) => (
+                        <ArtistDates
+                            key={event.id}
+                            date={event.date}
+                            venue={event.venue}
+                            location={event.location}
+                            customClassName='mt-6'
+                        />
+                    ))
+                ) : (
+                    <div>
+                        <TitleHome text={noEventsMessage[currentLanguage]} className='desk:text-[24px] desk:leading-[24px]' />
+                    </div>
+                )}
             </div>
-            <Divider className='my-3' />
-            <div className='pl-8'>
+            <Divider className='mt-3  mx-8' />
+            <div className='px-8'>
                 <ArtistInfo
-                    shortInfo={selectedArtist?.info || 'N/A'}
+                    shortInfo={formattedDescription}
                 />
                 <div className='flex items-center mt-0.5 md:mt-2'>
                     <Link href={`artists/${selectedArtist?.id}`}>
