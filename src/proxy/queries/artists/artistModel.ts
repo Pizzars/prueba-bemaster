@@ -5,7 +5,7 @@ import { PodcastModel } from '../podcasts/podcastModel'
 
 export class ArtistModel {
   id: number
-  name: string | null
+  name: string
   info: string | null
   territory: string | null
   image: ImageModel | null
@@ -34,7 +34,7 @@ export class ArtistModel {
 
   constructor(
     id: number,
-    name: string | null,
+    name: string,
     info: string | null,
     territory: string | null,
     image: ImageModel | null,
