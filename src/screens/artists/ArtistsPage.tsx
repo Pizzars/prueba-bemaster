@@ -1,18 +1,36 @@
-import React from 'react';
-import ArtistsMobile from './Mobile/ArtistsMobile';
-import ArtistsDesktop from './Desktop/ArtistsDesktop';
+'use client'
+import React, { useEffect } from 'react'
+import ArtistsMobile from './Mobile/ArtistsMobile'
+import ArtistsDesktop from './Desktop/ArtistsDesktop'
+import { getArtistsData } from 'src/redux/features/artistsSlice'
+import { useAppDispatch, useAppSelector } from 'src/redux/hooks'
 
 const ArtistsPage = () => {
-    return (
-        <div className="w-full">
-            <div className="sm:block md:hidden">
-                <ArtistsMobile />
-            </div>
-            <div className=" hidden md:block">
-                <ArtistsDesktop />
-            </div>
-        </div>
-    );
-};
+  const { data: artists, signleStatus } = useAppSelector(state => state.artistsReducer)
+  const dispatch = useAppDispatch()
 
-export default ArtistsPage;
+  useEffect(() => {
+    if (!artists) {
+      dispatch(getArtistsData())
+    }
+  }, [dispatch, artists, signleStatus])
+
+  return (
+    <div className='w-full'>
+      {!artists ? (
+        <p> Loading...</p>
+      ) : (
+        <>
+          <div className='sm:block md:hidden'>
+            <ArtistsMobile />
+          </div>
+          <div className=' hidden md:block'>
+            <ArtistsDesktop />
+          </div>
+        </>
+      )}
+    </div>
+  )
+}
+
+export default ArtistsPage

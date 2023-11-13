@@ -8,11 +8,12 @@ import styles from './Filter.module.css';
 
 interface FilterProps {
     title: string;
-    options: Array<{ title: string; option: string }>;
+    options: Array<{ title: string; option: string | { start: string, end: string } }>;
     className?: string;
+    onOptionSelected: (option: string | { start: string, end: string }) => void;
 }
 
-const Filter: React.FC<FilterProps> = ({ title, options, className }) => {
+const Filter: React.FC<FilterProps> = ({ title, options, className, onOptionSelected }) => {
     const [scrollY, setScrollY] = useState<number>(0);
     const [activeTab, setActiveTab] = useState<string>(options?.[0]?.option || 'WORLDWIDE');
     const navRef = useRef<HTMLDivElement>(null);
@@ -38,6 +39,7 @@ const Filter: React.FC<FilterProps> = ({ title, options, className }) => {
 
     const handleTabClick = (tab: string) => {
         setActiveTab(tab);
+        onOptionSelected(tab);
         if (navRef.current) {
             const activeElement = navRef.current.querySelector(`[data-tab="${tab}"]`);
             if (activeElement) {
