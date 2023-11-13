@@ -56,21 +56,6 @@ const AnimatedText = () => {
         left: `${cursorPosition.x - 64}px`,
         zIndex: 9999
       }}
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex(prevIndex => (prevIndex + 1) % carouselTexts.length)
-    }, 2000)
-    return () => clearInterval(interval)
-  }, [])
-
-  const cursorComponent = (
-    <div
-      className='hidden desk:block fixed w-32 h-32 bg-white bg-opacity-10 rounded-full pointer-events-none z-50 pointer'
-      style={{
-        top: `${cursorPosition.y - 78}px`,
-        left: `${cursorPosition.x - 64}px`,
-        zIndex: 9999
-      }}
     >
       <TitleSmaller
         text={'EXPLORE'}
