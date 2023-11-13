@@ -11,7 +11,7 @@ const optionPlaceholders = [
 const ArtistsMobile: React.FC = () => {
   return (
     <div className='flex w-full mb-4'>
-      <Filter title='Artists' options={optionPlaceholders} />
+      <Filter onOptionSelected={() => null} title='Artists' options={optionPlaceholders} />
       <ArtistsList />
     </div>
   )

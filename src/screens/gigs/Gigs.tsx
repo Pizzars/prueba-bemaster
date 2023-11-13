@@ -38,7 +38,7 @@ const Gigs: React.FC = () => {
       <Filter
         title='Gigs'
         options={optionPlaceholders}
-        onOptionSelected={handleOptionSelected}
+        onOptionSelected={handleOptionSelected as any}
         className='py-4'
       />
       <GigsList gigs={formattedEvents} />

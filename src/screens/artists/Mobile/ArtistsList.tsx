@@ -50,7 +50,7 @@ const ArtistsList: React.FC<Props> = ({ customClassname }) => {
 
   useEffect(() => {
     if (open && contentRef.current) {
-      setContentHeight(contentRef.current.scrollHeight)
+      setContentHeight((contentRef.current as any).scrollHeight)
     }
   }, [open, selectedArtist])
 
