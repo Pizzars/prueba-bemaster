@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useSpring, animated } from 'react-spring'
 import TextIcon, { TextIcons } from '../../components/icons/TextIcon'
 import TitleMedium from '../../components/texts/TitleMedium'
@@ -8,7 +8,6 @@ import { ArtistModel } from 'src/proxy/queries/artists/artistModel'
 import { useAppSelector } from 'src/redux/hooks'
 import { useDispatch } from 'react-redux'
 import { selectArtist } from 'src/redux/features/artistsSlice'
-import { useRouter } from 'next/navigation'
 
 interface Props {
   customClassname?: string
@@ -20,30 +19,26 @@ const ArtistsList: React.FC<Props> = ({ customClassname }) => {
   const dispatch = useDispatch()
   const [open, setOpen] = useState(false)
   const [nextArtist, setNextArtist] = useState<string | null>(null)
-  const router = useRouter()
+  const [contentHeight, setContentHeight] = useState(0)
+  const contentRef = useRef(null)
 
-  console.log(artists, 'artists')
-
-  if (!artists) {
-    router.push('/')
-    return null
-  }
+  if (!artists) return <></>
 
   const artistData = [...artists]
 
   const sortedArtists = [...artistData].sort((a, b) => (a.name || '').localeCompare(b.name || ''))
 
-    const props = useSpring({
-        minHeight: open ? 400 : 0,
-        opacity: open ? 1 : 0,
-        onRest: () => {
-            if (!open) {
-                setSelectedArtist(nextArtist);
-                setNextArtist(null);
-            }
-        },
-        reset: true,
-    });
+  const props = useSpring({
+    height: open ? contentHeight : 0,
+    opacity: open ? 1 : 0,
+    onRest: () => {
+      if (!open) {
+        setSelectedArtist(nextArtist as any)
+        setNextArtist(null)
+      }
+    },
+    reset: true
+  })
 
   useEffect(() => {
     if (selectedArtist !== null) {
@@ -52,6 +47,12 @@ const ArtistsList: React.FC<Props> = ({ customClassname }) => {
       setOpen(false)
     }
   }, [selectedArtist])
+
+  useEffect(() => {
+    if (open && contentRef.current) {
+      setContentHeight(contentRef.current.scrollHeight)
+    }
+  }, [open, selectedArtist])
 
   const handleArtistClick = (artist: ArtistModel) => {
     if (selectedArtist?.id === artist.id) {
@@ -89,7 +90,9 @@ const ArtistsList: React.FC<Props> = ({ customClassname }) => {
 
           {selectedArtist?.id === artist.id && (
             <animated.div style={props} className='overflow-hidden'>
-              <ArtistDetailsMobile />
+              <div ref={contentRef}>
+                <ArtistDetailsMobile />
+              </div>
             </animated.div>
           )}
         </div>
