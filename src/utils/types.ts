@@ -18,5 +18,16 @@ export interface FormattedEvent {
     venue: string;
     location: string;
     id: number;
-  }
-  
+}
+
+export interface FormattedGig extends FormattedEvent {
+    artist: string;
+}
+
+export interface WeekOption {
+    title: string;
+    option: {
+        start: string;
+        end: string;
+    };
+}
