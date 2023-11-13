@@ -1,8 +1,4 @@
-import React, {
-  useState,
-  useEffect
-  // useRef
-} from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useSpring, animated } from 'react-spring'
 import TitleSection from '../components/texts/TitleSection'
 import { TextColors } from 'src/utils/Colors'
@@ -12,7 +8,7 @@ import Link from 'next/link'
 import { useAppSelector } from 'src/redux/hooks'
 import ReactDOM from 'react-dom'
 import TitleSmaller from '../components/texts/TitleSmaller'
-// import { usePathname } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 
 const carouselTexts = ['WORLDWIDE', 'FOR EUROPE', 'FOR SPAIN', 'LATIN AMERICA', 'SPAIN & LATAM']
 
@@ -20,8 +16,6 @@ const AnimatedText = () => {
   const [index, setIndex] = useState(0)
   const artists = useAppSelector(state => state.artistsReducer.data)
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 })
-  //   const containerRef = useRef(null)
-  //   const pathname = usePathname()
 
   useEffect(() => {
     const moveCursor = (e: any) => {
@@ -78,7 +72,7 @@ const AnimatedText = () => {
         {groupedArtists.map((group, index) => (
           <TitleSection
             key={index}
-            text={group.map(artist => artist.name.toUpperCase()).join('. ')}
+            text={group.map(artist => artist?.name.toUpperCase()).join('. ')}
             color={TextColors.gray}
             className='mb-2 whitespace-nowrap overflow-hidden ml-[-25%]'
           />

@@ -94,3 +94,18 @@ export const noEventsMessage = {
   EN: 'No upcoming events scheduled.',
   ES: 'No hay eventos programados próximamente.'
 };
+
+export const gigsFallbackMessages = {
+  artist: {
+    EN: "Artist not available",
+    ES: "Artista no disponible",
+  },
+  venue: {
+    EN: "Venue not available",
+    ES: "Lugar no disponible",
+  },
+  location: {
+    EN: "Location not available",
+    ES: "Ubicación no disponible",
+  },
+};

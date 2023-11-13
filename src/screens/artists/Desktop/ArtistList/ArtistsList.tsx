@@ -18,11 +18,9 @@ const ArtistList = () => {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 })
 
   const artists = useAppSelector(state => state.artistsReducer.data)
-  const router = useRouter()
   const dispatch = useDispatch()
 
   if (!artists) {
-    router.push('/')
     return null
   }
 
