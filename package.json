@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "NODE_ENV=production node index.js",
     "lint": "next lint",
     "export": "next build && next export",
     "prepare": "husky install",
@@ -16,6 +16,7 @@
     "@splinetool/react-spline": "^2.2.6",
     "@splinetool/runtime": "^0.9.492",
     "axios": "^1.5.1",
+    "child_process": "^1.0.2",
     "query-string": "^8.1.0",
     "react": "^18.2.0",
     "react-calendar": "^4.6.1",

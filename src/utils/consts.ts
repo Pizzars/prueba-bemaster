@@ -1,6 +1,7 @@
 import { MenuItemForHome, SocialMediaItems } from './types'
 
-export const ulrBack = 'http://localhost:1337'
+// export const ulrBack = 'http://localhost:1337'
+export const ulrBack = 'https://b4backend.promokore.com'
 
 export const menuItemsForHome: MenuItemForHome[] = [
   {
@@ -93,4 +94,4 @@ export const itemsForNavbar: MenuItemForHome[] = [
 export const noEventsMessage = {
   EN: 'No upcoming events scheduled.',
   ES: 'No hay eventos programados próximamente.'
-};
+}
