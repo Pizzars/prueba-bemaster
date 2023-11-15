@@ -25,18 +25,21 @@ const initialState: typeReducer = {
 }
 
 export const getArtistsData = createAsyncThunk('get-artists', async () => {
-  const lastFetched = localStorage.getItem('lastArtistsFetchDate')
-  const currentTime = new Date().getTime()
-  if (lastFetched && currentTime - Number(lastFetched) <= 24 * 60 * 60 * 1000) {
-    const cachedData = localStorage.getItem('artistsData')
-    if (cachedData && cachedData !== 'null') {
-      return JSON.parse(cachedData)
+  if (typeof window !== 'undefined') {
+    const lastFetched = localStorage.getItem('lastArtistsFetchDate')
+    const currentTime = new Date().getTime()
+    if (lastFetched && currentTime - Number(lastFetched) <= 24 * 60 * 60 * 1000) {
+      const cachedData = localStorage.getItem('artistsData')
+      if (cachedData && cachedData !== 'null') {
+        return JSON.parse(cachedData)
+      }
     }
+    const data = await getArtists()
+    localStorage.setItem('artistsData', JSON.stringify(data))
+    localStorage.setItem('lastArtistsFetchDate', String(currentTime))
+    return data
   }
-  const data = await getArtists()
-  localStorage.setItem('artistsData', JSON.stringify(data))
-  localStorage.setItem('lastArtistsFetchDate', String(currentTime))
-  return data
+  return null
 })
 
 export const getArtistData = createAsyncThunk('get-artists/{id}', async (id: number) => {

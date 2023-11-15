@@ -1,5 +1,5 @@
 'use client'
-import StatusComponent from 'app/(pages)/redux-test/StatusComponent'
+import StatusComponent from './StatusComponent'
 import { useEffect } from 'react'
 import { getNewsData } from 'src/redux/features/newsSlice'
 import { useAppDispatch, useAppSelector } from 'src/redux/hooks'
