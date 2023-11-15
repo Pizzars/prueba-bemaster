@@ -2,9 +2,9 @@ import { MenuItemForHome, SocialMediaItems } from './types'
 
 // export const ulrBack = 'http://localhost:1337'
 // Produción
-// export const ulrBack = 'https://b4backend.promokore.com'
+export const ulrBack = 'https://b4backend.promokore.com'
 // Test local no SSL
-export const ulrBack = 'http://b4backendtest.promokore.com'
+// export const ulrBack = 'http://b4backendtest.promokore.com'
 
 export const menuItemsForHome: MenuItemForHome[] = [
   {
