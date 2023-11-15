@@ -37,7 +37,7 @@ export class AboutModel {
   }
 
   static fromJson(json: any): AboutModel {
-    const logos = json.logos ? ImageModel.listFromJson(json.logos.data) : []
+    // const logos = json.logos ? ImageModel.listFromJson(json.logos.data) : []
     return new AboutModel(
       json.title_en,
       json.title_es,
@@ -45,7 +45,8 @@ export class AboutModel {
       json.bio_es,
       json.email_press,
       json.email_inquiries,
-      logos,
+      // logos,
+      json.logos,
       new Date(json.createdAt),
       new Date(json.updatedAt),
       new Date(json.publishedAt)

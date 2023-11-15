@@ -53,19 +53,19 @@ export class EventModel {
   }
 
   static fromJson(data: any): EventModel {
-    const json = data.attributes
+    const json = data
     const id = data.id
 
-    const image = json.square_image ? ImageModel.fromJson(json.image.data) : null
+    // const image = json.square_image ? ImageModel.fromJson(json.image.data) : null
 
-    const podcasts =
-      json.podcasts && json.podcasts.data ? PodcastModel.listFromJson(json.podcasts.data) : []
+    const podcasts = json.podcasts && json.podcasts ? PodcastModel.listFromJson(json.podcasts) : []
 
     return new EventModel(
       id,
       json.artists || [],
       json.name,
-      image,
+      // image,
+      json.square_image,
       json.description_en,
       json.description_es,
       json.tags,

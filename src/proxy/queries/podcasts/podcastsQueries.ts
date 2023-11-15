@@ -3,14 +3,12 @@ import { PodcastModel } from './podcastModel'
 
 export const getPodcasts = async (page = 1): Promise<PodcastModel[] | null> => {
   const response = await getData(`podcasts`, {
-    'pagination[page]': page,
-    'sort[0]': 'createdAt:desc',
-    'populate[0]': 'square_image',
-    'populate[1]': 'banner_image',
-    'populate[2]': 'artists'
+    _start: (page - 1) * 20,
+    _sort: 'id:desc',
+    _limit: 20
   })
   if (response.statusCode == 200) {
-    const data = response.data.data
+    const data = response.data
     const list = PodcastModel.listFromJson(data as any)
     return list
   }

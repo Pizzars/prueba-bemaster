@@ -96,10 +96,10 @@ export class ArtistModel {
   }
 
   static fromJson(data: any): ArtistModel {
-    const json = data.attributes
+    const json = data
     const id = data.id
 
-    const image = json.image ? ImageModel.fromJson(json.image.data.attributes) : null
+    // const image = json.image ? ImageModel.fromJson(json.image.data.attributes) : null
 
     const podcasts =
       json.podcasts && json.podcasts.data ? PodcastModel.listFromJson(json.podcasts.data) : []
@@ -111,7 +111,8 @@ export class ArtistModel {
       json.name,
       json.info,
       json.territory,
-      image,
+      // image,
+      json.image,
       json.active,
       json.description_en,
       json.description_es,

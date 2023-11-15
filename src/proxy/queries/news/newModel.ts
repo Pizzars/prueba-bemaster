@@ -53,7 +53,7 @@ export class NewModel {
     const json = data.attributes
     const id = data.id
 
-    const images = json.images ? ImageModel.listFromJson(json.images.data) : []
+    // const images = json.images ? ImageModel.listFromJson(json.images.data) : []
 
     const podcasts =
       json.podcasts && json.podcasts.data ? PodcastModel.listFromJson(json.podcasts.data) : []
@@ -66,7 +66,8 @@ export class NewModel {
       json.featured,
       json.content_en,
       json.content_es,
-      images || [],
+      // images || [],
+      json.images || [],
       json.videos || [],
       artists || [],
       json.id_migration || 0,
