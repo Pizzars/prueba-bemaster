@@ -13,6 +13,7 @@ export enum TextIcons {
   DIAGONAL_ARROW = '↗',
   LEFT_ARROW = '←',
   RIGHT_ARROW = '→',
+  DOWN_ARROW = '↓',
   DOWN_TRIANGLE = '▽',
   CLOSE = '×',
   CALENDAR = 'CALENDAR',

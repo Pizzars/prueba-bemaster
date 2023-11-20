@@ -41,6 +41,7 @@ export const getArtistsData = createAsyncThunk('get-artists', async () => {
 
 export const getArtistData = createAsyncThunk('get-artists/{id}', async (id: number) => {
   const artist = await getArtist(id);
+  console.log(artist, 'artist')
   return artist
 });
 

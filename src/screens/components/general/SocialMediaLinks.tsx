@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import { TextColors } from 'src/utils/Colors'
 import { socialMediaLinks } from 'src/utils/consts'

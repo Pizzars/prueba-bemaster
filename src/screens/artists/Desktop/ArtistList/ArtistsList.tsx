@@ -100,7 +100,6 @@ const ArtistList = () => {
   return (
     <div
       className={`relative h-screen ${styles.artistListContainer} text-center ${styles.customCursor}`}
-      style={{ flexBasis: '28.125%' }}
     >
       <div
         ref={scrollContainerRef}
@@ -122,8 +121,8 @@ const ArtistList = () => {
         >
           <div className='flex items-center justify-center h-full'>
             <ul className='space-y-2 p-4 text-left'>
-              {items.map(item => (
-                <li key={item.id}>
+              {items.map((item) => (
+                <li key={item.id * Math.random()}>
                   <button
                     onMouseDown={e => {
                       e.stopPropagation()

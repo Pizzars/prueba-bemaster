@@ -69,7 +69,6 @@ const ArtistImageCarousel: React.FC<ArtistImageCarouselProps> = ({
       } h-[435px]`}
       ref={containerRef}
       onClick={onClick}
-      style={{ flexBasis: '43.75%' }}
     >
       <div className='relative flex-grow' onTouchStart={onTouchStart} onTouchMove={onTouchMove}>
         {profilePics.map((pic, index) => (
