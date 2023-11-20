@@ -1,10 +1,10 @@
 'use client'
-import React, { useState, useEffect } from 'react'
-import BasePage from 'src/screens/components/general/base/BasePage'
-import Home from 'src/screens/home/Home'
-import Spline from '@splinetool/react-spline'
-import './page.css'
-import Cookies from 'src/screens/components/general/Cookies'
+import React, { useState, useEffect } from 'react';
+import BasePage from 'src/screens/components/general/base/BasePage';
+import Home from 'src/screens/home/Home';
+import Spline from '@splinetool/react-spline';
+import './page.css';
+import Cookies from 'src/screens/components/general/Cookies';
 
 const HomePage = () => {
   const [isSplineLoaded, setIsSplineLoaded] = useState(false)

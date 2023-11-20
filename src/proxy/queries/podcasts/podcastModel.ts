@@ -75,24 +75,26 @@ export class PodcastModel {
   }
 
   static fromJson(data: any): PodcastModel {
-    const json = data.attributes
+    const json = data
     const id = data.id
 
-    const square_image = json.square_image
-      ? ImageModel.fromJson(json.square_image.data.attributes)
-      : null
-    const banner_image = json.banner_image
-      ? ImageModel.fromJson(json.banner_image.data.attributes)
-      : null
+    // const square_image = json.square_image
+    //   ? ImageModel.fromJson(json.square_image.data.attributes)
+    //   : null
+    // const banner_image = json.banner_image
+    //   ? ImageModel.fromJson(json.banner_image.data.attributes)
+    //   : null
 
-    const artists = json.artists ? ArtistModel.listFromJson(json.artists.data) : null
+    const artists = json.artists ? ArtistModel.listFromJson(json.artists) : null
 
     return new PodcastModel(
       id,
       json.title,
       json.subtitle,
-      square_image,
-      banner_image,
+      // square_image,
+      // banner_image,
+      json.square_image,
+      json.banner_image,
       json.active,
       json.description_en,
       json.url,
@@ -106,8 +108,8 @@ export class PodcastModel {
       json.id_migration || 0,
       json.description_es,
       json.tags,
-      json.events || [],
-      json.news || []
+      [],
+      []
     )
   }
 }
