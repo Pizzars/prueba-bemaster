@@ -16,7 +16,8 @@ interface Params {
 }
 const optionPlaceholders = [
   { title: 'ENGLISH', option: 'es' },
-  { title: 'ESPAÑOL', option: 'en' }
+  { title: 'ESPAÑOL', option: 'en' },
+  { title: 'FRENCH', option: 'FR' }
 ]
 
 const BookingRequest = ({ updateData }: Params) => {
