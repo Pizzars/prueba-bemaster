@@ -1,34 +1,65 @@
-import React from 'react';
-import { TextColors } from 'src/utils/Colors';
-import { footerButtonsInfo } from 'src/utils/consts';
-import TextIcon, { TextIcons, SizeIcons } from '../../../icons/TextIcon';
-import TextParagraph from '../../../texts/TextParagraph';
-import SocialMediaLinks from '../../SocialMediaLinks';
+import React from 'react'
+import { TextColors } from 'src/utils/Colors'
+import { footerButtonsInfo } from 'src/utils/consts'
+import TextIcon, { TextIcons, SizeIcons } from '../../../icons/TextIcon'
+import TextParagraph from '../../../texts/TextParagraph'
+import SocialMediaLinks from '../../SocialMediaLinks'
 
 const Footer = () => {
-    return (
-        <div className="flex flex-col w-full">
-            <SocialMediaLinks />
-            <div className='flex flex-col bg-black-app py-4 px-10 z-50'>
-                <div className='flex flex-row '>
-                    {footerButtonsInfo.map(button => (
-                        <div key={button.key} className='mr-4 flex items-center'>
-                            <a href={button.to} id={button.key} className='flex items-center'>
-                                <TextParagraph text={button.name['EN']} color={TextColors.white} className='opacity-40' />
-                                <TextIcon icon={TextIcons.RIGHT_ARROW} size={SizeIcons.TEXT_PARAGRAPH} color={TextColors.white} className='opacity-40' />
-                            </a>
-                        </div>
-                    ))}
-                </div>
-                <TextParagraph text={`© 2023 B4BOOKINGS`} color={TextColors.white} className='opacity-40' />
-                <TextParagraph text={`ALL RIGHTS RESERVED`} color={TextColors.white} className='opacity-40' />
-                <a href={'https://www.promokore.com'} target="_blank" rel="noopener noreferrer" className='flex items-center content-center'>
-                    <TextParagraph text={"WEBSITE BY PROMOKORE"} color={TextColors.white} className='opacity-40' />
-                    <TextIcon icon={TextIcons.DIAGONAL_ARROW} size={SizeIcons.TEXT_PARAGRAPH} color={TextColors.white} className='opacity-40' />
-                </a>
+  return (
+    <div className='flex flex-col w-full'>
+      <SocialMediaLinks />
+      <div className='flex flex-col bg-black-app py-4 px-10 z-50'>
+        <div className='flex flex-row '>
+          {footerButtonsInfo.map(button => (
+            <div key={button.key} className='mr-4 flex items-center'>
+              <a href={button.to} id={button.key} className='flex items-center'>
+                <TextParagraph
+                  text={button.name['EN']}
+                  color={TextColors.white}
+                  className='opacity-40 mobile:text-[14px] mobile:leading-[19.6px]'
+                />
+                <TextIcon
+                  icon={TextIcons.RIGHT_ARROW}
+                  size={SizeIcons.TEXT_PARAGRAPH}
+                  color={TextColors.white}
+                  className='opacity-40 ml-1 mobile:text-[14px] mobile:leading-[19.6px]'
+                />
+              </a>
             </div>
+          ))}
         </div>
-    );
-};
+        <TextParagraph
+          text={`© 2023 B4BOOKINGS`}
+          color={TextColors.white}
+          className='opacity-40 mobile:text-[14px] mobile:leading-[19.6px]'
+        />
+        <TextParagraph
+          text={`ALL RIGHTS RESERVED`}
+          color={TextColors.white}
+          className='opacity-40 mobile:text-[14px] mobile:leading-[19.6px]'
+        />
+        <a
+          href={'https://www.promokore.com'}
+          target='_blank'
+          rel='noopener noreferrer'
+          className='inline-flex'
+        >
+          <TextParagraph
+            text={'WEBSITE BY PROMOKORE'}
+            color={TextColors.white}
+            className='opacity-40 mobile:text-[14px] mobile:leading-[19.6px]'
+          />
+          <TextIcon
+            icon={TextIcons.DIAGONAL_ARROW}
+            size={SizeIcons.TEXT_PARAGRAPH}
+            color={TextColors.white}
+            className='opacity-40 mobile:text-[18px] mobile:leading-[19.6px] mt-0.5'
+          />
+        </a>
+      </div>
+    </div>
+  )
+}
 
-export default Footer;
+export default Footer

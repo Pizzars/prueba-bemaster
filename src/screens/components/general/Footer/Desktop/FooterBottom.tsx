@@ -21,7 +21,7 @@ const FooterBottom = () => {
 
             <a href={'https://www.promokore.com'} target="_blank" rel="noopener noreferrer" className='flex'>
                 <TextParagraph text={"WEBSITE BY PROMOKORE"} color={TextColors.white} className='desk:text-[14px]'/>
-                <TextIcon icon={TextIcons.DIAGONAL_ARROW} size={SizeIcons.TEXT_PARAGRAPH} color={TextColors.white} className='ml-2 desk:text-[14px]' />
+                <TextIcon icon={TextIcons.DIAGONAL_ARROW} size={SizeIcons.TEXT_PARAGRAPH} color={TextColors.white} className='ml-1 desk:text-[18px] desk:leading-[21.6px]' />
             </a>
         </section>
     )

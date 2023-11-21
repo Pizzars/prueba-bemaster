@@ -46,7 +46,7 @@ const FooterCenter = () => {
                             <TextIcon
                                 icon={TextIcons.DIAGONAL_ARROW}
                                 size={SizeIcons.TITLE_MEDIUM}
-                                className='ml-2 self-center desk:text-[24px] desk:leading-[28.8px]'
+                                className='ml-1 self-center desk:text-[32px] desk:leading-[35.2px]'
                                 color={TextColors.white}
                             />
                         </a>
