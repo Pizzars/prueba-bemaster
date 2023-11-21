@@ -7,8 +7,8 @@ interface LanguageState {
 }
 
 const initialState: LanguageState = {
-  language:
-    typeof window !== 'undefined' ? (localStorage.getItem('language') as Language) || 'EN' : 'EN'
+  language: 'EN'
+  // typeof window !== 'undefined' ? (localStorage.getItem('language') as Language) || 'EN' : 'EN'
 }
 
 export const languageSlice = createSlice({

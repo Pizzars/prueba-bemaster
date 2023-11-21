@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSpring, animated } from 'react-spring'
 import TitleSection from '../components/texts/TitleSection'
 import { TextColors } from 'src/utils/Colors'
@@ -8,7 +8,6 @@ import Link from 'next/link'
 import { useAppSelector } from 'src/redux/hooks'
 import ReactDOM from 'react-dom'
 import TitleSmaller from '../components/texts/TitleSmaller'
-import { usePathname } from 'next/navigation'
 
 const carouselTexts = ['WORLDWIDE', 'FOR EUROPE', 'FOR SPAIN', 'LATIN AMERICA', 'SPAIN & LATAM']
 
@@ -18,14 +17,16 @@ const AnimatedText = () => {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 })
 
   useEffect(() => {
-    const moveCursor = (e: any) => {
-      setCursorPosition({ x: e.clientX, y: e.clientY })
+    if (typeof window !== 'undefined') {
+      const moveCursor = (e: any) => {
+        setCursorPosition({ x: e.clientX, y: e.clientY })
+      }
+      window.addEventListener('mousemove', moveCursor)
+      return () => {
+        window.removeEventListener('mousemove', moveCursor)
+      }
     }
-    window.addEventListener('mousemove', moveCursor)
-    return () => {
-      window.removeEventListener('mousemove', moveCursor)
-    }
-  }, [])
+  }, [window])
 
   const groupedArtists = []
 

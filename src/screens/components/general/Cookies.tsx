@@ -8,15 +8,19 @@ const Cookies = () => {
   const [showCookieConsent, setShowCookieConsent] = useState(true)
 
   useEffect(() => {
-    const consent = localStorage.getItem('cookieConsent')
-    if (consent === 'accepted') {
-      setShowCookieConsent(false)
+    if (typeof window !== 'undefined') {
+      const consent = localStorage.getItem('cookieConsent')
+      if (consent === 'accepted') {
+        setShowCookieConsent(false)
+      }
     }
-  }, [])
+  }, [window])
 
   const handleConsent = () => {
-    localStorage.setItem('cookieConsent', 'accepted')
-    setShowCookieConsent(false)
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('cookieConsent', 'accepted')
+      setShowCookieConsent(false)
+    }
   }
 
   if (!showCookieConsent) {

@@ -1,5 +1,6 @@
 import React from 'react'
 import FilterAlt from 'src/screens/components/general/Filter/FilterAlt'
+import OptionsFilter, { optionColors } from 'src/screens/components/general/Filter/OptionsFilter'
 import { TextTags } from 'src/screens/components/texts/TextBase'
 import TextParagraph from 'src/screens/components/texts/TextParagraph'
 import TitleSection from 'src/screens/components/texts/TitleSection'
@@ -42,6 +43,15 @@ const BaseStep = ({
             className='bg-form-mobile uppercase desk:hidden'
           />
           <div className='bg-white'>
+            {options && (
+              <div className='px-8 flex justify-start'>
+                <OptionsFilter
+                  options={options}
+                  color={optionColors.black}
+                  className='desk:text-little'
+                />
+              </div>
+            )}
             {description ? (
               <div className={`${options ? 'pt-[15rem]' : 'pt-[9rem]'} desk:pt-8`}>
                 <TextParagraph text={description} className='mx-8 my-4' />

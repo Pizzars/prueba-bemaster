@@ -16,11 +16,13 @@ const DownloadModal: React.FC<DownloadModalProps> = ({ isOpen, onClose, download
   const [errorMessage, setErrorMessage] = useState('')
 
   const handleDownload = () => {
-    if (password === 'bforbooking2023') {
-      window.location.href = downloadUrl
-    } else {
-      setErrorMessage('Incorrect password')
-      setTimeout(() => setErrorMessage(''), 1000)
+    if (typeof window !== 'undefined') {
+      if (password === 'bforbooking2023') {
+        window.location.href = downloadUrl
+      } else {
+        setErrorMessage('Incorrect password')
+        setTimeout(() => setErrorMessage(''), 1000)
+      }
     }
   }
 

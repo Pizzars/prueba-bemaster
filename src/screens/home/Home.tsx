@@ -78,7 +78,7 @@ const Home = () => {
 
   return (
     <>
-      {!showHomeContent ? (
+      {true ? (
         <div className='h-screen bg-gray-100 flex items-end z-20'>
           <TitleHome text={count.toString()} className='ml-10 mb-8' />
         </div>

@@ -13,10 +13,14 @@ import { noEventsMessage, ulrBack } from 'src/utils/consts'
 import { filterFutureEvents, formatDescription } from 'src/utils/functions'
 import { useRouter } from 'next/navigation'
 import { useSpring, animated } from 'react-spring'
+import { ArtistModel } from 'src/proxy/queries/artists/artistModel'
 
-const ArtistByIdDesktop = () => {
+interface Params {
+  artist: ArtistModel
+}
+const ArtistByIdDesktop = ({ artist }: Params) => {
   const [direction, setDirection] = useState('next')
-  const artist = useAppSelector(state => state.artistsReducer.artistById)
+  // const artist = useAppSelector(state => state.artistsReducer.artistById)
   const minId = useAppSelector(state => state.artistsReducer.minId)
   const maxId = useAppSelector(state => state.artistsReducer.maxId)
   const currentLanguage = useAppSelector(state => state.languageReducer.language)
@@ -48,7 +52,7 @@ const ArtistByIdDesktop = () => {
   }
 
   const goToNextArtist = () => {
-    setDirection('next');
+    setDirection('next')
     if (currentArtistId && minId && maxId) {
       const nextArtistId = currentArtistId < maxId ? currentArtistId + 1 : minId
       router.push(`/artists/${nextArtistId}`)
@@ -64,8 +68,8 @@ const ArtistByIdDesktop = () => {
     setSlideAnimation({
       from: { transform: `translate3d(${direction === 'next' ? '100%' : '-100%'},0,0)` },
       to: { transform: 'translate3d(0%,0,0)' }
-    });
-  }, [currentArtistId, direction]);
+    })
+  }, [currentArtistId, direction])
 
   if (!artist) return null
 

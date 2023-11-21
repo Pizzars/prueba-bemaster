@@ -4,11 +4,35 @@ import { TextColors } from 'src/utils/Colors'
 import TitleMedium from '../../texts/TitleMedium'
 import styles from './Filter.module.css'
 
-interface Params {
-  options?: Array<{ title: string; option: string }>
+export interface OptionColor {
+  bgActive: string
+  bgInactive: string
+  textActive: string
+  textInactive: string
 }
 
-const OptionsFilter = ({ options }: Params) => {
+export const optionColors = {
+  white: {
+    bgActive: 'bg-white',
+    bgInactive: 'bg-white/30',
+    textActive: 'text-white',
+    textInactive: 'text-white/30'
+  },
+  black: {
+    bgActive: 'bg-black',
+    bgInactive: 'bg-black/30',
+    textActive: 'text-black',
+    textInactive: 'text-black/30'
+  }
+}
+
+interface Params {
+  options: Array<{ title: string; option: string }>
+  color?: OptionColor
+  className?: string
+}
+
+const OptionsFilter = ({ options, color = optionColors.white, className = '' }: Params) => {
   // const [activeTab, setActiveTab] = useState<string>(options?.[0]?.option || 'ENGLISH')
   const [activeTab, setActiveTab] = useState(0)
 
@@ -45,7 +69,7 @@ const OptionsFilter = ({ options }: Params) => {
       className={`pt-6 pb-2 flex flex-col overflow-x-auto whitespace-nowrap ${styles.scrollDiv}`}
       id='scroll-container'
     >
-      <div className={`pt-6 pb-2 flex whitespace-nowrap `} id='options-container'>
+      <div className={`pt-6 pb-2 desk:pb-0 flex whitespace-nowrap `} id='options-container'>
         {options?.map(({ title, option }, i) => {
           return (
             <div
@@ -60,16 +84,16 @@ const OptionsFilter = ({ options }: Params) => {
                   text={title}
                   color={TextColors.white}
                   className={`uppercase cursor-pointer transition-all duration-500 ${
-                    activeTab === i ? 'text-white' : 'text-white/30'
-                  }`}
+                    activeTab === i ? color.textActive : color.textInactive
+                  } ${className}`}
                 />
               </div>
             </div>
           )
         })}
       </div>
-      <div className='bg-white/30 h-1 w-full' id='line-container'>
-        <div className='bg-white h-1 transition-all duration-500' id='line'></div>
+      <div className={`${color.bgInactive} h-1 w-full`} id='line-container'>
+        <div className={`${color.bgActive} h-1 transition-all duration-500`} id='line'></div>
       </div>
     </div>
   )

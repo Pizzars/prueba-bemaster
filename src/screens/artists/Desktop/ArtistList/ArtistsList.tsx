@@ -4,7 +4,6 @@ import styles from './ArtistsList.module.css'
 import TitleSmall from 'src/screens/components/texts/TitleSmall'
 import InfiniteScroll from 'react-infinite-scroller'
 import { useAppSelector } from 'src/redux/hooks'
-import { useRouter } from 'next/navigation'
 import { ArtistModel } from 'src/proxy/queries/artists/artistModel'
 import { selectArtist } from 'src/redux/features/artistsSlice'
 import { useDispatch } from 'react-redux'
@@ -121,7 +120,7 @@ const ArtistList = () => {
         >
           <div className='flex items-center justify-center h-full'>
             <ul className='space-y-2 p-4 text-left'>
-              {items.map((item) => (
+              {items.map(item => (
                 <li key={item.id * Math.random()}>
                   <button
                     onMouseDown={e => {

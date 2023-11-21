@@ -11,10 +11,16 @@ import TitleSmall from 'src/screens/components/texts/TitleSmall'
 import { useRouter } from 'next/navigation'
 import { useSwipeable } from 'react-swipeable'
 import { useSpring, animated } from 'react-spring'
+import { ArtistModel } from 'src/proxy/queries/artists/artistModel'
 
-const ArtistByIdMobile = () => {
+interface Params {
+  artist: ArtistModel
+}
+
+const ArtistByIdMobile = ({ artist }: Params) => {
   const [direction, setDirection] = useState('next')
-  const artist = useAppSelector(state => state.artistsReducer.artistById)
+  // const artist = useAppSelector(state => state.artistsReducer.artistById)
+  // const artist = useAppSelector(state => state.artistsReducer.artistById)
   const currentLanguage = useAppSelector(state => state.languageReducer.language)
   const [showSwipeForMore, setShowSwipeForMore] = useState(false)
   const filteredEvents = filterFutureEvents(artist?.events, 3)
@@ -81,21 +87,23 @@ const ArtistByIdMobile = () => {
     : []
 
   useEffect(() => {
-    const lastShownTime = localStorage.getItem('swipeForMoreLastShown')
-    const currentTime = new Date().getTime()
-    const twentyFourHours = 24 * 60 * 60 * 1000
+    if (typeof window !== 'undefined') {
+      const lastShownTime = localStorage.getItem('swipeForMoreLastShown')
+      const currentTime = new Date().getTime()
+      const twentyFourHours = 24 * 60 * 60 * 1000
 
-    if (lastShownTime) {
-      const timeSinceLastShown = currentTime - parseInt(lastShownTime)
-      if (timeSinceLastShown > twentyFourHours) {
+      if (lastShownTime) {
+        const timeSinceLastShown = currentTime - parseInt(lastShownTime)
+        if (timeSinceLastShown > twentyFourHours) {
+          setShowSwipeForMore(true)
+          localStorage.setItem('swipeForMoreLastShown', currentTime.toString())
+        }
+      } else {
         setShowSwipeForMore(true)
         localStorage.setItem('swipeForMoreLastShown', currentTime.toString())
       }
-    } else {
-      setShowSwipeForMore(true)
-      localStorage.setItem('swipeForMoreLastShown', currentTime.toString())
     }
-  }, [])
+  }, [window])
 
   return (
     <animated.div style={slideAnimation} {...handlers} className='relative'>

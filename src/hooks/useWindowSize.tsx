@@ -17,19 +17,21 @@ const useWindowSize = (): WindowSize => {
   })
 
   useEffect(() => {
-    const handleResize = () => {
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight
-      })
-    }
+    if (typeof window !== 'undefined') {
+      const handleResize = () => {
+        setWindowSize({
+          width: window.innerWidth,
+          height: window.innerHeight
+        })
+      }
 
-    window.addEventListener('resize', handleResize)
-    handleResize()
-    return () => {
-      window.removeEventListener('resize', handleResize)
+      window.addEventListener('resize', handleResize)
+      handleResize()
+      return () => {
+        window.removeEventListener('resize', handleResize)
+      }
     }
-  }, [])
+  }, [window])
 
   return { width: windowSize.width, height: windowSize.height }
 }

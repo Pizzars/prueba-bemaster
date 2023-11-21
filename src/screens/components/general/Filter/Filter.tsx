@@ -27,13 +27,17 @@ const Filter: React.FC<FilterProps> = ({ title, options, className, onOptionSele
   })
 
   const handleScroll = () => {
-    setScrollY(window.scrollY)
+    if (typeof window !== 'undefined') {
+      setScrollY(window.scrollY)
+    }
   }
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', handleScroll)
+      return () => {
+        window.removeEventListener('scroll', handleScroll)
+      }
     }
   }, [])
 
