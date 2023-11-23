@@ -14,7 +14,7 @@ const Cookies = () => {
         setShowCookieConsent(false)
       }
     }
-  }, [window])
+  }, [])
 
   const handleConsent = () => {
     if (typeof window !== 'undefined') {

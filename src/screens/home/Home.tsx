@@ -61,7 +61,7 @@ const Home = () => {
       }
       window.requestAnimationFrame(animateCount)
     }
-  }, [dispatch, artistsStatus, window])
+  }, [dispatch, artistsStatus])
 
   useEffect(() => {
     if (count === 99 && artistsStatus === StateRequest.SUCCESS) {
