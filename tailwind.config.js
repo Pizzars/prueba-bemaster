@@ -24,6 +24,7 @@ module.exports = {
         'purple-app': PURPLE
       },
       screens: {
+        'mobile': {'max': '750px'},
         desk: '1023px',
         big: '1401px',
         super: '1920px'

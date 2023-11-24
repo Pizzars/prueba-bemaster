@@ -19,7 +19,7 @@ const SocialMediaLinks = () => {
         </div>
         <div className='flex flex-col space-y-4'>
           {socialMediaLinks.map(social => (
-            <div className='inline-flex items-center' key={social.name}>
+            <div className='inline-flex' key={social.name}>
               <a
                 href={social.url}
                 target='_blank'
@@ -30,7 +30,7 @@ const SocialMediaLinks = () => {
                 <TextIcon
                   icon={TextIcons.DIAGONAL_ARROW}
                   size={SizeIcons.TITLE_MEDIUM}
-                  className='ml-2'
+                  className='mb-0 ml-1 mt-1 mobile:text-[18px] mobile:leading-[19.8px]'
                 />
               </a>
             </div>
