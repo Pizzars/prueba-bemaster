@@ -2,8 +2,7 @@
 module.exports = {
   reactStrictMode: true,
   experimental: {
-    appDir: true,
-    prerender: false
+    // appDir: true
   },
   images: {
     domains: ['localhost'],

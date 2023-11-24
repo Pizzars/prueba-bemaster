@@ -25,5 +25,6 @@
     "no-magic-numbers": "error", // Marca el uso de números mágicos (números literales sin explicación) como un error
     "no-var": "error", // Marca el uso de var en lugar de const o let como un error
     "object-shorthand": 1 // Advierte sobre el uso de notación abreviada de objetos cuando es posible
-  }
+  },
+  "plugins": ["next"]
 }
