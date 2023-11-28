@@ -13,6 +13,7 @@ interface Params {
   title: string
   alt?: string
   active?: boolean
+  hideButton?: boolean
   description?: string
 }
 const BaseStep = ({
@@ -22,11 +23,12 @@ const BaseStep = ({
   title,
   alt,
   active = true,
+  hideButton = false,
   description
 }: Params) => {
   return (
-    <div className='flex justify-between desk:p-16 big:p-24 '>
-      <div className='flex-col hidden desk:flex'>
+    <div className='flex justify-between desk:p-16 big:p-24'>
+      <div className='flex-col hidden desk:flex sticky top-0'>
         <TitleSmall text={alt} color={TextColors.white} />
         <TitleSection
           text={title}
@@ -60,19 +62,21 @@ const BaseStep = ({
               <div className='h-[9rem] desk:h-0'></div>
             )}
             {children}
-            <div className='h-16 bg-yellow-app w-full flex justify-end px-8 items-center'>
-              <button
-                className='bg-none'
-                disabled={!active}
-                onClick={active ? onClick : () => null}
-              >
-                <TitleSmall
-                  text='NEXT'
-                  className={`${active ? '' : 'opacity-50'}`}
-                  tag={TextTags.SPAN}
-                />
-              </button>
-            </div>
+            {!hideButton && (
+              <div className='h-16 bg-yellow-app w-full flex justify-end px-8 items-center'>
+                <button
+                  className='bg-none'
+                  disabled={!active}
+                  onClick={active ? onClick : () => null}
+                >
+                  <TitleSmall
+                    text='NEXT'
+                    className={`${active ? '' : 'opacity-50'}`}
+                    tag={TextTags.SPAN}
+                  />
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
