@@ -14,7 +14,7 @@ const HomePage = () => {
           Cargando...
         </div>
       )} */}
-      <div className={`fixed inset-0 z-0`}>
+      <div className={`fixed inset-0 -z-10`}>
         <Spline />
       </div>
       {/* {isSplineLoaded && ( */}
