@@ -145,7 +145,7 @@
   }
 }
 
-.custom-gradient {
+/* .custom-gradient {
   background: linear-gradient(-45deg, #225e9e, #712c69, #23a6d5, #23d5ab);
   background-size: 400% 400%;
   animation: gradient 10s ease infinite;
@@ -161,4 +161,4 @@
   100% {
     background-position: 0% 50%;
   }
-}
+} */
