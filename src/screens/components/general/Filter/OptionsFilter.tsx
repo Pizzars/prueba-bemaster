@@ -2,7 +2,6 @@
 import { useEffect, useState } from 'react'
 import { TextColors } from 'src/utils/Colors'
 import TitleMedium from '../../texts/TitleMedium'
-import styles from './Filter.module.css'
 
 export interface OptionColor {
   bgActive: string
@@ -30,9 +29,15 @@ interface Params {
   options: Array<{ title: string; option: string }>
   color?: OptionColor
   className?: string
+  step?: number
 }
 
-const OptionsFilter = ({ options, color = optionColors.white, className = '' }: Params) => {
+const OptionsFilter = ({
+  options,
+  color = optionColors.white,
+  className = '',
+  step = 24
+}: Params) => {
   // const [activeTab, setActiveTab] = useState<string>(options?.[0]?.option || 'ENGLISH')
   const [activeTab, setActiveTab] = useState(0)
 
@@ -46,7 +51,7 @@ const OptionsFilter = ({ options, color = optionColors.white, className = '' }: 
       lineContainer.style.width = `${container.offsetWidth}px`
       const option = list[tab] as any
       if (option) {
-        const pos = (option.offsetLeft ?? 0) - 24
+        const pos = (option.offsetLeft ?? 0) - step
         const size = (option as any).offsetWidth ?? 0
         line.style.width = `${size}px`
         line.style.marginLeft = `${pos}px`
@@ -66,10 +71,13 @@ const OptionsFilter = ({ options, color = optionColors.white, className = '' }: 
 
   return (
     <div
-      className={`pt-6 pb-2 flex flex-col overflow-x-auto whitespace-nowrap ${styles.scrollDiv}`}
+      className={`pt-6 desk:pt-0 pb-2 flex flex-col overflow-x-auto desk:overflow-x-visible whitespace-nowrap`}
       id='scroll-container'
     >
-      <div className={`pt-6 pb-2 desk:pb-0 flex whitespace-nowrap `} id='options-container'>
+      <div
+        className={`pt-6 desk:pt-0 pb-2 desk:pb-0 flex whitespace-nowrap `}
+        id='options-container'
+      >
         {options?.map(({ title, option }, i) => {
           return (
             <div

@@ -54,32 +54,34 @@ const BookingRequest = () =>
     // const emptyArtist = 'MAKE A SELECTION'
     // const options = [emptyArtist, ...names]
 
-    const callUpdateData = () => {
-      // updateData({ booking: form as any }, 1)
-    }
+    // const callUpdateData = () => {
+    //   // updateData({ booking: form as any }, 1)
+    // }
 
     return (
-      <BaseStep
-        onClick={callUpdateData}
-        // options={optionPlaceholders}
-        title={`BOOKing
-    request`}
-        description='Please provide the following information to make an artist inquiry.'
-        // alt='1/7'
-        hideButton={true}
-        // active={form.artist && form.artist !== emptyArtist && form.date ? true : false}
-      >
+      //   <BaseStep
+      //     onClick={callUpdateData}
+      //     // options={optionPlaceholders}
+      //     title={`BOOKing
+      // request`}
+      //     // description='Please provide the following information to make an artist inquiry.'
+      //     // alt='1/7'
+      //     hideButton={true}
+      //     // active={form.artist && form.artist !== emptyArtist && form.date ? true : false}
+      //   >
+      <div className='desk:p-16 big:p-24'>
         <iframe
           id='formSO'
           width='100%'
           height='2000'
-          scrolling='no'
+          // scrolling='no'
           name='iframeName'
           // allowtransparency="true"
           // frameborder="no"
-          src='https://one.systemonesoftware.com/webform.aspx?key=4865651a4cac425394ccf0d045e214ce'
+          src='https://one.systemonesoftware.com/webform.aspx?key=d91e3acf82574a94b2b179a1721630b9'
         ></iframe>
-        {/* <BaseStep className='pt-6'>
+      </div>
+      /* <BaseStep className='pt-6'>
         <div className='relative'>
           <Select
             options={options}
@@ -96,8 +98,8 @@ const BookingRequest = () =>
           value={form.aditionalInformation ?? ''}
           onChange={aditionalInformation => setForm({ ...form, aditionalInformation })}
         />
-      </div> */}
-      </BaseStep>
+      </div> */
+      // </BaseStep>
     )
   }
 

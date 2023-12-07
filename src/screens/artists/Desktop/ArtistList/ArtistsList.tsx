@@ -24,7 +24,9 @@ const ArtistList = () => {
   }
 
   const artistData = [...artists]
-  artistData.sort((a, b) => (a.name || '').localeCompare(b.name || ''))
+  artistData
+    .sort((a, b) => (a.name || '').localeCompare(b.name || ''))
+    .sort((a, b) => (a.territory || '').localeCompare(b.territory || ''))
 
   const [items, setItems] = React.useState(artistData)
   const scrollContainerRef = React.useRef<HTMLDivElement | null>(null)
@@ -118,7 +120,7 @@ const ArtistList = () => {
           useWindow={false}
           threshold={10}
         >
-          <div className='flex items-center justify-center h-full'>
+          <div className='flex items-center justify-center h-full  pl-24 pr-16'>
             <ul className='space-y-2 p-4 text-left'>
               {items.map(item => (
                 <li key={item.id * Math.random()}>
@@ -134,7 +136,7 @@ const ArtistList = () => {
                   >
                     <TitleSmall
                       text={item.name}
-                      className={`hover:opacity-100 inline-block pointer transition-colors duration-600 ease-in-out
+                      className={`hover:opacity-100 inline-block pointer text-start transition-colors duration-600 ease-in-out
                ${
                  clickedArtist === item.id
                    ? 'text-yellow-lime-app'

@@ -22,7 +22,7 @@ const Navbar: React.FC<Props> = ({ position = 'top' }) => {
   return (
     <nav
       className={`flex items-center justify-between ${
-        position === 'bottom' ? 'absolute bottom-0' : 'absolute top-0'
+        position === 'bottom' ? 'fixed desk:absolute bottom-0' : 'fixed desk:absolute top-0'
       } w-full bg-yellow-app desk:backdrop-blur-sm desk:bg-white/10 py-7 z-10 h-20`}
       style={{ height: '72px' }}
     >
