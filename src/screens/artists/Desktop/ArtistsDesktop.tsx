@@ -20,6 +20,7 @@ const options = [
 const ArtistsDesktop: React.FC = () => {
   const selectedArtist = useAppSelector(state => state.artistsReducer.artist)
   const [prevArtistId, setPrevArtistId] = useState<number | null>(null)
+  const [classText, setClassText] = useState<string>('text-big leading-big')
 
   // Estilos de animación para el carrusel de imágenes
   const carouselStyle = useSpring({
@@ -43,13 +44,20 @@ const ArtistsDesktop: React.FC = () => {
     }
   }, [selectedArtist])
 
+  useEffect(() => {
+    setTimeout(() => {
+      setClassText('text-small leading-small')
+    }, 1000)
+  }, [])
+
   return (
     <div>
       <div className='mx-20 mt-8'>
         <TitleHome
           text='ARTISTS'
           color={TextColors.white}
-          className='text-small leading-small transition-all '
+          className={`${classText} transition-all duration-500`}
+          // className=' transition-all  duration-500'
         />
       </div>
       <div className='mx-16 px-2 flex justify-start'>

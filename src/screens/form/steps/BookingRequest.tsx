@@ -10,7 +10,7 @@ import // useEffect
 // import Select from 'src/screens/components/inputs/Select'
 // import CalendarForm from 'src/screens/components/inputs/CalendarForm'
 // import TextAreaForm from 'src/screens/components/inputs/TextAreaForm'
-import BaseStep from './BaseStep'
+// import BaseStep from './BaseStep'
 // import Select from '../components/Select'
 
 // interface Params {
@@ -22,66 +22,65 @@ import BaseStep from './BaseStep'
 //   { title: 'FRENCH', option: 'FR' }
 // ]
 
-const BookingRequest = () =>
-  // { updateData }: Params
-  {
-    // const [form, setForm] = useState<Partial<booking>>({})
+// { updateData }: Params
+const BookingRequest = () => {
+  // const [form, setForm] = useState<Partial<booking>>({})
 
-    // const list = useAppSelector(state => state.artistsReducer.data)
-    // const status = useAppSelector(state => state.artistsReducer.status)
-    // const dispatch = useAppDispatch()
+  // const list = useAppSelector(state => state.artistsReducer.data)
+  // const status = useAppSelector(state => state.artistsReducer.status)
+  // const dispatch = useAppDispatch()
 
-    // useEffect(() => {
-    //   if (!list && status === StateRequest.EMPTY) {
-    //     dispatch(getArtistsData())
-    //   }
-    // }, [status, list])
+  // useEffect(() => {
+  //   if (!list && status === StateRequest.EMPTY) {
+  //     dispatch(getArtistsData())
+  //   }
+  // }, [status, list])
 
-    // if (!list) {
-    //   return <></>
-    // }
+  // if (!list) {
+  //   return <></>
+  // }
 
-    // const names = list
-    //   .map(artist => {
-    //     return artist.name ?? ''
-    //   })
-    //   .sort((a, b) => {
-    //     if (a < b) {
-    //       return -1
-    //     }
-    //     return 0
-    //   })
-    // const emptyArtist = 'MAKE A SELECTION'
-    // const options = [emptyArtist, ...names]
+  // const names = list
+  //   .map(artist => {
+  //     return artist.name ?? ''
+  //   })
+  //   .sort((a, b) => {
+  //     if (a < b) {
+  //       return -1
+  //     }
+  //     return 0
+  //   })
+  // const emptyArtist = 'MAKE A SELECTION'
+  // const options = [emptyArtist, ...names]
 
-    // const callUpdateData = () => {
-    //   // updateData({ booking: form as any }, 1)
-    // }
+  // const callUpdateData = () => {
+  //   // updateData({ booking: form as any }, 1)
+  // }
 
-    return (
-      //   <BaseStep
-      //     onClick={callUpdateData}
-      //     // options={optionPlaceholders}
-      //     title={`BOOKing
-      // request`}
-      //     // description='Please provide the following information to make an artist inquiry.'
-      //     // alt='1/7'
-      //     hideButton={true}
-      //     // active={form.artist && form.artist !== emptyArtist && form.date ? true : false}
-      //   >
-      <div className='desk:p-16 big:p-24'>
-        <iframe
-          id='formSO'
-          width='100%'
-          height='2000'
-          // scrolling='no'
-          name='iframeName'
-          // allowtransparency="true"
-          // frameborder="no"
-          src='https://one.systemonesoftware.com/webform.aspx?key=d91e3acf82574a94b2b179a1721630b9'
-        ></iframe>
-      </div>
-      /* <BaseStep className='pt-6'>
+  return (
+    //   <BaseStep
+    //     onClick={callUpdateData}
+    //     // options={optionPlaceholders}
+    //     title={`BOOKing
+    // request`}
+    //     // description='Please provide the following information to make an artist inquiry.'
+    //     // alt='1/7'
+    //     hideButton={true}
+    //     // active={form.artist && form.artist !== emptyArtist && form.date ? true : false}
+    //   >
+    <div className='desk:p-16 big:p-24 desk:h-[2000px] h-[100vh]'>
+      <iframe
+        id='formSO'
+        width='100%'
+        height='100%'
+        // scrolling='no'
+        name='iframeName'
+        // allowtransparency="true"
+        // frameborder="no"
+        src='https://one.systemonesoftware.com/webform.aspx?key=d91e3acf82574a94b2b179a1721630b9'
+      ></iframe>
+    </div>
+    /* <BaseStep className='pt-6'>
         <div className='relative'>
           <Select
             options={options}
@@ -99,8 +98,8 @@ const BookingRequest = () =>
           onChange={aditionalInformation => setForm({ ...form, aditionalInformation })}
         />
       </div> */
-      // </BaseStep>
-    )
-  }
+    // </BaseStep>
+  )
+}
 
 export default BookingRequest

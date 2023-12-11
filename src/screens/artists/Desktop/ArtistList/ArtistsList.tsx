@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 // import { TextColors } from 'src/utils/Colors';
 import styles from './ArtistsList.module.css'
 import TitleSmall from 'src/screens/components/texts/TitleSmall'
@@ -19,8 +19,16 @@ const ArtistList = () => {
   const artists = useAppSelector(state => state.artistsReducer.data)
   const dispatch = useDispatch()
 
+  useEffect(() => {
+    if (artists) {
+      setTimeout(() => {
+        handleArtistClick(artists[0])
+      }, 2000)
+    }
+  }, [artists])
+
   if (!artists) {
-    return null
+    return <></>
   }
 
   const artistData = [...artists]
@@ -28,8 +36,8 @@ const ArtistList = () => {
     .sort((a, b) => (a.name || '').localeCompare(b.name || ''))
     .sort((a, b) => (a.territory || '').localeCompare(b.territory || ''))
 
-  const [items, setItems] = React.useState(artistData)
-  const scrollContainerRef = React.useRef<HTMLDivElement | null>(null)
+  const [items, setItems] = useState(artistData)
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null)
 
   const loadMore = () => {
     if (scrollContainerRef.current) {
@@ -61,7 +69,7 @@ const ArtistList = () => {
     setCursorPosition({ x: e.clientX, y: e.clientY })
   }
 
-  React.useLayoutEffect(() => {
+  useLayoutEffect(() => {
     if (isDragging) {
       const handleDocumentMouseMove = (e: MouseEvent) => {
         setCursorPosition({ x: e.clientX, y: e.clientY })
@@ -80,16 +88,16 @@ const ArtistList = () => {
   const handleMouseLeave = () => {
     setIsDragging(false)
   }
-  const [clickOnButton, setClickOnButton] = React.useState(false)
+  const [clickOnButton, setClickOnButton] = useState(false)
 
-  const handleArtistClick = (artist: ArtistModel, e: React.MouseEvent) => {
-    e.stopPropagation()
+  const handleArtistClick = (artist: ArtistModel, e?: React.MouseEvent) => {
+    if (e) e.stopPropagation()
     setSelectedArtist(artist)
     dispatch(selectArtist(artist))
     setClickedArtist(artist.id)
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (clickedArtist !== null) {
       const timer = setTimeout(() => {
         setClickedArtist(null)
