@@ -18,19 +18,13 @@ DIV.sone-general-formcontainer {
   box-shadow: none;
   border: none;
   padding: 0;
-  margin-bottom: 0;
-}
-DIV.sone-general-subcomment {
-  padding: 0;
 }
 
 body {
   font-family: 'Prompt', sans-serif;
-  /* font-family: 'swis'; */
   font-size: 14px;
   color: #000000;
-  /* background: #ffffff; */
-  background: transparent;
+  background: #ffffff;
 }
 
 input,
@@ -66,16 +60,8 @@ DIV.sone-general-subheader {
 input[type='button'].green,
 input[type='submit'].green,
 button.green,
-a.s1_button.green,
-div.s1_button.green,
-button.s1_button.green,
-input[type='button'].green:not(:disabled):hover,
-input[type='submit'].green:not(:disabled):hover,
-button.green:not(:disabled):hover,
-a.s1_button.green:not(:disabled):hover,
-div.s1_button.green:not(:disabled):hover,
-button.s1_button.green:not(:disabled):hover {
-  /* border-radius: 10px 10px 10px 10px;
+a.s1_button.green {
+  border-radius: 10px 10px 10px 10px;
   background-color: darkorange;
   height: 30px;
   margin: auto;
@@ -83,25 +69,8 @@ button.s1_button.green:not(:disabled):hover {
   text-align: center;
   line-height: 5px;
   -webkit-border-radius: 10px;
-  box-shadow: 0 1px 2px orange; */
-  background-color: transparent;
-  border: none;
-  color: #222;
-  text-transform: uppercase;
+  box-shadow: 0 1px 2px orange;
 }
-
-div.flex.justify-end.margin-top {
-  height: 4rem;
-  background-color: #d2ff37;
-  width: 100%;
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  padding: 0 2rem;
-  margin-top: 0;
-}
-
-/* h-16 bg-yellow-app w-full flex justify-end px-8 items-center */
 
 table,
 tbody {
@@ -178,71 +147,4 @@ DIV.sone-general-subheader,
 DIV.sone-general-header,
 DIV.sone-general-comment {
   padding: 0 3rem;
-}
-.s1_small.s1_lightgray.margin-top-huge {
-  display: none;
-}
-
-#form1 {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row-reverse;
-}
-
-DIV#contentholder {
-  margin: 0;
-  margin-left: auto;
-  padding: 2rem 0 0;
-  width: 50vw;
-  max-width: 768px;
-  background-color: white;
-}
-
-.title-container {
-  color: white;
-  font-size: 4.2vw;
-  font-weight: bold;
-  line-height: 1;
-  text-transform: uppercase;
-  width: 35rem;
-}
-
-.subtitle-container {
-  color: white;
-  font-size: 2vw;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-#SG3Address {
-  display: none;
-}
-
-DIV.sone-header.sone-general-header {
-  display: none;
-}
-
-@media (max-width: 1024px) {
-  .title-container {
-    font-size: clamp(32px, 9.2vw, 38px);
-    line-height: clamp(28.2px, 7.5vw, 34.2px);
-  }
-  .subtitle-container {
-    font-size: clamp(8px, 3.4vw, 14px);
-    line-height: clamp(8px, 3.4vw, 14px);
-  }
-  .title-cont {
-    width: 100%;
-    background-image: url(https://b4backend.promokore.com/assets/back_mobile.jpg);
-    background-size: cover;
-    padding: 2rem;
-  }
-
-  #form1 {
-    flex-direction: column-reverse;
-  }
-
-  DIV#contentholder {
-    width: 100%;
-  }
 }

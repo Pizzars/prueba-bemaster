@@ -25,6 +25,7 @@ window.onload = () => {
   divSubtitle.className = 'subtitle-container'
 
   const newdiv = document.createElement('div')
+  newdiv.className = 'title-cont'
   newdiv.appendChild(divSubtitle)
   newdiv.appendChild(divTitle)
 
