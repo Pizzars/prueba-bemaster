@@ -223,6 +223,15 @@ DIV.sone-header.sone-general-header {
 }
 
 @media (max-width: 1024px) {
+  body {
+    font-size: clamp(8px, 3.4vw, 14px);
+    line-height: clamp(8px, 3.4vw, 14px);
+  }
+  DIV.sone-general-comment {
+    font-size: clamp(8px, 3.4vw, 14px);
+    line-height: clamp(8px, 4vw, 19.6px);
+  }
+
   .title-container {
     font-size: clamp(32px, 9.2vw, 38px);
     line-height: clamp(28.2px, 7.5vw, 34.2px);
@@ -231,6 +240,15 @@ DIV.sone-header.sone-general-header {
     font-size: clamp(8px, 3.4vw, 14px);
     line-height: clamp(8px, 3.4vw, 14px);
   }
+  .s1_button {
+    font-size: clamp(8px, 3.4vw, 14px);
+    line-height: clamp(8px, 3.4vw, 14px);
+  }
+
+  DIV.flex.justify-end.margin-top {
+    padding: 2rem;
+  }
+
   .title-cont {
     width: 100%;
     background-image: url(https://b4backend.promokore.com/assets/back_mobile.jpg);
@@ -244,5 +262,9 @@ DIV.sone-header.sone-general-header {
 
   DIV#contentholder {
     width: 100%;
+  }
+
+  DIV.sone-webform-languagebar {
+    margin-bottom: 2rem;
   }
 }

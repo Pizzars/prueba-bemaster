@@ -9,22 +9,15 @@ import Cookies from 'src/screens/components/general/Cookies'
 const HomePage = () => {
   return (
     <BasePage navbar={false} footer={true} className='relative flex flex-col min-h-screen'>
-      {/* {!isSplineLoaded && (
-        <div className='fixed inset-0 z-50 flex justify-center items-center bg-white'>
-          Cargando...
-        </div>
-      )} */}
       <div className={`fixed inset-0 -z-10`}>
         <Spline />
       </div>
-      {/* {isSplineLoaded && ( */}
       <div className='flex-grow custom-gradient'>
         <>
           <Home />
           <Cookies />
         </>
       </div>
-      {/* )} */}
     </BasePage>
   )
 }

@@ -23,7 +23,7 @@ const Spline = () => {
     // }
   }, [])
 
-  return <div id='animation-container'></div>
+  return <div id='animation-container' className='w-[100vw] h-[100vh]'></div>
 }
 
 export default Spline
