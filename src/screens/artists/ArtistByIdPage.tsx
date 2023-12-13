@@ -4,11 +4,12 @@ import ArtistByIdMobile from './Mobile/ArtistByIdMobile'
 import ArtistByIdDesktop from './Desktop/ArtistByIdDesktop'
 import { useParams } from 'next/navigation'
 import { useAppSelector } from 'src/redux/hooks'
+import Loading, { PageLoad } from '../components/general/Loading'
 
 const ArtistByIdPage = () => {
   const { artistId } = useParams()
-  const artists = useAppSelector(state => state.artistsReducer.data)
-  if (!artists) return <></>
+  const { data: artists, status } = useAppSelector(state => state.artistsReducer)
+  if (!artists) return <Loading type={PageLoad.ARTISTS} status={status} />
   const artist = artists.find(art => art.id.toString() == artistId)
   if (!artist) return <></>
   return (

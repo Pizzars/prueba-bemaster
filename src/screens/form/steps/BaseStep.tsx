@@ -50,7 +50,7 @@ const BaseStep = ({
                 <OptionsFilter
                   options={options}
                   color={optionColors.black}
-                  className='desk:text-little'
+                  className='desk:text-little '
                 />
               </div>
             )}

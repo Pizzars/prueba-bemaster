@@ -45,7 +45,7 @@ const AnimatedText = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex(prevIndex => (prevIndex + 1) % carouselTexts.length)
-    }, 2000)
+    }, 4000)
     return () => clearInterval(interval)
   }, [])
 

@@ -24,7 +24,7 @@ const Cookies = () => {
   }
 
   if (!showCookieConsent) {
-    return null
+    return <></>
   }
   return (
     <div className='fixed bottom-0 right-0 sm:right-14 sm:bottom-24 bg-black text-white w-full sm:w-[390px]'>

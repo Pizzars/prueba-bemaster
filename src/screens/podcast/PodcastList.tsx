@@ -31,8 +31,7 @@ export const replaceTitle = (title: string, artists?: ArtistModel[]) => {
 }
 
 const PodcastList = () => {
-  const list = useAppSelector(state => state.podcastsReducer.data)
-  const status = useAppSelector(state => state.podcastsReducer.status)
+  const { data: list, status } = useAppSelector(state => state.podcastsReducer)
 
   const dispatch = useAppDispatch()
 

@@ -5,11 +5,12 @@ import { useAppDispatch, useAppSelector } from 'src/redux/hooks'
 import { useEffect, useMemo, useState } from 'react'
 import { getEventsData } from 'src/redux/features/eventsSlice'
 import { createWeekOptions, filterAndFormatGigs } from 'src/utils/functions'
+import Loading, { PageLoad } from '../components/general/Loading'
 
 const Gigs: React.FC = () => {
   const optionPlaceholders = createWeekOptions(9)
   const dispatch = useAppDispatch()
-  const events = useAppSelector(state => state.eventsReducer.data)
+  const { data: events, status } = useAppSelector(state => state.eventsReducer)
   const [selectedDateRange, setSelectedDateRange] = useState(optionPlaceholders[0]?.option)
 
   const formattedEvents = useMemo(() => {
@@ -34,15 +35,18 @@ const Gigs: React.FC = () => {
   }, [dispatch])
 
   return (
-    <div className='flex w-full'>
-      <Filter
-        title='Gigs'
-        options={optionPlaceholders}
-        onOptionSelected={handleOptionSelected as any}
-        className='py-4'
-      />
-      <GigsList gigs={formattedEvents} />
-    </div>
+    <>
+      <div className='flex w-full'>
+        <Filter
+          title='Gigs'
+          options={optionPlaceholders}
+          onOptionSelected={handleOptionSelected as any}
+          className='py-4'
+        />
+        <GigsList gigs={formattedEvents} />
+      </div>
+      <Loading type={PageLoad.GISGS} status={status} />
+    </>
   )
 }
 

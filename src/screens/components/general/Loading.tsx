@@ -1,87 +1,122 @@
 'use client'
-import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import { StateRequest } from 'src/redux/features/baseReducer'
-import { useAppSelector } from 'src/redux/hooks'
 import TitleHome from '../texts/TitleHome'
 
-const Loading = () => {
+import { StateRequest } from 'src/redux/features/baseReducer'
+import { useAppDispatch, useAppSelector } from 'src/redux/hooks'
+import {
+  aboutLoaded,
+  artistsLoaded,
+  bookLoaded,
+  gigsLoaded,
+  homeLoaded,
+  podcastsLoaded
+} from 'src/redux/features/loadSlice'
+
+export enum PageLoad {
+  HOME,
+  ARTISTS,
+  GISGS,
+  PODCASTS,
+  ABOUT,
+  BOOK
+}
+
+interface Params {
+  status?: StateRequest | null
+  callback?: () => void
+  type: PageLoad
+}
+
+const Loading = ({ status = null, callback, type }: Params) => {
   const [count, setCount] = useState(0)
-  // const [remove, setRemove] = useState(false)
 
-  const route = usePathname()
+  // const [load, setLoad] = useState(false)
+  const dispatch = useAppDispatch()
+  const { home, about, artists, gigs, book, podcasts } = useAppSelector(state => state.loadReducer)
 
-  const statusAbout = useAppSelector(state => state.aboutReducer.status)
-  const statusArtist = useAppSelector(state => state.artistsReducer.status)
-  const statusEvents = useAppSelector(state => state.eventsReducer.status)
-  const statusPodcast = useAppSelector(state => state.podcastsReducer.status)
+  const show =
+    (!home && type === PageLoad.HOME) ||
+    (!gigs && type === PageLoad.GISGS) ||
+    (!artists && type === PageLoad.ARTISTS) ||
+    (!podcasts && type === PageLoad.PODCASTS) ||
+    (!about && type === PageLoad.ABOUT) ||
+    (!book && type === PageLoad.BOOK)
+
+  const increment = () => {
+    setTimeout(() => {
+      setCount(count + 1)
+    }, 20)
+  }
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      let startTimestamp: number
-      const animationDuration = 2000
+      window.onload = () => {
+        // setLoad(true)
+        alert('Loaded :D')
+      }
+    }
+  }, [])
 
-      const animateCount = (timestamp: number) => {
-        if (!startTimestamp) startTimestamp = timestamp
-        const elapsed = timestamp - startTimestamp
-
-        let progress = Math.min(elapsed / animationDuration, 1)
-        progress = Math.sin((progress * Math.PI) / 2)
-
-        const newCount = Math.floor(progress * 100)
-
-        if (newCount < 101) {
-          setCount(newCount)
-          window.requestAnimationFrame(animateCount)
+  useEffect(() => {
+    if (!show) {
+      if (callback) callback()
+      return
+    }
+    if (count < 50) {
+      increment()
+      return
+    }
+    if (status !== null && status !== StateRequest.SUCCESS) {
+      if (count < 75) {
+        increment()
+        return
+      }
+    }
+    if (count >= 100) {
+      if (callback) callback()
+      switch (type) {
+        case PageLoad.HOME: {
+          dispatch(homeLoaded())
+          break
+        }
+        case PageLoad.ARTISTS: {
+          dispatch(artistsLoaded())
+          break
+        }
+        case PageLoad.GISGS: {
+          dispatch(gigsLoaded())
+          break
+        }
+        case PageLoad.PODCASTS: {
+          dispatch(podcastsLoaded())
+          break
+        }
+        case PageLoad.ABOUT: {
+          dispatch(aboutLoaded())
+          break
+        }
+        case PageLoad.BOOK: {
+          dispatch(bookLoaded())
+          break
         }
       }
-      window.requestAnimationFrame(animateCount)
+      return
     }
-  }, [window])
+    increment()
+  }, [count, status])
 
   const showHomeContent = count >= 100
 
-  let cnt = false
-
-  switch (route) {
-    case '/about': {
-      cnt = statusAbout === StateRequest.SUCCESS
-      break
-    }
-    case '/artists': {
-      cnt = statusArtist === StateRequest.SUCCESS
-      break
-    }
-    case '/gigs': {
-      cnt = statusEvents === StateRequest.SUCCESS
-      break
-    }
-    case '/podcasts': {
-      cnt = statusPodcast === StateRequest.SUCCESS
-      break
-    }
-    case '/book': {
-      cnt = true
-      break
-    }
-    case '/': {
-      cnt = statusArtist === StateRequest.SUCCESS
-      break
-    }
+  if (show && !showHomeContent) {
+    return (
+      <div className='h-full w-full fixed top-0 left-0 bg-gray-100 flex items-end z-20'>
+        <TitleHome text={count.toString()} className='ml-10 mb-8' />
+      </div>
+    )
   }
 
-  return (
-    <>
-      {!showHomeContent || !cnt ? (
-        // || !remove
-        <div className='h-full w-full fixed top-0 left-0 bg-gray-100 flex items-end z-20'>
-          <TitleHome text={count.toString()} className='ml-10 mb-8' />
-        </div>
-      ) : (
-        <></>
-      )}
-    </>
-  )
+  return <></>
 }
 
 export default Loading

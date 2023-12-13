@@ -1,7 +1,7 @@
 import './globals.css'
 import './calendar.css'
 import ProviderRedux from 'src/redux/provider'
-import Loading from 'src/screens/components/general/Loading'
+// import Loading from 'src/screens/components/general/Loading'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -12,7 +12,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       */}
       <ProviderRedux>
         {children}
-        <Loading />
+        {/* <Loading /> */}
       </ProviderRedux>
     </html>
   )

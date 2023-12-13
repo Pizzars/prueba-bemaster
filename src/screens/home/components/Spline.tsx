@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+// import splineAnimation from '../../../assets/spline/LiquidBGB4Bookings.splinecode'
 
 const Spline = () => {
   useEffect(() => {
@@ -15,7 +16,8 @@ const Spline = () => {
       if (list.length > 0) return
 
       const spline = document.createElement('spline-viewer')
-      ;(spline as any).url = 'https://prod.spline.design/8MZRGCAOH9d0Kg0p/scene.splinecode'
+      // ;(spline as any).url = 'https://prod.spline.design/8MZRGCAOH9d0Kg0p/scene.splinecode'
+      ;(spline as any).url = '/assets/spline/LiquidBGB4Bookings.splinecode'
 
       container.appendChild(spline)
     }
