@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 // import TitleHome from '../components/texts/TitleHome'
 import AnimatedText from './AnimatedText'
 import MenuSection from './MenuSection'
@@ -14,10 +14,8 @@ import Loading, { PageLoad } from '../components/general/Loading'
 const Home = () => {
   const artistsStatus = useAppSelector(state => state.artistsReducer.status)
   const dispatch = useAppDispatch()
-  // const [count, setCount] = useState(0)
+  const [show, setShow] = useState(false)
   const pathname = usePathname()
-
-  const { home } = useAppSelector(state => state.loadReducer)
 
   useEffect(() => {
     if (artistsStatus === StateRequest.EMPTY) {
@@ -42,8 +40,8 @@ const Home = () => {
   }, [dispatch, artistsStatus])
 
   const props = useSpring({
-    opacity: home ? 1 : 0,
-    transform: home ? 'translateY(0)' : 'translateY(20px)',
+    opacity: show ? 1 : 0,
+    transform: show ? 'translateY(0)' : 'translateY(20px)',
     config: { duration: 500 }
   })
 
@@ -57,7 +55,15 @@ const Home = () => {
         {pathname === '/' && <MenuSection />}
       </animated.div>
 
-      {!home && <Loading type={PageLoad.HOME} status={artistsStatus} />}
+      {
+        <Loading
+          type={PageLoad.HOME}
+          callback={() => {
+            setTimeout(() => setShow(true), 1000)
+          }}
+          status={artistsStatus}
+        />
+      }
     </>
   )
 }

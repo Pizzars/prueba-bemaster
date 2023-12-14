@@ -49,14 +49,14 @@ const Loading = ({ status = null, callback, type }: Params) => {
     }, 20)
   }
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      window.onload = () => {
-        // setLoad(true)
-        alert('Loaded :D')
-      }
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (typeof window !== 'undefined') {
+  //     window.onload = () => {
+  //       // setLoad(true)
+  //       alert('Loaded :D')
+  //     }
+  //   }
+  // }, [])
 
   useEffect(() => {
     if (!show) {

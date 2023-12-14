@@ -1,9 +1,7 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
-import { useAppDispatch, useAppSelector } from 'src/redux/hooks'
-import { getArtistsData } from 'src/redux/features/artistsSlice'
-import { StateRequest } from 'src/redux/features/baseReducer'
+import { useAppSelector } from 'src/redux/hooks'
 import { FormRequest, inputForm, venue } from '../formTypes'
 import Select from 'src/screens/components/inputs/Select'
 import BaseStep from './BaseStep'
@@ -15,36 +13,10 @@ interface Params {
   updateData: (data: Partial<FormRequest>, newStep: number) => void
 }
 
-const emptyItem = 'MAKE A SELECTION'
-const options = [emptyItem, ...['SPAIN', 'UNITED KINGDOM']]
-const inputs: inputForm[] = [
-  { label: 'COMPANY NAME*', type: 0, placeholder: 'your company', name: 'company' },
-  { label: 'CITY', type: 0, placeholder: 'YOUR CITY', name: 'country' },
-  { label: 'COUNTRY', type: 1, placeholder: '', name: 'city', options },
-  { label: 'STATE', type: 0, placeholder: 'YOUR STATE', name: 'state' },
-  { label: 'WEBSITE', type: 0, placeholder: 'YOURWEBSITE.COM', name: 'website' },
-  { label: 'FACEBOOK', type: 0, placeholder: 'YOUR FACEBOOK HERE', name: 'facebook' },
-  { label: 'CAPACITY*', type: 2, placeholder: 'NUMBER', name: 'capacity' },
-  { label: 'DOORS OPEN', type: 3, placeholder: 'CHOOSE AN HOUR', name: 'doorsOpen' },
-  { label: 'DOORS close', type: 3, placeholder: 'CHOOSE AN HOUR', name: 'doorsClose' }
-]
-
 const Venue = ({ updateData }: Params) => {
   const [form, setForm] = useState<Partial<venue>>({})
 
-  const list = useAppSelector(state => state.artistsReducer.data)
-  const status = useAppSelector(state => state.artistsReducer.status)
-  const dispatch = useAppDispatch()
-
-  useEffect(() => {
-    if (!list && status === StateRequest.EMPTY) {
-      dispatch(getArtistsData())
-    }
-  }, [status, list])
-
-  if (!list) {
-    return <></>
-  }
+  const { countries } = useAppSelector(state => state.formReducer)
 
   const callUpdateData = () => {
     updateData({ venue: form as any }, 2)
@@ -62,6 +34,20 @@ const Venue = ({ updateData }: Params) => {
       ? true
       : false
 
+  if (!countries) return <></>
+
+  const inputs: inputForm[] = [
+    { label: 'COMPANY NAME*', type: 0, placeholder: 'your company', name: 'company' },
+    { label: 'CITY', type: 0, placeholder: 'YOUR CITY', name: 'country' },
+    { label: 'COUNTRY', type: 1, placeholder: '', name: 'city', options: countries },
+    { label: 'STATE', type: 0, placeholder: 'YOUR STATE', name: 'state' },
+    { label: 'WEBSITE', type: 0, placeholder: 'YOURWEBSITE.COM', name: 'website' },
+    { label: 'FACEBOOK', type: 0, placeholder: 'YOUR FACEBOOK HERE', name: 'facebook' },
+    { label: 'CAPACITY*', type: 2, placeholder: 'NUMBER', name: 'capacity' },
+    { label: 'DOORS OPEN', type: 3, placeholder: 'CHOOSE AN HOUR', name: 'doorsOpen' },
+    { label: 'DOORS close', type: 3, placeholder: 'CHOOSE AN HOUR', name: 'doorsClose' }
+  ]
+
   return (
     <BaseStep onClick={callUpdateData} title={`VENUE`} alt='3/7' active={active}>
       <div className='pt-6'>
@@ -73,7 +59,7 @@ const Venue = ({ updateData }: Params) => {
                   <Select
                     label={input.label}
                     options={input.options ?? []}
-                    value={(form as any)[input.name] ?? options[0]}
+                    value={(form as any)[input.name] ?? countries[0].value}
                     onChange={value => setForm({ ...form, [input.name]: value })}
                   />
                 </div>

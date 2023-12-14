@@ -1,3 +1,5 @@
+import { SelectListParams } from '../components/inputs/Select'
+
 export interface booking {
   artist: string
   date: Date
@@ -43,5 +45,5 @@ export interface inputForm {
   label: string
   type: number
   placeholder?: string
-  options?: string[]
+  options?: SelectListParams[]
 }

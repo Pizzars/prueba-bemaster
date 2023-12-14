@@ -7,6 +7,7 @@ import newsReducer from './features/newsSlice'
 import podcastsReducer from './features/podcastsSlice'
 import languageReducer from './features/languageSlice'
 import loadReducer from './features/loadSlice'
+import formReducer from './features/formSlice'
 
 export const store = configureStore({
   reducer: {
@@ -17,7 +18,8 @@ export const store = configureStore({
     newsReducer,
     podcastsReducer,
     languageReducer,
-    loadReducer
+    loadReducer,
+    formReducer
   }
 })
 

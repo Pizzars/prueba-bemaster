@@ -1,4 +1,4 @@
-/* @font-face {
+@font-face {
   font-family: 'inter';
   src: url('../src/styles/fonts/Inter/Inter-VariableFont_slnt\,wght.ttf');
 }
@@ -22,33 +22,6 @@
 @font-face {
   font-family: 'swis';
   src: url('../src/styles/fonts/swis/Swiss721BT-BlackExtended.otf');
-  font-weight: bolder;
-} */
-
-@font-face {
-  font-family: 'inter';
-  src: url(../public/assets/fonts/Inter/inter.ttf);
-}
-
-@font-face {
-  font-family: 'heveltica';
-  src: url(../public/assets/fonts/Provisional/Helvetica-Neue-LT-Com-63-Medium-Extended\ 2.ttf);
-}
-
-@font-face {
-  font-family: 'swis';
-  src: url(../public/assets/fonts/swis/Swiss721BT-Extended.otf);
-}
-
-@font-face {
-  font-family: 'swis';
-  src: url(../public/assets/fonts/swis/Swiss721BT-BoldExtended.otf);
-  font-weight: bold;
-}
-
-@font-face {
-  font-family: 'swis';
-  src: url(../public/assets/fonts/swis/Swiss721BT-BlackExtended.otf);
   font-weight: bolder;
 }
 
@@ -444,4 +417,13 @@ a.customLink:hover .arrowMove {
   z-index: -1000;
   margin: none;
   padding: none;
+}
+
+.y.mandatory-scroll-snapping {
+  scroll-snap-type: y mandatory;
+}
+.container > div {
+  text-align: center;
+  scroll-snap-align: center;
+  flex: none;
 }
