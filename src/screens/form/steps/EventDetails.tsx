@@ -10,17 +10,17 @@ interface Params {
 }
 
 const inputs: inputForm[] = [
-  { label: 'NAME OF THE EVENT*', type: 0, placeholder: 'NAME OF THE EVENT', name: 'name' }
+  { label: 'NAME OF THE EVENT*', type: 0, placeholder: 'NAME OF THE EVENT', name: 'EventName' }
 ]
 
 const EventDetails = ({ updateData }: Params) => {
   const [form, setForm] = useState<Partial<event>>({})
 
   const callUpdateData = () => {
-    updateData({ promoter: form as any }, 4)
+    updateData({ event: form as any }, 4)
   }
 
-  const active = form.name ? true : false
+  const active = form.EventName ? true : false
 
   return (
     <BaseStep

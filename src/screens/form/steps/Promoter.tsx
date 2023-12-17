@@ -27,31 +27,41 @@ const Promoter = ({ updateData }: Params) => {
   }
 
   const active =
-    form.firstName &&
-    form.lastName &&
-    form.email &&
-    form.company &&
-    form.country &&
-    form.country !== emptyItem &&
-    // form.city &&
-    // form.state &&
-    // form.website &&
-    form.tax
+    form.SG2_Contact_FirstName &&
+    form.SG2_Contact_LastName &&
+    form.SG2_Contact_Email &&
+    form.SG2Addressname &&
+    form.SG2AddressCountryId &&
+    form.SG2AddressCountryId !== emptyItem &&
+    // form.SG2AddressCity &&
+    // form.SG2AddressStateId &&
+    // form.SG2_Company_Website &&
+    form.SG2_Company_TaxNumber
       ? true
       : false
 
   if (!countries) return <></>
 
   const inputs: inputForm[] = [
-    { label: 'FIRST NAME*', type: 0, placeholder: 'YOUR FIRST NAME', name: 'firstName' },
-    { label: 'LAST NAME*', type: 0, placeholder: 'YOUR LAST NAME', name: 'lastName' },
-    { label: 'EMAIL*', type: 0, placeholder: 'you@example.com', name: 'email' },
-    { label: 'COMPANY NAME*', type: 0, placeholder: 'your company', name: 'company' },
-    { label: 'CITY', type: 0, placeholder: 'YOUR CITY', name: 'country' },
-    { label: 'COUNTRY', type: 1, placeholder: '', name: 'city', options: countries },
-    { label: 'STATE', type: 0, placeholder: 'YOUR STATE', name: 'state' },
-    { label: 'WEBSITE', type: 0, placeholder: 'YOURWEBSITE.COM', name: 'website' },
-    { label: 'VAT/TAX NUMBER*', type: 0, placeholder: 'YOUR TAX NUMBER', name: 'tax' }
+    {
+      label: 'FIRST NAME*',
+      type: 0,
+      placeholder: 'YOUR FIRST NAME',
+      name: 'SG2_Contact_FirstName'
+    },
+    { label: 'LAST NAME*', type: 0, placeholder: 'YOUR LAST NAME', name: 'SG2_Contact_LastName' },
+    { label: 'EMAIL*', type: 0, placeholder: 'you@example.com', name: 'SG2_Contact_Email' },
+    { label: 'COMPANY NAME*', type: 0, placeholder: 'your company', name: 'SG2Addressname' },
+    { label: 'CITY', type: 0, placeholder: 'YOUR CITY', name: 'SG2AddressCity' },
+    { label: 'COUNTRY', type: 1, placeholder: '', name: 'SG2AddressCountryId', options: countries },
+    { label: 'STATE', type: 0, placeholder: 'YOUR STATE', name: 'SG2AddressStateId' },
+    { label: 'WEBSITE', type: 0, placeholder: 'YOURWEBSITE.COM', name: 'SG2_Company_Website' },
+    {
+      label: 'VAT/TAX NUMBER*',
+      type: 0,
+      placeholder: 'YOUR TAX NUMBER',
+      name: 'SG2_Company_TaxNumber'
+    }
   ]
 
   return (

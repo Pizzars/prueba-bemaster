@@ -78,7 +78,7 @@ const Select = ({ label, value, height = 17, options, onChange }: Params) => {
         }
       })
     }
-  }, [])
+  })
 
   const valueString = options.find(option => option.value == value)
 

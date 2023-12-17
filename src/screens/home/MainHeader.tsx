@@ -7,13 +7,13 @@ import TitleSmall from '../components/texts/TitleSmall'
 import Link from 'next/link'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import Navbar from '../components/general/Navbar'
+// import Navbar from '../components/general/Navbar'
 
 const MainHeader: React.FC = () => {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 600,
+    speed: 1000,
     slidesToShow: 1,
     slidesToScroll: 1,
     vertical: true,
@@ -23,7 +23,7 @@ const MainHeader: React.FC = () => {
   }
 
   return (
-    <header className='h-screen backdrop-blur-sm flex flex-col justify-between relative'>
+    <header className='h-home backdrop-blur-sm flex flex-col justify-between relative'>
       <div className='h-full pl-10 pt-48 desk:pl-20 desk:pt-24'>
         <div className='mt-auto mb-auto'>
           <TitleSmall text='b4bookings' className='text-white max-w-max uppercase' />
@@ -49,9 +49,10 @@ const MainHeader: React.FC = () => {
         </Link>
       </div>
 
-      <div className='hidden desk:block absolute bottom-0 w-full'>
+      {/* <div className='hidden desk:block absolute bottom-0 w-full' id='nav-container'>
         <Navbar position='bottom' />
       </div>
+      <div className='hidden desk:block absolute h-[72px] bottom-0 w-full' id='nav-indicator'></div> */}
     </header>
   )
 }

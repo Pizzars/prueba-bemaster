@@ -427,3 +427,15 @@ a.customLink:hover .arrowMove {
   scroll-snap-align: center;
   flex: none;
 }
+
+.h-home {
+  height: calc(100vh - 72px);
+}
+
+.slick-vertical .slick-slide {
+  transition: 0.5s all ease !important;
+  opacity: 0 !important;
+}
+.slick-vertical .slick-active {
+  opacity: 1 !important;
+}

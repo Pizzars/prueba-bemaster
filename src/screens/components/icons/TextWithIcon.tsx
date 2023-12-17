@@ -15,6 +15,7 @@ interface Params {
   iconColor?: TextColors
   size?: SizeIcons
   className?: string
+  checked?: boolean
 }
 
 const TextWithIcon = ({
@@ -23,18 +24,27 @@ const TextWithIcon = ({
   iconColor = TextColors.blue,
   size = SizeIcons.TEXT_PARAGRAPH,
   className,
-  text
+  text,
+  checked = false
 }: Params) => {
   const getIcon = () => {
-    return <TextIcon color={iconColor} size={size} icon={icon} className={className} />
+    return (
+      <TextIcon color={iconColor} size={size} icon={icon} className={className} checked={checked} />
+    )
   }
 
-  const value = (
-    <>
-      {text}
-      {getIcon()}
-    </>
-  )
+  const value =
+    icon === TextIcons.CHECK ? (
+      <div className='flex items-center'>
+        <div className='mr-4 mb-1'>{getIcon()}</div>
+        {text}
+      </div>
+    ) : (
+      <>
+        {text}
+        {getIcon()}
+      </>
+    )
 
   switch (size) {
     case SizeIcons.TITLE_HOME: {

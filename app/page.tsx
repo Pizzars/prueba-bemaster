@@ -12,12 +12,8 @@ const HomePage = () => {
       <div className={`fixed inset-0 -z-10`}>
         <Spline />
       </div>
-      <div className='flex-grow custom-gradient'>
-        <>
-          <Home />
-          <Cookies />
-        </>
-      </div>
+      <Home />
+      <Cookies />
     </BasePage>
   )
 }

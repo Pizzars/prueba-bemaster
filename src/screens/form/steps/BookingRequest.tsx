@@ -34,11 +34,11 @@ const BookingRequest = ({ updateData }: Params) => {
     <BaseStep
       onClick={callUpdateData}
       options={optionPlaceholders}
-      title={`BOOKing
-    request`}
+      title={`BOOKING
+    REQUEST`}
       description='Please provide the following information to make an artist inquiry.'
       alt='1/7'
-      active={form.artist && form.artist !== list[0].label && form.date ? true : false}
+      active={form.artist && form.artist !== list[0].label && form.ShowDate1Date ? true : false}
     >
       <div className='relative'>
         <Select
@@ -49,12 +49,15 @@ const BookingRequest = ({ updateData }: Params) => {
         />
       </div>
       <div className='relative'>
-        <CalendarForm value={form.date} onChange={date => setForm({ ...form, date })} />
+        <CalendarForm
+          value={form.ShowDate1Date}
+          onChange={ShowDate1Date => setForm({ ...form, ShowDate1Date })}
+        />
       </div>
       <TextAreaForm
         label='ADDITIONAL INFORMATION'
-        value={form.aditionalInformation ?? ''}
-        onChange={aditionalInformation => setForm({ ...form, aditionalInformation })}
+        value={form.ShowNote ?? ''}
+        onChange={ShowNote => setForm({ ...form, ShowNote })}
       />
     </BaseStep>
   )

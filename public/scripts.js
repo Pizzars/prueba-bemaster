@@ -146,13 +146,31 @@ window.addEventListener('message', function (event) {
   // if (event.origin !== "http://url-de-la-pagina-principal.com") return;
 
   // Manejar el mensaje recibido
-  console.log('Mensaje recibido en el iframe:', event.data)
-  // sendMessage();
-  // Enviamos una respuesta al mensaje
-  // const data = { data: { name: "juan", id: 1 } };
-  // Usamos event.source.postMessage para responder al origen correcto
-  if (event.data === 'GET_DATA') {
+
+  const data = JSON.parse(event.data)
+  console.log('Mensaje recibido en el iframe: ', data)
+  if (data.type === 'GET_DATA') {
     getData(event)
+  }
+  if (data.type === 'SEND_DATA') {
+    const form = data.data
+
+    form.forEach(field => {
+      const element = document.getElementById(field.id)
+      if (!element) return
+      if (field.id == 'IAgreeChb') {
+        element.checked = true
+        return
+      }
+      try {
+        element.value = field.value
+      } catch (error) {
+        console.log(`Error field: ${field.id}`, error)
+      }
+    })
+
+    const formElement = this.document.getElementById('form1')
+    formElement.submit()
   }
   // event.source.postMessage(JSON.stringify(data), "*");
 })

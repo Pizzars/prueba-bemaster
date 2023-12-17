@@ -10,6 +10,7 @@ import { getArtistsData } from 'src/redux/features/artistsSlice'
 import { StateRequest } from 'src/redux/features/baseReducer'
 import { usePathname } from 'next/navigation'
 import Loading, { PageLoad } from '../components/general/Loading'
+import Navbar from '../components/general/Navbar'
 
 const Home = () => {
   const artistsStatus = useAppSelector(state => state.artistsReducer.status)
@@ -42,19 +43,27 @@ const Home = () => {
   const props = useSpring({
     opacity: show ? 1 : 0,
     transform: show ? 'translateY(0)' : 'translateY(20px)',
-    config: { duration: 500 }
+    config: { duration: 800 }
   })
 
   return (
     <>
       <animated.div style={props}>
         <MainHeader />
+      </animated.div>
+      <animated.div
+        style={props}
+        id='secret-nav'
+        className='sticky top-0 left-0 z-50 hidden desk:block h-[72px] w-full '
+      >
+        <Navbar />
+      </animated.div>
+      <animated.div style={props}>
         <div className='h-screen flex-1 items-center justify-center'>
           {artistsStatus === StateRequest.SUCCESS && <AnimatedText />}
         </div>
-        {pathname === '/' && <MenuSection />}
       </animated.div>
-
+      <animated.div style={props}>{pathname === '/' && <MenuSection />}</animated.div>
       {
         <Loading
           type={PageLoad.HOME}

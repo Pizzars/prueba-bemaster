@@ -19,33 +19,33 @@ const Venue = ({ updateData }: Params) => {
   const { countries } = useAppSelector(state => state.formReducer)
 
   const callUpdateData = () => {
-    updateData({ venue: form as any }, 2)
+    updateData({ venue: form as any }, 3)
   }
 
   const active =
-    form.company &&
-    form.country &&
-    // form.city &&
-    // form.state &&
-    // form.website &&
+    form.SG3Addressname &&
+    form.SG3AddressCountryId &&
+    // form.SG3AddressCity &&
+    // form.SG3AddressStateId &&
+    // form.SG3_Company_Website &&
     // form.facebook &&
-    form.capacity &&
-    form.doorsOpen // && form.doorsClose
+    form.VenueCapacity &&
+    form.DoorsOpenTimeSpan // && form.DoorsCloseTimeSpan
       ? true
       : false
 
   if (!countries) return <></>
 
   const inputs: inputForm[] = [
-    { label: 'COMPANY NAME*', type: 0, placeholder: 'your company', name: 'company' },
-    { label: 'CITY', type: 0, placeholder: 'YOUR CITY', name: 'country' },
-    { label: 'COUNTRY', type: 1, placeholder: '', name: 'city', options: countries },
-    { label: 'STATE', type: 0, placeholder: 'YOUR STATE', name: 'state' },
-    { label: 'WEBSITE', type: 0, placeholder: 'YOURWEBSITE.COM', name: 'website' },
+    { label: 'COMPANY NAME*', type: 0, placeholder: 'your company', name: 'SG3Addressname' },
+    { label: 'CITY', type: 0, placeholder: 'YOUR CITY', name: 'SG3AddressCity' },
+    { label: 'COUNTRY', type: 1, placeholder: '', name: 'SG3AddressCountryId', options: countries },
+    { label: 'STATE', type: 0, placeholder: 'YOUR STATE', name: 'SG3AddressStateId' },
+    { label: 'WEBSITE', type: 0, placeholder: 'YOURWEBSITE.COM', name: 'SG3_Company_Website' },
     { label: 'FACEBOOK', type: 0, placeholder: 'YOUR FACEBOOK HERE', name: 'facebook' },
-    { label: 'CAPACITY*', type: 2, placeholder: 'NUMBER', name: 'capacity' },
-    { label: 'DOORS OPEN', type: 3, placeholder: 'CHOOSE AN HOUR', name: 'doorsOpen' },
-    { label: 'DOORS close', type: 3, placeholder: 'CHOOSE AN HOUR', name: 'doorsClose' }
+    { label: 'CAPACITY*', type: 2, placeholder: 'NUMBER', name: 'VenueCapacity' },
+    { label: 'DOORS OPEN', type: 3, placeholder: 'CHOOSE AN HOUR', name: 'DoorsOpenTimeSpan' },
+    { label: 'DOORS close', type: 3, placeholder: 'CHOOSE AN HOUR', name: 'DoorsCloseTimeSpan' }
   ]
 
   return (
