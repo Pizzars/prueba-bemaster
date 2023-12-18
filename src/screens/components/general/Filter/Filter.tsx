@@ -57,16 +57,17 @@ const Filter: React.FC<FilterProps> = ({ title, options, className, onOptionSele
 
   return (
     <div
-      className={`fixed w-full ${className} bg-gradient-to-r from-green-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% pl-8 z-10 py-8`}
+      className={`fixed w-full ${className} bg-gradient-to-r from-green-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% pl-8 z-10 py-2`}
     >
       <animated.div style={shrink}>
         <animated.div style={fade}>
-          <TitleSection text={title} color={TextColors.white} className='uppercase' />
+          <TitleSection text={title} color={TextColors.white} className='uppercase mt-4' />
         </animated.div>
         <div
           ref={navRef}
-          className={`pt-6 pb-2 flex overflow-x-auto whitespace-nowrap ${styles.scrollDiv}`}
+          className={`pt-4 flex overflow-x-auto whitespace-nowrap ${styles.scrollDiv}`}
         >
+          {/* {options && <OptionsFilter options={options} />} */}
           {options?.map(({ title, option }, i) => (
             <div
               key={`op-${i}`}
