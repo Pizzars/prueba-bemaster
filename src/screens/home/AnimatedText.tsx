@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { useAppSelector } from 'src/redux/hooks'
 import ReactDOM from 'react-dom'
 import TitleSmaller from '../components/texts/TitleSmaller'
+import CarouselTerritory from './CarouselTerritory'
 
 const carouselTexts = ['WORLDWIDE', 'FOR EUROPE', 'FOR SPAIN', 'LATIN AMERICA', 'SPAIN & LATAM']
 
@@ -116,7 +117,7 @@ const AnimatedText = () => {
           <TextIcon icon={TextIcons.RIGHT_ARROW} size={SizeIcons.TITLE} color={TextColors.white} />
         </Link>
         <div className='overflow-hidden' style={{ width: '100%' }}>
-          <animated.div style={props} className='flex transition-all duration-500'>
+          {/* <animated.div style={props} className='flex transition-all duration-500'>
             {carouselTexts.map((text, i) => (
               <div
                 key={i}
@@ -126,7 +127,8 @@ const AnimatedText = () => {
                 <TitleSection text={text} color={TextColors.white} />
               </div>
             ))}
-          </animated.div>
+          </animated.div> */}
+          <CarouselTerritory />
         </div>
       </div>
     </div>

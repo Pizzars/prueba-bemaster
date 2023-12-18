@@ -11,6 +11,7 @@ import { StateRequest } from 'src/redux/features/baseReducer'
 import { usePathname } from 'next/navigation'
 import Loading, { PageLoad } from '../components/general/Loading'
 import Navbar from '../components/general/Navbar'
+import Cookies from '../components/general/Cookies'
 
 const Home = () => {
   const artistsStatus = useAppSelector(state => state.artistsReducer.status)
@@ -64,6 +65,10 @@ const Home = () => {
         </div>
       </animated.div>
       <animated.div style={props}>{pathname === '/' && <MenuSection />}</animated.div>
+
+      <animated.div style={props} className='fixed bottom-0 right-0 z-50'>
+        <Cookies />
+      </animated.div>
       {
         <Loading
           type={PageLoad.HOME}

@@ -4,7 +4,6 @@ import BasePage from 'src/screens/components/general/base/BasePage'
 import Spline from 'src/screens/home/components/Spline'
 import Home from 'src/screens/home/Home'
 import './page.css'
-import Cookies from 'src/screens/components/general/Cookies'
 
 const HomePage = () => {
   return (
@@ -13,7 +12,6 @@ const HomePage = () => {
         <Spline />
       </div>
       <Home />
-      <Cookies />
     </BasePage>
   )
 }
