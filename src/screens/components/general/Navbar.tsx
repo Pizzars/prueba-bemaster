@@ -7,7 +7,6 @@ import { itemsForNavbar } from 'src/utils/consts'
 import { TextColors } from 'src/utils/Colors'
 import { useAppDispatch, useAppSelector } from 'src/redux/hooks'
 import { setLanguage } from 'src/redux/features/languageSlice'
-import TitleMedium from '../texts/TitleMedium'
 import TitleSection from '../texts/TitleSection'
 import TextIcon, { SizeIcons, TextIcons } from '../icons/TextIcon'
 

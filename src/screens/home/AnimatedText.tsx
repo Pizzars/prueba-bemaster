@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { useSpring, animated } from 'react-spring'
 import TitleSection from '../components/texts/TitleSection'
 import { TextColors } from 'src/utils/Colors'
 import './styles.css'
@@ -10,10 +9,9 @@ import ReactDOM from 'react-dom'
 import TitleSmaller from '../components/texts/TitleSmaller'
 import CarouselTerritory from './CarouselTerritory'
 
-const carouselTexts = ['WORLDWIDE', 'FOR EUROPE', 'FOR SPAIN', 'LATIN AMERICA', 'SPAIN & LATAM']
+// const carouselTexts = ['WORLDWIDE', 'FOR EUROPE', 'FOR SPAIN', 'LATIN AMERICA', 'SPAIN & LATAM']
 
 const AnimatedText = () => {
-  const [index, setIndex] = useState(0)
   const artists = useAppSelector(state => state.artistsReducer.data)
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 })
 
@@ -36,19 +34,6 @@ const AnimatedText = () => {
   for (let i = 0; i < artists.length; i += 4) {
     groupedArtists.push(artists.slice(i, i + 4))
   }
-
-  const props = useSpring({
-    transform: `translateX(-${index * 100}%)`,
-    from: { transform: `translateX(-${index * 100}%)` },
-    config: { tension: 220, friction: 120 }
-  })
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex(prevIndex => (prevIndex + 1) % carouselTexts.length)
-    }, 4000)
-    return () => clearInterval(interval)
-  }, [])
 
   const cursorComponent = (
     <div
