@@ -63,7 +63,7 @@ const TextIcon = ({
           text={icon}
           color={color}
           font={Fonts.inter}
-          className='font-bold'
+          className={`${className} font-bold`}
         />
       )
     }

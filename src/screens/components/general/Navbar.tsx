@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from 'src/redux/hooks'
 import { setLanguage } from 'src/redux/features/languageSlice'
 import TitleSection from '../texts/TitleSection'
 import TextIcon, { SizeIcons, TextIcons } from '../icons/TextIcon'
+import { TextTags } from '../texts/TextBase'
 
 interface Props {
   position?: string
@@ -18,10 +19,12 @@ const Navbar: React.FC<Props> = ({ position = 'top' }) => {
   const [open, setOpen] = useState(false)
   const currentLanguage = useAppSelector(state => state.languageReducer.language)
   const dispatch = useAppDispatch()
+
   const toggleLanguage = () => {
     const newLanguage = currentLanguage === 'EN' ? 'ES' : 'EN'
     dispatch(setLanguage(newLanguage))
   }
+
   return (
     <nav
       className={`flex items-center justify-between ${
@@ -40,7 +43,7 @@ const Navbar: React.FC<Props> = ({ position = 'top' }) => {
           <Link key={item.key} href={item.to}>
             <TitleSmall
               text={item.name[currentLanguage]}
-              className='pointer big:text-[14px]'
+              className='cursor cursor-pointer big:text-[14px]'
               color={TextColors.white}
             />
           </Link>
@@ -49,7 +52,8 @@ const Navbar: React.FC<Props> = ({ position = 'top' }) => {
           <TitleSmall
             text={currentLanguage}
             color={TextColors.white}
-            className='cursor-pointer big:text-[14px]'
+            className='cursor big:text-[14px]'
+            tag={TextTags.SPAN}
           />
         </button>
       </div>
@@ -64,6 +68,7 @@ const Navbar: React.FC<Props> = ({ position = 'top' }) => {
               text={item.name[currentLanguage]}
               className='pointer my-4'
               color={TextColors.black}
+              tag={TextTags.SPAN}
             />
           </Link>
         ))}

@@ -14,12 +14,12 @@ const FooterCenter = () => {
             <TitleSmall
               text={item.name['EN']}
               color={TextColors.white}
-              className='textBesideIcon desk:text-basic desk:leading-basic'
+              className='textBesideIcon desk:text-basic desk:leading-basic cursor'
             />
             <TextIcon
               icon={TextIcons.RIGHT_ARROW}
               size={SizeIcons.TEXT_SMALL}
-              className='ml-2 self-center desk:text-basic desk:leading-basic'
+              className='ml-2 self-center desk:text-basic desk:leading-basic cursor'
               color={TextColors.white}
             />
           </Link>
@@ -28,12 +28,12 @@ const FooterCenter = () => {
           <TitleSmall
             text={'ESPAÑOL'}
             color={TextColors.white}
-            className='textBesideIcon desk:text-basic desk:leading-basic'
+            className='textBesideIcon desk:text-basic desk:leading-basic cursor'
           />
           <TextIcon
             icon={TextIcons.RIGHT_ARROW}
             size={SizeIcons.TEXT_SMALL}
-            className='ml-2 self-center desk:text-basic desk:leading-basic'
+            className='ml-2 self-center desk:text-basic desk:leading-basic cursor'
             color={TextColors.white}
           />
         </button>
@@ -45,12 +45,12 @@ const FooterCenter = () => {
               <TitleSmall
                 text={social.name}
                 color={TextColors.white}
-                className='desk:text-basic desk:leading-basic'
+                className='desk:text-basic desk:leading-basic cursor'
               />
               <TextIcon
                 icon={TextIcons.DIAGONAL_ARROW}
                 size={SizeIcons.TITLE_MEDIUM}
-                className='ml-1 self-center desk:text-[32px] desk:leading-[35.2px]'
+                className='ml-1 self-center desk:text-[32px] desk:leading-[35.2px] cursor'
                 color={TextColors.white}
               />
             </a>

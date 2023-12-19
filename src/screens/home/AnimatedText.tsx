@@ -1,31 +1,13 @@
-import React, { useState, useEffect } from 'react'
 import TitleSection from '../components/texts/TitleSection'
 import { TextColors } from 'src/utils/Colors'
 import './styles.css'
 import TextIcon, { SizeIcons, TextIcons } from '../components/icons/TextIcon'
 import Link from 'next/link'
 import { useAppSelector } from 'src/redux/hooks'
-import ReactDOM from 'react-dom'
-import TitleSmaller from '../components/texts/TitleSmaller'
 import CarouselTerritory from './CarouselTerritory'
-
-// const carouselTexts = ['WORLDWIDE', 'FOR EUROPE', 'FOR SPAIN', 'LATIN AMERICA', 'SPAIN & LATAM']
 
 const AnimatedText = () => {
   const artists = useAppSelector(state => state.artistsReducer.data)
-  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 })
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const moveCursor = (e: any) => {
-        setCursorPosition({ x: e.clientX, y: e.clientY })
-      }
-      window.addEventListener('mousemove', moveCursor)
-      return () => {
-        window.removeEventListener('mousemove', moveCursor)
-      }
-    }
-  }, [window])
 
   const groupedArtists = []
 
@@ -35,26 +17,8 @@ const AnimatedText = () => {
     groupedArtists.push(artists.slice(i, i + 4))
   }
 
-  const cursorComponent = (
-    <div
-      className='hidden desk:block fixed w-32 h-32 bg-white bg-opacity-10 rounded-full pointer-events-none z-50 pointer'
-      style={{
-        top: `${cursorPosition.y - 78}px`,
-        left: `${cursorPosition.x - 64}px`,
-        zIndex: 9999
-      }}
-    >
-      <TitleSmaller
-        text={'EXPLORE'}
-        className='inter opacity-100 desk:text-[14px] absolute top-[50%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white'
-      />
-    </div>
-  )
-
   return (
     <div className='relative h-screen bg-black overflow-hidden pointer'>
-      {ReactDOM.createPortal(cursorComponent, document.body)}
-
       <div className='animated-text z-10'>
         {groupedArtists.map((group, index) => (
           <TitleSection
