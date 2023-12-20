@@ -30,13 +30,15 @@ interface Params {
   color?: OptionColor
   className?: string
   step?: number
+  onChage?: (option: string) => void
 }
 
 const OptionsFilter = ({
   options,
   color = optionColors.white,
   className = '',
-  step = 24
+  step = 24,
+  onChage
 }: Params) => {
   // const [activeTab, setActiveTab] = useState<string>(options?.[0]?.option || 'ENGLISH')
   const [activeTab, setActiveTab] = useState(0)
@@ -63,6 +65,9 @@ const OptionsFilter = ({
       }
     }
     setActiveTab(tab)
+    if (onChage) {
+      onChage(options[tab].option)
+    }
   }
 
   useEffect(() => {

@@ -4,9 +4,10 @@ import { useState } from 'react'
 
 const optionPlaceholders = [
   { title: 'WORLDWIDE', option: 'worldwide' },
-  { title: 'IN EUROPE', option: 'europe' },
-  { title: 'IN LATINAMERICA', option: 'latin_america' },
-  { title: 'IN ASIA', option: 'asia' }
+  { title: 'EUROPE', option: 'europe' },
+  { title: 'SPAIN', option: 'spain' },
+  { title: 'LATIN AMERICA', option: 'latin_america' },
+  { title: 'SPAIN & LATAM', option: 'spain_and_latin_america' }
 ]
 
 const ArtistsMobile: React.FC = () => {

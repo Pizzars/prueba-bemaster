@@ -4,11 +4,11 @@ import { TextColors } from 'src/utils/Colors'
 import TitleSection from '../components/texts/TitleSection'
 
 const carouselTexts = [
-  { text: 'WORLDWIDE', size: `w-[24rem] desk:w-[40rem]` },
-  { text: 'FOR EUROPE', size: `w-[24rem] desk:w-[41rem]` },
-  { text: 'FOR SPAIN', size: `w-[21rem] desk:w-[37rem]` },
-  { text: 'LATIN AMERICA', size: `w-[28rem] desk:w-[49rem]` },
-  { text: 'SPAIN & LATAM', size: `w-[28rem] desk:w-[48rem]` }
+  { text: 'WORLDWIDE', size: `w-[24rem] desk:w-[40rem] big:w-[43rem]` },
+  { text: 'FOR EUROPE', size: `w-[24rem] desk:w-[41rem] big:w-[44rem]` },
+  { text: 'FOR SPAIN', size: `w-[21rem] desk:w-[37rem] big:w-[40rem]` },
+  { text: 'LATIN AMERICA', size: `w-[28rem] desk:w-[49rem] big:w-[52rem]` },
+  { text: 'SPAIN & LATAM', size: `w-[28rem] desk:w-[48rem] big:w-[51rem]` }
 ]
 
 const CarouselTerritory = () => {

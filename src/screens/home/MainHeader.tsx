@@ -28,9 +28,9 @@ const MainHeader: React.FC = () => {
         <div className='mt-auto mb-auto'>
           <TitleSmall text='b4bookings' className='text-white max-w-max uppercase' />
           <TitleHome text='BE FOR' className='text-white max-w-max uppercase' />
-          <TitleHome text='THE' className='text-white max-w-max uppercase desk:ml-12' />
+          <TitleHome text='THE' className='text-white max-w-max uppercase ml-6 desk:ml-12' />
 
-          <div className='topbar_text_slider ml-12'>
+          <div className='topbar_text_slider ml-6 desk:ml-12'>
             <Slider {...settings}>
               <div>
                 <TitleHome text='BOOKING' className='text-white uppercase' />

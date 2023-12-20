@@ -14,13 +14,15 @@ const options = [
   { title: 'EUROPE', option: 'europe' },
   { title: 'SPAIN', option: 'spain' },
   { title: 'LATIN AMERICA', option: 'latin_america' },
-  { title: 'SPAIN & LATAM', option: 'spain_latam' }
+  { title: 'SPAIN & LATAM', option: 'spain_and_latin_america' }
 ]
 
 const ArtistsDesktop: React.FC = () => {
   const selectedArtist = useAppSelector(state => state.artistsReducer.artist)
   const [prevArtistId, setPrevArtistId] = useState<number | null>(null)
   const [classText, setClassText] = useState<string>('text-big leading-big')
+
+  const [filter, setFilter] = useState(options[0].option)
 
   // Estilos de animación para el carrusel de imágenes
   const carouselStyle = useSpring({
@@ -64,13 +66,14 @@ const ArtistsDesktop: React.FC = () => {
         <OptionsFilter
           options={options}
           color={optionColors.white}
-          className='desk:text-small desk:leading-small'
+          onChage={option => setFilter(option)}
+          className='desk:text-small desk:leading-small big:text-small big:leading-small'
           step={72}
         />
       </div>
       <div className='flex w-full h-screen bg-black-app'>
         <div className='w-1/4'>
-          <ArtistList />
+          <ArtistList filter={filter} />
         </div>
         <div className='flex-grow flex h-full'>
           <animated.div style={expandStyle} className='h-full overflow-hidden'>

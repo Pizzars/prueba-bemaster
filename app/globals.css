@@ -163,12 +163,14 @@ body {
 
   .desk\:text-big,
   .text-big {
-    font-size: clamp(48px, 4.65vw, 65px);
+    /* font-size: clamp(48px, 4.65vw, 65px); */
+    font-size: clamp(48px, 4.2vw, 65px);
   }
 
   .desk\:leading-big,
   .leading-big {
-    line-height: clamp(48px, 4.65vw, 65px);
+    /* line-height: clamp(48px, 4.65vw, 65px); */
+    line-height: clamp(48px, 4.2vw, 65px);
   }
 
   .desk\:text-medium,
@@ -235,12 +237,14 @@ body {
 
   .big\:text-big,
   .text-big {
-    font-size: clamp(66px, 4.75vw, 90px);
+    /* font-size: clamp(66px, 4.75vw, 90px); */
+    font-size: clamp(66px, 4.4vw, 90px);
   }
 
   .big\:leading-big,
   .leading-big {
-    line-height: clamp(66px, 4.75vw, 90px);
+    /* line-height: clamp(66px, 4.75vw, 90px); */
+    line-height: clamp(66px, 4.4vw, 90px);
   }
 
   .big\:text-medium,
@@ -444,3 +448,15 @@ a.customLink:hover .arrowMove {
 .slick-vertical .slick-active {
   opacity: 1 !important;
 } */
+
+.barrel-container {
+  height: 200px; /* Altura fija del barril */
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Estilo para los elementos dentro del barril */
+.barrel-item {
+  margin-bottom: 10px; /* Espaciado entre elementos */
+}

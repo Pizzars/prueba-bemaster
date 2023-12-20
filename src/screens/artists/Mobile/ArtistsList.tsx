@@ -96,9 +96,6 @@ const ArtistsList: React.FC<Props> = ({ customClassname, filter }) => {
           if (artist.territory == filter) {
             return true
           }
-          // if (filter === 'asia') {
-          //   return false
-          // }
           return false
         })
         .map(artist => (

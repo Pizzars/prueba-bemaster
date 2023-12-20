@@ -5,6 +5,7 @@ import ArtistByIdDesktop from './Desktop/ArtistByIdDesktop'
 import { useParams } from 'next/navigation'
 import { useAppSelector } from 'src/redux/hooks'
 import Loading, { PageLoad } from '../components/general/Loading'
+import SwipeAlert from './Mobile/ArtistDetails/SwipeAlert'
 
 const ArtistByIdPage = () => {
   const { artistId } = useParams()
@@ -20,6 +21,7 @@ const ArtistByIdPage = () => {
       <div className='hidden md:block'>
         <ArtistByIdDesktop artist={artist} />
       </div>
+      <SwipeAlert />
     </div>
   )
 }
