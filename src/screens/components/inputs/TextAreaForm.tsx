@@ -10,9 +10,10 @@ interface Params {
   label: string
   onChange: (value: string) => void
   height?: number
+  button?: boolean
 }
 
-const TextAreaForm = ({ value, height = 12, onChange, label }: Params) => {
+const TextAreaForm = ({ value, height = 12, onChange, label, button = true }: Params) => {
   const [opened, setOpened] = useState(false)
 
   const size = useWindowSize().width ?? 0
@@ -35,9 +36,11 @@ const TextAreaForm = ({ value, height = 12, onChange, label }: Params) => {
           onChange={e => onChange(e.target.value)}
           placeholder='You can write here.'
         ></textarea>
-        <button className='mt-4' onClick={() => setOpened(false)}>
-          <TitleSmall text='DONE' tag={TextTags.SPAN} />
-        </button>
+        {button && (
+          <button className='mt-4' onClick={() => setOpened(false)}>
+            <TitleSmall text='DONE' tag={TextTags.SPAN} />
+          </button>
+        )}
       </animated.div>
     </Label>
   )

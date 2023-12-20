@@ -24,10 +24,10 @@ const Cookies = () => {
   }
 
   if (!showCookieConsent) {
-    return null
+    return <></>
   }
   return (
-    <div className='fixed bottom-0 right-0 sm:right-14 sm:bottom-24 bg-black text-white w-full sm:w-[390px]'>
+    <div className='fixed bottom-0 right-0 sm:right-14 sm:bottom-24 bg-black text-white w-full sm:w-[390px] desk:w-[350px]'>
       <div>
         <TextSmall
           text={`Utilizamos cookies propias para mejorar tu experiencia de navegación. Si continúas navegando, entendemos que aceptas nuestra política de cookies.

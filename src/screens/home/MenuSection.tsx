@@ -22,17 +22,22 @@ const MenuSection = () => {
         {menuItemsForHome.map(item => (
           <Link href={item.to} key={item.key}>
             <div className='flex'>
-              <TitleSection text={item.name[currentLanguage]} color={TextColors.black} />
+              <TitleSection
+                text={item.name[currentLanguage]}
+                color={TextColors.black}
+                className='cursor'
+              />
               <TextIcon
                 icon={TextIcons.RIGHT_ARROW}
                 size={SizeIcons.TITLE}
                 color={TextColors.black}
+                className='cursor'
               />
             </div>
           </Link>
         ))}
         <button onClick={toggleLanguage} className='self-end mr-8' style={{ marginTop: '6rem' }}>
-          <TitleSection text={currentLanguage} color={TextColors.black} />
+          <TitleSection text={currentLanguage} color={TextColors.black} className='cursor' />
         </button>
       </div>
     </div>

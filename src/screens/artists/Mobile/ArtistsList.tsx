@@ -11,9 +11,10 @@ import { selectArtist } from 'src/redux/features/artistsSlice'
 
 interface Props {
   customClassname?: string
+  filter: string
 }
 
-const ArtistsList: React.FC<Props> = ({ customClassname }) => {
+const ArtistsList: React.FC<Props> = ({ customClassname, filter }) => {
   const artists = useAppSelector(state => state.artistsReducer.data)
   const [selectedArtist, setSelectedArtist] = useState<null | ArtistModel>(null)
   const dispatch = useDispatch()
@@ -73,30 +74,49 @@ const ArtistsList: React.FC<Props> = ({ customClassname }) => {
 
   return (
     <div
-      className={`flex flex-col ${customClassname} w-full pl-8 pr-6 space-y-5`}
+      className={`flex flex-col ${customClassname} w-full pl-8 pr-6 space-y-5 pb-12`}
       style={{
         paddingTop: 200
       }}
     >
-      {sortedArtists?.map(artist => (
-        <div key={artist.id} className='flex flex-col'>
-          <div
-            onClick={() => handleArtistClick(artist)}
-            className='flex flex-row justify-between items-center'
-          >
-            <TitleMedium text={artist.name} />
-            <TextIcon icon={TextIcons.DOWN_TRIANGLE} />
-          </div>
+      {sortedArtists
+        ?.filter(artist => {
+          if (filter === 'worldwide') {
+            return true
+          }
+          if (
+            filter === 'europe' &&
+            (artist.territory == 'spain' || artist.territory == 'spain_and_lantin_america')
+          ) {
+            return true
+          }
+          if (filter === 'lantin_america' && artist.territory == 'spain_and_lantin_america') {
+            return true
+          }
+          if (artist.territory == filter) {
+            return true
+          }
+          return false
+        })
+        .map(artist => (
+          <div key={artist.id} className='flex flex-col'>
+            <div
+              onClick={() => handleArtistClick(artist)}
+              className='flex flex-row justify-between items-center'
+            >
+              <TitleMedium text={artist.name} />
+              <TextIcon icon={TextIcons.DOWN_TRIANGLE} />
+            </div>
 
-          {selectedArtist?.id === artist.id && (
-            <animated.div style={props} className='overflow-hidden'>
-              <div ref={contentRef}>
-                <ArtistDetailsMobile />
-              </div>
-            </animated.div>
-          )}
-        </div>
-      ))}
+            {selectedArtist?.id === artist.id && (
+              <animated.div style={props} className='overflow-hidden'>
+                <div ref={contentRef}>
+                  <ArtistDetailsMobile />
+                </div>
+              </animated.div>
+            )}
+          </div>
+        ))}
     </div>
   )
 }

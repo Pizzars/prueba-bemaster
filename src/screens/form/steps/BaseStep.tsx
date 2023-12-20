@@ -15,6 +15,8 @@ interface Params {
   active?: boolean
   hideButton?: boolean
   description?: string
+  titleClass?: string
+  textButton?: string
 }
 const BaseStep = ({
   onClick,
@@ -24,17 +26,15 @@ const BaseStep = ({
   alt,
   active = true,
   hideButton = false,
-  description
+  description,
+  textButton = 'NEXT',
+  titleClass = 'uppercase desk:text-[4.2vw] super:text-[90px]'
 }: Params) => {
   return (
     <div className='flex justify-between desk:p-16 big:p-24'>
       <div className='flex-col hidden desk:flex sticky top-0'>
         <TitleSmall text={alt} color={TextColors.white} />
-        <TitleSection
-          text={title}
-          className='uppercase desk:text-[4.2vw] super:text-[90px]'
-          color={TextColors.white}
-        />
+        <TitleSection text={title} className={titleClass} color={TextColors.white} />
       </div>
       <div className='w-full desk:w-[50vw] big:w-[40vw] max-w-[768px] relative'>
         <div>
@@ -50,7 +50,7 @@ const BaseStep = ({
                 <OptionsFilter
                   options={options}
                   color={optionColors.black}
-                  className='desk:text-little'
+                  className='desk:text-little '
                 />
               </div>
             )}
@@ -70,7 +70,7 @@ const BaseStep = ({
                   onClick={active ? onClick : () => null}
                 >
                   <TitleSmall
-                    text='NEXT'
+                    text={textButton}
                     className={`${active ? '' : 'opacity-50'}`}
                     tag={TextTags.SPAN}
                   />

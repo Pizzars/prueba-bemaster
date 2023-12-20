@@ -1,93 +1,105 @@
-import React, { useState } from 'react'
-// import { TextColors } from 'src/utils/Colors';
+import { useEffect, useState } from 'react'
 import styles from './ArtistsList.module.css'
-import TitleSmall from 'src/screens/components/texts/TitleSmall'
-import InfiniteScroll from 'react-infinite-scroller'
+// import InfiniteScroll from 'react-infinite-scroller'
 import { useAppSelector } from 'src/redux/hooks'
 import { ArtistModel } from 'src/proxy/queries/artists/artistModel'
 import { selectArtist } from 'src/redux/features/artistsSlice'
 import { useDispatch } from 'react-redux'
+import ArtistsListScroll from './ArtistsListScroll'
 
-const ArtistList = () => {
+interface Props {
+  filter: string
+}
+
+const ArtistList = ({ filter }: Props) => {
   const [selectedArtist, setSelectedArtist] = useState<null | ArtistModel>(null)
-  // const [isTextClicked, setIsTextClicked] = useState(false);
   const [clickedArtist, setClickedArtist] = useState<number | null>(null)
-  const [isDragging, setIsDragging] = useState(false)
-  const [lastY, setLastY] = useState(0)
-  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 })
+  // const [isDragging, setIsDragging] = useState(false)
+
+  // const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 })
 
   const artists = useAppSelector(state => state.artistsReducer.data)
   const dispatch = useDispatch()
 
+  useEffect(() => {
+    if (artists) {
+      setTimeout(() => {
+        const newList = artists.filter(artist => {
+          if (filter === 'worldwide') {
+            return true
+          }
+          if (
+            filter === 'europe' &&
+            (artist.territory == 'spain' || artist.territory == 'spain_and_lantin_america')
+          ) {
+            return true
+          }
+          if (filter === 'lantin_america' && artist.territory == 'spain_and_lantin_america') {
+            return true
+          }
+          if (filter === 'spain_and_lantin_america' && artist.territory == 'lantin_america') {
+            return true
+          }
+          if (artist.territory == filter) {
+            return true
+          }
+          return false
+        })
+
+        if (newList.length === 0) {
+          setSelectedArtist(null)
+          setClickedArtist(null)
+          return
+        }
+
+        const num = Math.floor(Math.random() * newList.length)
+
+        handleArtistClick(newList[num])
+      }, 2000)
+    }
+  }, [artists, filter])
+
   if (!artists) {
-    return null
+    return <></>
   }
 
-  const artistData = [...artists]
-  artistData.sort((a, b) => (a.name || '').localeCompare(b.name || ''))
-
-  const [items, setItems] = React.useState(artistData)
-  const scrollContainerRef = React.useRef<HTMLDivElement | null>(null)
-
-  const loadMore = () => {
-    if (scrollContainerRef.current) {
-      if (scrollContainerRef.current.scrollTop < 10) {
-        setItems(prevItems => [...artistData, ...prevItems])
-        scrollContainerRef.current.scrollTop = (artistData[0] as any).offsetHeight * artists.length
-      } else {
-        setItems(prevItems => [...prevItems, ...artistData])
+  const artistData = [
+    ...artists.filter(artist => {
+      if (filter === 'worldwide') {
+        return true
       }
-    }
-  }
-
-  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (clickOnButton) {
-      setClickOnButton(false)
-      return
-    }
-    setIsDragging(true)
-    setLastY(e.clientY)
-    setCursorPosition({ x: e.clientX, y: e.clientY })
-  }
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (isDragging && scrollContainerRef.current) {
-      const deltaY = lastY - e.clientY
-      scrollContainerRef.current.scrollTop += deltaY
-      setLastY(e.clientY)
-    }
-    setCursorPosition({ x: e.clientX, y: e.clientY })
-  }
-
-  React.useLayoutEffect(() => {
-    if (isDragging) {
-      const handleDocumentMouseMove = (e: MouseEvent) => {
-        setCursorPosition({ x: e.clientX, y: e.clientY })
+      if (
+        filter === 'europe' &&
+        (artist.territory == 'spain' || artist.territory == 'spain_and_lantin_america')
+      ) {
+        return true
       }
-      document.addEventListener('mousemove', handleDocumentMouseMove)
-      return () => {
-        document.removeEventListener('mousemove', handleDocumentMouseMove)
+      if (filter === 'lantin_america' && artist.territory == 'spain_and_lantin_america') {
+        return true
       }
-    }
-  }, [isDragging])
+      if (filter === 'spain_and_lantin_america' && artist.territory == 'lantin_america') {
+        return true
+      }
+      if (artist.territory == filter) {
+        return true
+      }
+      return false
+    })
+  ]
+  artistData
+    .sort((a, b) => (a.name || '').localeCompare(b.name || ''))
+    .sort((a, b) => (a.territory || '').localeCompare(b.territory || ''))
 
-  const handleMouseUp = () => {
-    setIsDragging(false)
-  }
+  // const [clickOnButton, setClickOnButton] = useState(false)
 
-  const handleMouseLeave = () => {
-    setIsDragging(false)
-  }
-  const [clickOnButton, setClickOnButton] = React.useState(false)
-
-  const handleArtistClick = (artist: ArtistModel, e: React.MouseEvent) => {
-    e.stopPropagation()
+  const handleArtistClick = (artist: ArtistModel, e?: React.MouseEvent) => {
+    if (e) e.stopPropagation()
     setSelectedArtist(artist)
     dispatch(selectArtist(artist))
     setClickedArtist(artist.id)
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (clickedArtist !== null) {
       const timer = setTimeout(() => {
         setClickedArtist(null)
@@ -96,21 +108,30 @@ const ArtistList = () => {
     }
   }, [clickedArtist])
 
+  // if (!items || !items.length) return <></>
+
   return (
     <div
       className={`relative h-screen ${styles.artistListContainer} text-center ${styles.customCursor}`}
     >
       <div
-        ref={scrollContainerRef}
-        className={`overflow-y-scroll h-full ${styles.scrollContainer} ${
-          isDragging ? 'drag noSelect' : ''
+        // ref={scrollContainerRef}
+        className={`h-full ${styles.scrollContainer} 
+        ${
+          //isDragging ? 'drag noSelect' : ''
+          ''
         }`}
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseLeave}
+        // onMouseDown={handleMouseDown}
+        // onMouseMove={handleMouseMove}
+        // onMouseUp={handleMouseUp}
+        // onMouseLeave={handleMouseLeave}
       >
-        <InfiniteScroll
+        <ArtistsListScroll
+          list={artistData}
+          selected={selectedArtist}
+          onSelect={handleArtistClick}
+        />
+        {/* <InfiniteScroll
           pageStart={0}
           loadMore={loadMore}
           hasMore={true}
@@ -118,7 +139,7 @@ const ArtistList = () => {
           useWindow={false}
           threshold={10}
         >
-          <div className='flex items-center justify-center h-full'>
+          <div className='flex items-center justify-center h-full  pl-24 pr-16'>
             <ul className='space-y-2 p-4 text-left'>
               {items.map(item => (
                 <li key={item.id * Math.random()}>
@@ -134,7 +155,7 @@ const ArtistList = () => {
                   >
                     <TitleSmall
                       text={item.name}
-                      className={`hover:opacity-100 inline-block pointer transition-colors duration-600 ease-in-out
+                      className={`hover:opacity-100 uppercase inline-block pointer text-start transition-colors duration-600 ease-in-out
                ${
                  clickedArtist === item.id
                    ? 'text-yellow-lime-app'
@@ -148,13 +169,13 @@ const ArtistList = () => {
               ))}
             </ul>
           </div>
-        </InfiniteScroll>
+        </InfiniteScroll> */}
       </div>
 
       <div className={`${styles.mask} ${styles.maskTop}`}></div>
       <div className={`${styles.mask} ${styles.maskBottom}`}></div>
 
-      {isDragging && !clickOnButton && (
+      {/* {isDragging && !clickOnButton && (
         <div
           className='fixed w-32 h-32 bg-white bg-opacity-10 rounded-full pointer-events-none z-50'
           style={{
@@ -169,7 +190,7 @@ const ArtistList = () => {
             ▽
           </span>
         </div>
-      )}
+      )} */}
     </div>
   )
 }

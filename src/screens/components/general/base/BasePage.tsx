@@ -1,3 +1,4 @@
+import Cursor from '../Cursor'
 import Footer from '../Footer/Footer'
 import Navbar from '../Navbar'
 
@@ -28,6 +29,7 @@ const BasePage = ({
         {navbar && <Navbar />}
         {children}
         {footer && <Footer />}
+        <Cursor />
       </body>
     </>
   )

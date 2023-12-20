@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@400;700&display=swap');
+
+html {
+  font-size: 10px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+input[type='text'],
+input[type='password'],
+textarea,
+select {
+  background-color: #ffffff;
+  border: none;
+}
+
+DIV.sone-general-formcontainer {
+  background-color: #ffffff;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+}
+
+body {
+  font-family: 'Prompt', sans-serif;
+  font-size: 14px;
+  color: #000000;
+  background: #ffffff;
+}
+
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  border: none;
+  font-weight: bold;
+  outline: none;
+}
+
+#CenterColumnDiv {
+  background-color: white;
+}
+
+DIV.sone-general-header {
+  background-color: #ffffff;
+  color: #000000;
+  margin-bottom: 1rem;
+  font-size: 20pt;
+}
+
+DIV.sone-general-subheader {
+  font-size: 20pt;
+  padding: 0 3px 3px 3px;
+  color: #000000;
+  outline: none;
+}
+
+input[type='button'].green,
+input[type='submit'].green,
+button.green,
+a.s1_button.green {
+  border-radius: 10px 10px 10px 10px;
+  background-color: darkorange;
+  height: 30px;
+  margin: auto;
+  color: #fff;
+  text-align: center;
+  line-height: 5px;
+  -webkit-border-radius: 10px;
+  box-shadow: 0 1px 2px orange;
+}
+
+table,
+tbody {
+  display: block;
+}
+
+table tr {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-bottom: solid 2px black;
+  padding: 1rem 2rem 3rem;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+td.s1_cell_bigpadding,
+td.label,
+td div,
+table td,
+.label {
+  width: 100%;
+}
+
+td div > div > div > div {
+  display: flex;
+}
+
+.s1_dateinput {
+  flex: 1;
+  border: none;
+  text-align: start;
+  font-weight: bold;
+}
+
+DIV.sone-webform-centercolumn {
+  background: white;
+  padding: 0;
+}
+
+table.ui-datepicker-calendar {
+  display: table;
+}
+table.ui-datepicker-calendar tbody {
+  display: table-row-group;
+}
+
+table.ui-datepicker-calendar tr {
+  display: table-row;
+}
+table.ui-datepicker-calendar tr td {
+  width: auto;
+}
+
+#FirstBlockOfDetails tbody tr:nth-child(3) {
+  padding: 0;
+}
+
+#FirstBlockOfDetails tbody tr:nth-child(3) td:nth-child(1) {
+  padding: 2rem 3rem 2rem;
+}
+
+#FirstBlockOfDetails tbody tr:nth-child(3) td:nth-child(2) {
+  padding: 0rem 2rem 3rem;
+  background: black;
+}
+#FirstBlockOfDetails tbody tr:nth-child(3) td:nth-child(2) textarea {
+  background: black;
+  color: white;
+  resize: none;
+}
+DIV.sone-webform-languagebar,
+DIV.sone-general-subheader,
+DIV.sone-general-header,
+DIV.sone-general-comment {
+  padding: 0 3rem;
+}

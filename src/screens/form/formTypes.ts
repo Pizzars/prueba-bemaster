@@ -1,34 +1,46 @@
+import { SelectListParams } from '../components/inputs/Select'
+
 export interface booking {
   artist: string
-  date: Date
-  aditionalInformation?: string
+  ShowDate1Date: Date
+  ShowNote?: string
 }
 
 export interface promoter {
-  firstName: string
-  lastName: string
-  email: string
-  company: string
-  country: string
-  city: string
-  state: string
-  website: string
-  tax: string
+  SG2_Contact_FirstName: string
+  SG2_Contact_LastName: string
+  SG2_Contact_Email: string
+  SG2Addressname: string
+  SG2AddressCountryId: string
+  SG2AddressCity: string
+  SG2AddressStateId: string
+  SG2_Company_Website: string
+  SG2_Company_TaxNumber: string
 }
 
 export interface venue {
-  company: string
-  country: string
-  city: string
-  state: string
-  website: string
+  SG3Addressname: string
+  SG3AddressCountryId: string
+  SG3AddressCity: string
+  SG3AddressStateId: string
+  SG3_Company_Website: string
   facebook: string
-  capacity: number
-  doorsOpen: string
-  doorsClose: string
+  VenueCapacity: number
+  DoorsOpenTimeSpan: string
+  DoorsCloseTimeSpan: string
 }
 export interface event {
-  name: string
+  EventName: string
+}
+
+export interface financial {
+  EventOfferAmount: string
+  EventOfferCurrency: string
+  EventOfferComment: string
+}
+export interface extra {
+  FFLastEventLineUp: string
+  FFotheracts: string
 }
 
 export interface FormRequest {
@@ -36,6 +48,8 @@ export interface FormRequest {
   promoter: promoter
   venue: venue
   event: event
+  financial: financial
+  extra: extra
 }
 
 export interface inputForm {
@@ -43,5 +57,5 @@ export interface inputForm {
   label: string
   type: number
   placeholder?: string
-  options?: string[]
+  options?: SelectListParams[]
 }
