@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { getAboutData } from 'src/redux/features/aboutSlice'
 import { StateRequest } from 'src/redux/features/baseReducer'
 import { useAppDispatch, useAppSelector } from 'src/redux/hooks'
@@ -8,14 +8,50 @@ import TitleMedium from '../components/texts/TitleMedium'
 import TextParagraph from '../components/texts/TextParagraph'
 import TitleSmall from '../components/texts/TitleSmall'
 import Carousel from './Carousel'
+import { TextTags } from '../components/texts/TextBase'
 
 const Content = () => {
   const state = useAppSelector(state => state.aboutReducer.data)
   const status = useAppSelector(state => state.aboutReducer.status)
   const dispatch = useAppDispatch()
 
+  const ref = useRef<HTMLInputElement | null>(null)
+
   useEffect(() => {
     if (status === StateRequest.EMPTY) dispatch(getAboutData())
+    if (status === StateRequest.SUCCESS) {
+      const container = ref.current
+      if (!container) return
+      const list = container.querySelectorAll('.word')
+
+      window.onscroll = () => {
+        if (window.innerWidth < 1024) return
+
+        const h = window.innerHeight / 1.5
+        const hContainer = container.offsetHeight
+        const position = container.getBoundingClientRect().top - h
+        const positionBottom = position + hContainer
+        const size = hContainer / list.length
+        const top = hContainer - positionBottom
+
+        list.forEach((word: any, i) => {
+          const start = size * i
+          const end = i === list.length ? size * i : size * (i + 1)
+
+          if (top >= start && top <= end) {
+            const percentage = ((positionBottom - start) / size) * 100
+
+            // Utiliza el porcentaje para aplicar el gradiente al elemento actual
+            const p = Math.max(0, Math.min(100, percentage))
+            word.style.backgroundImage = `linear-gradient(to right, white ${p}%, rgba(255, 255, 255, 0.4) ${p}%)`
+          } else if (top >= start) {
+            word.style.backgroundImage = `linear-gradient(to right, white 100%, rgba(255, 255, 255, 0.4) 100%)`
+          } else {
+            word.style.backgroundImage = `linear-gradient(to right, white 0%, rgba(255, 255, 255, 0.4) 0%)`
+          }
+        })
+      }
+    }
   }, [status])
 
   const emails = () => {
@@ -42,6 +78,32 @@ const Content = () => {
     )
   }
 
+  const getBio = (text: string) => {
+    return (
+      <div ref={ref}>
+        {text.split('\n').map((tx, i) => {
+          return (
+            <p key={`pr-${i}`}>
+              {tx.split(' ').map((word, j) => {
+                return (
+                  <span
+                    className='text-gradient word inline-block mr-2 transition delay-300'
+                    key={`word-${i}-${j}`}
+                    style={{
+                      backgroundImage: `linear-gradient(to right, white 0%, rgba(255, 255, 255, 0.5) 0%)`
+                    }}
+                  >
+                    {word}
+                  </span>
+                )
+              })}
+            </p>
+          )
+        })}
+      </div>
+    )
+  }
+
   return (
     <>
       <div>
@@ -53,9 +115,28 @@ const Content = () => {
               className='desk:text-white desk:w-[30vw] desk:leading-[1.4] big:text-[1.8vw] big:w-[65%] super:text-[32px]'
             />
             <TextParagraph
-              text={state?.bio_en ?? ''}
-              className='mt-8 desk:text-white desk:w-[84%]'
+              // text={state?.bio_en ?? ''}
+              text={getBio(state?.bio_en ?? '')}
+              className='hidden desk:block mt-8 desk:text-white desk:w-[84%]'
+              tag={TextTags.DIV}
             />
+            <TextParagraph
+              text={state?.bio_en ?? ''}
+              className='desk:hidden mt-8 desk:text-white desk:w-[84%]'
+            />
+            {/* <TextParagraph
+              text={
+                <div
+                  className='text-gradient'
+                  style={{
+                    backgroundImage: `linear-gradient(to right, white 100%, rgba(255, 255, 255, 0.5) 100%)`
+                  }}
+                >
+                  B4Bookings is an agency with a comprehensive
+                </div>
+              }
+              className=' desk:text-white desk:w-[84%] text-gradient'
+            /> */}
           </div>
         </div>
         {state && state.logos && (

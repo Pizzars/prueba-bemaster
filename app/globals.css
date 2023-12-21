@@ -460,3 +460,10 @@ a.customLink:hover .arrowMove {
 .barrel-item {
   margin-bottom: 10px; /* Espaciado entre elementos */
 }
+
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent !important;
+  /* background-image: linear-gradient(to right, white 80%, rgba(255, 255, 255, 0.5) 80%); */
+}

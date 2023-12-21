@@ -56,15 +56,8 @@ const ArtistsListScroll = ({ list, selected, onSelect }: Params) => {
           scrollingUp = true
         }
 
-        // Actualiza la posición de scroll
         scrollPos = newScrollPos
-        // window.scrollTo({
-        //   top: container.offsetTop,
-        //   behavior: 'smooth'
-        // })
-        // Puedes utilizar la variable 'scrollingUp' para determinar la dirección del scroll
         if (scrollingUp) {
-          // console.log('Scroll arriba', pos)
           if (pos > -30 && pos < 5) {
             container.removeChild(lastItem)
             container.insertBefore(lastItem, item)
@@ -72,8 +65,6 @@ const ArtistsListScroll = ({ list, selected, onSelect }: Params) => {
             return
           }
         } else {
-          // console.log('Scroll Abajo', pos)
-          // console.log('Scroll Abajo', posBottom)
           if (posBottom < -10) {
             container.removeChild(item)
             container.appendChild(item)
