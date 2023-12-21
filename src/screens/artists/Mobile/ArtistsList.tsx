@@ -14,6 +14,16 @@ interface Props {
   filter: string
 }
 
+const updateList = (list: ArtistModel[]) => {
+  const targetLength = 50
+
+  while (list.length < targetLength) {
+    // Duplica los elementos de la lista original
+    list.push(...list.map(item => ({ ...item })))
+  }
+  return list
+}
+
 const ArtistsList: React.FC<Props> = ({ customClassname, filter }) => {
   const artists = useAppSelector(state => state.artistsReducer.data)
   const [selectedArtist, setSelectedArtist] = useState<null | ArtistModel>(null)
@@ -22,10 +32,30 @@ const ArtistsList: React.FC<Props> = ({ customClassname, filter }) => {
   const [nextArtist, setNextArtist] = useState<string | null>(null)
   const [contentHeight, setContentHeight] = useState(0)
   const contentRef = useRef(null)
+  const containerRef = useRef(null)
 
   if (!artists) return <></>
 
-  const artistData = [...artists]
+  const artistData = [
+    ...artists.filter(artist => {
+      if (filter === 'worldwide') {
+        return true
+      }
+      if (
+        filter === 'europe' &&
+        (artist.territory == 'spain' || artist.territory == 'spain_and_lantin_america')
+      ) {
+        return true
+      }
+      if (filter === 'lantin_america' && artist.territory == 'spain_and_lantin_america') {
+        return true
+      }
+      if (artist.territory == filter) {
+        return true
+      }
+      return false
+    })
+  ]
 
   const sortedArtists = [...artistData].sort((a, b) => (a.name || '').localeCompare(b.name || ''))
 
@@ -71,40 +101,69 @@ const ArtistsList: React.FC<Props> = ({ customClassname, filter }) => {
   if (!artists) {
     return null
   }
+  let scrollPos = 0
+  let scrollingUp = false
+  if (sortedArtists.length === 0) return <></>
+
+  const listToShow = sortedArtists.length >= 50 ? sortedArtists : updateList(sortedArtists)
 
   return (
     <div
-      className={`flex flex-col ${customClassname} w-full pl-8 pr-6 space-y-5 pb-12`}
+      className={`flex flex-col ${customClassname} w-full pl-8 pr-6 space-y-5 pb-12 bg-white relative h-screen`}
       style={{
-        paddingTop: 200
+        paddingTop: 150
       }}
     >
-      {sortedArtists
-        ?.filter(artist => {
-          if (filter === 'worldwide') {
-            return true
+      <div
+        ref={containerRef}
+        className='h-full overflow-y-scroll bg-white'
+        onScroll={() => {
+          const container = containerRef.current as any
+          if (!container) return
+          const item = container.children[0]
+          const lastItem = container.children[container.children.length - 1]
+
+          const pos = item.offsetTop - container.scrollTop
+          const pos2 = lastItem.offsetTop - container.scrollTop
+          // console.log(pos, pos2)
+          // console.log(container.scrollTop, pos2)
+          // console.log(window.innerHeight, pos2)
+          const posBottom = pos2 - lastItem.offsetHeight - window.innerHeight
+          const newScrollPos = container.scrollTop
+
+          if (newScrollPos > scrollPos) {
+            // Scroll hacia abajo
+            scrollingUp = false
+          } else {
+            // Scroll hacia arriba
+            scrollingUp = true
           }
-          if (
-            filter === 'europe' &&
-            (artist.territory == 'spain' || artist.territory == 'spain_and_lantin_america')
-          ) {
-            return true
+
+          scrollPos = newScrollPos
+          if (scrollingUp) {
+            if (pos > -30 && pos < 5) {
+              container.removeChild(lastItem)
+              container.insertBefore(lastItem, item)
+              // e.preventDefault()
+              return
+            }
+          } else {
+            if (posBottom < -10) {
+              container.removeChild(item)
+              container.appendChild(item)
+              // e.preventDefault()
+              return
+            }
           }
-          if (filter === 'lantin_america' && artist.territory == 'spain_and_lantin_america') {
-            return true
-          }
-          if (artist.territory == filter) {
-            return true
-          }
-          return false
-        })
-        .map(artist => (
-          <div key={artist.id} className='flex flex-col'>
+        }}
+      >
+        {listToShow?.map(artist => (
+          <div key={artist.id} className='flex flex-col py-4'>
             <div
               onClick={() => handleArtistClick(artist)}
               className='flex flex-row justify-between items-center'
             >
-              <TitleMedium text={artist.name} />
+              <TitleMedium text={artist.name} className='uppercase' />
               <TextIcon icon={TextIcons.DOWN_TRIANGLE} />
             </div>
 
@@ -117,6 +176,7 @@ const ArtistsList: React.FC<Props> = ({ customClassname, filter }) => {
             )}
           </div>
         ))}
+      </div>
     </div>
   )
 }
