@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { TextColors } from 'src/utils/Colors'
 import TitleSmall from '../texts/TitleSmall'
 import TextSmall from '../texts/TextSmall'
+import { useAppSelector } from 'src/redux/hooks'
+import { homeTexts } from 'src/screens/home/components/textsHome'
 
 const Cookies = () => {
   const [showCookieConsent, setShowCookieConsent] = useState(true)
@@ -22,6 +24,7 @@ const Cookies = () => {
       setShowCookieConsent(false)
     }
   }
+  const currentLanguage = useAppSelector(state => state.languageReducer.language)
 
   if (!showCookieConsent) {
     return <></>
@@ -30,14 +33,13 @@ const Cookies = () => {
     <div className='fixed bottom-0 right-0 sm:right-14 sm:bottom-24 bg-black text-white w-full sm:w-[390px] desk:w-[350px]'>
       <div>
         <TextSmall
-          text={`Utilizamos cookies propias para mejorar tu experiencia de navegación. Si continúas navegando, entendemos que aceptas nuestra política de cookies.
-        `}
+          text={homeTexts.textCookies[currentLanguage]}
           color={TextColors.white}
           className='text-[12px] uppercase px-6 pt-6 pb-2 leading-[14.4px] font-bold'
         />
       </div>
       <button className='bg-white text-black py-2 w-full' onClick={handleConsent}>
-        <TitleSmall text={'OK'} color={TextColors.black} className='text-[10px] uppercase' />
+        <TitleSmall text={homeTexts.textOk[currentLanguage]} color={TextColors.black} className='text-[10px] uppercase' />
       </button>
     </div>
   )

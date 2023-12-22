@@ -1,10 +1,12 @@
 import React from 'react'
+import { useAppSelector } from 'src/redux/hooks'
 import TextIcon, { TextIcons, SizeIcons } from 'src/screens/components/icons/TextIcon'
 import TextParagraph from 'src/screens/components/texts/TextParagraph'
 import { TextColors } from 'src/utils/Colors'
 import { footerButtonsInfo } from 'src/utils/consts'
 
 const FooterBottom = () => {
+  const currentLanguage = useAppSelector(state => state.languageReducer.language)
   return (
     <section className='flex py-4 justify-between items-center mt-60'>
       <div className='flex flex-row'>
@@ -12,7 +14,7 @@ const FooterBottom = () => {
           <div key={button.key} className='mr-4 flex items-center'>
             <a href={button.to} id={button.key} className=' w-[170px] flex items-center customLink'>
               <TextParagraph
-                text={button.name['EN']}
+                text={button.name[currentLanguage]}
                 color={TextColors.white}
                 className='desk:text-[14px] textBesideIcon cursor'
               />

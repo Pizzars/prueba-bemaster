@@ -7,6 +7,8 @@ import TitleSmall from '../components/texts/TitleSmall'
 import Link from 'next/link'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
+import { useAppSelector } from 'src/redux/hooks'
+import { homeTexts } from './components/textsHome'
 // import Navbar from '../components/general/Navbar'
 
 const MainHeader: React.FC = () => {
@@ -22,21 +24,23 @@ const MainHeader: React.FC = () => {
     arrows: false
   }
 
+  const currentLanguage = useAppSelector(state => state.languageReducer.language)
+
   return (
     <header className='h-home backdrop-blur-sm flex flex-col justify-between relative'>
       <div className='h-full pl-10 pt-48 desk:pl-20 desk:pt-24'>
         <div className='mt-auto mb-auto'>
           <TitleSmall text='b4bookings' className='text-white max-w-max uppercase' />
-          <TitleHome text='BE FOR' className='text-white max-w-max uppercase' />
-          <TitleHome text='THE' className='text-white max-w-max uppercase ml-6 desk:ml-12' />
+          <TitleHome text={homeTexts.textBeFor[currentLanguage]} className='text-white max-w-max uppercase' />
+          <TitleHome text={homeTexts.textThe[currentLanguage]} className='text-white max-w-max uppercase ml-6 desk:ml-12' />
 
           <div className='topbar_text_slider ml-6 desk:ml-12'>
             <Slider {...settings}>
               <div>
-                <TitleHome text='BOOKING' className='text-white uppercase' />
+                <TitleHome text={homeTexts.textBooking[currentLanguage]} className='text-white uppercase' />
               </div>
               <div>
-                <TitleHome text='MUSIC' className='text-white uppercase' />
+                <TitleHome text={homeTexts.textMusic[currentLanguage]} className='text-white uppercase' />
               </div>
             </Slider>
           </div>
