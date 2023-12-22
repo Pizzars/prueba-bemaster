@@ -1,51 +1,48 @@
 'use client'
-import Filter from '../components/general/Filter/Filter'
-import GigsList from './GigsList'
 import { useAppDispatch, useAppSelector } from 'src/redux/hooks'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { getEventsData } from 'src/redux/features/eventsSlice'
-import { createWeekOptions, filterAndFormatGigs } from 'src/utils/functions'
-import Loading, { PageLoad } from '../components/general/Loading'
+import { StateRequest } from 'src/redux/features/baseReducer'
+import GigsListData from './GigsListData'
+import HeadGigs from './HeadGigs'
 
 const Gigs: React.FC = () => {
-  const optionPlaceholders = createWeekOptions(9)
   const dispatch = useAppDispatch()
-  const { data: events, status } = useAppSelector(state => state.eventsReducer)
-  const [selectedDateRange, setSelectedDateRange] = useState(optionPlaceholders[0]?.option)
-
-  const formattedEvents = useMemo(() => {
-    const { start, end } = selectedDateRange || { start: '', end: '' }
-    return filterAndFormatGigs(events, start, end)
-  }, [events, selectedDateRange])
-
-  const handleOptionSelected = (selectedOption: { start: string; end: string }) => {
-    const foundOption = optionPlaceholders.find(
-      option =>
-        option.option.start === selectedOption.start && option.option.end === selectedOption.end
-    )?.option
-    if (foundOption) {
-      setSelectedDateRange(foundOption)
-    }
-  }
+  const { data: events, status, weeks } = useAppSelector(state => state.eventsReducer)
+  const [filter, setFilter] = useState<string | null>(null)
 
   useEffect(() => {
-    if (events) {
-      dispatch(getEventsData(0))
+    if (status === StateRequest.EMPTY) {
+      dispatch(getEventsData())
     }
-  }, [dispatch])
+  }, [status, dispatch])
+
+  const list = (events ?? []).slice().filter(event => {
+    if (!weeks.length) {
+      return true
+    }
+
+    const dataFilter = JSON.parse(filter ?? weeks[0].option)
+
+    if (event.date.year === dataFilter.year) {
+      if (event.date.month === dataFilter.month) {
+        const isDayInRange = event.date.day >= dataFilter.start && event.date.day <= dataFilter.end
+
+        return isDayInRange
+      }
+    }
+
+    return false
+  })
 
   return (
     <>
-      <div className='flex w-full'>
-        <Filter
-          title='Gigs'
-          options={optionPlaceholders}
-          onOptionSelected={handleOptionSelected as any}
-          className='py-4'
-        />
-        <GigsList gigs={formattedEvents} />
+      <HeadGigs select={option => setFilter(option)} />
+      <div className='flex w-full flex-col' id='list-container'>
+        <GigsListData gigs={list} />
       </div>
-      <Loading type={PageLoad.GISGS} status={status} />
+
+      {/* <Loading type={PageLoad.GISGS} status={status} /> */}
     </>
   )
 }

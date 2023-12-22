@@ -306,6 +306,7 @@ body {
 .bg-gigs-mobile,
 .bg-artists-mobile {
   background-image: url(../src/assets/artists/back_mobile.jpg);
+  background-image: url(../src/assets/gigs/back_desktop.jpg);
   background-size: cover;
 }
 .bg-podcasts-mobile {
@@ -337,7 +338,7 @@ body {
     background-image: url(../src/assets/form/back_desktop.jpg);
   }
   .bg-gigs {
-    background-image: url(../src/assets/artists/back_desktop.jpg);
+    background-image: url(../src/assets/gigs/back_desktop.jpg);
   }
   .bg-artists {
     background-image: url(../src/assets/artists/back_desktop.jpg);

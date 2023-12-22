@@ -52,6 +52,30 @@ export const getData = async (
   }
 }
 
+export const getDataEvents = async (): Promise<ResponseModel> => {
+  const headers = {}
+  const config = {
+    method: `GET`,
+    url: `https://client.systemonesoftware.com/api/v1/shows/b4?lang=en-GB&per_page=100&upcoming_limit=730&page=1`,
+    headers: headers
+  }
+  try {
+    const response = await axios(config as any)
+    return new ResponseModel({
+      data: response.data,
+      status: ResponseType.OK,
+      statusCode: 200
+    })
+  } catch (error) {
+    console.log(error)
+    return new ResponseModel({
+      data: error,
+      status: ResponseType.ERROR,
+      statusCode: 400
+    })
+  }
+}
+
 export const postData = async (
   url: string,
   data: any,

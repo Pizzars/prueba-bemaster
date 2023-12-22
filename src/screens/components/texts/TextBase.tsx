@@ -1,3 +1,4 @@
+import { LegacyRef } from 'react'
 import SplitText from './SplitText'
 
 export enum TextTags {
@@ -22,13 +23,14 @@ interface Params {
   tag?: TextTags
   text: string | any
   className: string
+  ref?: any
 }
 
-const TextBase = ({ tag = TextTags.SPAN, text, className }: Params) => {
+const TextBase = ({ tag = TextTags.SPAN, text, className, ref }: Params) => {
   const ElementoEncabezado = tag
 
   return (
-    <ElementoEncabezado className={className}>
+    <ElementoEncabezado className={className} ref={ref}>
       {typeof text === 'string' ? <SplitText text={text} /> : text}
     </ElementoEncabezado>
   )

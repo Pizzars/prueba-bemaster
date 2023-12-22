@@ -8,6 +8,7 @@ interface Params {
   color?: TextColors
   font?: Fonts
   size?: string
+  ref?: any
 }
 
 const TitleHome = ({
@@ -16,9 +17,12 @@ const TitleHome = ({
   className = '',
   color = TextColors.black,
   font = Fonts.swis,
-  size = 'text-larger leading-larger'
+  size = 'text-larger leading-larger',
+  ref
 }: Params) => {
-  return <TextBase text={text} tag={tag} className={`${size} ${color} ${font} ${className}`} />
+  return (
+    <TextBase ref={ref} text={text} tag={tag} className={`${size} ${color} ${font} ${className}`} />
+  )
 }
 
 export default TitleHome

@@ -76,7 +76,7 @@ const OptionsFilter = ({
 
   return (
     <div
-      className={`pt-6 desk:pt-0 pb-2 flex flex-col overflow-x-auto desk:overflow-x-visible whitespace-nowrap`}
+      className={`desk:pt-0 pb-2 flex flex-col overflow-x-auto desk:overflow-x-visible whitespace-nowrap`}
       id='scroll-container'
     >
       <div

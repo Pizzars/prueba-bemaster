@@ -1,5 +1,4 @@
 import { EventModel } from 'src/proxy/queries/events/eventModel'
-import { FormattedEvent, FormattedGig, WeekOption } from './types'
 
 export const addZero = (value: number) => {
   if (value < 10) {
@@ -80,116 +79,163 @@ export function truncateText(text: string | null | undefined, maxChars: number) 
   return `${text.substring(0, end)}...`
 }
 
-export const filterFutureEvents = (
-  events: EventModel[] | null | undefined,
-  limit: number
-): FormattedEvent[] | [] => {
-  if (!events) return []
-
-  const today = new Date()
-
-  const futureEvents = events
-    .filter(event => event.date && new Date(event.date) > today)
-    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
-    .slice(0, limit)
-
-  const formattedEvents = futureEvents.map((event, index): FormattedEvent | undefined => {
-    if (!event.date) return undefined // Skip mapping if event.date does not exist
-    return {
-      date: formatEventDate(new Date(event.date)),
-      venue: event.place,
-      location: `${event.city}, ${event.country}`,
-      id: index
-    }
-  })
-
-  return formattedEvents.filter(event => event) as FormattedEvent[] // Filter out undefined values
+interface Week {
+  week: number
+  start: number
+  end: number
+  year: number
+  month: number
+}
+interface MonthWeek {
+  month: string
+  data: Week[]
 }
 
-const formatEventDate = (date: Date): string => {
-  // Convertimos la fecha a un string en formato ISO
-  const isoDate = date?.toISOString() // '2022-06-17T03:00:00.000Z'
+const getWeeks = (startDate: Date, endDate: Date, year: number) => {
+  const result: MonthWeek[] = []
 
-  // Extraemos la parte de la fecha del string ISO
-  const [year, month, day] = isoDate.split('T')[0].split('-')
+  const currentDate = new Date(startDate)
+  endDate = new Date(endDate)
 
-  // Devolvemos la fecha en el nuevo formato
-  return `${day}·${month}·${year.slice(2)}`
-}
-
-const formatGigs = (event: EventModel) => {
-  const formattedDate = new Date(event.date).toLocaleDateString('es-ES', {
-    year: '2-digit',
-    month: '2-digit',
-    day: '2-digit'
-  })
-
-  return {
-    date: formattedDate,
-    artist: event.name || '',
-    venue: event.place || '',
-    location: `${event.city || ''}, ${event.country || ''}`.trim(),
-    id: event.id
-  }
-}
-
-export const filterAndFormatGigs = (
-  events: EventModel[] | null,
-  startDate: string | Date = new Date(),
-  endDate: string | Date | null = null
-): FormattedGig[] => {
-  if (!events) {
-    return []
-  }
-
-  const start = new Date(`${startDate}T00:00:00Z`).getTime()
-  const end = endDate ? new Date(`${endDate}T23:59:59Z`).getTime() : Infinity
-
-  const uniqueEventsMap = new Map<string, FormattedGig>()
-
-  events
-    .filter(event => {
-      const eventDate = new Date(event.date).getTime()
-      return eventDate >= start && eventDate <= end
-    })
-    .map(formatGigs)
-    .forEach(gig => {
-      const uniqueKey = `${gig.id}-${gig.date}`
-      if (!uniqueEventsMap.has(uniqueKey)) {
-        uniqueEventsMap.set(uniqueKey, gig)
-      }
-    })
-
-  return Array.from(uniqueEventsMap.values()).sort(
-    (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
-  )
-}
-
-const getWeekRange = (startOfWeek: Date): { start: string; end: string } => {
-  const endOfWeek = new Date(startOfWeek)
-  endOfWeek.setDate(startOfWeek.getDate() + 6)
-
-  return {
-    start: startOfWeek.toISOString().split('T')[0],
-    end: endOfWeek.toISOString().split('T')[0]
-  }
-}
-
-export const createWeekOptions = (monthsForward: number): WeekOption[] => {
-  const options: WeekOption[] = []
-  const currentDate = new Date()
-  currentDate.setDate(currentDate.getDate() - currentDate.getDay())
-
-  for (let i = 0; i < monthsForward * 4; i++) {
-    const { start, end } = getWeekRange(new Date(currentDate))
-
-    const month = currentDate.toLocaleString('default', { month: 'short' }).toUpperCase()
+  while (currentDate <= endDate) {
+    const month = currentDate.toLocaleString('en-US', { month: 'short' })
     const weekNumber = Math.ceil(currentDate.getDate() / 7)
+    const startDay = currentDate.getDate()
 
-    options.push({ title: `${month}\nWEEK ${weekNumber}`, option: { start, end } })
+    const endOfMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate()
+    const endDay = Math.min(endOfMonth, currentDate.getDate() + 6)
+
+    const existingMonth = result.find(item => item.month === month)
+
+    if (existingMonth) {
+      existingMonth.data.push({
+        week: weekNumber,
+        start: startDay,
+        end: endDay,
+        year,
+        month: startDate.getMonth() + 1
+      })
+    } else {
+      result.push({
+        month: month,
+        data: [
+          {
+            week: weekNumber,
+            start: startDay,
+            end: endDay,
+            year,
+            month: startDate.getMonth() + 1
+          }
+        ]
+      })
+    }
 
     currentDate.setDate(currentDate.getDate() + 7)
   }
 
-  return options
+  return result
+}
+
+interface UniqueMonthsData {
+  year: number
+  months: {
+    month: number
+    min: number
+    max: number
+  }[]
+}
+
+const getUniqueMonths = (events: EventModel[]): UniqueMonthsData[] => {
+  const uniqueMonthsMap: Map<number, Map<number, { min: number; max: number }>> = new Map()
+
+  events.forEach(event => {
+    const year = event.date.year
+    const month = event.date.month
+    const day = event.date.day
+
+    // Verificar si ya existe el año en el Map
+    if (!uniqueMonthsMap.has(year)) {
+      uniqueMonthsMap.set(year, new Map())
+    }
+
+    // Acceder al Map de meses del año actual
+    const monthsMap = uniqueMonthsMap.get(year)
+
+    if (monthsMap) {
+      // Si el mes aún no existe en el Map, agregarlo con el día actual
+      if (!monthsMap.has(month)) {
+        monthsMap.set(month, { min: day, max: day })
+      } else {
+        // Si el mes ya existe, actualizar los valores mínimo y máximo si es necesario
+        const currentMonth = monthsMap.get(month)
+        if (currentMonth) {
+          currentMonth.min = Math.min(currentMonth.min, day)
+          currentMonth.max = Math.max(currentMonth.max, day)
+        }
+      }
+    }
+  })
+
+  const uniqueMonthsData: UniqueMonthsData[] = []
+
+  // Convertir el Map a un array de objetos
+  uniqueMonthsMap.forEach((monthsMap, year) => {
+    const monthsArray = Array.from(monthsMap).map(([month, { min, max }]) => ({
+      month,
+      min,
+      max
+    }))
+
+    uniqueMonthsData.push({ year, months: monthsArray })
+  })
+
+  return uniqueMonthsData
+}
+
+const getFirstAndLastDayOfMonth = (year: number, month: number) => {
+  // Ten en cuenta que los meses en JavaScript se numeran desde 0 (enero) hasta 11 (diciembre)
+  const firstDay = new Date(year, month, 1)
+  const lastDay = new Date(year, month + 1, 0)
+
+  return [firstDay, lastDay]
+}
+
+export const getWeeksForEvents = (events: EventModel[]) => {
+  const years = getUniqueMonths(events)
+  const sortYears = years.sort((a, b) => a.year - b.year)
+  const weeks: MonthWeek[] = []
+  sortYears.forEach(data => {
+    data.months.forEach(month => {
+      const range = getFirstAndLastDayOfMonth(data.year, month.month - 1)
+      const weeksMonth = getWeeks(range[0], range[1], data.year)
+      const list = weeksMonth.map(weekData => {
+        return {
+          ...weekData,
+          data: weekData.data.filter(week => {
+            if (
+              (week.start <= month.min && week.end >= month.min) ||
+              (week.start <= month.max && week.end >= month.max)
+            ) {
+              return true
+            }
+          })
+        }
+      })
+      weeks.push(...list)
+    })
+  })
+
+  const weeksList: { title: string; option: string }[] = []
+  weeks.forEach(info => {
+    info.data.forEach(data => {
+      const week = {
+        title: `${info.month.toUpperCase()}\nWEEK ${data.week}`,
+        option: JSON.stringify(data)
+      }
+      weeksList.push(week)
+    })
+    weeksList.push()
+  })
+
+  return weeksList
 }
