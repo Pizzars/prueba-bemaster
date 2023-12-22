@@ -115,7 +115,8 @@ body {
 }
 
 .leading-medium {
-  line-height: clamp(13.8px, 4vw, 19.8px);
+  /* line-height: clamp(13.8px, 4vw, 19.8px); */
+  line-height: 1.2;
 }
 
 .text-small {
@@ -139,7 +140,8 @@ body {
 }
 
 .leading-basic {
-  line-height: clamp(8px, 4vw, 19.6px);
+  /* line-height: clamp(8px, 4vw, 19.6px); */
+  line-height: 1.5;
 }
 
 .text-little {

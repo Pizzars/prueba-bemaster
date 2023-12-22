@@ -78,16 +78,18 @@ const Content = () => {
     )
   }
 
-  const getBio = (text: string) => {
+  const getBio = (text: string, title = false) => {
     return (
-      <div ref={ref}>
+      <div>
         {text.split('\n').map((tx, i) => {
           return (
             <p key={`pr-${i}`}>
               {tx.split(' ').map((word, j) => {
                 return (
                   <span
-                    className='text-gradient word inline-block mr-2 transition delay-300'
+                    className={`text-gradient word inline-block mr-2 transition delay-300 ${
+                      title ? 'swis' : ''
+                    }`}
                     key={`word-${i}-${j}`}
                     style={{
                       backgroundImage: `linear-gradient(to right, white 0%, rgba(255, 255, 255, 0.5) 0%)`
@@ -109,10 +111,18 @@ const Content = () => {
       <div>
         <div className='px-8 desk:p-16 big:p-24 desk:flex'>
           <div className='hidden desk:block'>{emails()}</div>
-          <div className='desk:ml-auto desk:px-8 desk:w-[50vw] super:w-[1000px] big:mr-auto big:ml-[8vw] super:ml-[151px]'>
+          <div
+            ref={ref}
+            className='desk:ml-auto desk:px-8 desk:w-[50vw] super:w-[1000px] big:mr-auto big:ml-[8vw] super:ml-[151px]'
+          >
+            <TitleMedium
+              // text={state?.title_en ?? ''}
+              text={getBio(state?.title_en ?? '', true)}
+              className='hidden desk:block uppercase desk:text-white desk:w-[35vw] desk:leading-[1.4] big:text-[1.8vw] big:w-[75%] super:text-[32px]'
+            />
             <TitleMedium
               text={state?.title_en ?? ''}
-              className='desk:text-white desk:w-[30vw] desk:leading-[1.4] big:text-[1.8vw] big:w-[65%] super:text-[32px]'
+              className='desk:text-white desk:hidden uppercase w-[16rem] desk:w-[30vw] desk:leading-[1.4] big:text-[1.8vw] big:w-[65%] super:text-[32px]'
             />
             <TextParagraph
               // text={state?.bio_en ?? ''}
@@ -144,7 +154,7 @@ const Content = () => {
             <Carousel />
           </div>
         )}
-        <div className='desk:hidden'>{emails()}</div>
+        <div className='desk:hidden bg-white pb-2'>{emails()}</div>
       </div>
     </>
   )

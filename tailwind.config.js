@@ -5,6 +5,7 @@ const BLUE = '#46D'
 const GRAY = '#333'
 const YELLOW_LIME = '#D2FF37'
 const PURPLE = '#4466DD'
+const PURPLE_BACK = '#6f24ee'
 
 module.exports = {
   content: [
@@ -21,10 +22,11 @@ module.exports = {
         'blue-app': BLUE,
         'gray-app': GRAY,
         'yellow-lime-app': YELLOW_LIME,
-        'purple-app': PURPLE
+        'purple-app': PURPLE,
+        'purple-back-app': PURPLE_BACK
       },
       screens: {
-        'mobile': {'max': '750px'},
+        mobile: { max: '750px' },
         desk: '1023px',
         big: '1401px',
         super: '1920px'
