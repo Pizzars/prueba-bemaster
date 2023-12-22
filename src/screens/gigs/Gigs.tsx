@@ -5,6 +5,7 @@ import { getEventsData } from 'src/redux/features/eventsSlice'
 import { StateRequest } from 'src/redux/features/baseReducer'
 import GigsListData from './GigsListData'
 import HeadGigs from './HeadGigs'
+import Loading, { PageLoad } from '../components/general/Loading'
 
 const Gigs: React.FC = () => {
   const dispatch = useAppDispatch()
@@ -42,7 +43,7 @@ const Gigs: React.FC = () => {
         <GigsListData gigs={list} />
       </div>
 
-      {/* <Loading type={PageLoad.GISGS} status={status} /> */}
+      <Loading type={PageLoad.GISGS} status={status} />
     </>
   )
 }
