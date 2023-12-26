@@ -1,4 +1,3 @@
-import { LegacyRef } from 'react'
 import SplitText from './SplitText'
 
 export enum TextTags {

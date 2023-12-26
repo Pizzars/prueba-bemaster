@@ -1,6 +1,6 @@
 import React from 'react'
 import Divider from 'src/screens/components/general/Divider'
-import ArtistDates from '../../Components/ArtistDates'
+// import ArtistDates from '../../Components/ArtistDates'
 import ArtistSocialLinks from '../../Components/ArtistSocialLinks'
 import ArtistImage from '../../Components/ArtistImage'
 import ArtistInfo from '../../Components/ArtistInfo'
@@ -9,12 +9,16 @@ import TextIcon, { TextIcons, SizeIcons } from 'src/screens/components/icons/Tex
 import TitleSmall from 'src/screens/components/texts/TitleSmall'
 import { useAppSelector } from 'src/redux/hooks'
 import { noEventsMessage, ulrBack } from 'src/utils/consts'
-import { filterFutureEvents, formatDescription, truncateText } from 'src/utils/functions'
+import {
+  // filterFutureEvents,
+  formatDescription,
+  truncateText
+} from 'src/utils/functions'
 
 const ArtistDetailsMobile = () => {
   const selectedArtist = useAppSelector(state => state.artistsReducer.artist)
   const currentLanguage = useAppSelector(state => state.languageReducer.language)
-  const filteredEvents = filterFutureEvents(selectedArtist?.events, 3)
+  // const filteredEvents = filterFutureEvents(selectedArtist?.events, 3)
   const description =
     currentLanguage === 'EN' ? selectedArtist?.description_en : selectedArtist?.description_es
   const formattedDescription = truncateText(formatDescription(description), 70)
@@ -36,24 +40,25 @@ const ArtistDetailsMobile = () => {
         profilePic={`${ulrBack}${selectedArtist?.image?.url ?? ''}`}
         altText='Artist Name'
       />
-      {filteredEvents.length > 0 ? (
-        filteredEvents.map(event => (
-          <ArtistDates
-            key={event.id}
-            date={event.date}
-            venue={event.venue}
-            location={event.location}
-            customClassName='mt-6'
-          />
-        ))
-      ) : (
+      {
+        // filteredEvents.length > 0 ? (
+        //   filteredEvents.map(event => (
+        //     <ArtistDates
+        //       key={event.id}
+        //       date={event.date}
+        //       venue={event.venue}
+        //       location={event.location}
+        //       customClassName='mt-6'
+        //     />
+        //   ))
+        // ) :
         <div className='mt-6'>
           <TitleSmall
             text={noEventsMessage[currentLanguage]}
             className='desk:text-[24px] desk:leading-[24px]'
           />
         </div>
-      )}
+      }
       <Divider className='my-5' />
       <ArtistSocialLinks links={socialLinks} customClassName='optional-styles' gap={14} />
       <ArtistInfo shortInfo={formattedDescription} />

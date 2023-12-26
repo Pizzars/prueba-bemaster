@@ -104,7 +104,8 @@ export class ArtistModel {
     const podcasts =
       json.podcasts && json.podcasts.data ? PodcastModel.listFromJson(json.podcasts.data) : []
     const news = json.news && json.news.data ? NewModel.listFromJson(json.news.data) : []
-    const events = json.events && json.events.data ? EventModel.listFromJson(json.events.data) : []
+    // const events = json.events && json.events.data ? EventModel.listFromJson(json.events.data) : []
+    const events: any = []
 
     return new ArtistModel(
       id,

@@ -90,7 +90,6 @@ const OptionsFilter = ({
               data-tab={option}
               onClick={() => handleTabClick(i)}
               className={`cursor-pointer option`}
-              // style={{ opacity: activeTab === option ? 1 : 0.2 }}
             >
               <div className='m-2'>
                 <TitleMedium

@@ -9,7 +9,7 @@ const EventsExample = () => {
   const status = useAppSelector(state => state.eventsReducer.status)
   const dispatch = useAppDispatch()
   useEffect(() => {
-    dispatch(getEventsData(1))
+    dispatch(getEventsData())
   }, [])
 
   return (
@@ -26,7 +26,7 @@ const EventsExample = () => {
                 className={`mx-2 ${i % 2 === 0 ? 'text-pink-600' : 'text-orange-600'}`}
                 key={`artist-${i}`}
               >
-                {artist.name}
+                {artist.eventName}
               </span>
             )
           })}

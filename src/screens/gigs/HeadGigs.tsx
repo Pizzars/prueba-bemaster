@@ -18,7 +18,6 @@ const HeadGigs = ({ select }: Params) => {
       const head = document.getElementById('head-gigs')
       if (container && head) {
         const top = head.offsetHeight - container.getBoundingClientRect().top
-        console.log(top)
 
         if (top < 40 && !big) {
           setBig(true)

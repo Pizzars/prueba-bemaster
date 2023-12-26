@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import Divider from 'src/screens/components/general/Divider'
-import ArtistDates from '../Components/ArtistDates'
+// import ArtistDates from '../Components/ArtistDates'
 import ArtistSocialLinks from '../Components/ArtistSocialLinks'
 import ArtistInfo from '../Components/ArtistInfo'
 import ArtistImageCarousel from '../Components/ArtistImageCarousel'
@@ -10,7 +10,10 @@ import TitleHome from 'src/screens/components/texts/TitleHome'
 import TextIcon, { TextIcons, SizeIcons } from 'src/screens/components/icons/TextIcon'
 import { useAppSelector } from 'src/redux/hooks'
 import { noEventsMessage, ulrBack } from 'src/utils/consts'
-import { filterFutureEvents, formatDescription } from 'src/utils/functions'
+import {
+  // filterFutureEvents,
+  formatDescription
+} from 'src/utils/functions'
 import { useRouter } from 'next/navigation'
 import { useSpring, animated } from 'react-spring'
 import { ArtistModel } from 'src/proxy/queries/artists/artistModel'
@@ -39,7 +42,7 @@ const ArtistByIdDesktop = ({ artist }: Params) => {
 
   const description = currentLanguage === 'EN' ? artist?.description_en : artist?.description_es
   const formattedDescription = formatDescription(description)
-  const filteredEvents = filterFutureEvents(artist?.events, 2)
+  // const filteredEvents = filterFutureEvents(artist?.events, 2)
 
   const currentArtistId = artist?.id
 
@@ -107,24 +110,25 @@ const ArtistByIdDesktop = ({ artist }: Params) => {
             </div>
 
             <div className='w-2/3 px-10'>
-              {filteredEvents.length > 0 ? (
-                filteredEvents.map(event => (
-                  <ArtistDates
-                    key={event.id}
-                    date={event.date}
-                    venue={event.venue}
-                    location={event.location}
-                    customClassName='mt-6'
-                  />
-                ))
-              ) : (
+              {
+                // filteredEvents.length > 0 ? (
+                //   filteredEvents.map(event => (
+                //     <ArtistDates
+                //       key={event.id}
+                //       date={event.date}
+                //       venue={event.venue}
+                //       location={event.location}
+                //       customClassName='mt-6'
+                //     />
+                //   ))
+                // ) :
                 <div className='mt-6'>
                   <TitleHome
                     text={noEventsMessage[currentLanguage]}
                     className='desk:text-[24px] desk:leading-[24px]'
                   />
                 </div>
-              )}
+              }
               <ArtistInfo longInfo={formattedDescription} customClassName='mt-5' />
             </div>
           </div>
