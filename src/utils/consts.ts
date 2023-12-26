@@ -113,3 +113,13 @@ export const gigsFallbackMessages = {
     ES: 'Ubicación no disponible'
   }
 }
+
+export interface TextSection {
+  ES: string
+  EN: string
+}
+
+export enum KeyLanguage {
+  ES = "ES",
+  EN = "EN"
+}

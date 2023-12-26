@@ -8,12 +8,14 @@ import { animated, useSpring } from 'react-spring'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import { useAppSelector } from 'src/redux/hooks'
+import { homeTexts } from './components/textsHome'
 import { useEffect, useState } from 'react'
 import Navbar from '../components/general/Navbar'
 import Cookies from '../components/general/Cookies'
 
 const MainHeader = () => {
   const load = useAppSelector(state => state.loadReducer.home)
+  const currentLanguage = useAppSelector(state => state.languageReducer.language)
   const [show, setShow] = useState(0)
 
   const settings = {
@@ -28,6 +30,7 @@ const MainHeader = () => {
     arrows: false
   }
 
+  // <<<<<<< HEAD
   useEffect(() => {
     if (load && show < 3) {
       if (show < 1) {
@@ -67,16 +70,28 @@ const MainHeader = () => {
         <animated.div style={props} className='h-full pl-10 pt-48 desk:pl-20 desk:pt-24'>
           <div className='mt-auto mb-auto'>
             <TitleSmall text='b4bookings' className='text-white max-w-max uppercase' />
-            <TitleHome text='BE FOR' className='text-white max-w-max uppercase' />
-            <TitleHome text='THE' className='text-white max-w-max uppercase ml-6 desk:ml-12' />
+            <TitleHome
+              text={homeTexts.textBeFor[currentLanguage]}
+              className='text-white max-w-max uppercase'
+            />
+            <TitleHome
+              text={homeTexts.textThe[currentLanguage]}
+              className='text-white max-w-max uppercase ml-6 desk:ml-12'
+            />
 
             <animated.div style={propsCarousel} className='topbar_text_slider ml-6 desk:ml-12'>
               <Slider {...settings}>
                 <div>
-                  <TitleHome text='BOOKING' className='text-white uppercase' />
+                  <TitleHome
+                    text={homeTexts.textBooking[currentLanguage]}
+                    className='text-white uppercase'
+                  />
                 </div>
                 <div>
-                  <TitleHome text='MUSIC' className='text-white uppercase' />
+                  <TitleHome
+                    text={homeTexts.textMusic[currentLanguage]}
+                    className='text-white uppercase'
+                  />
                 </div>
               </Slider>
             </animated.div>
