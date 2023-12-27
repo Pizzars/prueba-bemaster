@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { ArtistModel } from 'src/proxy/queries/artists/artistModel'
 import TitleSmall from 'src/screens/components/texts/TitleSmall'
 import { TextColors } from 'src/utils/Colors'
@@ -20,77 +20,91 @@ const updateList = (list: ArtistModel[]) => {
 }
 
 const ArtistsListScroll = ({ list, selected, onSelect }: Params) => {
-  const containerRef = useRef(null)
+  const scrollRef = useRef<HTMLInputElement | null>(null)
 
-  let scrollPos = 0
-  let scrollingUp = false
+  const contaierRef = useRef<HTMLInputElement | null>(null)
+
+  useEffect(() => {
+    const scrollContainer = document.querySelector('.scroll-container') as any
+    const container = document.querySelector('.scroll-elemente')
+
+    if (!scrollContainer || !container) return
+
+    const clone = container.cloneNode(true)
+    const parent = container.parentElement
+    if (!parent) return
+
+    parent.appendChild(clone)
+    parent.scrollTo(0, 2)
+  }, [])
 
   if (list.length === 0) return <></>
 
   const listToShow = list.length >= 50 ? list : updateList(list)
-
   return (
-    <div
-      className='h-full overflow-y-scroll'
-      id='items-container'
-      ref={containerRef}
-      onWheel={e => {
-        const container = containerRef.current as any
-        if (!container) return
-        const item = container.children[0]
-        const lastItem = container.children[container.children.length - 1]
+    <div className=''>
+      <div className='main-container flex justify-center items-center h-screen w-full'>
+        <div
+          ref={scrollRef}
+          className='scroll-container h-full w-full overflow-scroll'
+          onScroll={() => {
+            const scrollContainer = scrollRef.current
+            if (!scrollContainer) return
+            if (
+              scrollContainer.offsetHeight + scrollContainer.scrollTop >=
+              scrollContainer.scrollHeight
+            ) {
+              const container = document.querySelector('.scroll-elemente')
+              if (!container) return
+              const clone = container.cloneNode(true)
+              const parent = container.parentElement
+              if (!parent) return
+              parent.appendChild(clone)
+              parent.children[0].remove()
+            }
 
-        const pos = item.offsetTop - container.scrollTop
-        const pos2 = lastItem.offsetTop - container.scrollTop
-        // console.log(pos, pos2)
-        // console.log(container.scrollTop, pos2)
-        // console.log(window.innerHeight, pos2)
-        const posBottom = pos2 - lastItem.offsetHeight - window.innerHeight
-        const newScrollPos = container.scrollTop
+            if (scrollContainer.scrollTop == 0) {
+              console.log('TOP')
+              const container = document.querySelector('.scroll-elemente')
+              if (!container) return
+              const clone = container.cloneNode(true)
+              const parent = container.parentElement as any
+              if (!parent) return
+              parent.insertBefore(clone, parent.firstChild)
+              parent.scrollTo(0, container.scrollHeight)
+              parent.lastElementChild.remove()
+            }
 
-        if (newScrollPos > scrollPos) {
-          // Scroll hacia abajo
-          scrollingUp = false
-        } else {
-          // Scroll hacia arriba
-          scrollingUp = true
-        }
-
-        scrollPos = newScrollPos
-        if (scrollingUp) {
-          if (pos > -30 && pos < 5) {
-            container.removeChild(lastItem)
-            container.insertBefore(lastItem, item)
-            e.preventDefault()
-            return
-          }
-        } else {
-          if (posBottom < -10) {
-            container.removeChild(item)
-            container.appendChild(item)
-            e.preventDefault()
-            return
-          }
-        }
-      }}
-    >
-      {listToShow.map((artist, i) => {
-        return (
-          <div
-            key={`artists-${i}`}
-            className={`item-list text-start py-2 px-8 cursor-pointer ${
-              selected && selected.id === artist.id ? 'opacity-100' : 'opacity-50'
-            }   hover:opacity-100`}
-            onClick={() => onSelect(artist)}
-          >
-            <TitleSmall
-              text={artist.name}
-              color={TextColors.white}
-              className='uppercase text-start hover:text-yellow-app'
-            />
+            const list = scrollContainer.querySelectorAll('.item-list')
+            list.forEach((item, i) => {
+              if (item.textContent?.includes('FLUG')) {
+                console.log(i, item.textContent)
+              }
+            })
+          }}
+        >
+          <div className='scroll-elemente' ref={contaierRef}>
+            {listToShow.map((artist, i) => {
+              return (
+                <div
+                  key={`artists-${i}`}
+                  className={`item-list text-start py-2 px-8 cursor-pointer ${
+                    selected && selected.id === artist.id ? 'opacity-100' : 'opacity-50'
+                  }   hover:opacity-100`}
+                  onClick={() => onSelect(artist)}
+                >
+                  <TitleSmall
+                    text={artist.name}
+                    color={TextColors.white}
+                    className='uppercase text-start hover:text-yellow-app'
+                  />
+                </div>
+              )
+            })}
           </div>
-        )
-      })}
+        </div>
+      </div>
+      <div className='bg-blue-400 h-4 w-full absolute top-1/2'></div>
     </div>
   )
 }
