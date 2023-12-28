@@ -5,7 +5,6 @@ import ArtistsDesktop from './Desktop/ArtistsDesktop'
 import { getArtistsData } from 'src/redux/features/artistsSlice'
 import { useAppDispatch, useAppSelector } from 'src/redux/hooks'
 import Loading, { PageLoad } from '../components/general/Loading'
-import ArtistsListScroll from './Desktop/ArtistList/ArtistsListScroll'
 
 const ArtistsPage = () => {
   const { data: artists, signleStatus, status } = useAppSelector(state => state.artistsReducer)

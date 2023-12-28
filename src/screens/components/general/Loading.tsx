@@ -120,6 +120,7 @@ const Loading = ({ status = null, callback, type }: Params) => {
 
       return
     }
+    if (count >= 100) return
     increment()
   }, [count, status])
 
@@ -130,7 +131,7 @@ const Loading = ({ status = null, callback, type }: Params) => {
         className={`h-full w-full py-8 px-10 fixed top-0 left-0 flex items-end z-20 bg-purple-back-app`}
       >
         <div
-          className={`h-[200px] mt-auto w-[400px] max-w-full overflow-hidden flex items-end relative`}
+          className={`h-[200px] mt-auto w-[400px] desk:w-[600px] max-w-full overflow-hidden flex items-end relative`}
         >
           <TitleHome
             text={count.toString()}
