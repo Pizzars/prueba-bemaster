@@ -76,10 +76,13 @@ const MainHeader = () => {
             />
             <TitleHome
               text={homeTexts.textThe[currentLanguage]}
-              className='text-white max-w-max uppercase ml-6 desk:ml-12'
+              className='text-white max-w-max uppercase ml-[1.2rem] desk:ml-[3.9vw] big:ml-[5rem]'
             />
 
-            <animated.div style={propsCarousel} className='topbar_text_slider ml-6 desk:ml-12'>
+            <animated.div
+              style={propsCarousel}
+              className='topbar_text_slider ml-[1.2rem] desk:ml-[3.9vw] big:ml-[5rem]'
+            >
               <Slider {...settings}>
                 <div>
                   <TitleHome

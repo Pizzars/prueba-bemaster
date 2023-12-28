@@ -9,7 +9,6 @@ import { homeTexts } from './components/textsHome'
 
 const AnimatedText = () => {
   const artists = useAppSelector(state => state.artistsReducer.data)
-
   const groupedArtists = []
 
   if (!artists) return <></>
@@ -17,6 +16,7 @@ const AnimatedText = () => {
   for (let i = 0; i < artists.length; i += 4) {
     groupedArtists.push(artists.slice(i, i + 4))
   }
+
   const currentLanguage = useAppSelector(state => state.languageReducer.language)
 
   return (
@@ -64,21 +64,14 @@ const AnimatedText = () => {
       <div className='absolute inset-0 bg-gradient-to-b from-transparent to-black z-20' />
       <div className='absolute bottom-0 z-30 text-white pl-4'>
         <Link href='/artists' className='flex flex-row customLink'>
-          <TitleSection text={homeTexts.textArtists[currentLanguage]} color={TextColors.white} className='textBesideIcon' />
+          <TitleSection
+            text={homeTexts.textArtists[currentLanguage]}
+            color={TextColors.white}
+            className='textBesideIcon'
+          />
           <TextIcon icon={TextIcons.RIGHT_ARROW} size={SizeIcons.TITLE} color={TextColors.white} />
         </Link>
         <div className='overflow-hidden' style={{ width: '100%' }}>
-          {/* <animated.div style={props} className='flex transition-all duration-500'>
-            {carouselTexts.map((text, i) => (
-              <div
-                key={i}
-                className='flex-shrink-0'
-                style={{ whiteSpace: 'nowrap', minWidth: '100%' }}
-              >
-                <TitleSection text={text} color={TextColors.white} />
-              </div>
-            ))}
-          </animated.div> */}
           <CarouselTerritory />
         </div>
       </div>
