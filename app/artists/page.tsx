@@ -1,4 +1,4 @@
-import Artists from 'src/screens/artists/ArtistsPage'
+import Artists from 'src/screens/artists/Artists'
 import BasePage from 'src/screens/components/general/base/BasePage'
 
 export default function ArtistPage() {

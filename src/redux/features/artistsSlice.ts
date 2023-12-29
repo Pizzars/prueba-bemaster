@@ -52,7 +52,7 @@ export const artistsSlice = createSlice({
   name: 'artists',
   initialState,
   reducers: {
-    selectArtist: (state, action: PayloadAction<ArtistModel>) => {
+    selectArtist: (state, action: PayloadAction<ArtistModel | null>) => {
       state.artist = action.payload
     },
     setMinId: (state, action: PayloadAction<number>) => {

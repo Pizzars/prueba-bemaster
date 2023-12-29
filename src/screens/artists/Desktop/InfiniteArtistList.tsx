@@ -1,21 +1,28 @@
-import { useEffect, useState } from 'react'
-import styles from './ArtistsList.module.css'
-// import InfiniteScroll from 'react-infinite-scroller'
-import { useAppSelector } from 'src/redux/hooks'
+import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { ArtistModel } from 'src/proxy/queries/artists/artistModel'
 import { selectArtist } from 'src/redux/features/artistsSlice'
-import { useDispatch } from 'react-redux'
-import ArtistsListScroll from './ArtistsListScroll'
+import { useAppSelector } from 'src/redux/hooks'
 
-interface Props {
+import InfiniteScrollList from './ArtistList/InfiniteScrollList'
+import ItemListArtist from './ArtistList/ItemListArtist'
+
+interface Params {
   filter: string
 }
 
-const ArtistList = ({ filter }: Props) => {
-  const [selectedArtist, setSelectedArtist] = useState<null | ArtistModel>(null)
-  const [clickedArtist, setClickedArtist] = useState<number | null>(null)
-  const [artistData, setArtistData] = useState<ArtistModel[] | null>(null)
+const updateList = (list: ArtistModel[]) => {
+  const targetLength = 50
 
+  while (list.length < targetLength) {
+    // Duplica los elementos de la lista original
+    list.push(...list.map(item => ({ ...item })))
+  }
+  return list
+}
+
+const InfiniteArtistList = ({ filter }: Params) => {
+  const [artistData, setArtistData] = useState<ArtistModel[] | null>(null)
   const artists = useAppSelector(state => state.artistsReducer.data)
   const dispatch = useDispatch()
 
@@ -75,52 +82,37 @@ const ArtistList = ({ filter }: Props) => {
         })
 
         if (newList.length === 0) {
-          setSelectedArtist(null)
-          setClickedArtist(null)
+          dispatch(selectArtist(null))
           return
         }
 
         const num = Math.floor(Math.random() * newList.length)
 
-        handleArtistClick(newList[num])
+        dispatch(selectArtist(newList[num]))
       }, 1000)
     }
   }, [artists, filter])
 
-  if (!artists) {
-    return <></>
-  }
+  const getList = () => {
+    const listToShow = !artistData
+      ? []
+      : artistData.length >= 50
+      ? artistData
+      : updateList(artistData)
 
-  const handleArtistClick = (artist: ArtistModel, e?: React.MouseEvent) => {
-    if (e) e.stopPropagation()
-    setSelectedArtist(artist)
-    dispatch(selectArtist(artist))
-    setClickedArtist(artist.id)
+    if (!artistData) return <></>
+    return (
+      <InfiniteScrollList>
+        {listToShow.map((artist, i) => {
+          return <ItemListArtist key={`artists-${i}`} artist={artist} />
+        })}
+      </InfiniteScrollList>
+    )
   }
-
-  useEffect(() => {
-    if (clickedArtist !== null) {
-      const timer = setTimeout(() => {
-        setClickedArtist(null)
-      }, 700)
-      return () => clearTimeout(timer)
-    }
-  }, [clickedArtist])
 
   return (
-    <div
-      className={`relative h-screen ${styles.artistListContainer} text-center ${styles.customCursor}`}
-    >
-      <div className={`h-full ${styles.scrollContainer}`}>
-        {artistData && (
-          <ArtistsListScroll
-            list={artistData}
-            selected={selectedArtist}
-            onSelect={handleArtistClick}
-          />
-        )}
-      </div>
-
+    <div className='w-full bg-black-app relative'>
+      <div className='w-full h-screen'>{getList()}</div>
       <div
         className={`absolute bg-gradient-to-b from-black-app from-10% to-transparent h-[20vh] z-10 left-0 top-0 w-full `}
       ></div>
@@ -131,4 +123,4 @@ const ArtistList = ({ filter }: Props) => {
   )
 }
 
-export default ArtistList
+export default InfiniteArtistList
