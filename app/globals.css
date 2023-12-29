@@ -470,3 +470,32 @@ a.customLink:hover .arrowMove {
   color: transparent !important;
   /* background-image: linear-gradient(to right, white 80%, rgba(255, 255, 255, 0.5) 80%); */
 }
+
+.text-carousel {
+  animation: animated 5s infinite;
+  animation-delay: 0.6s;
+}
+
+@keyframes animated {
+  0% {
+    transform: translateY(0%);
+  }
+  40% {
+    transform: translateY(0%);
+  }
+  47% {
+    transform: translateY(-105%);
+  }
+  50% {
+    transform: translateY(-100%);
+  }
+  90% {
+    transform: translateY(-100%);
+  }
+  97% {
+    transform: translateY(-210%);
+  }
+  100% {
+    transform: translateY(-205%);
+  }
+}

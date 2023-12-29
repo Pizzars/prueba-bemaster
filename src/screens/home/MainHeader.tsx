@@ -1,4 +1,3 @@
-import Slider from 'react-slick'
 import { TextColors } from 'src/utils/Colors'
 import TextIcon, { TextIcons } from '../components/icons/TextIcon'
 import TitleHome from '../components/texts/TitleHome'
@@ -12,23 +11,12 @@ import { homeTexts } from './components/textsHome'
 import { useEffect, useState } from 'react'
 import Navbar from '../components/general/Navbar'
 import Cookies from '../components/general/Cookies'
+import SliderTexts from './components/SliderTexts'
 
 const MainHeader = () => {
   const load = useAppSelector(state => state.loadReducer.home)
   const currentLanguage = useAppSelector(state => state.languageReducer.language)
   const [show, setShow] = useState(0)
-
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 2000,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    vertical: true,
-    autoplay: true,
-    autoplaySpeed: 7000,
-    arrows: false
-  }
 
   // <<<<<<< HEAD
   useEffect(() => {
@@ -58,6 +46,7 @@ const MainHeader = () => {
     transform: show > 1 ? 'translateY(0)' : 'translateY(20px)',
     config: { duration: 500 }
   })
+
   const propsMenu = useSpring({
     opacity: show > 2 ? 1 : 0,
     transform: show > 2 ? 'translateY(0)' : 'translateY(20px)',
@@ -83,20 +72,7 @@ const MainHeader = () => {
               style={propsCarousel}
               className='topbar_text_slider ml-[1.2rem] desk:ml-[3.9vw] big:ml-[5rem]'
             >
-              <Slider {...settings}>
-                <div>
-                  <TitleHome
-                    text={homeTexts.textBooking[currentLanguage]}
-                    className='text-white uppercase'
-                  />
-                </div>
-                <div>
-                  <TitleHome
-                    text={homeTexts.textMusic[currentLanguage]}
-                    className='text-white uppercase'
-                  />
-                </div>
-              </Slider>
+              <SliderTexts animate={show > 1} />
             </animated.div>
           </div>
         </animated.div>

@@ -54,7 +54,7 @@ export const footerButtonsInfo: MenuItemForHome[] = [
       EN: 'LEGAL NOTICE',
       ES: 'AVISO LEGAL'
     },
-    to: '/terms'
+    to: '/legal-notice'
   },
   {
     key: '2',
@@ -120,6 +120,6 @@ export interface TextSection {
 }
 
 export enum KeyLanguage {
-  ES = "ES",
-  EN = "EN"
+  ES = 'ES',
+  EN = 'EN'
 }

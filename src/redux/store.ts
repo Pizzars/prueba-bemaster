@@ -8,6 +8,8 @@ import podcastsReducer from './features/podcastsSlice'
 import languageReducer from './features/languageSlice'
 import loadReducer from './features/loadSlice'
 import formReducer from './features/formSlice'
+import legalReducer from './features/legalSlice'
+import policyReducer from './features/policySlice'
 
 export const store = configureStore({
   reducer: {
@@ -19,7 +21,9 @@ export const store = configureStore({
     podcastsReducer,
     languageReducer,
     loadReducer,
-    formReducer
+    formReducer,
+    legalReducer,
+    policyReducer
   }
 })
 

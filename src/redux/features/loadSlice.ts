@@ -6,7 +6,9 @@ const initialState = {
   artists: false,
   gigs: false,
   podcasts: false,
-  book: false
+  book: false,
+  legal: false,
+  policy: false
 }
 
 export const loadSlice = createSlice({
@@ -30,10 +32,24 @@ export const loadSlice = createSlice({
     },
     bookLoaded: state => {
       state.book = true
+    },
+    legalLoaded: state => {
+      state.legal = true
+    },
+    policyLoaded: state => {
+      state.policy = true
     }
   }
 })
 
-export const { homeLoaded, aboutLoaded, artistsLoaded, gigsLoaded, bookLoaded, podcastsLoaded } =
-  loadSlice.actions
+export const {
+  homeLoaded,
+  aboutLoaded,
+  artistsLoaded,
+  gigsLoaded,
+  bookLoaded,
+  podcastsLoaded,
+  legalLoaded,
+  policyLoaded
+} = loadSlice.actions
 export default loadSlice.reducer

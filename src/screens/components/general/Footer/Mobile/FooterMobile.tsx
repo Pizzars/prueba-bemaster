@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 import { TextColors } from 'src/utils/Colors'
 import { footerButtonsInfo } from 'src/utils/consts'
@@ -13,7 +14,7 @@ const Footer = () => {
         <div className='flex flex-row '>
           {footerButtonsInfo.map(button => (
             <div key={button.key} className='mr-4 flex items-center'>
-              <a href={button.to} id={button.key} className='flex items-center'>
+              <Link href={button.to} id={button.key} className='flex items-center'>
                 <TextParagraph
                   text={button.name['EN']}
                   color={TextColors.white}
@@ -25,7 +26,7 @@ const Footer = () => {
                   color={TextColors.white}
                   className='opacity-40 ml-1 mb-1'
                 />
-              </a>
+              </Link>
             </div>
           ))}
         </div>

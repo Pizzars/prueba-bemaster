@@ -11,7 +11,9 @@ import {
   bookLoaded,
   gigsLoaded,
   homeLoaded,
-  podcastsLoaded
+  podcastsLoaded,
+  policyLoaded,
+  legalLoaded
 } from 'src/redux/features/loadSlice'
 import { TextColors } from 'src/utils/Colors'
 
@@ -21,6 +23,8 @@ export enum PageLoad {
   GISGS,
   PODCASTS,
   ABOUT,
+  LEGAL,
+  POLICY,
   BOOK
 }
 
@@ -37,7 +41,9 @@ const Loading = ({ status = null, callback, type }: Params) => {
 
   // const [load, setLoad] = useState(false)
   const dispatch = useAppDispatch()
-  const { home, about, artists, gigs, book, podcasts } = useAppSelector(state => state.loadReducer)
+  const { home, about, artists, gigs, book, podcasts, legal, policy } = useAppSelector(
+    state => state.loadReducer
+  )
 
   const show =
     (!home && type === PageLoad.HOME) ||
@@ -45,6 +51,8 @@ const Loading = ({ status = null, callback, type }: Params) => {
     (!artists && type === PageLoad.ARTISTS) ||
     (!podcasts && type === PageLoad.PODCASTS) ||
     (!about && type === PageLoad.ABOUT) ||
+    (!legal && type === PageLoad.LEGAL) ||
+    (!policy && type === PageLoad.POLICY) ||
     (!book && type === PageLoad.BOOK)
 
   const increment = () => {
@@ -111,6 +119,14 @@ const Loading = ({ status = null, callback, type }: Params) => {
             }
             case PageLoad.BOOK: {
               dispatch(bookLoaded())
+              break
+            }
+            case PageLoad.LEGAL: {
+              dispatch(legalLoaded())
+              break
+            }
+            case PageLoad.POLICY: {
+              dispatch(policyLoaded())
               break
             }
           }

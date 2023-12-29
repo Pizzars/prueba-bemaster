@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 import { useAppSelector } from 'src/redux/hooks'
 import TextIcon, { TextIcons, SizeIcons } from 'src/screens/components/icons/TextIcon'
@@ -12,7 +13,11 @@ const FooterBottom = () => {
       <div className='flex flex-row'>
         {footerButtonsInfo.map(button => (
           <div key={button.key} className='mr-4 flex items-center'>
-            <a href={button.to} id={button.key} className=' w-[170px] flex items-center customLink'>
+            <Link
+              href={button.to}
+              id={button.key}
+              className=' w-[170px] flex items-center customLink'
+            >
               <TextParagraph
                 text={button.name[currentLanguage]}
                 color={TextColors.white}
@@ -24,7 +29,7 @@ const FooterBottom = () => {
                 color={TextColors.white}
                 className='ml-2 desk:text-[14px] cursor'
               />
-            </a>
+            </Link>
           </div>
         ))}
         <TextParagraph
