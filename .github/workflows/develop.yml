@@ -38,9 +38,20 @@ jobs:
           #     npx pm2 stop all
           #     npx pm2 delete all
           #     npx pm2 start "next start -p 3002"
+          # script: |
+          #   cd www/test/b4b/b4bfront
+          #   rm -rf node_modules
+          #   rm -rf .next
+          #   ./v16.20.0/bin/npm install
+          #   ./v16.20.0/bin/npm run build
           script: |
             cd www/test/b4b/b4bfront
-            rm -rf node_modules
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+            [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+            source .bashrc
+            nvm install 16.20.0
             rm -rf .next
-            ./v16.20.0/bin/npm install
-            ./v16.20.0/bin/npm run build
+            rm -rf .husky
+            npm run build

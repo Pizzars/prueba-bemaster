@@ -6,6 +6,7 @@ import TitleSmall from '../../components/texts/TitleSmall'
 import { TextColors } from 'src/utils/Colors'
 import TitleMedium from '../../components/texts/TitleMedium'
 import TextParagraph from '../../components/texts/TextParagraph'
+import Link from 'next/link'
 
 interface ArtistImageCarouselProps {
   profilePics: (string | StaticImageData)[]
@@ -110,7 +111,8 @@ const ArtistImageCarousel: React.FC<ArtistImageCarouselProps> = ({
       </div>
 
       {!desktop && (
-        <div
+        <Link
+          href='/book'
           className={`flex-shrink-0 flex justify-between items-center ${
             byId ? 'bg-yellow-app' : 'bg-[#222222]'
           } text-white px-7 py-5`}
@@ -125,7 +127,7 @@ const ArtistImageCarousel: React.FC<ArtistImageCarouselProps> = ({
             size={SizeIcons.TITLE_SMALL}
             color={byId ? TextColors.black : TextColors.white}
           />
-        </div>
+        </Link>
       )}
     </div>
   )

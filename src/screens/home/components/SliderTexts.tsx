@@ -10,7 +10,7 @@ const SliderTexts = ({ animate }: Params) => {
   const currentLanguage = useAppSelector(state => state.languageReducer.language)
 
   return (
-    <div className=' desk:h-[8.5vw] overflow-hidden'>
+    <div className='desk:h-[8.5vw] big:h-[10rem] overflow-hidden'>
       <div className={`${animate ? 'text-carousel' : ''} relative`}>
         <div>
           <TitleHome

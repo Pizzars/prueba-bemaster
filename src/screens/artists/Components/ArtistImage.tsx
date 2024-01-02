@@ -3,6 +3,7 @@ import { StaticImageData } from 'next/image'
 import { TextColors } from 'src/utils/Colors'
 import TextIcon, { TextIcons, SizeIcons } from '../../components/icons/TextIcon'
 import TitleSmall from '../../components/texts/TitleSmall'
+import Link from 'next/link'
 
 interface ArtistImageProps {
   profilePic: string | StaticImageData
@@ -32,14 +33,17 @@ const ArtistImage: React.FC<ArtistImageProps> = ({
           className='absolute inset-0'
         ></div>
       </div>
-      <div className='flex justify-between items-center bg-[#222222] text-white px-7 py-5'>
+      <Link
+        href='/book'
+        className='flex justify-between items-center bg-[#222222] text-white px-7 py-5'
+      >
         <TitleSmall text={`Book Artist`} color={TextColors.white} className='uppercase' />
         <TextIcon
           icon={TextIcons.RIGHT_ARROW}
           size={SizeIcons.TITLE_SMALL}
           color={TextColors.white}
         />
-      </div>
+      </Link>
     </>
   )
 }

@@ -91,7 +91,8 @@ const ArtistDetails = () => {
           />
         </div>
       </div>
-      <div
+      <Link
+        href='/book'
         className='flex align-middle bg-yellow-app justify-between p-8'
         style={{
           backgroundColor: '#D2FF37'
@@ -104,7 +105,7 @@ const ArtistDetails = () => {
           color={TextColors.black}
           className='self-center'
         />
-      </div>
+      </Link>
     </div>
   )
 }

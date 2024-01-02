@@ -21,7 +21,7 @@ const FooterCenter = () => {
             <TextIcon
               icon={TextIcons.RIGHT_ARROW}
               size={SizeIcons.TEXT_SMALL}
-              className='ml-2 self-center desk:text-basic desk:leading-basic cursor'
+              className='ml-2 self-center desk:text-basic desk:leading-basic big:text-basic big:leading-basic cursor'
               color={TextColors.white}
             />
           </Link>
@@ -35,7 +35,7 @@ const FooterCenter = () => {
           <TextIcon
             icon={TextIcons.RIGHT_ARROW}
             size={SizeIcons.TEXT_SMALL}
-            className='ml-2 self-center desk:text-basic desk:leading-basic cursor'
+            className='ml-2 self-center desk:text-basic desk:leading-basic big:text-basic big:leading-basic  cursor'
             color={TextColors.white}
           />
         </button>
