@@ -7,10 +7,11 @@ import { useAppSelector } from 'src/redux/hooks'
 import CarouselTerritory from './CarouselTerritory'
 import { homeTexts } from './components/textsHome'
 import ArtistListSlide from './components/ArtistListSlide'
+import useWindowSize from 'src/hooks/useWindowSize'
 
 const AnimatedText = () => {
   const currentLanguage = useAppSelector(state => state.languageReducer.language)
-
+  useWindowSize()
   return (
     <div className='relative h-screen bg-black overflow-hidden pointer'>
       <ArtistListSlide />
