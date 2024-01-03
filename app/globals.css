@@ -392,9 +392,9 @@ button.customLink,
   transition: all 0.2s ease-in-out;
 }
 
-.customLink:hover .textBesideIcon {
+/* .customLink:hover .textBesideIcon {
   margin-right: 10px;
-}
+} */
 
 .arrowMove {
   display: inline-block;
@@ -402,9 +402,9 @@ button.customLink,
   transform: translateX(0);
 }
 
-a.customLink:hover .arrowMove {
+/* a.customLink:hover .arrowMove {
   transform: translateX(10px);
-}
+} */
 
 /* .pointer { */
 /* cursor: url(../src/assets/cursors/pointer.svg) 9 9, auto; */
