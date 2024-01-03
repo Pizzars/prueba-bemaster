@@ -67,7 +67,7 @@ const AnimatedText = () => {
           <TitleSection
             text={homeTexts.textArtists[currentLanguage]}
             color={TextColors.white}
-            className='textBesideIcon'
+            className='textBesideIcon cursor'
           />
           <TextIcon icon={TextIcons.RIGHT_ARROW} size={SizeIcons.TITLE} color={TextColors.white} />
         </Link>
