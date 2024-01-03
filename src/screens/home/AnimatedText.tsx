@@ -62,15 +62,22 @@ const AnimatedText = () => {
         ))}
       </div>
       <div className='absolute inset-0 bg-gradient-to-b from-transparent to-black z-20' />
-      <div className='absolute bottom-0 z-30 text-white pl-4'>
-        <Link href='/artists' className='flex flex-row customLink'>
-          <TitleSection
-            text={homeTexts.textArtists[currentLanguage]}
-            color={TextColors.white}
-            className='textBesideIcon cursor'
-          />
-          <TextIcon icon={TextIcons.RIGHT_ARROW} size={SizeIcons.TITLE} color={TextColors.white} />
-        </Link>
+      <div className='absolute bottom-0 z-30 text-white'>
+        <div className='pl-8 desk:pl-16 big:pl-24'>
+          <Link href='/artists' className='flex flex-row customLink'>
+            <TitleSection
+              text={homeTexts.textArtists[currentLanguage]}
+              color={TextColors.white}
+              className='textBesideIcon cursor'
+            />
+            <TextIcon
+              icon={TextIcons.RIGHT_ARROW}
+              size={SizeIcons.TITLE}
+              color={TextColors.white}
+              className='cursor'
+            />
+          </Link>
+        </div>
         <div className='overflow-hidden' style={{ width: '100%' }}>
           <CarouselTerritory />
         </div>
