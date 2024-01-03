@@ -10,6 +10,7 @@ import TextSmall from '../texts/TextSmall'
 import CalendarIcon from './CalendarIcon'
 import CheckBoxIcon from './CheckBoxIcon'
 import { useRef, useState } from 'react'
+import { useSpring, animated } from 'react-spring'
 
 export enum TextIcons {
   DIAGONAL_ARROW = '↗',
@@ -38,6 +39,7 @@ interface Params {
   size?: SizeIcons
   className?: string
   checked?: boolean
+  cursor?: boolean
 }
 
 const TextIcon = ({
@@ -45,7 +47,8 @@ const TextIcon = ({
   color = TextColors.blue,
   size = SizeIcons.TEXT_PARAGRAPH,
   className,
-  checked = false
+  checked = false,
+  cursor = true
 }: Params) => {
   if (icon === TextIcons.CALENDAR) {
     return <CalendarIcon />
@@ -56,7 +59,13 @@ const TextIcon = ({
 
   const [isHovered, setIsHovered] = useState(false)
   const [translate, setTranslate] = useState({ x: 0, y: 0 })
-  const ref = useRef<null | HTMLSpanElement>(null)
+  // const [{ x, y }, set] = useSpring(() => ({ x: 0, y: 0 }))
+  const props = useSpring({
+    transform: `translate3d(${translate.x}px, ${translate.y}px, 0)`,
+    config: { duration: 300 }
+  })
+
+  const ref = useRef<null | HTMLDivElement>(null)
 
   const handleMouseEnter = (e: any) => {
     setIsHovered(true)
@@ -81,6 +90,7 @@ const TextIcon = ({
     const width = container.offsetWidth / 2
     const height = container.offsetHeight / 2
     setTranslate({ x: e.clientX - left - width, y: e.clientY - top - height })
+    // set({ x: e.clientX - left - width, y: e.clientY - top - height })
   }
 
   const getView = () => {
@@ -152,24 +162,17 @@ const TextIcon = ({
   }
 
   return (
-    <span
-      className='inline-block'
+    <div
+      className={`inline-block ${cursor ? 'cursor' : ''}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onMouseMove={handleMouseMove}
       ref={ref}
     >
-      <span
-        className='inline-block'
-        style={{
-          pointerEvents: 'none',
-          transform: `translate(${translate.x}px, ${translate.y}px)`,
-          transition: '0.3s all ease'
-        }}
-      >
+      <animated.div className={`inline-block ${cursor ? 'cursor' : ''}`} style={props}>
         {getView()}
-      </span>
-    </span>
+      </animated.div>
+    </div>
   )
 }
 
