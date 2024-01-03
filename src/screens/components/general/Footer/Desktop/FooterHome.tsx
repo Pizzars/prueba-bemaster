@@ -11,7 +11,7 @@ const FooterHome = () => {
 
   return (
     <section className='flex w-full justify-between backdrop-blur-sm bg-white/10 items-start p-10'>
-      <div className='my-8 flex w-full flex-col items-start space-y-8'>
+      <div className='my-8 flex w-full flex-col items-start space-y-2'>
         {menuItemsForHome.map(item => (
           <Link href={item.to} key={item.key} className='customLink'>
             <div className='flex'>
