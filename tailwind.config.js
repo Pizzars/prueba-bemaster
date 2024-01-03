@@ -27,7 +27,7 @@ module.exports = {
       },
       screens: {
         mobile: { max: '750px' },
-        desk: '1023px',
+        desk: '800px',
         big: '1401px',
         super: '1920px'
       }

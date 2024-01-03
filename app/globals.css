@@ -152,7 +152,7 @@ body {
   line-height: 100%;
 }
 
-@media (min-width: 1024px) and (max-width: 1400px) {
+@media (min-width: 800px) and (max-width: 1400px) {
   .desk\:text-larger,
   .text-larger {
     font-size: clamp(90px, 8.8vw, 123px);
@@ -226,7 +226,7 @@ body {
 }
 
 /* max = 1920 */
-@media (min-width: 1401px) {
+@media (min-width: 1400px) {
   .big\:text-larger,
   .text-larger {
     font-size: clamp(131px, 9.4vw, 180px);
