@@ -1,5 +1,4 @@
 import { useSpring, animated } from 'react-spring'
-import useWindowSize from 'src/hooks/useWindowSize'
 import { TextColors } from 'src/utils/Colors'
 import TitleSection from '../components/texts/TitleSection'
 import { useAppSelector } from 'src/redux/hooks'
@@ -22,28 +21,20 @@ const carouselListTexts = {
 }
 
 const CarouselTerritory = () => {
-  const size = useWindowSize()
   const currentLanguage = useAppSelector(state => state.languageReducer.language)
   const carouselTexts = carouselListTexts[currentLanguage]
-  const widthScreen = size?.width ?? 0
+  // const widthScreen = size?.width ?? 0
 
   const fade = useSpring({
     from: {
-      x: '0rem'
+      x: '0%'
     },
     to: {
-      x:
-        widthScreen < 1024
-          ? `-125rem`
-          : widthScreen < 1401
-          ? `-241vw`
-          : widthScreen < 1401
-          ? `-245vw`
-          : `-294rem`
+      x: '-50%'
     },
     loop: true,
     config: {
-      duration: (carouselTexts.length ?? 0) * 5000
+      duration: 30000
     }
   })
 

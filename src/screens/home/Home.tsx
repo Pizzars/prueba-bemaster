@@ -37,9 +37,7 @@ const Home = () => {
       <div className='h-screen flex-1 items-center justify-center'>
         {artistsStatus === StateRequest.SUCCESS && <AnimatedText />}
       </div>
-
       {pathname === '/' && <MenuSection />}
-
       <Loading type={PageLoad.HOME} status={artistsStatus} />
     </>
   )
