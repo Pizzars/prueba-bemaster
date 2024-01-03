@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react'
 import Navbar from '../components/general/Navbar'
 import Cookies from '../components/general/Cookies'
 import SliderTexts from './components/SliderTexts'
+import TitleMedium from '../components/texts/TitleMedium'
 
 const MainHeader = () => {
   const load = useAppSelector(state => state.loadReducer.home)
@@ -58,7 +59,7 @@ const MainHeader = () => {
       <header className='h-home backdrop-blur-sm flex flex-col justify-between relative'>
         <animated.div style={props} className='h-full pl-10 pt-48 desk:pl-20 desk:pt-24'>
           <div className='mt-auto mb-auto'>
-            <TitleSmall text='b4bookings' className='text-white max-w-max uppercase' />
+            <TitleMedium text='b4bookings' className='text-white max-w-max uppercase' />
             <TitleHome
               text={homeTexts.textBeFor[currentLanguage]}
               className='text-white max-w-max uppercase'

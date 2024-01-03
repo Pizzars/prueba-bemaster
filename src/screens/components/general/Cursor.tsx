@@ -1,10 +1,11 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import TitleSmaller from '../texts/TitleSmaller'
 
 const Cursor = () => {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 })
-
+  const ref = useRef<HTMLInputElement | null>(null)
+  const refChild = useRef<HTMLInputElement | null>(null)
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const moveCursor = (e: any) => {
@@ -18,17 +19,21 @@ const Cursor = () => {
   }, [])
 
   useEffect(() => {
-    let cursor = document.getElementById('cursor-container')
     const handleMoseOver = (event: any) => {
       try {
-        if (!cursor) cursor = document.getElementById('cursor-container')
+        const cursor = ref.current
+        const childC = refChild.current
+        if (!cursor || !childC) return
 
-        if (!cursor) return
         // Verifica si el objetivo del evento es una etiqueta <a>
         if (event && event.target && event.target.classList.contains('cursor')) {
-          cursor.style.display = 'block'
+          // cursor.style.display = 'block'
+          childC.style.opacity = '1'
+          childC.style.transform = 'scale(1)'
         } else {
-          cursor.style.display = 'none'
+          // cursor.style.display = 'none'
+          childC.style.opacity = '0'
+          childC.style.transform = 'scale(0)'
         }
       } catch (error) {}
     }
@@ -40,18 +45,30 @@ const Cursor = () => {
 
   return (
     <div
-      className='hidden desk:block fixed w-32 h-32 bg-white bg-opacity-10 rounded-full pointer-events-none z-50 pointer'
+      className='hidden desk:block fixed w-32 h-32 rounded-full pointer-events-none z-50 pointer'
       style={{
         top: `${cursorPosition.y - 78}px`,
         left: `${cursorPosition.x - 64}px`,
-        zIndex: 9999
+        zIndex: 9999,
+        pointerEvents: 'none'
       }}
+      ref={ref}
       id='cursor-container'
     >
-      <TitleSmaller
-        text={'EXPLORE'}
-        className='inter opacity-100 desk:text-[14px] absolute top-[50%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white'
-      />
+      <div
+        className='w-32 h-32 bg-white bg-opacity-10 rounded-full pointer-events-none z-50 pointer transition-all'
+        style={{
+          transition: '0.3s all ease',
+          pointerEvents: 'none',
+          opacity: 0
+        }}
+        ref={refChild}
+      >
+        <TitleSmaller
+          text={'EXPLORE'}
+          className='inter opacity-100 desk:text-[14px] absolute top-[50%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white'
+        />
+      </div>
     </div>
   )
 }
