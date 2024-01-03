@@ -87,7 +87,7 @@ const MainHeader = () => {
       <animated.div
         style={propsMenu}
         id='secret-nav'
-        className='sticky top-0 left-0 z-50 hidden desk:block h-[72px] w-full '
+        className='sticky top-0 left-0 z-50 hidden desk:block desk:h-16 big:h-24 w-full '
       >
         <Navbar />
       </animated.div>
