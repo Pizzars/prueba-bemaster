@@ -31,24 +31,16 @@ jobs:
           pass: ${{ secrets.TEST_FTP_PASSWORD }}
           # port: ${{ secrets.TEST_FTP_PORT }}
           # script: |
-          #     cd /www/test/b4b/b4bfront
-          #     rm -r node_modules
-          #     npm install
-          #     npm run build
-          #     npx pm2 stop all
-          #     npx pm2 delete all
-          #     npx pm2 start "next start -p 3002"
-          # script: |
           #   cd www/test/b4b/b4bfront
+          #   nvm install 16.20.0
           #   rm -rf node_modules
           #   rm -rf .next
-          #   ./v16.20.0/bin/npm install
-          #   ./v16.20.0/bin/npm run build
+          #   rm -rf .husky
+          #   npm install
+          #   npm run build
           script: |
             cd www/test/b4b/b4bfront
             nvm install 16.20.0
-            rm -rf node_modules
             rm -rf .next
             rm -rf .husky
-            npm install
             npm run build

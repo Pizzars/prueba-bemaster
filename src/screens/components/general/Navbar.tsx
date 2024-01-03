@@ -42,7 +42,7 @@ const Navbar: React.FC<Props> = ({ position = 'top' }) => {
           <div className='w-full h-full top-0 left-0 absolute cursor'></div>
         </Link>
       </div>
-      <div className='hidden md:flex items-center space-x-4 pr-7'>
+      <div className='hidden md:flex items-center space-x-8 big:space-x-12 pr-7'>
         {itemsForNavbar.map(item => (
           <Link key={item.key} href={item.to}>
             <TitleSmall
@@ -52,7 +52,7 @@ const Navbar: React.FC<Props> = ({ position = 'top' }) => {
             />
           </Link>
         ))}
-        <button onClick={() => toggleLanguage()} className='py-2 cursor-pointer'>
+        <button onClick={() => toggleLanguage()} className='pt-[0.3rem] cursor-pointer'>
           <TitleSmall
             text={currentLanguage}
             color={TextColors.white}

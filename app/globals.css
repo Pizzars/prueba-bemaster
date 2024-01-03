@@ -504,3 +504,14 @@ a.customLink:hover .arrowMove {
     transform: translateY(-205%);
   }
 }
+
+@media (min-width: 1024px) and (max-width: 1399px) {
+  .h-home {
+    height: calc(100vh - 4rem);
+  }
+}
+@media (min-width: 1400px) {
+  .h-home {
+    height: calc(100vh - 6rem);
+  }
+}
