@@ -42,5 +42,4 @@ jobs:
             cd www/test/b4b/b4bfront
             nvm install 16.20.0
             rm -rf .next
-            rm -rf .husky
             npm run build
