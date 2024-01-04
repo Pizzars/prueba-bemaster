@@ -16,7 +16,7 @@ interface Params {
   setFilter?: (option: string) => void
 }
 
-const AnimatedText = ({ artists = true, setFilter }: Params) => {
+const AnimatedText = ({ artists = false, setFilter }: Params) => {
   const currentLanguage = useAppSelector(state => state.languageReducer.language)
   useWindowSize()
   return (
