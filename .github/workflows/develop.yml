@@ -17,8 +17,8 @@ jobs:
           server: ${{ secrets.TEST_FTP_HOST }}
           username: ${{ secrets.TEST_FTP_USERNAME }}
           password: ${{ secrets.TEST_FTP_PASSWORD }}
+          local-dir: ./www/test/b4b/b4bfront/
           server-dir: /www/test/b4b/b4bfront/
-          DEBUG: true
   ssh-trigger:
     name: start-server
     needs: deploy
