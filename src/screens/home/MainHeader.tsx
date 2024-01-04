@@ -59,14 +59,14 @@ const MainHeader = () => {
       <header className='h-home backdrop-blur-sm flex flex-col justify-between relative'>
         <animated.div style={props} className='h-full pl-10 pt-48 desk:pl-20 desk:pt-24'>
           <div className='mt-auto mb-auto'>
-            <TitleMedium text='b4bookings' className='text-white max-w-max uppercase' />
+            <TitleMedium text='b4bookings' className='text-white max-w-max uppercase ' />
             <TitleHome
               text={homeTexts.textBeFor[currentLanguage]}
-              className='text-white max-w-max uppercase'
+              className='text-white max-w-max uppercase super:tracking-[-8px]'
             />
             <TitleHome
               text={homeTexts.textThe[currentLanguage]}
-              className='text-white max-w-max uppercase ml-[1.2rem] desk:ml-[3.9vw] big:ml-[5rem] super:mt-2'
+              className='text-white max-w-max uppercase ml-[1.2rem] desk:ml-[3.9vw] big:ml-[5rem] super:mt-2 super:tracking-[-8px]'
             />
 
             <animated.div

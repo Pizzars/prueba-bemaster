@@ -15,16 +15,19 @@ const SliderTexts = ({ animate }: Params) => {
         <div>
           <TitleHome
             text={homeTexts.textBooking[currentLanguage]}
-            className='text-white uppercase'
+            className='text-white uppercase super:tracking-[-8px]'
           />
         </div>
         <div className='translate-y-[100%] absolute top-0 left-0'>
-          <TitleHome text={homeTexts.textMusic[currentLanguage]} className='text-white uppercase' />
+          <TitleHome
+            text={homeTexts.textMusic[currentLanguage]}
+            className='text-white uppercase super:tracking-[-8px]'
+          />
         </div>
         <div className='translate-y-[205%] absolute top-0 left-0'>
           <TitleHome
             text={homeTexts.textBooking[currentLanguage]}
-            className='text-white uppercase'
+            className='text-white uppercase super:tracking-[-8px]'
           />
         </div>
       </div>
