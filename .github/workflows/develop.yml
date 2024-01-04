@@ -30,17 +30,17 @@ jobs:
           user: ${{ secrets.TEST_FTP_USERNAME }}
           pass: ${{ secrets.TEST_FTP_PASSWORD }}
           # port: ${{ secrets.TEST_FTP_PORT }}
-          # script: |
-          #   cd www/test/b4b/b4bfront
-          #   nvm install 16.20.0
-          #   rm -rf node_modules
-          #   rm -rf .next
-          #   rm -rf .husky
-          #   npm install
-          #   npm run build
           script: |
             cd www/test/b4b/b4bfront
             nvm install 16.20.0
+            rm -rf node_modules
             rm -rf .next
             rm -rf .husky
+            npm install
             npm run build
+          # script: |
+          #   cd www/test/b4b/b4bfront
+          #   nvm install 16.20.0
+          #   rm -rf .next
+          #   rm -rf .husky
+          #   npm run build
