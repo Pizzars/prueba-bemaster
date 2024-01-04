@@ -1,6 +1,5 @@
 import ArtistsList from './ArtistsList'
 import Filter from '../../components/general/Filter/Filter'
-import { useState } from 'react'
 
 const optionPlaceholders = [
   { title: 'WORLDWIDE', option: 'worldwide' },
@@ -10,8 +9,11 @@ const optionPlaceholders = [
   { title: 'SPAIN & LATAM', option: 'spain_and_latin_america' }
 ]
 
-const ArtistsMobile: React.FC = () => {
-  const [filter, setFilter] = useState(optionPlaceholders[0].option)
+interface Params {
+  filter: string | null
+  setFilter: (value: string) => void
+}
+const ArtistsMobile = ({ filter, setFilter }: Params) => {
   return (
     <div className='flex w-full'>
       <Filter
@@ -20,8 +22,9 @@ const ArtistsMobile: React.FC = () => {
         }}
         title='Artists'
         options={optionPlaceholders}
+        selected={filter ?? optionPlaceholders[0].option}
       />
-      <ArtistsList filter={filter} />
+      <ArtistsList filter={filter ?? optionPlaceholders[0].option} />
     </div>
   )
 }

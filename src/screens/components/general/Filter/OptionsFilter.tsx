@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { TextColors } from 'src/utils/Colors'
 import TitleMedium from '../../texts/TitleMedium'
 
@@ -30,6 +30,7 @@ interface Params {
   color?: OptionColor
   className?: string
   step?: number
+  selected?: number
   onChage?: (option: string) => void
 }
 
@@ -38,10 +39,11 @@ const OptionsFilter = ({
   color = optionColors.white,
   className = '',
   step = 24,
+  selected = 0,
   onChage
 }: Params) => {
   // const [activeTab, setActiveTab] = useState<string>(options?.[0]?.option || 'ENGLISH')
-  const [activeTab, setActiveTab] = useState(0)
+  // const [activeTab, setActiveTab] = useState(0)
 
   const handleTabClick = (tab: number) => {
     const scrollContainer = document.getElementById('scroll-container')
@@ -64,7 +66,7 @@ const OptionsFilter = ({
         })
       }
     }
-    setActiveTab(tab)
+    // setActiveTab(tab)
     if (onChage) {
       onChage(options[tab].option)
     }
@@ -96,7 +98,7 @@ const OptionsFilter = ({
                   text={title}
                   color={TextColors.white}
                   className={`uppercase cursor-pointer transition-all duration-500 ${
-                    activeTab === i ? color.textActive : color.textInactive
+                    selected === i ? color.textActive : color.textInactive
                   } ${className}`}
                 />
               </div>

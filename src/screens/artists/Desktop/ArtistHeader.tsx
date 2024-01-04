@@ -6,6 +6,7 @@ import { TextColors } from 'src/utils/Colors'
 
 interface Params {
   setFilter: (option: string) => void
+  selected: string
 }
 
 export const optionsFilterArtists = [
@@ -16,7 +17,7 @@ export const optionsFilterArtists = [
   { title: 'SPAIN & LATAM', option: 'spain_and_latin_america' }
 ]
 
-const ArtistHeader = ({ setFilter }: Params) => {
+const ArtistHeader = ({ setFilter, selected }: Params) => {
   const [classText, setClassText] = useState<string>('text-big leading-big')
   const load = useAppSelector(state => state.loadReducer.artists)
 
@@ -27,6 +28,8 @@ const ArtistHeader = ({ setFilter }: Params) => {
       }, 1000)
     }
   }, [load])
+
+  const index = optionsFilterArtists.findIndex(option => option.option === selected)
 
   return (
     <>
@@ -41,6 +44,7 @@ const ArtistHeader = ({ setFilter }: Params) => {
       <div className='mx-16 px-2 flex justify-start'>
         <OptionsFilter
           options={optionsFilterArtists}
+          selected={index ?? 0}
           color={optionColors.white}
           onChage={option => setFilter(option)}
           className='desk:text-small desk:leading-small big:text-small big:leading-small'

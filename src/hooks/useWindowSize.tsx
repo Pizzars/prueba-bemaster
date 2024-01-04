@@ -31,7 +31,7 @@ const useWindowSize = (): WindowSize => {
         window.removeEventListener('resize', handleResize)
       }
     }
-  }, [window])
+  }, [])
 
   return { width: windowSize.width, height: windowSize.height }
 }

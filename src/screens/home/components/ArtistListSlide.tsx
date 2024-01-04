@@ -45,7 +45,7 @@ const ArtistListSlide = () => {
 
   groupedArtists.forEach(group => {
     group.forEach(artist => {
-      text = `${text} ${artist.name}.`
+      text = `${text} ${artist.name.toUpperCase()}.`
     })
   })
 
@@ -58,7 +58,7 @@ const ArtistListSlide = () => {
           <AnimatedText text={text} />
         </div>
       </div>
-      <div className='absolute inset-0 bg-gradient-to-b from-black-app/10 to-black-app z-20' />
+      <div className='w-full h-full top-0 left-0 absolute inset-0 bg-gradient-to-b from-black-app/10 to-black-app z-20' />
     </>
   )
 }

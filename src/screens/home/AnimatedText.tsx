@@ -8,32 +8,49 @@ import CarouselTerritory from './CarouselTerritory'
 import { homeTexts } from './components/textsHome'
 import ArtistListSlide from './components/ArtistListSlide'
 import useWindowSize from 'src/hooks/useWindowSize'
+import OptionsTerritory from './components/OptionsTerritory'
+import TitleHome from '../components/texts/TitleHome'
 
-const AnimatedText = () => {
+interface Params {
+  artists?: boolean
+  setFilter?: (option: string) => void
+}
+
+const AnimatedText = ({ artists = true, setFilter }: Params) => {
   const currentLanguage = useAppSelector(state => state.languageReducer.language)
   useWindowSize()
   return (
-    <div className='relative h-screen bg-black overflow-hidden pointer'>
+    <div className='relative w-full h-screen bg-black overflow-hidden pointer'>
       <ArtistListSlide />
-
-      <div className='absolute bottom-0 z-30 text-white'>
-        <div className='pl-8 desk:pl-16 big:pl-24'>
-          <Link href='/artists' className='flex flex-row customLink'>
-            <TitleSection
-              text={homeTexts.textArtists[currentLanguage]}
-              color={TextColors.white}
-              className='textBesideIcon cursor'
-            />
-            <TextIcon
-              icon={TextIcons.RIGHT_ARROW}
-              size={SizeIcons.TITLE}
-              color={TextColors.white}
-              className='cursor'
-            />
-          </Link>
+      {artists && (
+        <div className='absolute top-8 left-8 desk:top-16 desk:left-16 big:top-24 big:left-24 z-30 text-white'>
+          <TitleHome text='ARTISTS' color={TextColors.white} />
         </div>
+      )}
+      <div className='absolute bottom-0 z-30 text-white'>
+        {!artists && (
+          <div className='pl-8 desk:pl-16 big:pl-24'>
+            <Link href='/artists' className='flex flex-row customLink'>
+              <TitleSection
+                text={homeTexts.textArtists[currentLanguage]}
+                color={TextColors.white}
+                className='textBesideIcon cursor'
+              />
+              <TextIcon
+                icon={TextIcons.RIGHT_ARROW}
+                size={SizeIcons.TITLE}
+                color={TextColors.white}
+                className='cursor'
+              />
+            </Link>
+          </div>
+        )}
         <div className='overflow-hidden' style={{ width: '100%' }}>
-          <CarouselTerritory />
+          {artists && setFilter ? (
+            <OptionsTerritory setFilter={setFilter} />
+          ) : (
+            <CarouselTerritory />
+          )}
         </div>
       </div>
     </div>

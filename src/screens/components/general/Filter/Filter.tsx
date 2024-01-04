@@ -10,12 +10,19 @@ interface FilterProps {
   title: string
   options: Array<{ title: string; option: string | { start: string; end: string } }>
   className?: string
+  selected?: string
   onOptionSelected: (option: string | { start: string; end: string }) => void
 }
 
-const Filter: React.FC<FilterProps> = ({ title, options, className, onOptionSelected }) => {
+const Filter: React.FC<FilterProps> = ({
+  title,
+  options,
+  className,
+  selected,
+  onOptionSelected
+}) => {
   const [scrollY, setScrollY] = useState<number>(0)
-  const [activeTab, setActiveTab] = useState<string>((options?.[0]?.option as any) || 'WORLDWIDE')
+  // const [activeTab, setActiveTab] = useState<string>((options?.[0]?.option as any) || 'WORLDWIDE')
   const navRef = useRef<HTMLDivElement>(null)
 
   const fade = useSpring({
@@ -42,7 +49,7 @@ const Filter: React.FC<FilterProps> = ({ title, options, className, onOptionSele
   }, [])
 
   const handleTabClick = (tab: string) => {
-    setActiveTab(tab)
+    // setActiveTab(tab)
     onOptionSelected(tab)
     if (navRef.current) {
       const activeElement = navRef.current.querySelector(`[data-tab="${tab}"]`)
@@ -74,9 +81,9 @@ const Filter: React.FC<FilterProps> = ({ title, options, className, onOptionSele
               data-tab={option}
               onClick={() => handleTabClick(option as any)}
               className={`p-2 mr-2 cursor-pointer ${
-                activeTab === option ? 'border-b-2 border-white' : ''
+                selected === option ? 'border-b-2 border-white' : ''
               }`}
-              style={{ opacity: activeTab === option ? 1 : 0.2 }}
+              style={{ opacity: selected === option ? 1 : 0.2 }}
             >
               <TitleMedium
                 text={title}
