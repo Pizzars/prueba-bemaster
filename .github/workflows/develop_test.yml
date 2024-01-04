@@ -1,7 +1,7 @@
 name: Build and Deploy
 on:
   push:
-    branches: [juan-jose]
+    branches: [develop]
 jobs:
   deploy:
     name: deploy
