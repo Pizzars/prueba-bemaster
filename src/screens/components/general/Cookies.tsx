@@ -30,7 +30,7 @@ const Cookies = () => {
     return <></>
   }
   return (
-    <div className='fixed bottom-0 right-0 sm:right-14 sm:bottom-24 bg-black text-white w-full sm:w-[390px] desk:w-[380px]'>
+    <div className='fixed bottom-0 right-0 sm:right-14 sm:bottom-40 bg-black text-white w-full sm:w-[390px] desk:w-[380px]'>
       <div>
         <TextSmall
           text={homeTexts.textCookies[currentLanguage]}
@@ -38,11 +38,14 @@ const Cookies = () => {
           className='text-[12px] uppercase p-6 leading-[14.4px] font-bold'
         />
       </div>
-      <button className='bg-white text-black py-2 w-full  cursor' onClick={handleConsent}>
+      <button
+        className='bg-white text-black py-2 w-full  cursor dark-cursor'
+        onClick={handleConsent}
+      >
         <TitleSmall
           text={homeTexts.textOk[currentLanguage]}
           color={TextColors.black}
-          className='text-[10px] uppercase cursor'
+          className='text-[10px] uppercase cursor dark-cursor'
         />
       </button>
     </div>

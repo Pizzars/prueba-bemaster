@@ -34,7 +34,7 @@ const Navbar: React.FC<Props> = ({ position = 'top' }) => {
     >
       {' '}
       <div
-        className='md:bg-yellow-lime-app p-4 desk:p-[1.2rem] big:p-8 w-16 h-16 desk:w-16 desk:h-16 big:w-24 big:h-24 flex justify-center items-center'
+        className='md:bg-yellow-lime-app p-[1.25rem] desk:p-[1.35rem] big:p-8 w-16 h-16 desk:w-16 desk:h-16 big:w-24 big:h-24 flex justify-center items-center'
         // style={{ height: '72px' }}
       >
         <Link href='/' className='pointer relative'>
