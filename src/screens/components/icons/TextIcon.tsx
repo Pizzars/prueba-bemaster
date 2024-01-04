@@ -105,7 +105,7 @@ const TextIcon = ({
             text={icon}
             color={color}
             font={Fonts.inter}
-            className={`${className} font-bold`}
+            className={`${className}`}
           />
         )
       }
@@ -116,7 +116,7 @@ const TextIcon = ({
             text={icon}
             color={color}
             font={Fonts.inter}
-            className={`${className} font-bold`}
+            className={`${className}`}
           />
         )
       }
@@ -127,7 +127,7 @@ const TextIcon = ({
             text={icon}
             color={color}
             font={Fonts.inter}
-            className={`${className} font-bold`}
+            className={`${className}`}
           />
         )
       }
@@ -138,7 +138,7 @@ const TextIcon = ({
             text={icon}
             color={color}
             font={Fonts.inter}
-            className={`${className} font-bold`}
+            className={`${className}`}
           />
         )
       }
@@ -149,14 +149,12 @@ const TextIcon = ({
             text={icon}
             color={color}
             font={Fonts.inter}
-            className={`${className} font-bold`}
+            className={`${className}`}
           />
         )
       }
       default: {
-        return (
-          <TextBase text={icon} className={`text-[14px] inter font-bold ${color} ${className}`} />
-        )
+        return <TextBase text={icon} className={`text-[14px] ${color} ${className}`} />
       }
     }
   }

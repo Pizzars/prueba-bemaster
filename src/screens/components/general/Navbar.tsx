@@ -47,7 +47,7 @@ const Navbar: React.FC<Props> = ({ position = 'top' }) => {
           <Link key={item.key} href={item.to}>
             <TitleSmall
               text={item.name[currentLanguage]}
-              className='cursor cursor-pointer big:text-[14px]'
+              className='cursor cursor-pointer big:text-[16px]'
               color={TextColors.white}
             />
           </Link>
@@ -56,7 +56,7 @@ const Navbar: React.FC<Props> = ({ position = 'top' }) => {
           <TitleSmall
             text={currentLanguage}
             color={TextColors.white}
-            className='cursor big:text-[14px]'
+            className='cursor big:text-[16px]'
             tag={TextTags.SPAN}
           />
         </button>
