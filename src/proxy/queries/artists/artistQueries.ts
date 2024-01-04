@@ -3,7 +3,8 @@ import { ArtistModel } from './artistModel'
 
 export const getArtists = async (): Promise<ArtistModel[] | null> => {
   const response = await getData('artists', {
-    _limit: 200
+    _limit: 200,
+    active: true
   })
   if (response.statusCode === 200) {
     const data = response.data
