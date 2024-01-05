@@ -39,27 +39,41 @@ const CarouselTerritory = () => {
   })
 
   return (
-    <div className='my-8 w-full overflow-hidden'>
-      <div className='w-full overflow-hidden'>
-        <animated.div style={fade} className='flex '>
-          <div className='flex w-[250rem] desk:w-[482vw] big:w-[490vw] super:w-[588rem]'>
-            {carouselTexts.map((text, i) => {
-              return (
-                <div className={text.size} key={`item1-${i}`}>
-                  <TitleSection text={text.text} color={TextColors.white} />
-                </div>
-              )
-            })}
-            {carouselTexts.map((text, i) => {
-              return (
-                <div className={text.size} key={`item2-${i}`}>
-                  <TitleSection text={text.text} color={TextColors.white} />
-                </div>
-              )
-            })}
-          </div>
-        </animated.div>
-      </div>
+    <div className='my-8 w-full overflow-hidden flex'>
+      <animated.div style={fade} className='overflow-x-visible flex'>
+        <div className='flex w-fit'>
+          {carouselTexts.map((text, i) => {
+            return (
+              <div
+                className={`mx-8 desk:mx-16 big:mx-24 w-fit cursor-pointer cursor`}
+                key={`item1-${i}`}
+              >
+                <TitleSection
+                  text={text.text}
+                  className='w-fit flex whitespace-nowrap cursor dark-cursor'
+                  color={TextColors.white}
+                />
+              </div>
+            )
+          })}
+        </div>
+        <div className='flex w-fit'>
+          {carouselTexts.map((text, i) => {
+            return (
+              <div
+                className={`mx-8 desk:mx-16 big:mx-24 w-fit cursor-pointer cursor`}
+                key={`item1-${i}`}
+              >
+                <TitleSection
+                  text={text.text}
+                  className='w-fit flex whitespace-nowrap cursor dark-cursor'
+                  color={TextColors.white}
+                />
+              </div>
+            )
+          })}
+        </div>
+      </animated.div>
     </div>
   )
 }
