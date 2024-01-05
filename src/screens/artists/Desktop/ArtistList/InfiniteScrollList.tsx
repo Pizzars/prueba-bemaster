@@ -1,80 +1,63 @@
 'use client'
-import { useEffect } from 'react'
+import { useRef } from 'react'
 
 interface Params {
   children: any
 }
 
 const InfiniteScrollList = ({ children }: Params) => {
-  useEffect(() => {
-    // const scrollContainer = scrollRef.current
-    // const container = contaierRef.current
-
-    const scrollContainer = document.querySelector('.scroll-container')
-    if (!scrollContainer) return
-    const container = document.querySelector('.scroll-elemente')
-    if (!container) return
-
-    const clone = container.cloneNode(true)
-
-    const parent = container.parentElement
-    if (!parent) return
-    parent.appendChild(clone)
-    parent.scrollTo(0, 2)
-
-    scrollContainer.addEventListener('scroll', () => {
-      console.log('******')
-
-      if (
-        (scrollContainer as any).offsetHeight + scrollContainer.scrollTop >=
-        scrollContainer.scrollHeight
-      ) {
-        const container = document.querySelector('.scroll-elemente')
-        if (!container) return
-        console.log('-------')
-        const clone = container.cloneNode(true)
-        const parent = container.parentElement
-        if (!parent) return
-        parent.appendChild(clone)
-        parent.children[0].remove()
-      }
-
-      if (scrollContainer.scrollTop == 0) {
-        console.log('TOP')
-        const container = document.querySelector('.scroll-elemente')
-        if (!container) return
-        console.log('........')
-        const clone = container.cloneNode(true)
-        const parent = container.parentElement
-        if (!parent) return
-        parent.insertBefore(clone, parent.firstChild)
-        parent.scrollTo(0, container.scrollHeight)
-        parent.lastElementChild?.remove()
-      }
-
-      // const container = document.querySelector('.scroll-elemente')
-      // if (!container) return
-      // const list = container.querySelectorAll('.item-list')
-      // list.forEach(item => {
-      //   // if (i === 5) {
-      //   const size = (scrollContainer as any).offsetHeight
-      //   const pos = (item as any).offsetTop - scrollContainer.scrollTop
-      //   const limit = size / 2
-
-      //   const per = (100 / limit) * (limit - pos)
-      //   const deg =
-      //     pos < (item as any).offsetHeight * -1
-      //       ? 90
-      //       : pos > size
-      //       ? -90
-      //       : (80 / 100) * (per > 100 ? 100 : per)
-      //   ;(item as any).style.transform = `rotateX(${deg}deg)`
-      // })
-    })
-  }, [])
+  const ref = useRef<HTMLDivElement | null>(null)
 
   return (
-    <div className='scroll-container h-screen max-h-[100vh] w-full overflow-scroll p-4 rounded-lg text-center'>
+    <div
+      ref={ref}
+      onScroll={() => {
+        const scrollContainer = ref.current
+        if (!scrollContainer) return
+        if (
+          (scrollContainer as any).offsetHeight + scrollContainer.scrollTop >=
+          scrollContainer.scrollHeight
+        ) {
+          const containers = scrollContainer.querySelectorAll('.scroll-elemente')
+          const container = containers[0]
+          if (!container) return
+
+          scrollContainer.appendChild(container)
+        }
+
+        if (scrollContainer.scrollTop == 0) {
+          console.log('TOP')
+          const containers = scrollContainer.querySelectorAll('.scroll-elemente')
+          const container = containers[containers.length - 1]
+          if (!container) return
+
+          if (!parent) return
+          scrollContainer.insertBefore(container, containers[0])
+          scrollContainer.scrollTo(0, container.scrollHeight)
+        }
+
+        // const container = document.querySelector('.scroll-elemente')
+        // if (!container) return
+        // const list = container.querySelectorAll('.item-list')
+        // list.forEach(item => {
+        //   // if (i === 5) {
+        //   const size = (scrollContainer as any).offsetHeight
+        //   const pos = (item as any).offsetTop - scrollContainer.scrollTop
+        //   const limit = size / 2
+
+        //   const per = (100 / limit) * (limit - pos)
+        //   const deg =
+        //     pos < (item as any).offsetHeight * -1
+        //       ? 90
+        //       : pos > size
+        //       ? -90
+        //       : (80 / 100) * (per > 100 ? 100 : per)
+        //   ;(item as any).style.transform = `rotateX(${deg}deg)`
+        // })
+      }}
+      className='scroll-container h-screen max-h-[100vh] w-full overflow-scroll p-4 rounded-lg text-center'
+    >
+      <div className='scroll-elemente'>{children}</div>
       <div className='scroll-elemente'>{children}</div>
     </div>
   )

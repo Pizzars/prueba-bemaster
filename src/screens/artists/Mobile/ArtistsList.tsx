@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from 'react'
 import { ArtistModel } from 'src/proxy/queries/artists/artistModel'
 import { useAppSelector } from 'src/redux/hooks'
+import InfiniteScrollList from '../Desktop/ArtistList/InfiniteScrollList'
+import ArtistItem from './ArtistItem'
 import ArtistsListScrollMobile from './ArtistsListScrollMobile'
 
 interface Props {
@@ -63,13 +65,23 @@ const ArtistsList: React.FC<Props> = ({ customClassname, filter }) => {
   if (!artists) {
     return null
   }
-  // if (!artistData || artistData.length === 0) return <></>
 
-  const listToShow = !artistData
-    ? []
-    : artistData.length >= 50
-    ? artistData
-    : updateList(artistData)
+  const getList = () => {
+    const listToShow = !artistData
+      ? []
+      : artistData.length >= 50
+      ? artistData
+      : updateList(artistData)
+
+    if (!artistData) return <></>
+    return (
+      <InfiniteScrollList>
+        {listToShow.map((artist, i) => {
+          return <ArtistItem key={`artists-${i}`} artist={artist} />
+        })}
+      </InfiniteScrollList>
+    )
+  }
 
   return (
     <div
@@ -78,8 +90,9 @@ const ArtistsList: React.FC<Props> = ({ customClassname, filter }) => {
         paddingTop: 150
       }}
     >
-      <div className='h-full overflow-y-scroll bg-white'>
-        <ArtistsListScrollMobile list={listToShow} />
+      <div className='h-full overflow-y-scroll bg-white w-full'>
+        {/* <ArtistsListScrollMobile list={listToShow} /> */}
+        {getList()}
       </div>
     </div>
   )

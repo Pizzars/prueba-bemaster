@@ -43,16 +43,18 @@ const ArtistItem = ({ artist }: Params) => {
         }}
         className='flex flex-row justify-between items-center'
       >
-        <TitleMedium text={artist.name} className='uppercase' />
+        <TitleMedium text={artist.name} className='uppercase text-start' />
         <TextIcon icon={TextIcons.DOWN_TRIANGLE} />
       </div>
 
-      {open && (
+      {open ? (
         <animated.div style={props} className='overflow-hidden'>
           <div ref={contentRef}>
             <ArtistDetailsMobile />
           </div>
         </animated.div>
+      ) : (
+        <></>
       )}
     </div>
   )
