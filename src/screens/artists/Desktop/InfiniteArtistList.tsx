@@ -111,13 +111,13 @@ const InfiniteArtistList = ({ filter }: Params) => {
   }
 
   return (
-    <div className='w-full bg-black-app relative'>
+    <div className='w-full bg-white desk:bg-black-app relative'>
       <div className='w-full h-screen'>{getList()}</div>
       <div
-        className={`absolute bg-gradient-to-b from-black-app from-10% to-transparent h-[20vh] z-10 left-0 top-0 w-full `}
+        className={`absolute bg-gradient-to-b from-white desk:from-black-app from-10% to-transparent h-[20vh] z-10 left-0 top-32 desk:top-0 w-full `}
       ></div>
       <div
-        className={`absolute bg-gradient-to-t from-black-app from-10% to-transparent h-[15vh] z-10 left-0 bottom-0 w-full `}
+        className={`absolute bg-gradient-to-t from-white desk:from-black-app from-10% to-transparent h-[15vh] z-10 left-0 bottom-0 w-full `}
       ></div>
     </div>
   )

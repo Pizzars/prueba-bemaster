@@ -22,8 +22,8 @@ const ItemListArtist = ({ artist }: Params) => {
     >
       <TitleSmall
         text={artist.name}
-        color={TextColors.white}
-        className='uppercase text-start hover:text-yellow-app'
+        color={TextColors.dark}
+        className='uppercase desk:text-white text-start hover:text-yellow-app'
       />
     </div>
   )

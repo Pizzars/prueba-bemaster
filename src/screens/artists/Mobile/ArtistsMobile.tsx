@@ -1,5 +1,6 @@
 import ArtistsList from './ArtistsList'
 import Filter from '../../components/general/Filter/Filter'
+// import InfiniteArtistList from '../Desktop/InfiniteArtistList'
 
 const optionPlaceholders = [
   { title: 'WORLDWIDE', option: 'worldwide' },
@@ -16,6 +17,9 @@ interface Params {
 const ArtistsMobile = ({ filter, setFilter }: Params) => {
   return (
     <div className='flex w-full'>
+      {/* <InfiniteArtistList filter={filter ?? optionPlaceholders[0].option} /> */}
+
+      <ArtistsList filter={filter ?? optionPlaceholders[0].option} />
       <Filter
         onOptionSelected={(option: any) => {
           setFilter(option)
@@ -24,7 +28,6 @@ const ArtistsMobile = ({ filter, setFilter }: Params) => {
         options={optionPlaceholders}
         selected={filter ?? optionPlaceholders[0].option}
       />
-      <ArtistsList filter={filter ?? optionPlaceholders[0].option} />
     </div>
   )
 }

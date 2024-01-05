@@ -12,6 +12,7 @@ const Artists = () => {
   const status = useAppSelector(state => state.artistsReducer.status)
   const dispatch = useAppDispatch()
 
+  // const [filter, setFilter] = useState<string | null>(null)
   const [filter, setFilter] = useState<string | null>(null)
   // const [hide, setHide] = useState(false)
 

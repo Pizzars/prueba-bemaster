@@ -4,7 +4,8 @@ export enum Colors {
   YELLOW = '#D2FF37',
   BLUE = '#46D',
   GRAY = '#333',
-  PURPLE = '##4466DD'
+  PURPLE = '#4466DD',
+  DARK = '#000'
 }
 
 export enum ColorExtensions {
@@ -18,6 +19,7 @@ export enum ColorExtensions {
 
 export enum TextColors {
   black = 'text-black-app',
+  dark = 'text-black',
   white = 'text-white',
   yellow = 'text-yellow-app',
   blue = 'text-blue-app',

@@ -73,7 +73,7 @@ const OptionsFilter = ({
   }
 
   useEffect(() => {
-    handleTabClick(0)
+    if (!selected === undefined) handleTabClick(0)
   }, [])
 
   return (

@@ -23,12 +23,15 @@ const InfiniteScrollList = ({ children }: Params) => {
     parent.scrollTo(0, 2)
 
     scrollContainer.addEventListener('scroll', () => {
+      console.log('******')
+
       if (
         (scrollContainer as any).offsetHeight + scrollContainer.scrollTop >=
         scrollContainer.scrollHeight
       ) {
         const container = document.querySelector('.scroll-elemente')
         if (!container) return
+        console.log('-------')
         const clone = container.cloneNode(true)
         const parent = container.parentElement
         if (!parent) return
@@ -40,6 +43,7 @@ const InfiniteScrollList = ({ children }: Params) => {
         console.log('TOP')
         const container = document.querySelector('.scroll-elemente')
         if (!container) return
+        console.log('........')
         const clone = container.cloneNode(true)
         const parent = container.parentElement
         if (!parent) return
@@ -48,24 +52,24 @@ const InfiniteScrollList = ({ children }: Params) => {
         parent.lastElementChild?.remove()
       }
 
-      const container = document.querySelector('.scroll-elemente')
-      if (!container) return
-      const list = container.querySelectorAll('.item-list')
-      list.forEach(item => {
-        // if (i === 5) {
-        const size = (scrollContainer as any).offsetHeight
-        const pos = (item as any).offsetTop - scrollContainer.scrollTop
-        const limit = size / 2
+      // const container = document.querySelector('.scroll-elemente')
+      // if (!container) return
+      // const list = container.querySelectorAll('.item-list')
+      // list.forEach(item => {
+      //   // if (i === 5) {
+      //   const size = (scrollContainer as any).offsetHeight
+      //   const pos = (item as any).offsetTop - scrollContainer.scrollTop
+      //   const limit = size / 2
 
-        const per = (100 / limit) * (limit - pos)
-        const deg =
-          pos < (item as any).offsetHeight * -1
-            ? 90
-            : pos > size
-            ? -90
-            : (80 / 100) * (per > 100 ? 100 : per)
-        ;(item as any).style.transform = `rotateX(${deg}deg)`
-      })
+      //   const per = (100 / limit) * (limit - pos)
+      //   const deg =
+      //     pos < (item as any).offsetHeight * -1
+      //       ? 90
+      //       : pos > size
+      //       ? -90
+      //       : (80 / 100) * (per > 100 ? 100 : per)
+      //   ;(item as any).style.transform = `rotateX(${deg}deg)`
+      // })
     })
   }, [])
 

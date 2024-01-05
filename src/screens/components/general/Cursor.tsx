@@ -26,8 +26,6 @@ const Cursor = () => {
       try {
         // Verifica si el objetivo del evento es una etiqueta <a>
         if (event && event.target && event.target.classList.contains('cursor')) {
-          console.log(dark, light)
-
           if (event.target.classList.contains('dark-cursor')) {
             if (dark && light) {
               dark.style.display = 'block'

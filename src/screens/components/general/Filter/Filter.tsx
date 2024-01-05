@@ -62,6 +62,12 @@ const Filter: React.FC<FilterProps> = ({
     }
   }
 
+  useEffect(() => {
+    if (selected !== undefined) {
+      handleTabClick(selected)
+    }
+  }, [])
+
   return (
     <div
       className={`fixed w-full ${className} bg-gradient-to-r from-green-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% pl-8 z-10 py-2`}

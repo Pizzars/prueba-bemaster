@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ArtistModel } from 'src/proxy/queries/artists/artistModel'
 import { useAppSelector } from 'src/redux/hooks'
 import ArtistsListScrollMobile from './ArtistsListScrollMobile'
@@ -21,7 +21,6 @@ const updateList = (list: ArtistModel[]) => {
 
 const ArtistsList: React.FC<Props> = ({ customClassname, filter }) => {
   const artists = useAppSelector(state => state.artistsReducer.data)
-  const containerRef = useRef(null)
   const [artistData, setArtistData] = useState<ArtistModel[] | null>(null)
 
   useEffect(() => {
@@ -79,7 +78,7 @@ const ArtistsList: React.FC<Props> = ({ customClassname, filter }) => {
         paddingTop: 150
       }}
     >
-      <div ref={containerRef} className='h-full overflow-y-scroll bg-white'>
+      <div className='h-full overflow-y-scroll bg-white'>
         <ArtistsListScrollMobile list={listToShow} />
       </div>
     </div>
