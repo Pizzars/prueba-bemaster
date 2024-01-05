@@ -4,7 +4,7 @@ import { ArtistModel } from 'src/proxy/queries/artists/artistModel'
 import { useAppSelector } from 'src/redux/hooks'
 import InfiniteScrollList from '../Desktop/ArtistList/InfiniteScrollList'
 import ArtistItem from './ArtistItem'
-import ArtistsListScrollMobile from './ArtistsListScrollMobile'
+// import ArtistsListScrollMobile from './ArtistsListScrollMobile'
 
 interface Props {
   customClassname?: string

@@ -8,7 +8,7 @@ import CarouselTerritory from './CarouselTerritory'
 import { homeTexts } from './components/textsHome'
 import ArtistListSlide from './components/ArtistListSlide'
 import useWindowSize from 'src/hooks/useWindowSize'
-import OptionsTerritory from './components/OptionsTerritory'
+// import OptionsTerritory from './components/OptionsTerritory'
 import TitleHome from '../components/texts/TitleHome'
 
 interface Params {
@@ -28,8 +28,8 @@ const AnimatedText = ({ artists = false, setFilter }: Params) => {
         </div>
       )}
       <div className='absolute bottom-0 z-30 text-white'>
-        {!artists && (
-          <div className='pl-8 desk:pl-16 big:pl-24'>
+        <div className='pl-8 desk:pl-16 big:pl-24'>
+          {!artists ? (
             <Link href='/artists' className='flex flex-row customLink'>
               <TitleSection
                 text={homeTexts.textArtists[currentLanguage]}
@@ -43,14 +43,22 @@ const AnimatedText = ({ artists = false, setFilter }: Params) => {
                 className='cursor'
               />
             </Link>
-          </div>
-        )}
-        <div className='overflow-hidden' style={{ width: '100%' }}>
-          {artists && setFilter ? (
-            <OptionsTerritory setFilter={setFilter} />
           ) : (
-            <CarouselTerritory />
+            <div className='flex flex-row'>
+              <TitleSection
+                text={homeTexts.textSelect[currentLanguage]}
+                color={TextColors.white}
+                className='textBesideIcon'
+              />
+            </div>
           )}
+        </div>
+        <div className='overflow-hidden' style={{ width: '100%' }}>
+          {/* {artists && setFilter ? (
+            <OptionsTerritory setFilter={setFilter} />
+          ) : ( */}
+          <CarouselTerritory setFilter={setFilter} />
+          {/* )} */}
         </div>
       </div>
     </div>

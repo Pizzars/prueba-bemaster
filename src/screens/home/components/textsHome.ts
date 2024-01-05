@@ -21,6 +21,10 @@ export const homeTexts: Record<string, TextSection> = {
     EN: 'ARTISTS',
     ES: 'ARTISTAS'
   },
+  textSelect: {
+    EN: 'SELECT',
+    ES: 'SELECCIONAR'
+  },
   textFooterMusic: {
     EN: 'BE FOR THE MUSIC.',
     ES: 'BE FOR THE MUSIC.'

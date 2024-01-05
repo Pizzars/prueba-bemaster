@@ -1,6 +1,7 @@
 import { TextColors } from 'src/utils/Colors'
 import { useAppSelector } from 'src/redux/hooks'
 import TitleSection from 'src/screens/components/texts/TitleSection'
+import { useSpring } from 'react-spring'
 
 const carouselListTexts = {
   ES: [
@@ -67,9 +68,40 @@ const OptionsTerritory = ({ setFilter }: Params) => {
   const currentLanguage = useAppSelector(state => state.languageReducer.language)
   const carouselTexts = carouselListTexts[currentLanguage]
 
+  const fade = useSpring({
+    from: {
+      x: '0%'
+    },
+    to: {
+      x: '-50%'
+    },
+    loop: true,
+    config: {
+      duration: 30000
+    }
+  })
+
   return (
     <div className='my-8 w-screen overflow-x-auto overflow-y-hidden'>
       <div className='flex w-fit'>
+        {carouselTexts.map((text, i) => {
+          return (
+            <div
+              className={`mx-8 desk:mx-16 big:mx-24 w-fit cursor-pointer cursor`}
+              key={`item1-${i}`}
+              onClick={() => {
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+                setFilter(text.option)
+              }}
+            >
+              <TitleSection
+                text={text.text}
+                className='w-fit flex whitespace-nowrap cursor dark-cursor'
+                color={TextColors.white}
+              />
+            </div>
+          )
+        })}
         {carouselTexts.map((text, i) => {
           return (
             <div
