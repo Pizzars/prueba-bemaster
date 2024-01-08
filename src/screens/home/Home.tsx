@@ -9,7 +9,7 @@ import { getArtistsData } from 'src/redux/features/artistsSlice'
 import { StateRequest } from 'src/redux/features/baseReducer'
 import { usePathname } from 'next/navigation'
 import Loading, { PageLoad } from '../components/general/Loading'
-// import Spline from './components/Spline'
+import Spline from './components/Spline'
 
 const Home = () => {
   const artistsStatus = useAppSelector(state => state.artistsReducer.status)
@@ -31,8 +31,8 @@ const Home = () => {
 
   return (
     <>
-      {/* <Spline /> */}
-      <div className='bg-home fixed inset-0 -z-10'></div>
+      <Spline />
+      {/* <div className='bg-home fixed inset-0 -z-10'></div> */}
       <MainHeader />
       <div className='h-screen flex-1 items-center justify-center'>
         {artistsStatus === StateRequest.SUCCESS && <AnimatedText />}

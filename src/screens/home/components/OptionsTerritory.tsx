@@ -1,7 +1,6 @@
 import { TextColors } from 'src/utils/Colors'
 import { useAppSelector } from 'src/redux/hooks'
 import TitleSection from 'src/screens/components/texts/TitleSection'
-import { useSpring } from 'react-spring'
 
 const carouselListTexts = {
   ES: [
@@ -67,19 +66,6 @@ interface Params {
 const OptionsTerritory = ({ setFilter }: Params) => {
   const currentLanguage = useAppSelector(state => state.languageReducer.language)
   const carouselTexts = carouselListTexts[currentLanguage]
-
-  const fade = useSpring({
-    from: {
-      x: '0%'
-    },
-    to: {
-      x: '-50%'
-    },
-    loop: true,
-    config: {
-      duration: 30000
-    }
-  })
 
   return (
     <div className='my-8 w-screen overflow-x-auto overflow-y-hidden'>
