@@ -9,7 +9,11 @@ export const getArtists = async (): Promise<ArtistModel[] | null> => {
   if (response.statusCode === 200) {
     const data = response.data
     const list = ArtistModel.listFromJson(data as any)
-    return list
+    const newList = [...list]
+    return newList.sort((a, b) => {
+      if (a.name < b.name) return -1
+      return 1
+    })
   }
   return null
 }

@@ -42,7 +42,7 @@ const ArtistHeader = ({ setFilter, selected }: Params) => {
           className={`${classText} transition-all duration-500`}
           // className=' transition-all  duration-500'
         />
-        {artist ? <div></div> : <ArtistSearch filter={selected} />}
+        {artist ? <div></div> : <ArtistSearch />}
       </div>
       <div className='mx-16 big:mx-20 px-2 flex justify-start'>
         <OptionsFilter

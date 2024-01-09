@@ -48,9 +48,7 @@ const InfiniteArtistList = ({ filter }: Params) => {
           }
           return false
         })
-      ]
-        .sort((a, b) => (a.name || '').localeCompare(b.name || ''))
-        .sort((a, b) => (a.territory || '').localeCompare(b.territory || ''))
+      ].sort((a, b) => (a.territory || '').localeCompare(b.territory || ''))
 
       setTimeout(() => {
         setArtistData(newList)
