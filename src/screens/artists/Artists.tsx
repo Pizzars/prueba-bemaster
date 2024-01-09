@@ -12,7 +12,7 @@ const Artists = () => {
   const status = useAppSelector(state => state.artistsReducer.status)
   const dispatch = useAppDispatch()
 
-  // const [filter, setFilter] = useState<string | null>(null)
+  // const [filter, setFilter] = useState<string | null>('worldwide')
   const [filter, setFilter] = useState<string | null>(null)
   // const [hide, setHide] = useState(false)
 
@@ -24,12 +24,15 @@ const Artists = () => {
   return (
     <>
       {!filter && (
-        <div className='w-full h-screen top-0 left-0 z-50 relative'>
-          <AnimatedText artists={true} setFilter={setFilter} />
+        <div className='w-full -mt-28 desk:mt-0 flex flex-col h-screen top-0 left-0 z-10 relative'>
+          <div className='h-28 desk:h-16 z-10 big:h-24 w-full bg-black'></div>
+          <div className='bg-red-400 h-full flex-1'>
+            <AnimatedText artists={true} setFilter={setFilter} />
+          </div>
         </div>
       )}
       {filter && (
-        <div>
+        <div className=''>
           <div className='hidden desk:block'>
             <ArtistsDesk filter={filter} setFilter={setFilter} />
           </div>

@@ -3,6 +3,7 @@ import { useAppSelector } from 'src/redux/hooks'
 import OptionsFilter, { optionColors } from 'src/screens/components/general/Filter/OptionsFilter'
 import TitleHome from 'src/screens/components/texts/TitleHome'
 import { TextColors } from 'src/utils/Colors'
+import ArtistSearch from './ArtistSearch'
 
 interface Params {
   setFilter: (option: string) => void
@@ -20,6 +21,7 @@ export const optionsFilterArtists = [
 const ArtistHeader = ({ setFilter, selected }: Params) => {
   const [classText, setClassText] = useState<string>('text-big leading-big')
   const load = useAppSelector(state => state.loadReducer.artists)
+  const artist = useAppSelector(state => state.artistsReducer.artist)
 
   useEffect(() => {
     if (load) {
@@ -33,13 +35,14 @@ const ArtistHeader = ({ setFilter, selected }: Params) => {
 
   return (
     <>
-      <div className='mx-20 mt-8'>
+      <div className='mx-20 mt-16 flex justify-between'>
         <TitleHome
           text='ARTISTS'
           color={TextColors.white}
           className={`${classText} transition-all duration-500`}
           // className=' transition-all  duration-500'
         />
+        {artist ? <div></div> : <ArtistSearch filter={selected} />}
       </div>
       <div className='mx-16 px-2 flex justify-start'>
         <OptionsFilter

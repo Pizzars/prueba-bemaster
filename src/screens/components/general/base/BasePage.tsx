@@ -10,6 +10,7 @@ interface Params {
   footer?: boolean
   navbar?: boolean
   padding?: boolean
+  paddingMobile?: boolean
 }
 
 const BasePage = ({
@@ -19,6 +20,7 @@ const BasePage = ({
   footer = true,
   navbar = true,
   padding = true,
+  paddingMobile = true,
   children
 }: Params) => {
   return (
@@ -27,7 +29,12 @@ const BasePage = ({
         <title>{title}</title>
         <meta name='description' content={description} />
       </head>
-      <body className={className} style={{ paddingTop: navbar && padding ? 72 : 0 }}>
+      <body
+        className={`${paddingMobile ? 'pt-16' : 'pt-0'} ${
+          padding ? 'pt-16 big:pt-16' : 'desk:pt-0'
+        } ${className}`}
+        // style={{ paddingTop: navbar && padding ? 72 : 0 }}
+      >
         {navbar && <Navbar />}
         {children}
         {footer && <Footer />}

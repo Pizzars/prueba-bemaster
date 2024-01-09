@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
 import { ArtistModel } from 'src/proxy/queries/artists/artistModel'
-import { selectArtist } from 'src/redux/features/artistsSlice'
 import { useAppSelector } from 'src/redux/hooks'
 
 import InfiniteScrollList from './ArtistList/InfiniteScrollList'
@@ -24,7 +22,6 @@ const updateList = (list: ArtistModel[]) => {
 const InfiniteArtistList = ({ filter }: Params) => {
   const [artistData, setArtistData] = useState<ArtistModel[] | null>(null)
   const artists = useAppSelector(state => state.artistsReducer.data)
-  const dispatch = useDispatch()
 
   useEffect(() => {
     if (artists) {
@@ -58,38 +55,8 @@ const InfiniteArtistList = ({ filter }: Params) => {
       setTimeout(() => {
         setArtistData(newList)
       }, 100)
-      setTimeout(() => {
-        const newList = artists.filter(artist => {
-          if (filter === 'worldwide') {
-            return true
-          }
-          if (
-            filter === 'europe' &&
-            (artist.territory == 'spain' || artist.territory == 'spain_and_lantin_america')
-          ) {
-            return true
-          }
-          if (filter === 'lantin_america' && artist.territory == 'spain_and_lantin_america') {
-            return true
-          }
-          if (filter === 'spain_and_lantin_america' && artist.territory == 'lantin_america') {
-            return true
-          }
-          if (artist.territory == filter) {
-            return true
-          }
-          return false
-        })
 
-        if (newList.length === 0) {
-          dispatch(selectArtist(null))
-          return
-        }
-
-        const num = Math.floor(Math.random() * newList.length)
-
-        dispatch(selectArtist(newList[num]))
-      }, 1000)
+      // dispatch(selectArtist(newList[num]))
     }
   }, [artists, filter])
 

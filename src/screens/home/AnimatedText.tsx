@@ -20,14 +20,18 @@ const AnimatedText = ({ artists = false, setFilter }: Params) => {
   const currentLanguage = useAppSelector(state => state.languageReducer.language)
   useWindowSize()
   return (
-    <div className='relative w-full h-screen bg-black overflow-hidden pointer'>
+    <div
+      className={`relative w-full ${
+        artists ? 'h-full' : 'h-screen'
+      } bg-black overflow-hidden pointer`}
+    >
       <ArtistListSlide />
       {artists && (
-        <div className='absolute top-8 left-8 desk:top-16 desk:left-16 big:top-24 big:left-24 z-30 text-white'>
+        <div className='absolute top-16 left-8 desk:top-16 desk:left-16 big:top-24 big:left-24 z-30 text-white'>
           <TitleHome text='ARTISTS' color={TextColors.white} />
         </div>
       )}
-      <div className='absolute bottom-0 z-30 text-white'>
+      <div className='absolute bottom-8 desk:bottom-0 z-30 text-white'>
         <div className='pl-8 desk:pl-16 big:pl-24'>
           {!artists ? (
             <Link href='/artists' className='flex flex-row customLink'>
