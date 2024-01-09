@@ -30,6 +30,7 @@ const ArtistSearch = ({ filter }: Params) => {
         .sort((a, b) => (a.territory || '').localeCompare(b.territory || ''))
 
       setArtistData(newList)
+      setSearch('')
 
       // dispatch(selectArtist(newList[num]))
     }
@@ -58,7 +59,7 @@ const ArtistSearch = ({ filter }: Params) => {
               return (
                 <button
                   key={`artist-${i}`}
-                  className='mb-1 big:ml-8 opacity-40 hover:opacity-100 cursor-pointer whitespace-nowrap'
+                  className='mb-1 opacity-40 hover:opacity-100 cursor-pointer whitespace-nowrap'
                   onClick={() => dispatch(selectArtist(artist))}
                 >
                   <TitleSmall

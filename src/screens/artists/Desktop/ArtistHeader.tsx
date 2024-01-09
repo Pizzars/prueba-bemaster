@@ -35,7 +35,7 @@ const ArtistHeader = ({ setFilter, selected }: Params) => {
 
   return (
     <>
-      <div className='mx-20 mt-16 flex justify-between'>
+      <div className='mx-20 big:mx-24 mt-16 flex justify-between'>
         <TitleHome
           text='ARTISTS'
           color={TextColors.white}
@@ -44,7 +44,7 @@ const ArtistHeader = ({ setFilter, selected }: Params) => {
         />
         {artist ? <div></div> : <ArtistSearch filter={selected} />}
       </div>
-      <div className='mx-16 px-2 flex justify-start'>
+      <div className='mx-16 big:mx-20 px-2 flex justify-start'>
         <OptionsFilter
           options={optionsFilterArtists}
           selected={index ?? 0}

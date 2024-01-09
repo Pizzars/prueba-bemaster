@@ -35,7 +35,7 @@ const ArtistsSelection = ({ filter }: Params) => {
   }, [artists, filter])
 
   return (
-    <div className='p-16 big:p-24 bg-black-app'>
+    <div className='p-16 big:p-20 bg-black-app'>
       {artistData &&
         artistData.map((artist, i) => {
           return (
