@@ -31,7 +31,9 @@ const AnimatedText = ({ artists = false, setFilter }: Params) => {
           <TitleHome text='ARTISTS' color={TextColors.white} />
         </div>
       )}
-      <div className='absolute bottom-8 desk:bottom-0 z-30 text-white'>
+      <div
+        className={`absolute ${artists ? 'bottom-8' : 'bottom-0'} desk:bottom-0 z-30 text-white`}
+      >
         <div className='pl-8 desk:pl-16 big:pl-24'>
           {!artists ? (
             <Link href='/artists' className='flex flex-row customLink'>
