@@ -22,6 +22,9 @@ const ArtistsSelection = ({ filter }: Params) => {
           if (artist.territory == filter) {
             return true
           }
+          if (artist.territory !== filter && artist.territory === 'worldwide') {
+            return true
+          }
           return false
         })
       ]

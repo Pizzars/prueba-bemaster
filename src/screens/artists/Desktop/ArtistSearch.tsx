@@ -50,9 +50,9 @@ const ArtistSearch = () => {
                     />
                     <TitleSmall
                       tag={TextTags.SPAN}
-                      text={artist.territory}
+                      text={`${(artist.territory ?? '').replaceAll('_', ' ')} ${artist.info ?? ''}`}
                       color={TextColors.white}
-                      className='uppercase  whitespace-nowrap opacity-40 bold'
+                      className='uppercase font-bold  whitespace-nowrap opacity-40 bold'
                     />
                   </button>
                 )

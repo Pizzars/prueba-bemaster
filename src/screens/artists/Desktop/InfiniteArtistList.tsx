@@ -28,22 +28,10 @@ const InfiniteArtistList = ({ filter }: Params) => {
       setArtistData(null)
       const newList = [
         ...artists.filter(artist => {
-          if (filter === 'worldwide') {
-            return true
-          }
-          if (
-            filter === 'europe' &&
-            (artist.territory == 'spain' || artist.territory == 'spain_and_lantin_america')
-          ) {
-            return true
-          }
-          if (filter === 'lantin_america' && artist.territory == 'spain_and_lantin_america') {
-            return true
-          }
-          if (filter === 'spain_and_lantin_america' && artist.territory == 'lantin_america') {
-            return true
-          }
           if (artist.territory == filter) {
+            return true
+          }
+          if (artist.territory !== filter && artist.territory === 'worldwide') {
             return true
           }
           return false
