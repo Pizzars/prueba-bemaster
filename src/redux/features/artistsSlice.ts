@@ -11,6 +11,8 @@ interface typeReducer extends BaseReducerProps {
   signleStatus: StateRequest
   minId: number | null
   maxId: number | null
+  filter: string | null
+  artistData: ArtistModel[] | null
 }
 
 const initialState: typeReducer = {
@@ -19,6 +21,8 @@ const initialState: typeReducer = {
   artistById: null,
   minId: null,
   maxId: null,
+  filter: null,
+  artistData: null,
   artistByIdStatus: StateRequest.EMPTY,
   signleStatus: StateRequest.EMPTY,
   ...baseState
@@ -59,6 +63,25 @@ export const artistsSlice = createSlice({
     },
     setMaxId: (state, action: PayloadAction<number>) => {
       state.maxId = action.payload
+    },
+    setFilter: (state, action: PayloadAction<string | null>) => {
+      const filter = action.payload
+      state.filter = filter
+      if (!filter) {
+        state.artistData = null
+        state.artist = null
+      }
+      if (!state.data) return
+      const list = state.data.filter(artist => {
+        if (artist.territory == filter) {
+          return true
+        }
+        if (artist.territory !== filter && artist.territory === 'worldwide') {
+          return true
+        }
+        return false
+      })
+      state.artistData = list
     }
   },
   extraReducers: builder => {
@@ -86,5 +109,5 @@ export const artistsSlice = createSlice({
   }
 })
 
-export const { selectArtist, setMinId, setMaxId } = artistsSlice.actions
+export const { selectArtist, setMinId, setMaxId, setFilter } = artistsSlice.actions
 export default artistsSlice.reducer

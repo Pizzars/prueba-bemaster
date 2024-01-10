@@ -35,7 +35,7 @@ const ArtistHeader = ({ setFilter, selected }: Params) => {
 
   return (
     <>
-      <div className='mx-20 big:mx-24 mt-16 flex justify-between'>
+      <div className='mx-20 big:mx-24 flex justify-between'>
         <TitleHome
           text='ARTISTS'
           color={TextColors.white}

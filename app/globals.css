@@ -319,7 +319,7 @@ body {
   background-size: cover;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 800px) {
   .bg-about-mobile,
   .bg-form-mobile,
   .bg-gigs-mobile,
@@ -513,5 +513,46 @@ button.customLink,
 @media (min-width: 1400px) {
   .h-home {
     height: calc(100vh - 6rem);
+  }
+}
+
+.text-artists {
+  font-size: 27px;
+  line-height: 33.75px;
+  font-family: 'swis';
+}
+
+@media (min-width: 1190px) and (max-width: 1279px) and (min-height: 830px) {
+  .text-artists {
+    font-size: 28px;
+    line-height: 36.4px;
+  }
+}
+
+@media (min-width: 1279px) and (max-width: 1439px) and (min-height: 720px) {
+  .text-artists {
+    font-size: 27px;
+    line-height: 33.75px;
+  }
+}
+
+@media (min-width: 1440px) and (max-width: 1511px) and (min-height: 800px) {
+  .text-artists {
+    font-size: 27px;
+    line-height: 33.75px;
+  }
+}
+
+@media (min-width: 1512px) and (max-width: 1700px) and (min-height: 800px) {
+  .text-artists {
+    font-size: 39px;
+    line-height: 48.75px;
+  }
+}
+
+@media (min-width: 1700px) {
+  .text-artists {
+    font-size: 44px;
+    line-height: 55px;
   }
 }

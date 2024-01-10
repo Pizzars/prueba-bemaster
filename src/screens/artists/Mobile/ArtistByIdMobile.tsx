@@ -9,8 +9,11 @@ import {
   // filterFutureEvents,
   formatDescription
 } from 'src/utils/functions'
-import { noEventsMessage, ulrBack } from 'src/utils/consts'
-import TitleSmall from 'src/screens/components/texts/TitleSmall'
+import {
+  // noEventsMessage,
+  ulrBack
+} from 'src/utils/consts'
+// import TitleSmall from 'src/screens/components/texts/TitleSmall'
 import { useRouter } from 'next/navigation'
 import { useSwipeable } from 'react-swipeable'
 import { useSpring, animated } from 'react-spring'
@@ -127,12 +130,12 @@ const ArtistByIdMobile = ({ artist }: Params) => {
           //     />
           //   ))
           // ) :
-          <div className='mt-6'>
-            <TitleSmall
-              text={noEventsMessage[currentLanguage]}
-              className='desk:text-[24px] desk:leading-[24px]'
-            />
-          </div>
+          // <div className='mt-6'>
+          //   <TitleSmall
+          //     text={noEventsMessage[currentLanguage]}
+          //     className='desk:text-[24px] desk:leading-[24px]'
+          //   />
+          // </div>
         }
         <div className='mt-7 mb-4'>
           <ArtistSocialLinks links={socialLinks} gap={14} />

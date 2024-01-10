@@ -45,22 +45,28 @@ const ArtistSocialLinks: React.FC<ArtistSocialLinksProps> = ({
         <div key={index} className='w-1/2 flex' style={marginBottomStyle}>
           {link.type === 'PRESS KIT' || link.type === 'ARTWORK REQ.' ? (
             <span onClick={() => handleLinkClick(link)} className='uppercase flex cursor-pointer'>
-              <TitleSmall text={link.type} className='desk:text-[14px] align-middle' />
+              <TitleSmall
+                text={link.type}
+                className='desk:text-[14px] align-middle cursor black-cursor dark-cursor'
+              />
               <TextIcon
                 icon={TextIcons.DIAGONAL_ARROW}
                 size={SizeIcons.TITLE_SMALL}
                 color={TextColors.blue}
-                className='self-center ml-1 text-[10px] desk:text-[20px]'
+                className='self-center ml-1 text-[10px] desk:text-[20px] cursor black-cursor dark-cursor'
               />
             </span>
           ) : (
             <a href={link.url} target='_blank' rel='noopener noreferrer' className='uppercase flex'>
-              <TitleSmall text={link.type} className='desk:text-[14px] align-middle' />
+              <TitleSmall
+                text={link.type}
+                className='desk:text-[14px] align-middle cursor black-cursor dark-cursor'
+              />
               <TextIcon
                 icon={TextIcons.DIAGONAL_ARROW}
                 size={SizeIcons.TITLE_SMALL}
                 color={TextColors.blue}
-                className='self-center ml-1 text-[10px] desk:text-[20px]'
+                className='self-center ml-1 text-[10px] desk:text-[20px] cursor black-cursor dark-cursor'
               />
             </a>
           )}

@@ -8,7 +8,10 @@ import Link from 'next/link'
 import TextIcon, { TextIcons, SizeIcons } from 'src/screens/components/icons/TextIcon'
 import TitleSmall from 'src/screens/components/texts/TitleSmall'
 import { useAppSelector } from 'src/redux/hooks'
-import { noEventsMessage, ulrBack } from 'src/utils/consts'
+import {
+  // noEventsMessage,
+  ulrBack
+} from 'src/utils/consts'
 import {
   // filterFutureEvents,
   formatDescription,
@@ -52,12 +55,12 @@ const ArtistDetailsMobile = () => {
         //     />
         //   ))
         // ) :
-        <div className='mt-6'>
-          <TitleSmall
-            text={noEventsMessage[currentLanguage]}
-            className='desk:text-[24px] desk:leading-[24px]'
-          />
-        </div>
+        // <div className='mt-6'>
+        //   <TitleSmall
+        //     text={noEventsMessage[currentLanguage]}
+        //     className='desk:text-[24px] desk:leading-[24px]'
+        //   />
+        // </div>
       }
       <Divider className='my-5' />
       <ArtistSocialLinks links={socialLinks} customClassName='optional-styles' gap={14} />

@@ -1,5 +1,7 @@
 import ArtistsList from './ArtistsList'
 import Filter from '../../components/general/Filter/Filter'
+import { useAppDispatch, useAppSelector } from 'src/redux/hooks'
+import { setFilter } from 'src/redux/features/artistsSlice'
 // import InfiniteArtistList from '../Desktop/InfiniteArtistList'
 
 const optionPlaceholders = [
@@ -10,19 +12,20 @@ const optionPlaceholders = [
   { title: 'SPAIN & LATAM', option: 'spain_and_latin_america' }
 ]
 
-interface Params {
-  filter: string | null
-  setFilter: (value: string) => void
-}
-const ArtistsMobile = ({ filter, setFilter }: Params) => {
+const ArtistsMobile = () => {
+  const dispatch = useAppDispatch()
+  const filter = useAppSelector(state => state.artistsReducer.filter)
+
+  if (!filter) return <></>
+
   return (
     <div className='flex w-full'>
       {/* <InfiniteArtistList filter={filter ?? optionPlaceholders[0].option} /> */}
 
-      <ArtistsList filter={filter ?? optionPlaceholders[0].option} />
+      <ArtistsList />
       <Filter
         onOptionSelected={(option: any) => {
-          setFilter(option)
+          dispatch(setFilter(option))
         }}
         title='Artists'
         options={optionPlaceholders}

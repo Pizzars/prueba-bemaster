@@ -1,57 +1,34 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { ArtistModel } from 'src/proxy/queries/artists/artistModel'
 import { useAppSelector } from 'src/redux/hooks'
 
 import InfiniteScrollList from './ArtistList/InfiniteScrollList'
 import ItemListArtist from './ArtistList/ItemListArtist'
 
-interface Params {
-  filter: string
-}
-
 const updateList = (list: ArtistModel[]) => {
   const targetLength = 50
+  const newList = [...list]
 
-  while (list.length < targetLength) {
+  while (newList.length < targetLength) {
+    const listToAdd = [...list]
     // Duplica los elementos de la lista original
-    list.push(...list.map(item => ({ ...item })))
+    newList.push(...listToAdd)
   }
-  return list
+  return newList
 }
 
-const InfiniteArtistList = ({ filter }: Params) => {
-  const [artistData, setArtistData] = useState<ArtistModel[] | null>(null)
-  const artists = useAppSelector(state => state.artistsReducer.data)
+const InfiniteArtistList = () => {
+  const artistData = useAppSelector(state => state.artistsReducer.artistData)
 
-  useEffect(() => {
-    if (artists) {
-      setArtistData(null)
-      const newList = [
-        ...artists.filter(artist => {
-          if (artist.territory == filter) {
-            return true
-          }
-          if (artist.territory !== filter && artist.territory === 'worldwide') {
-            return true
-          }
-          return false
-        })
-      ].sort((a, b) => (a.territory || '').localeCompare(b.territory || ''))
-
-      setTimeout(() => {
-        setArtistData(newList)
-      }, 100)
-
-      // dispatch(selectArtist(newList[num]))
-    }
-  }, [artists, filter])
+  if (!artistData) return <></>
 
   const getList = () => {
-    const listToShow = !artistData
-      ? []
-      : artistData.length >= 50
-      ? artistData
-      : updateList(artistData)
+    const listToShow =
+      !artistData || artistData.length === 0
+        ? []
+        : artistData.length >= 50
+        ? artistData
+        : updateList(artistData)
 
     if (!artistData) return <></>
     return (

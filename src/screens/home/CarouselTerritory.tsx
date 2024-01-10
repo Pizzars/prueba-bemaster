@@ -14,12 +14,12 @@ const carouselListTexts = {
     },
     {
       option: 'europe',
-      text: 'PARA EUROPA',
+      text: 'EUROPA',
       size: `w-[28rem] desk:w-[49vw] big:w-[51vw] super:w-[65rem]`
     },
     {
       option: 'spain',
-      text: 'PARA ESPAÑA',
+      text: 'ESPAÑA',
       size: `w-[28rem] desk:w-[49vw] big:w-[51vw] super:w-[65rem]`
     },
     {
@@ -41,12 +41,12 @@ const carouselListTexts = {
     },
     {
       option: 'europe',
-      text: 'FOR EUROPE',
+      text: 'EUROPE',
       size: `w-[24rem] desk:w-[44vw] big:w-[47vw] super:w-[55rem]`
     },
     {
       option: 'spain',
-      text: 'FOR SPAIN',
+      text: 'SPAIN',
       size: `w-[21rem] desk:w-[40vw] big:w-[42vw] super:w-[48rem]`
     },
     {

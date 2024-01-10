@@ -37,6 +37,11 @@ const Cursor = () => {
               light.style.display = 'block'
             }
           }
+          if (event.target.classList.contains('black-cursor')) {
+            cursor.style.background = 'rgba(0, 0, 0, 0.1)'
+          } else {
+            cursor.style.background = 'rgba(255, 255, 255, 0.1)'
+          }
           // cursor.style.display = 'block'
           cursor.style.opacity = '1'
           cursor.style.transform = 'scale(1)'

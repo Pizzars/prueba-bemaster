@@ -15,8 +15,8 @@ import {
   formatDescription,
   truncateText
 } from 'src/utils/functions'
-import TitleHome from 'src/screens/components/texts/TitleHome'
-import { noEventsMessage } from 'src/utils/consts'
+// import TitleHome from 'src/screens/components/texts/TitleHome'
+// import { noEventsMessage } from 'src/utils/consts'
 
 const ArtistDetails = () => {
   const selectedArtist = useAppSelector(state => state.artistsReducer.artist)
@@ -56,19 +56,9 @@ const ArtistDetails = () => {
       <Divider className='my-5 mx-8' />
       <ArtistSocialLinks links={socialLinks} customClassName='pl-8' />
 
-      <Divider className='mt-2 mx-8' />
+      {/* <Divider className='mt-2 mx-8' />
       <div className='pl-8'>
         {
-          // upcomingEvents.length > 0 ? (
-          //     upcomingEvents.map((event) => (
-          //         <ArtistDates
-          //             key={event.id}
-          //             date={event.date}
-          //             venue={event.venue}
-          //             location={event.location}
-          //         />
-          //     ))
-          // ) :
           <div>
             <TitleHome
               text={noEventsMessage[currentLanguage]}
@@ -76,19 +66,23 @@ const ArtistDetails = () => {
             />
           </div>
         }
-      </div>
+      </div> */}
       <Divider className='mt-3 mx-8' />
       <div className='px-8'>
         <ArtistInfo shortInfo={formattedDescription} />
-        <div className='flex items-center mt-0.5 md:mt-2'>
-          <Link href={`artists/${selectedArtist?.id}`}>
-            <TitleSmall text={`VIEW MORE`} className='uppercase md:opacity-80 big:text-[14px]' />
+        <div>
+          <Link href={`artists/${selectedArtist?.id}`} className='flex items-center mt-0.5 md:mt-2'>
+            <TitleSmall
+              text={`VIEW MORE`}
+              className='uppercase md:opacity-80 big:text-[14px] cursor black-cursor dark-cursor'
+            />
+            <TextIcon
+              icon={TextIcons.RIGHT_ARROW}
+              size={SizeIcons.TITLE_SMALL}
+              className='self-center opacity-40  cursor-pointer ml-0.5 md:purple-app md:opacity-100 big:text-[14px]  cursor black-cursor dark-cursor'
+              cursor
+            />
           </Link>
-          <TextIcon
-            icon={TextIcons.RIGHT_ARROW}
-            size={SizeIcons.TITLE_SMALL}
-            className='self-center opacity-40 ml-0.5 md:purple-app md:opacity-100 big:text-[14px]'
-          />
         </div>
       </div>
       <Link

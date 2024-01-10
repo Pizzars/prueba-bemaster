@@ -3,21 +3,22 @@ import { TextColors } from 'src/utils/Colors'
 import './styles.css'
 import TextIcon, { SizeIcons, TextIcons } from '../components/icons/TextIcon'
 import Link from 'next/link'
-import { useAppSelector } from 'src/redux/hooks'
+import { useAppDispatch, useAppSelector } from 'src/redux/hooks'
 import CarouselTerritory from './CarouselTerritory'
 import { homeTexts } from './components/textsHome'
 import ArtistListSlide from './components/ArtistListSlide'
 import useWindowSize from 'src/hooks/useWindowSize'
 // import OptionsTerritory from './components/OptionsTerritory'
 import TitleHome from '../components/texts/TitleHome'
+import { setFilter } from 'src/redux/features/artistsSlice'
 
 interface Params {
   artists?: boolean
-  setFilter?: (option: string) => void
 }
 
-const AnimatedText = ({ artists = false, setFilter }: Params) => {
+const AnimatedText = ({ artists = false }: Params) => {
   const currentLanguage = useAppSelector(state => state.languageReducer.language)
+  const dispatch = useAppDispatch()
   useWindowSize()
   return (
     <div
@@ -63,7 +64,7 @@ const AnimatedText = ({ artists = false, setFilter }: Params) => {
           {/* {artists && setFilter ? (
             <OptionsTerritory setFilter={setFilter} />
           ) : ( */}
-          <CarouselTerritory setFilter={setFilter} />
+          <CarouselTerritory setFilter={option => dispatch(setFilter(option))} />
           {/* )} */}
         </div>
       </div>
