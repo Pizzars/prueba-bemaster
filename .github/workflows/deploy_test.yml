@@ -29,6 +29,10 @@ jobs:
                       **/.git*/**
                       **/public/asset/Images/**
                       **/public/asset/Images/**
+                      **/.husky/**
+                      **/.next/**
+                      **/.husky
+                      **/.next
                   server-dir: www/test/b4b/b4bfront/
     ssh-trigger:
         name: start-server
