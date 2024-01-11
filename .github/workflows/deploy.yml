@@ -1,0 +1,47 @@
+name: Build and Deploy
+on:
+  push:
+    branches: [juan-jose]
+jobs:
+  deploy:
+    name: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get latest code
+        uses: actions/checkout@v3
+      - name: Check directory
+        run: ls -la
+      - name: Sync files
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.TEST_FTP_HOST }}
+          username: ${{ secrets.TEST_FTP_USERNAME }}
+          password: ${{ secrets.TEST_FTP_PASSWORD }}
+          server-dir: /www/test/b4b/b4bfront/
+        continue-on-error: true
+  ssh-trigger:
+    name: start-server
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Connect to Dinahosting SSH
+        uses: cross-the-world/ssh-pipeline@master
+        with:
+          host: ${{ secrets.TEST_FTP_HOST }}
+          user: ${{ secrets.TEST_FTP_USERNAME }}
+          pass: ${{ secrets.TEST_FTP_PASSWORD }}
+          # port: ${{ secrets.TEST_FTP_PORT }}
+          # script: |
+          #   # cd www/test/b4b/b4bfront
+          #   # nvm install 16.20.0
+          #   # rm -rf node_modules
+          #   # rm -rf .next
+          #   # rm -rf .husky
+          #   # npm install
+          #   # npm run build
+          script: |
+            cd www/test/b4b/b4bfront
+            nvm install 16.20.0
+            rm -rf .next
+            rm -rf .husky
+            npm run build
