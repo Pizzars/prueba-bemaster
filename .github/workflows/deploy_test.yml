@@ -31,7 +31,7 @@ jobs:
             **/public/asset/Images/**
             **/.next/**
             **/.husky/**
-          server-dir: www/beta/climatika/
+          server-dir: www/test/b4b/b4bfront/
   ssh-trigger:
     name: start-server
 
