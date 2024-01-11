@@ -64,7 +64,7 @@ const AnimatedText = ({ artists = false }: Params) => {
           {/* {artists && setFilter ? (
             <OptionsTerritory setFilter={setFilter} />
           ) : ( */}
-          <CarouselTerritory setFilter={option => dispatch(setFilter(option))} />
+          <CarouselTerritory setFilter={option => dispatch(setFilter(option))} artists={artists} />
           {/* )} */}
         </div>
       </div>

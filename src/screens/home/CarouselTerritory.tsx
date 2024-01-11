@@ -63,10 +63,11 @@ const carouselListTexts = {
 }
 
 interface Params {
+  artists?: boolean
   setFilter?: (option: string) => void
 }
 
-const CarouselTerritory = ({ setFilter }: Params) => {
+const CarouselTerritory = ({ setFilter, artists = false }: Params) => {
   const currentLanguage = useAppSelector(state => state.languageReducer.language)
   const carouselTexts = carouselListTexts[currentLanguage]
   const [pause, setPause] = useState(false)
@@ -97,7 +98,7 @@ const CarouselTerritory = ({ setFilter }: Params) => {
                 className='w-fit flex whitespace-nowrap'
                 color={TextColors.white}
               />
-              {setFilter ? (
+              {artists && setFilter ? (
                 !isMobile ? (
                   <div
                     className='w-full h-full absolute top-0 left-0 cursor dark-cursor  cursor-pointer'

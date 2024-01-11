@@ -15,9 +15,9 @@ const ArtistsDesk = () => {
   if (!filter) return <></>
   return (
     <div
-      className={`relative pt-16 big:pt-24 h-screen transform delay-300 ${
-        !filter ? 'bg-black-app' : 'bg-transparent'
-      }`}
+      className={`relative pt-16 big:pt-24 ${
+        !artist ? 'h-screen' : 'min-h-screen'
+      } transform delay-300 ${!filter ? 'bg-black-app' : 'bg-transparent'}`}
     >
       <div
         className={`relative pt-16 big:pt-24 transform delay-300 ${

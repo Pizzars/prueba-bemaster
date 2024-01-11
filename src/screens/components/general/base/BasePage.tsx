@@ -31,7 +31,7 @@ const BasePage = ({
       </head>
       <body
         className={`${paddingMobile ? 'pt-16' : 'pt-0'} ${
-          padding ? 'pt-16 big:pt-16' : 'desk:pt-0'
+          padding ? 'pt-[4.5rem] big:pt-[4.5rem]' : 'desk:pt-0'
         } ${className}`}
         // style={{ paddingTop: navbar && padding ? 72 : 0 }}
       >
