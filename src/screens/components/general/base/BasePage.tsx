@@ -30,8 +30,8 @@ const BasePage = ({
         <meta name='description' content={description} />
       </head>
       <body
-        className={`${paddingMobile ? 'pt-16' : 'pt-0'} ${
-          padding ? 'pt-[4.5rem] big:pt-[4.5rem]' : 'desk:pt-0'
+        className={`${navbar && paddingMobile ? 'pt-16' : 'pt-0'} ${
+          navbar && padding ? 'pt-[4.5rem] big:pt-[4.5rem]' : 'desk:pt-0'
         } ${className}`}
         // style={{ paddingTop: navbar && padding ? 72 : 0 }}
       >
