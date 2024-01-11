@@ -1,65 +1,70 @@
 name: Build and Deploy
 
 on:
-    push:
-        branches: [develop]
+  push:
+    branches: [develop]
 
 jobs:
-    deploy:
-        name: deploy
+  deploy:
+    name: deploy
 
-        runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
-        steps:
-            - name: Get latest code
-              uses: actions/checkout@v3
+    steps:
+      - name: Get latest code
+        uses: actions/checkout@v3
 
-            - name: Check directory
-              run: ls -la
+      - name: Check directory
+        run: ls -la
 
-            - name: Sync files
-              uses: SamKirkland/FTP-Deploy-Action@4.3.0
-              with:
-                  server: ${{ secrets.TEST_FTP_HOST }}
-                  username: ${{ secrets.TEST_FTP_USERNAME }}
-                  password: ${{ secrets.TEST_FTP_PASSWORD }}
-                  local-dir: ./
-                  exclude: |
-                      **/.git*
-                      **/.git*/**
-                      **/public/asset/Images/**
-                      **/public/asset/Images/**
-                      **/.husky/**
-                      **/.next/**
-                      **/.husky
-                      **/.next
-                  server-dir: www/test/b4b/b4bfront/
-    ssh-trigger:
-        name: start-server
+      - name: Sync files
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.TEST_FTP_HOST }}
+          username: ${{ secrets.TEST_FTP_USERNAME }}
+          password: ${{ secrets.TEST_FTP_PASSWORD }}
+          local-dir: ./
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/public/asset/Images/**
+            **/public/asset/Images/**
+            **/.husky/**
+            **/.next/**
+            **/.husky
+            **/.next
+          server-dir: www/test/b4b/b4bfront/
+  ssh-trigger:
+    name: start-server
 
-        needs: deploy
+    needs: deploy
 
-        runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
-        steps:
-            - name: Connect to Dinahosting SSH
-              uses: cross-the-world/ssh-pipeline@master
-              with:
-                  host: ${{ secrets.TEST_FTP_HOST }}
-                  user: ${{ secrets.TEST_FTP_USERNAME }}
-                  pass: ${{ secrets.TEST_FTP_PASSWORD }}
-                  port: ${{ secrets.TEST_FTP_PORT }}
-                  # script: |
-                  #     cd www/configclimatika
-                  #     rm -r node_modules
-                  #     npm install
-                  #     npm run build                      
-                  #     npx pm2 stop all
-                  #     npx pm2 delete all
-                  #     npx pm2 start npm --name "next" -- run start -- -p 3002
-                  script: |
-                    cd www/test/b4b/b4bfront
-                    nvm install 16.20.0
-                    rm -rf .next
-                    rm -rf .husky
-                    npm run build
+    steps:
+      - name: Connect to Dinahosting SSH
+        uses: cross-the-world/ssh-pipeline@master
+        with:
+          host: ${{ secrets.TEST_FTP_HOST }}
+          user: ${{ secrets.TEST_FTP_USERNAME }}
+          pass: ${{ secrets.TEST_FTP_PASSWORD }}
+          port: ${{ secrets.TEST_FTP_PORT }}
+          # script: |
+          #     cd www/configclimatika
+          #     rm -r node_modules
+          #     npm install
+          #     npm run build
+          #     npx pm2 stop all
+          #     npx pm2 delete all
+          #     npx pm2 start npm --name "next" -- run start -- -p 3002
+          script: |
+            cd www/test/b4b/b4bfront
+            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+            [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
+            source .bashrc
+            nvm install 16.20.0
+            rm -rf .next
+            rm -rf .husky
+            npm run build
