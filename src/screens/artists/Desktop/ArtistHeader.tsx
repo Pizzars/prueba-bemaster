@@ -34,7 +34,7 @@ const ArtistHeader = ({ setFilter, selected }: Params) => {
   const index = optionsFilterArtists.findIndex(option => option.option === selected)
 
   return (
-    <>
+    <div id='header-container'>
       <div className='mx-20 big:mx-24 flex justify-between'>
         <TitleHome
           text='ARTISTS'
@@ -54,7 +54,7 @@ const ArtistHeader = ({ setFilter, selected }: Params) => {
           step={72}
         />
       </div>
-    </>
+    </div>
   )
 }
 

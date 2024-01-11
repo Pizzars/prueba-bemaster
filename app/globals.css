@@ -517,12 +517,12 @@ button.customLink,
 }
 
 .text-artists {
-  font-size: 27px;
-  line-height: 33.75px;
+  font-size: clamp(2vw, 5vh, 24px);
+  line-height: 1.1;
   font-family: 'swis';
 }
 
-@media (min-width: 1190px) and (max-width: 1279px) and (min-height: 830px) {
+/* @media (min-width: 1190px) and (max-width: 1279px) and (min-height: 830px) {
   .text-artists {
     font-size: 28px;
     line-height: 36.4px;
@@ -555,4 +555,4 @@ button.customLink,
     font-size: 44px;
     line-height: 55px;
   }
-}
+} */

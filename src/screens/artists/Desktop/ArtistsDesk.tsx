@@ -15,14 +15,14 @@ const ArtistsDesk = () => {
   if (!filter) return <></>
   return (
     <div
-      className={`relative pt-16 big:pt-24 min-h-screen transform delay-300 ${
+      className={`relative pt-16 big:pt-24 h-screen transform delay-300 ${
         !filter ? 'bg-black-app' : 'bg-transparent'
       }`}
     >
       <div
-        className={`relative pt-16 big:pt-24 min-h-screen transform delay-300 ${
+        className={`relative pt-16 big:pt-24 transform delay-300 ${
           !artist ? 'bg-black-app' : 'bg-transparent'
-        }`}
+        } ${filter && !artist ? 'h-full flex flex-col' : ''}`}
       >
         <ArtistHeader
           selected={filter ?? optionsFilterArtists[0].option}
