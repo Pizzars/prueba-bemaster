@@ -21,7 +21,7 @@ const ArtistsSelection = () => {
             return (
               <button
                 key={`artist-${i}`}
-                className='inline-block ml-4 mb-1 big:ml-8 opacity-40 hover:opacity-100 cursor-pointer'
+                className='inline-block ml-4 mb-1 big:ml-8 opacity-40 hover:opacity-100 cursor-pointer text-white'
                 onClick={() => dispatch(selectArtist(artist))}
               >
                 {artist.name}
