@@ -34,8 +34,8 @@ const ArtistHeader = ({ setFilter, selected }: Params) => {
   const index = optionsFilterArtists.findIndex(option => option.option === selected)
 
   return (
-    <div id='header-container'>
-      <div className='mx-20 big:mx-24 flex justify-between'>
+    <div id='header-container' className='px-12 big:px-20 w-full'>
+      <div className='flex justify-between px-4 big:px-6'>
         <TitleHome
           text='ARTISTS'
           color={TextColors.white}
@@ -44,7 +44,7 @@ const ArtistHeader = ({ setFilter, selected }: Params) => {
         />
         {artist ? <div></div> : <ArtistSearch />}
       </div>
-      <div className='mx-16 big:mx-20 px-2 flex justify-start'>
+      <div className='px-4 big:px-6 flex justify-start'>
         <OptionsFilter
           options={optionsFilterArtists}
           selected={index ?? 0}

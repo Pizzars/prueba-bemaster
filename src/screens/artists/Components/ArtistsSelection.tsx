@@ -12,7 +12,7 @@ const ArtistsSelection = () => {
   if (!artistData) return <></>
 
   return (
-    <div className='pl-12 pr-16 py-8 big:p-20 flex-1 parent flex flex-col'>
+    <div className='pl-16 pr-12 py-6 big:px-20 flex-1 parent flex flex-col'>
       {/* <div className='w-full h-full max-w-full max-h-full '> */}
       {artistData && (
         <TextAutoSize>
@@ -21,7 +21,7 @@ const ArtistsSelection = () => {
             return (
               <button
                 key={`artist-${i}`}
-                className='inline-block ml-4 mb-1 big:ml-8 opacity-40 hover:opacity-100 cursor-pointer text-white'
+                className={`inline-block mr-4 big:ml-8 opacity-40 hover:opacity-100 cursor-pointer text-white`}
                 onClick={() => dispatch(selectArtist(artist))}
               >
                 {`${artist.name}. `}

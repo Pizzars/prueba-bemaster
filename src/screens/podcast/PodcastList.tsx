@@ -64,7 +64,7 @@ const PodcastList = () => {
               <div className='relative'>
                 <div className=''>
                   <TextWithIcon
-                    text={`B4PODCAST ${podcast.title} `}
+                    text={`PODCAST ${podcast.title} `}
                     className='inline-block cursor'
                     icon={TextIcons.RIGHT_ARROW}
                     size={SizeIcons.TITLE_SMALL}

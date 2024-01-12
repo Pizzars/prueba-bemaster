@@ -16,8 +16,10 @@ const TextAutoSize = ({ children }: Params) => {
       const header = document.getElementById('header-container')
       if (!header) return
 
-      container.style.height = `${(window?.innerHeight ?? 0) - header.offsetHeight - 160}px`
-
+      const widthScreen = window.innerWidth ?? 0
+      container.style.height = `${
+        (window?.innerHeight ?? 0) - header.offsetHeight - (widthScreen >= 400 ? 260 : 140)
+      }px`
       // Puedes ajustar la lógica de ajuste según tus necesidades
       const text = container.textContent ?? ''
       const containerWidth = container.offsetWidth
@@ -27,7 +29,7 @@ const TextAutoSize = ({ children }: Params) => {
       const charactersCount = text.length
 
       // Ajusta estos factores según tus necesidades específicas
-      const areaFactor = 0.45 // Puedes ajustar este factor según tus necesidades
+      const areaFactor = 0.55 // Puedes ajustar este factor según tus necesidades
 
       const newFontSize = Math.min(
         50,
@@ -56,7 +58,7 @@ const TextAutoSize = ({ children }: Params) => {
     // >
     <div
       id='text-container'
-      className='swis w-full h-full max-h-full max-w-full  overflow-hidden'
+      className='swis w-full h-full max-h-full max-w-full overflow-hidden'
       style={{ fontSize: 16 }}
       ref={ref}
     >

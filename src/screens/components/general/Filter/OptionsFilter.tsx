@@ -38,7 +38,6 @@ const OptionsFilter = ({
   options,
   color = optionColors.white,
   className = '',
-  step = 24,
   selected = 0,
   onChage
 }: Params) => {
@@ -55,7 +54,8 @@ const OptionsFilter = ({
       lineContainer.style.width = `${container.offsetWidth}px`
       const option = list[tab] as any
       if (option) {
-        const pos = (option.offsetLeft ?? 0) - step
+        const widthScreen = window.innerWidth ?? 0
+        const pos = (option.offsetLeft ?? 0) - (widthScreen >= 400 ? 100 : 64)
         const size = (option as any).offsetWidth ?? 0
         line.style.width = `${size}px`
         line.style.marginLeft = `${pos}px`
@@ -91,9 +91,11 @@ const OptionsFilter = ({
               key={option}
               data-tab={option}
               onClick={() => handleTabClick(i)}
-              className={`cursor-pointer option`}
+              className={`cursor-pointer option mx-2 my-2 ${
+                i === options.length - 1 ? 'desk:mx-0' : 'desk:ml-0 desk:mr-12'
+              }`}
             >
-              <div className='m-2'>
+              <div className={``}>
                 <TitleMedium
                   text={title}
                   color={TextColors.white}
