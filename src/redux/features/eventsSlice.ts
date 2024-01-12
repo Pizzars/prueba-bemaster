@@ -48,7 +48,7 @@ export const EventsSlice = createSlice({
     })
     builder.addCase(getEventsData.fulfilled, (state, action) => {
       if (action.payload) {
-        const list = action.payload ? [...(state.data ?? []), ...action.payload] : action.payload
+        const list = action.payload ? [...action.payload] : action.payload
         const weeks = getWeeksForEvents(list)
 
         state.data = list
