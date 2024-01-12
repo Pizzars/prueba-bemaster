@@ -4,16 +4,20 @@ import ArtistById from 'src/screens/artists/ArtistByIdPage'
 import { useAppDispatch, useAppSelector } from 'src/redux/hooks'
 import { getArtistsData, setMaxId, setMinId } from 'src/redux/features/artistsSlice'
 import BasePage from 'src/screens/components/general/base/BasePage'
+import { getEventsData } from 'src/redux/features/eventsSlice'
+import { StateRequest } from 'src/redux/features/baseReducer'
 
 const ArtistByIdPage = () => {
   const dispatch = useAppDispatch()
   const artists = useAppSelector(state => state.artistsReducer.data)
+  const status = useAppSelector(state => state.artistsReducer.status)
 
   useEffect(() => {
-    if (!artists) {
+    if (status === StateRequest.EMPTY) {
       dispatch(getArtistsData())
+      dispatch(getEventsData())
     }
-  }, [dispatch, artists])
+  }, [dispatch, status])
 
   useEffect(() => {
     if (artists) {

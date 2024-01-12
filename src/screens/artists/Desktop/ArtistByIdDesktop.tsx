@@ -23,6 +23,7 @@ import { TextColors } from 'src/utils/Colors'
 import Link from 'next/link'
 import { selectArtist, setFilter } from 'src/redux/features/artistsSlice'
 import { getArtistEvents } from 'src/redux/features/eventsSlice'
+import ArtistEvents from '../Components/ArtistEvents'
 
 interface Params {
   artist: ArtistModel
@@ -92,6 +93,7 @@ const ArtistByIdDesktop = ({ artist }: Params) => {
                   />
                 </div>
               } */}
+              <ArtistEvents detail />
               <ArtistInfo longInfo={formattedDescription} customClassName='mt-5' />
             </div>
           </div>

@@ -7,15 +7,19 @@ import TitleSmall from 'src/screens/components/texts/TitleSmall'
 import { gigsFallbackMessages } from 'src/utils/consts'
 import { addZero } from 'src/utils/functions'
 
-const ArtistEvents = () => {
+interface Params {
+  detail?: boolean
+}
+
+const ArtistEvents = ({ detail = false }: Params) => {
   const currentLanguage = useAppSelector(state => state.languageReducer.language)
   const gigs = useAppSelector(state => state.eventsReducer.artistEvents)
 
   if (!gigs || (gigs && !gigs.length)) return <></>
   return (
     <>
-      <Divider className='mt-2 mx-8' />
-      <div className='pl-8 flex-1 overflow-y-auto'>
+      {!detail && <Divider className='mt-2 mx-8' />}
+      <div className={`${!detail ? 'pl-8' : ''} flex-1 overflow-y-auto`}>
         <div className='flex flex-col flex-wrap'>
           {gigs.length ? (
             gigs.map((gig, i) => {

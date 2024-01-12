@@ -1,17 +1,24 @@
 'use client'
-import React from 'react'
+import React, { useEffect } from 'react'
 import ArtistByIdMobile from './Mobile/ArtistByIdMobile'
 import ArtistByIdDesktop from './Desktop/ArtistByIdDesktop'
 import { useParams } from 'next/navigation'
-import { useAppSelector } from 'src/redux/hooks'
+import { useAppDispatch, useAppSelector } from 'src/redux/hooks'
 import Loading, { PageLoad } from '../components/general/Loading'
 import SwipeAlert from './Mobile/ArtistDetails/SwipeAlert'
+import { getArtistEvents } from 'src/redux/features/eventsSlice'
 
 const ArtistByIdPage = () => {
   const { artistId } = useParams()
   const { data: artists, status } = useAppSelector(state => state.artistsReducer)
+  const artist = artists ? artists.find(art => art.id.toString() == artistId) : null
+  const dispatch = useAppDispatch()
+  useEffect(() => {
+    if (artist) {
+      dispatch(getArtistEvents(artist.name))
+    }
+  }, [artist])
   if (!artists) return <Loading type={PageLoad.ARTISTS} status={status} />
-  const artist = artists.find(art => art.id.toString() == artistId)
   if (!artist) return <></>
   return (
     <div className='w-full'>
