@@ -18,7 +18,7 @@ const TextAutoSize = ({ children }: Params) => {
 
       const widthScreen = window.innerWidth ?? 0
       container.style.height = `${
-        (window?.innerHeight ?? 0) - header.offsetHeight - (widthScreen >= 400 ? 260 : 140)
+        (window?.innerHeight ?? 0) - header.offsetHeight - (widthScreen >= 1400 ? 260 : 140)
       }px`
       // Puedes ajustar la lógica de ajuste según tus necesidades
       const text = container.textContent ?? ''
