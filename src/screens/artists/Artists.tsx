@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import useWindowSize from 'src/hooks/useWindowSize'
 import { getArtistsData, setFilter } from 'src/redux/features/artistsSlice'
 import { StateRequest } from 'src/redux/features/baseReducer'
+import { getArtistEvents, getEventsData } from 'src/redux/features/eventsSlice'
 import { useAppDispatch, useAppSelector } from 'src/redux/hooks'
 import Loading, { PageLoad } from '../components/general/Loading'
 import AnimatedText from '../home/AnimatedText'
@@ -19,9 +20,13 @@ const Artists = () => {
   useEffect(() => {
     if (status === StateRequest.EMPTY) {
       dispatch(getArtistsData())
+      dispatch(getEventsData())
     }
     return () => {
-      if (status === StateRequest.SUCCESS) dispatch(setFilter(null))
+      if (status === StateRequest.SUCCESS) {
+        dispatch(setFilter(null))
+        dispatch(getArtistEvents(null))
+      }
     }
   }, [status])
 

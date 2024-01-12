@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { selectArtist } from 'src/redux/features/artistsSlice'
+import { getArtistEvents } from 'src/redux/features/eventsSlice'
 import { useAppDispatch, useAppSelector } from 'src/redux/hooks'
 import TextIcon, { TextIcons } from 'src/screens/components/icons/TextIcon'
 import { TextTags } from 'src/screens/components/texts/TextBase'
@@ -47,7 +48,10 @@ const ArtistSearch = () => {
                   <button
                     key={`artist-${i}`}
                     className='pb-8 cursor-pointer flex flex-col items-start'
-                    onClick={() => dispatch(selectArtist(artist))}
+                    onClick={() => {
+                      dispatch(selectArtist(artist))
+                      dispatch(getArtistEvents(artist.name))
+                    }}
                   >
                     <TitleSection
                       tag={TextTags.SPAN}

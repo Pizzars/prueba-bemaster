@@ -15,6 +15,7 @@ import {
   formatDescription,
   truncateText
 } from 'src/utils/functions'
+import ArtistEvents from '../Components/ArtistEvents'
 // import TitleHome from 'src/screens/components/texts/TitleHome'
 // import { noEventsMessage } from 'src/utils/consts'
 
@@ -56,17 +57,8 @@ const ArtistDetails = () => {
       <Divider className='my-5 mx-8' />
       <ArtistSocialLinks links={socialLinks} customClassName='pl-8' />
 
-      {/* <Divider className='mt-2 mx-8' />
-      <div className='pl-8'>
-        {
-          <div>
-            <TitleHome
-              text={noEventsMessage[currentLanguage]}
-              className='desk:text-[24px] desk:leading-[24px]'
-            />
-          </div>
-        }
-      </div> */}
+      <ArtistEvents />
+
       <Divider className='mt-3 mx-8' />
       <div className='px-8'>
         <ArtistInfo shortInfo={formattedDescription} />

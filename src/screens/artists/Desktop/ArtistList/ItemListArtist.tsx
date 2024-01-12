@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { ArtistModel } from 'src/proxy/queries/artists/artistModel'
 import { selectArtist } from 'src/redux/features/artistsSlice'
+import { getArtistEvents } from 'src/redux/features/eventsSlice'
 import { useAppSelector } from 'src/redux/hooks'
 import TitleSmall from 'src/screens/components/texts/TitleSmall'
 import { TextColors } from 'src/utils/Colors'
@@ -18,7 +19,10 @@ const ItemListArtist = ({ artist }: Params) => {
       className={`item-list text-start py-2 px-8 cursor-pointer ${
         selected && selected.id === artist.id ? 'opacity-100' : 'opacity-50'
       } hover:opacity-100`}
-      onClick={() => dispatch(selectArtist(artist))}
+      onClick={() => {
+        dispatch(selectArtist(artist))
+        dispatch(getArtistEvents(artist.name))
+      }}
     >
       <TitleSmall
         text={artist.name}

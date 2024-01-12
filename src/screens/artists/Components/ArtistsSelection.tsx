@@ -1,4 +1,5 @@
 import { selectArtist } from 'src/redux/features/artistsSlice'
+import { getArtistEvents } from 'src/redux/features/eventsSlice'
 import { useAppDispatch, useAppSelector } from 'src/redux/hooks'
 import TextAutoSize from './TextAutoSize'
 // import { TextTags } from 'src/screens/components/texts/TextBase'
@@ -22,7 +23,10 @@ const ArtistsSelection = () => {
               <button
                 key={`artist-${i}`}
                 className={`inline-block mr-4 big:ml-8 opacity-40 hover:opacity-100 cursor-pointer text-white`}
-                onClick={() => dispatch(selectArtist(artist))}
+                onClick={() => {
+                  dispatch(selectArtist(artist))
+                  dispatch(getArtistEvents(artist.name))
+                }}
               >
                 {`${artist.name}. `}
               </button>

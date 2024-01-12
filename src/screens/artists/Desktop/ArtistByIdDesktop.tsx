@@ -22,6 +22,7 @@ import TitleSmall from 'src/screens/components/texts/TitleSmall'
 import { TextColors } from 'src/utils/Colors'
 import Link from 'next/link'
 import { selectArtist, setFilter } from 'src/redux/features/artistsSlice'
+import { getArtistEvents } from 'src/redux/features/eventsSlice'
 
 interface Params {
   artist: ArtistModel
@@ -52,6 +53,7 @@ const ArtistByIdDesktop = ({ artist }: Params) => {
         href='/artists'
         onClick={() => {
           dispatch(selectArtist(artist))
+          dispatch(getArtistEvents(artist.name))
           dispatch(setFilter(artist.territory))
         }}
         className={`flex mx-6 justify-end items-center mb-8 overflow-hidden relative z-20 cursor-pointer transition-all delay-300`}

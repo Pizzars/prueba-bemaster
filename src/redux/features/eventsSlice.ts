@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
 import { BaseReducerProps, StateRequest, baseState } from './baseReducer'
 import { EventModel } from 'src/proxy/queries/events/eventModel'
 import { getEvents } from 'src/proxy/queries/events/eventQueries'
@@ -6,12 +6,14 @@ import { getWeeksForEvents } from 'src/utils/functions'
 
 interface typeReducer extends BaseReducerProps {
   data: EventModel[] | null
+  artistEvents: EventModel[] | null
   weeks: { title: string; option: string }[]
 }
 
 const initialState: typeReducer = {
   data: [],
   weeks: [],
+  artistEvents: null,
   ...baseState
 }
 
@@ -23,7 +25,20 @@ export const getEventsData = createAsyncThunk('get-events', async () => {
 export const EventsSlice = createSlice({
   name: 'events',
   initialState,
-  reducers: {},
+  reducers: {
+    getArtistEvents: (state, action: PayloadAction<string | null>) => {
+      const name = action.payload
+      if (!name) {
+        state.artistEvents = null
+        return
+      }
+      if (!state.data) return
+      const events = state.data.filter(event => {
+        return event.artist.name.toLocaleLowerCase().includes(name.toLocaleLowerCase())
+      })
+      state.artistEvents = events
+    }
+  },
   extraReducers: builder => {
     builder.addCase(getEventsData.pending, state => {
       state.status = StateRequest.LOADING
@@ -46,5 +61,5 @@ export const EventsSlice = createSlice({
   }
 })
 
-export const {} = EventsSlice.actions
+export const { getArtistEvents } = EventsSlice.actions
 export default EventsSlice.reducer
