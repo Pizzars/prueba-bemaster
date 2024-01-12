@@ -55,7 +55,7 @@ const OptionsFilter = ({
       const option = list[tab] as any
       if (option) {
         const widthScreen = window.innerWidth ?? 0
-        const pos = (option.offsetLeft ?? 0) - (widthScreen >= 400 ? 100 : 64)
+        const pos = (option.offsetLeft ?? 0) - (widthScreen >= 1400 ? 100 : 64)
         const size = (option as any).offsetWidth ?? 0
         line.style.width = `${size}px`
         line.style.marginLeft = `${pos}px`
