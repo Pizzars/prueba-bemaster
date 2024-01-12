@@ -9,20 +9,27 @@ import { TextColors } from 'src/utils/Colors'
 
 const ArtistSearch = () => {
   const [search, setSearch] = useState<string>('')
+  const [hide, setHide] = useState<boolean>(false)
   const artists = useAppSelector(state => state.artistsReducer.data)
   const dispatch = useAppDispatch()
 
   return (
     <div className=' relative flex'>
       <div className='relative'>
-        <label className='text-small uppercase w-fit bg-transparent text-white inline-block opacity-0 swis font-bold'>
+        <label
+          className={`text-small uppercase w-fit bg-transparent text-white inline-block swis font-bold ${
+            hide ? 'opacity-0' : 'opacity-40'
+          }`}
+        >
           Search Artist
         </label>
         <input
-          placeholder='Search Artist'
+          // placeholder='Search Artist'
           className='text-small uppercase w-full bg-transparent text-white inline-block absolute top-0 left-0 z-20 text-center border-b-2 border-b-white swis outline-none font-bold'
           onChange={e => setSearch(e.target.value)}
           value={search}
+          onFocus={() => setHide(true)}
+          onBlur={() => (search.length ? null : setHide(false))}
         />
       </div>
       {search && search.length > 0 && artists && (
