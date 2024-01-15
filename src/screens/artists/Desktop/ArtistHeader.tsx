@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useAppSelector } from 'src/redux/hooks'
-import OptionsFilter, { optionColors } from 'src/screens/components/general/Filter/OptionsFilter'
+import OptionsCompleteFilter, {
+  optionColors
+} from 'src/screens/components/general/Filter/OptionsCompleteFilter'
 import TitleHome from 'src/screens/components/texts/TitleHome'
 import { TextColors } from 'src/utils/Colors'
+import ArtistsTitle from '../Components/ArtistsTitle'
 import ArtistSearch from './ArtistSearch'
 
 interface Params {
@@ -19,33 +22,13 @@ export const optionsFilterArtists = [
 ]
 
 const ArtistHeader = ({ setFilter, selected }: Params) => {
-  const [classText, setClassText] = useState<string>('text-big leading-big')
-  const load = useAppSelector(state => state.loadReducer.artists)
-  const artist = useAppSelector(state => state.artistsReducer.artist)
-
-  useEffect(() => {
-    if (load) {
-      setTimeout(() => {
-        setClassText('text-small leading-small')
-      }, 1000)
-    }
-  }, [load])
-
   const index = optionsFilterArtists.findIndex(option => option.option === selected)
 
   return (
     <div id='header-container' className='px-12 big:px-20 w-full'>
-      <div className='flex justify-between px-4 big:px-6'>
-        <TitleHome
-          text='ARTISTS'
-          color={TextColors.white}
-          className={`${classText} transition-all duration-500`}
-          // className=' transition-all  duration-500'
-        />
-        {artist ? <div></div> : <ArtistSearch />}
-      </div>
-      <div className='px-4 big:px-6 flex justify-start'>
-        <OptionsFilter
+      <ArtistsTitle />
+      <div className='px-4 mt-2 big:mt-4 big:px-6 flex justify-start'>
+        <OptionsCompleteFilter
           options={optionsFilterArtists}
           selected={index ?? 0}
           color={optionColors.white}
