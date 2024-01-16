@@ -2,7 +2,8 @@
 
 import { useAppSelector } from 'src/redux/hooks'
 import FilterAlt from '../components/general/Filter/FilterAlt'
-import Loading, { PageLoad } from '../components/general/Loading'
+import Load from '../components/general/Load'
+import { PageLoad } from '../components/general/Loading'
 // import Loading from '../components/general/Loading'
 import Content from './Content'
 
@@ -20,7 +21,8 @@ const About = () => {
           <Content />
         </div>
       </div>
-      <Loading type={PageLoad.ABOUT} status={status} />
+      {/* <Loading type={PageLoad.ABOUT} status={status} /> */}
+      <Load type={PageLoad.ABOUT} status={status} />
     </>
   )
 }

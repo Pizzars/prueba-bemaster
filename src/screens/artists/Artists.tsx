@@ -5,7 +5,8 @@ import { getArtistsData, setFilter } from 'src/redux/features/artistsSlice'
 import { StateRequest } from 'src/redux/features/baseReducer'
 import { getArtistEvents, getEventsData } from 'src/redux/features/eventsSlice'
 import { useAppDispatch, useAppSelector } from 'src/redux/hooks'
-import Loading, { PageLoad } from '../components/general/Loading'
+import Load from '../components/general/Load'
+import { PageLoad } from '../components/general/Loading'
 import AnimatedText from '../home/AnimatedText'
 import ArtistsDesk from './Desktop/ArtistsDesk'
 import ArtistsMobile from './Mobile/ArtistsMobile'
@@ -54,7 +55,8 @@ const Artists = () => {
         </div>
       )}
       <div className='relative z-50'>
-        <Loading type={PageLoad.ARTISTS} />
+        {/* <Loading type={PageLoad.ARTISTS} /> */}
+        <Load type={PageLoad.ARTISTS} status={status} />
       </div>
     </>
   )

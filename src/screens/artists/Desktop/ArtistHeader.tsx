@@ -1,12 +1,7 @@
-import { useEffect, useState } from 'react'
-import { useAppSelector } from 'src/redux/hooks'
 import OptionsCompleteFilter, {
   optionColors
 } from 'src/screens/components/general/Filter/OptionsCompleteFilter'
-import TitleHome from 'src/screens/components/texts/TitleHome'
-import { TextColors } from 'src/utils/Colors'
 import ArtistsTitle from '../Components/ArtistsTitle'
-import ArtistSearch from './ArtistSearch'
 
 interface Params {
   setFilter: (option: string) => void

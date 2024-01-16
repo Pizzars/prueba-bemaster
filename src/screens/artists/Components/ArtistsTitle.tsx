@@ -11,11 +11,14 @@ const ArtistsTitle = () => {
 
   useEffect(() => {
     if (load) {
+      setClassText('text-big leading-big duration-0')
       setTimeout(() => {
-        setClassText('desk:text-[24px] desk:leading-[21.6px] big:text-[48px] big:leading-[43.2px] ')
+        setClassText(
+          'desk:text-[24px] desk:leading-[21.6px] big:text-[48px] big:leading-[43.2px] duration-500'
+        )
       }, 1000)
     }
-  }, [load])
+  }, [load, artist])
 
   return (
     <div className='flex justify-between px-4 big:px-6'>

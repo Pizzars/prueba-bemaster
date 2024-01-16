@@ -2,7 +2,8 @@
 import { useState } from 'react'
 import { gottenDataForm } from 'src/redux/features/formSlice'
 import { useAppDispatch, useAppSelector } from 'src/redux/hooks'
-import Loading, { PageLoad } from '../components/general/Loading'
+import Load from '../components/general/Load'
+import { PageLoad } from '../components/general/Loading'
 import { FormRequest } from './formTypes'
 import BookingRequest from './steps/BookingRequest'
 import Consent from './steps/Consent'
@@ -97,7 +98,8 @@ const Form = () => {
   return (
     <>
       {getView()}
-      <Loading type={PageLoad.BOOK} status={status} />
+      {/* <Loading type={PageLoad.BOOK} status={status} /> */}
+      <Load type={PageLoad.BOOK} status={status} />
       <div className='desk:p-16 big:p-24 desk:h-[0] opacity-0 hidden h-[100vh]'>
         <iframe
           width='100%'

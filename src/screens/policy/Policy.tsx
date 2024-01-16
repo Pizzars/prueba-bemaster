@@ -2,7 +2,8 @@
 
 import { useAppSelector } from 'src/redux/hooks'
 import FilterAlt from '../components/general/Filter/FilterAlt'
-import Loading, { PageLoad } from '../components/general/Loading'
+import Load from '../components/general/Load'
+import { PageLoad } from '../components/general/Loading'
 import Content from './Content'
 
 const Policy = () => {
@@ -19,7 +20,8 @@ const Policy = () => {
           <Content />
         </div>
       </div>
-      <Loading type={PageLoad.POLICY} status={status} />
+      {/* <Loading type={PageLoad.POLICY} status={status} /> */}
+      <Load type={PageLoad.POLICY} status={status} />
     </>
   )
 }

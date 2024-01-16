@@ -7,14 +7,16 @@ import TitleSmall from '../components/texts/TitleSmall'
 import PodcastList from './PodcastList'
 import TitleHome from '../components/texts/TitleHome'
 import { useAppSelector } from 'src/redux/hooks'
-import Loading, { PageLoad } from '../components/general/Loading'
+import { PageLoad } from '../components/general/Loading'
+import Load from '../components/general/Load'
 
 const Podcast = () => {
   const status = useAppSelector(state => state.podcastsReducer.status)
 
   return (
     <>
-      <Loading type={PageLoad.PODCASTS} status={status} />
+      {/* <Loading type={PageLoad.PODCASTS} status={status} /> */}
+      <Load type={PageLoad.PODCASTS} status={status} />
       <div className='px-8 py-12 desk:p-12 big:p-24 bg-white'>
         <TitleSmall
           text='b4bookings'

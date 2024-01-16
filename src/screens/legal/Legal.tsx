@@ -2,7 +2,8 @@
 
 import { useAppSelector } from 'src/redux/hooks'
 import FilterAlt from '../components/general/Filter/FilterAlt'
-import Loading, { PageLoad } from '../components/general/Loading'
+import Load from '../components/general/Load'
+import { PageLoad } from '../components/general/Loading'
 import Content from './Content'
 
 const Legal = () => {
@@ -19,7 +20,8 @@ const Legal = () => {
           <Content />
         </div>
       </div>
-      <Loading type={PageLoad.LEGAL} status={status} />
+      {/* <Loading type={PageLoad.LEGAL} status={status} /> */}
+      <Load type={PageLoad.LEGAL} status={status} />
     </>
   )
 }
