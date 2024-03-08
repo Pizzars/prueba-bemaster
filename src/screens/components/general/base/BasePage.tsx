@@ -5,9 +5,12 @@ import Footer from '../Footer/Footer'
 import Navbar from '../Navbar'
 import { useAppDispatch, useAppSelector } from 'src/redux/hooks'
 import { AuthStatus, authVerification } from 'src/proxy/FirebaseAuth'
-import { setAuthState, setListen } from 'src/redux/features/dataSlice'
+import { setAuthState, setError, setListen } from 'src/redux/features/dataSlice'
 import { usePathname, useRouter } from 'next/navigation'
 import Load from '../Load'
+import imageError from '../../../../assets/general/error.jpeg'
+import TitleMedium from '../../texts/TitleMedium'
+import Link from 'next/link'
 
 interface Params {
   title?: string
@@ -30,8 +33,7 @@ const BasePage = ({
   paddingMobile = true,
   children
 }: Params) => {
-  const auth = useAppSelector(state => state.dataReducer.auth)
-  const load = useAppSelector(state => state.dataReducer.load)
+  const { auth, load, error } = useAppSelector(state => state.dataReducer)
   const dispatch = useAppDispatch()
   const router = useRouter()
   const pathname = usePathname()
@@ -68,6 +70,27 @@ const BasePage = ({
         {footer && <Footer />}
         <Cursor />
         {(auth == AuthStatus.NO_VERIFIED || load) && <Load />}
+        {error && (
+          <div className='bg-black-app w-full h-full z-50 fixed top-0 left-0'>
+            <div className=' w-full h-full grayscale'>
+              <img src={imageError.src} alt='error' className=' w-full h-full object-cover' />
+            </div>
+            <div className='absolute top-0 left-0 w-full h-full flex justify-center items-center flex-col'>
+              <div className='flex flex-col bg-yellow-app items-center justify-center p-4'>
+                <TitleMedium text={'No hemos encontrado lo que buscas'} />
+              </div>
+              <Link
+                href='/'
+                className='bg-black text-white opacity-90 hover:opacity-100 hover:bg-yellow-app hover:text-black rounded-lg px-4 py-2 my-8 uppercase'
+                onClick={() => {
+                  dispatch(setError(false))
+                }}
+              >
+                Volver al inicio
+              </Link>
+            </div>
+          </div>
+        )}
       </body>
     </>
   )

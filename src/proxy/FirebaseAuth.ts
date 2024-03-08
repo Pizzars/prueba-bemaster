@@ -6,6 +6,8 @@ import {
   signOut,
   onAuthStateChanged
 } from 'firebase/auth'
+import { getFirestore, collection, query, getDocs, addDoc } from 'firebase/firestore'
+import { DataModel } from './queries/data/dataModel'
 
 // import { getAnalytics } from "firebase/analytics";
 
@@ -21,7 +23,9 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig)
-export const auth = getAuth(app)
+
+getAuth(app)
+getFirestore(app)
 
 export enum AuthRequest {
   OK,
@@ -93,4 +97,28 @@ export const signIn = async (data: { email: string; pass: string }) => {
 export const signOutUser = async () => {
   const auth = getAuth()
   await signOut(auth)
+}
+
+export const createDataFirebase = async (collectionName: string, data: DataModel) => {
+  const db = getFirestore()
+
+  const ref = collection(db, collectionName)
+  await addDoc(ref, data)
+}
+
+export const getDataFirebase = async (collectionName: string) => {
+  const db = getFirestore()
+  const ref = collection(db, collectionName)
+  const q = query(ref)
+  const querySnapshot = await getDocs(q)
+  if (querySnapshot && querySnapshot.empty) {
+    return null
+  }
+  const list: any[] = []
+  querySnapshot.forEach(doc => {
+    // doc.data() is never undefined for query doc snapshots
+    // console.log(doc.id, ' => ', doc.data())
+    list.push({ ...doc.data(), id: doc.id })
+  })
+  return list
 }

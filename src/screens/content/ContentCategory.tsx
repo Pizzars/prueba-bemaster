@@ -1,15 +1,30 @@
 'use client'
-import React from 'react'
+import React, { useEffect } from 'react'
 import useWindowSize from 'src/hooks/useWindowSize'
 import ContentDataDesk from './Desktop/ContentDataDesk'
 import ContentMobile from './Mobile/ContentMobile'
 import Navbar from '../components/general/Navbar'
+import { useParams } from 'next/navigation'
+import { useAppDispatch, useAppSelector } from 'src/redux/hooks'
+import { getDataDB } from 'src/redux/features/dataSlice'
 // import Load from '../components/general/Load'
 // import { PageLoad } from '../components/general/Loading'
 
 const ContentCategory = () => {
   const size = useWindowSize()
   const width = size.width ?? 0
+
+  const { id } = useParams()
+  const { dataPage, load, error } = useAppSelector(state => state.dataReducer)
+  const dispatch = useAppDispatch()
+
+  const data = dataPage ? dataPage[id.toString()] : null
+
+  useEffect(() => {
+    if (!data && !load && !error) {
+      dispatch(getDataDB(id.toString()))
+    }
+  }, [dataPage, data])
 
   return (
     <>

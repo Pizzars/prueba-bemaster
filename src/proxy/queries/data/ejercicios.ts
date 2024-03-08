@@ -4,169 +4,238 @@ export const taekwondoTrainingExercises: DataModel[] = [
   {
     id: '1',
     name: 'Saltos de Tijera',
-    image: 'url_imagen_saltos_tijera',
+    image: 'https://api.lorem.space/image/movie?w=500&amp;amp;amp;amp;h=400',
     description: 'Mejora la agilidad y fuerza de piernas.',
     videos: [
-      { name: 'Tutorial de Saltos de Tijera', url: 'url_tutorial_saltos_tijera' },
-      { name: 'Ejemplo de Rutina', url: 'url_ejemplo_rutina_saltos_tijera' }
+      {
+        name: 'Tutorial de Saltos de Tijera',
+        url: 'https://www.youtube.com/embed/cm0UOznqMjY?si=_lfHZxWekoGQ5dEN'
+      },
+      {
+        name: 'Ejemplo de Rutina',
+        url: 'https://www.youtube.com/embed/HaPGZA-RTDc?si=H-IPmy-nd4zU6WmQ'
+      }
     ],
     definition: 'Ejercicio que consiste en saltar alternando las piernas hacia adelante y atrás.',
     links: [
-      { name: 'Beneficios de los Saltos de Tijera', url: 'url_beneficios_saltos_tijera' },
-      { name: 'Entrenamientos Relacionados', url: 'url_entrenamientos_relacionados_saltos_tijera' }
+      {
+        name: 'Beneficios de los Saltos de Tijera',
+        url: 'https://es.wikipedia.org/wiki/Taekwondo'
+      },
+      { name: 'Entrenamientos Relacionados', url: 'https://es.wikipedia.org/wiki/Taekwondo' }
     ]
   },
   {
     id: '2',
     name: 'Flexiones (Push-ups)',
-    image: 'url_imagen_flexiones',
+    image: 'https://api.lorem.space/image/movie?w=500&amp;amp;amp;amp;h=400',
     description: 'Fortalece brazos, hombros y tronco.',
     videos: [
-      { name: 'Técnica de Flexiones', url: 'url_tecnica_flexiones' },
-      { name: 'Variaciones Avanzadas', url: 'url_variaciones_flexiones' }
+      {
+        name: 'Técnica de Flexiones',
+        url: 'https://www.youtube.com/embed/cm0UOznqMjY?si=_lfHZxWekoGQ5dEN'
+      },
+      {
+        name: 'Variaciones Avanzadas',
+        url: 'https://www.youtube.com/embed/HaPGZA-RTDc?si=H-IPmy-nd4zU6WmQ'
+      }
     ],
     definition:
       'Ejercicio que implica bajar y subir el cuerpo usando los brazos, trabajando principalmente la parte superior del cuerpo.',
     links: [
-      { name: 'Beneficios de las Flexiones', url: 'url_beneficios_flexiones' },
-      { name: 'Rutina de Flexiones para Taekwondo', url: 'url_rutina_flexiones_taekwondo' }
+      { name: 'Beneficios de las Flexiones', url: 'https://es.wikipedia.org/wiki/Taekwondo' },
+      { name: 'Rutina de Flexiones para Taekwondo', url: 'https://es.wikipedia.org/wiki/Taekwondo' }
     ]
   },
   {
     id: '3',
     name: 'Planchas (Planks)',
-    image: 'url_imagen_planchas',
+    image: 'https://api.lorem.space/image/movie?w=500&amp;amp;amp;amp;h=400',
     description: 'Fortalece el núcleo y mejora la estabilidad.',
     videos: [
-      { name: 'Variación de Planchas Laterales', url: 'url_variacion_planchas_laterales' },
-      { name: 'Rutina de Planchas para Taekwondo', url: 'url_rutina_planchas_taekwondo' }
+      {
+        name: 'Variación de Planchas Laterales',
+        url: 'https://www.youtube.com/embed/cm0UOznqMjY?si=_lfHZxWekoGQ5dEN'
+      },
+      {
+        name: 'Rutina de Planchas para Taekwondo',
+        url: 'https://www.youtube.com/embed/HaPGZA-RTDc?si=H-IPmy-nd4zU6WmQ'
+      }
     ],
     definition:
       'Ejercicio que implica mantener una posición similar a una plancha, fortaleciendo el abdomen y mejorando la estabilidad del cuerpo.',
     links: [
-      { name: 'Cómo Mejorar en Planchas', url: 'url_consejos_mejorar_planchas' },
-      { name: 'Beneficios de las Planchas', url: 'url_beneficios_planchas' }
+      { name: 'Cómo Mejorar en Planchas', url: 'https://es.wikipedia.org/wiki/Taekwondo' },
+      { name: 'Beneficios de las Planchas', url: 'https://es.wikipedia.org/wiki/Taekwondo' }
     ]
   },
   {
     id: '4',
     name: 'Sprints y Carrera Continua',
-    image: 'url_imagen_sprints_carrera',
+    image: 'https://api.lorem.space/image/movie?w=500&amp;amp;amp;amp;h=400',
     description: 'Desarrolla resistencia y velocidad.',
     videos: [
-      { name: 'Técnica de Sprints', url: 'url_tecnica_sprints' },
-      { name: 'Entrenamiento de Carrera Continua', url: 'url_entrenamiento_carrera_continua' }
+      {
+        name: 'Técnica de Sprints',
+        url: 'https://www.youtube.com/embed/cm0UOznqMjY?si=_lfHZxWekoGQ5dEN'
+      },
+      {
+        name: 'Entrenamiento de Carrera Continua',
+        url: 'https://www.youtube.com/embed/HaPGZA-RTDc?si=H-IPmy-nd4zU6WmQ'
+      }
     ],
     definition:
       'Ejercicios que incluyen sprints cortos para velocidad y carreras más largas para mejorar la resistencia cardiovascular.',
     links: [
-      { name: 'Cómo Incorporar Sprints en tu Rutina', url: 'url_incorporar_sprints_rutina' },
-      { name: 'Consejos para Mejorar Velocidad', url: 'url_consejos_mejorar_velocidad' }
+      {
+        name: 'Cómo Incorporar Sprints en tu Rutina',
+        url: 'https://es.wikipedia.org/wiki/Taekwondo'
+      },
+      { name: 'Consejos para Mejorar Velocidad', url: 'https://es.wikipedia.org/wiki/Taekwondo' }
     ]
   },
   {
     id: '5',
     name: 'Elevaciones Laterales de Piernas',
-    image: 'url_imagen_elevaciones_piernas',
+    image: 'https://api.lorem.space/image/movie?w=500&amp;amp;amp;amp;h=400',
     description: 'Trabaja los músculos internos y externos del muslo.',
     videos: [
-      { name: 'Técnica de Elevaciones Laterales', url: 'url_tecnica_elevaciones_laterales' },
-      { name: 'Ejercicios Complementarios', url: 'url_ejercicios_complementarios_piernas' }
+      {
+        name: 'Técnica de Elevaciones Laterales',
+        url: 'https://www.youtube.com/embed/cm0UOznqMjY?si=_lfHZxWekoGQ5dEN'
+      },
+      {
+        name: 'Ejercicios Complementarios',
+        url: 'https://www.youtube.com/embed/HaPGZA-RTDc?si=H-IPmy-nd4zU6WmQ'
+      }
     ],
     definition:
       'Ejercicio acostado de lado que implica elevar la pierna hacia arriba, enfocado en fortalecer los músculos del muslo.',
     links: [
-      { name: 'Cómo Mejorar Elevaciones Laterales', url: 'url_mejorar_elevaciones_laterales' },
-      { name: 'Beneficios de este Ejercicio', url: 'url_beneficios_elevaciones_laterales' }
+      {
+        name: 'Cómo Mejorar Elevaciones Laterales',
+        url: 'https://es.wikipedia.org/wiki/Taekwondo'
+      },
+      { name: 'Beneficios de este Ejercicio', url: 'https://es.wikipedia.org/wiki/Taekwondo' }
     ]
   },
   {
     id: '6',
     name: 'Flexiones Laterales',
-    image: 'url_imagen_flexiones_laterales',
+    image: 'https://api.lorem.space/image/movie?w=500&amp;amp;amp;amp;h=400',
     description: 'Mejora la flexibilidad y fortalece los costados.',
     videos: [
-      { name: 'Técnica de Flexiones Laterales', url: 'url_tecnica_flexiones_laterales' },
+      {
+        name: 'Técnica de Flexiones Laterales',
+        url: 'https://www.youtube.com/embed/cm0UOznqMjY?si=_lfHZxWekoGQ5dEN'
+      },
       {
         name: 'Estiramientos Relacionados',
-        url: 'url_estiramientos_relacionados_flexiones_laterales'
+        url: 'https://www.youtube.com/embed/HaPGZA-RTDc?si=H-IPmy-nd4zU6WmQ'
       }
     ],
     definition:
       'Ejercicio que implica inclinar el tronco hacia un lado, trabajando la flexibilidad y fortalecimiento de los costados.',
     links: [
-      { name: 'Cómo Lograr Mayor Flexión', url: 'url_consejos_flexiones_laterales' },
-      { name: 'Beneficios de las Flexiones Laterales', url: 'url_beneficios_flexiones_laterales' }
+      { name: 'Cómo Lograr Mayor Flexión', url: 'https://es.wikipedia.org/wiki/Taekwondo' },
+      {
+        name: 'Beneficios de las Flexiones Laterales',
+        url: 'https://es.wikipedia.org/wiki/Taekwondo'
+      }
     ]
   },
   {
     id: '7',
     name: 'Sentadillas (Squats)',
-    image: 'url_imagen_sentadillas',
+    image: 'https://api.lorem.space/image/movie?w=500&amp;amp;amp;amp;h=400',
     description: 'Fortalece piernas y glúteos.',
     videos: [
-      { name: 'Técnica de Sentadillas', url: 'url_tecnica_sentadillas' },
-      { name: 'Variaciones de Sentadillas', url: 'url_variaciones_sentadillas' }
+      {
+        name: 'Técnica de Sentadillas',
+        url: 'https://www.youtube.com/embed/cm0UOznqMjY?si=_lfHZxWekoGQ5dEN'
+      },
+      {
+        name: 'Variaciones de Sentadillas',
+        url: 'https://www.youtube.com/embed/HaPGZA-RTDc?si=H-IPmy-nd4zU6WmQ'
+      }
     ],
     definition:
       'Ejercicio que implica bajar y subir el cuerpo, trabajando principalmente las piernas y glúteos.',
     links: [
-      { name: 'Beneficios de las Sentadillas', url: 'url_beneficios_sentadillas' },
-      { name: 'Rutina para Fortalecer Piernas', url: 'url_rutina_fortalecer_piernas' }
+      { name: 'Beneficios de las Sentadillas', url: 'https://es.wikipedia.org/wiki/Taekwondo' },
+      { name: 'Rutina para Fortalecer Piernas', url: 'https://es.wikipedia.org/wiki/Taekwondo' }
     ]
   },
   {
     id: '8',
     name: 'Círculos de Brazos',
-    image: 'url_imagen_circulos_brazos',
+    image: 'https://api.lorem.space/image/movie?w=500&amp;amp;amp;amp;h=400',
     description: 'Mejora la movilidad del hombro.',
     videos: [
-      { name: 'Técnica de Círculos de Brazos', url: 'url_tecnica_circulos_brazos' },
-      { name: 'Ejercicios Complementarios', url: 'url_ejercicios_complementarios_brazos' }
+      {
+        name: 'Técnica de Círculos de Brazos',
+        url: 'https://www.youtube.com/embed/cm0UOznqMjY?si=_lfHZxWekoGQ5dEN'
+      },
+      {
+        name: 'Ejercicios Complementarios',
+        url: 'https://www.youtube.com/embed/HaPGZA-RTDc?si=H-IPmy-nd4zU6WmQ'
+      }
     ],
     definition:
       'Ejercicio que implica realizar círculos con los brazos hacia adelante y hacia atrás, mejorando la movilidad del hombro y calentando la parte superior del cuerpo.',
     links: [
-      { name: 'Consejos para Círculos de Brazos', url: 'url_consejos_circulos_brazos' },
-      { name: 'Beneficios de este Ejercicio', url: 'url_beneficios_circulos_brazos' }
+      { name: 'Consejos para Círculos de Brazos', url: 'https://es.wikipedia.org/wiki/Taekwondo' },
+      { name: 'Beneficios de este Ejercicio', url: 'https://es.wikipedia.org/wiki/Taekwondo' }
     ]
   },
   {
     id: '9',
     name: 'Estiramientos Dinámicos',
-    image: 'url_imagen_estiramientos_dinamicos',
+    image: 'https://api.lorem.space/image/movie?w=500&amp;amp;amp;amp;h=400',
     description: 'Incluye movimientos como patadas altas y giros de cadera.',
     videos: [
-      { name: 'Técnica de Estiramientos Dinámicos', url: 'url_tecnica_estiramientos_dinamicos' },
-      { name: 'Rutina de Estiramientos para Taekwondo', url: 'url_rutina_estiramientos_taekwondo' }
+      {
+        name: 'Técnica de Estiramientos Dinámicos',
+        url: 'https://www.youtube.com/embed/cm0UOznqMjY?si=_lfHZxWekoGQ5dEN'
+      },
+      {
+        name: 'Rutina de Estiramientos para Taekwondo',
+        url: 'https://www.youtube.com/embed/HaPGZA-RTDc?si=H-IPmy-nd4zU6WmQ'
+      }
     ],
     definition:
       'Serie de movimientos dinámicos que involucran patadas altas, giros de cadera y otros ejercicios para mejorar la flexibilidad y preparar los músculos para la actividad física.',
     links: [
       {
         name: 'Cómo Incorporar Estiramientos Dinámicos',
-        url: 'url_incorporar_estiramientos_dinamicos'
+        url: 'https://es.wikipedia.org/wiki/Taekwondo'
       },
       {
         name: 'Beneficios de Estiramientos Dinámicos',
-        url: 'url_beneficios_estiramientos_dinamicos'
+        url: 'https://es.wikipedia.org/wiki/Taekwondo'
       }
     ]
   },
   {
     id: '10',
     name: 'Burpees',
-    image: 'url_imagen_burpees',
+    image: 'https://api.lorem.space/image/movie?w=500&amp;amp;amp;amp;h=400',
     description: 'Ejercicio completo que trabaja fuerza y resistencia cardiovascular.',
     videos: [
-      { name: 'Técnica de Burpees', url: 'url_tecnica_burpees' },
-      { name: 'Variaciones Avanzadas', url: 'url_variaciones_burpees' }
+      {
+        name: 'Técnica de Burpees',
+        url: 'https://www.youtube.com/embed/cm0UOznqMjY?si=_lfHZxWekoGQ5dEN'
+      },
+      {
+        name: 'Variaciones Avanzadas',
+        url: 'https://www.youtube.com/embed/HaPGZA-RTDc?si=H-IPmy-nd4zU6WmQ'
+      }
     ],
     definition:
       'Ejercicio que combina salto, flexión y posición de plancha, trabajando diversos grupos musculares y mejorando la resistencia cardiovascular.',
     links: [
-      { name: 'Beneficios de los Burpees', url: 'url_beneficios_burpees' },
-      { name: 'Rutina de Burpees para Taekwondo', url: 'url_rutina_burpees_taekwondo' }
+      { name: 'Beneficios de los Burpees', url: 'https://es.wikipedia.org/wiki/Taekwondo' },
+      { name: 'Rutina de Burpees para Taekwondo', url: 'https://es.wikipedia.org/wiki/Taekwondo' }
     ]
   }
 ]
