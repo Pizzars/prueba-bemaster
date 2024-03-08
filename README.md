@@ -1,34 +1,32 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Taekwondo Training App
 
-## Getting Started
+Esta aplicación web fue desarrollada en Next.js y utiliza Firebase para la autenticación y la gestión de la base de datos. La aplicación está diseñada para proporcionar a los practicantes de taekwondo una plataforma interactiva para mejorar sus habilidades mediante la visualización de técnicas, formas y entrenamientos específicos.
 
-First, run the development server:
+## Características Principales
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+- **Autenticación con Firebase:** Los usuarios pueden registrarse, iniciar sesión y gestionar su perfil utilizando la autenticación de Firebase.
+- **Contenido de Taekwondo:** La aplicación presenta una variedad de técnicas, formas y ejercicios de entrenamiento organizados en categorías para una fácil navegación.
+- **Detalles Detallados:** Cada técnica o ejercicio incluye información detallada, imágenes representativas, videos tutoriales y enlaces adicionales relacionados.
+- **Interfaz Intuitiva:** La interfaz de usuario es fácil de usar, permitiendo a los usuarios explorar y aprender de manera efectiva.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tecnologías Utilizadas
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- **Next.js:** Un marco de React que facilita la creación de aplicaciones web modernas y eficientes.
+- **Firebase:** Utilizado para la autenticación de usuarios y como base de datos en tiempo real para almacenar y recuperar información.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Instrucciones de Despliegue Local
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+1. Clona este repositorio: `git clone https://github.com/tuusuario/tu-repo.git`
+2. Instala las dependencias: `npm install` o `yarn`
+3. Configura las credenciales de Firebase en un archivo `.env` siguiendo el formato del ejemplo en `.env.example`.
+4. Inicia la aplicación: `npm run dev` o `yarn dev`
+5. Accede a la aplicación en [http://localhost:3000](http://localhost:3000)
 
-## Learn More
+## Contribuciones
 
-To learn more about Next.js, take a look at the following resources:
+Visualiza el proyecto desplegado en:
+https://bemaste-prueba.web.app/
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contribuciones
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+¡Las contribuciones son bienvenidas! Si encuentras errores, mejoras o tienes nuevas ideas, siéntete libre de abrir un problema o enviar una solicitud de extracción.
