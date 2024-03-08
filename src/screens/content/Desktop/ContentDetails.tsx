@@ -18,7 +18,7 @@ interface Params {
 const ContentDetails = ({ item }: Params) => {
   const { id } = useParams()
 
-  const itemRedux = useAppSelector(state => state.artistsReducer.selectedItem)
+  const itemRedux = useAppSelector(state => state.dataReducer.selectedItem)
   const selected = item ?? itemRedux
 
   if (!selected) return <></>

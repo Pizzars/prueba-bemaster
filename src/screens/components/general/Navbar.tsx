@@ -4,12 +4,11 @@ import TitleSmall from '../texts/TitleSmall'
 import Link from 'next/link'
 import { itemsForNavbar } from 'src/utils/consts'
 import { TextColors } from 'src/utils/Colors'
-import { useAppDispatch, useAppSelector } from 'src/redux/hooks'
-import { setLanguage } from 'src/redux/features/languageSlice'
 import TitleSection from '../texts/TitleSection'
 import TextIcon, { SizeIcons, TextIcons } from '../icons/TextIcon'
 import { TextTags } from '../texts/TextBase'
 import logo from '../../../assets/general/logo.png'
+import { signOutUser } from 'src/proxy/FirebaseAuth'
 
 interface Props {
   position?: string
@@ -18,12 +17,12 @@ interface Props {
 
 const Navbar: React.FC<Props> = ({ position = 'top', dark = false }) => {
   const [open, setOpen] = useState(false)
-  const currentLanguage = useAppSelector(state => state.languageReducer.language)
-  const dispatch = useAppDispatch()
+  const [load, setLoad] = useState(false)
 
-  const toggleLanguage = () => {
-    const newLanguage = currentLanguage === 'EN' ? 'ES' : 'EN'
-    dispatch(setLanguage(newLanguage))
+  const signOut = async () => {
+    setLoad(true)
+    await signOutUser()
+    setLoad(false)
   }
 
   return (
@@ -48,15 +47,15 @@ const Navbar: React.FC<Props> = ({ position = 'top', dark = false }) => {
         {itemsForNavbar.map(item => (
           <Link key={item.key} href={item.to}>
             <TitleSmall
-              text={item.name[currentLanguage]}
+              text={item.name.ES}
               className='cursor cursor-pointer big:text-[16px]'
               color={TextColors.white}
             />
           </Link>
         ))}
-        <button onClick={() => null} className='pt-[0.3rem] cursor-pointer'>
+        <button onClick={signOut} className='pt-[0.3rem] cursor-pointer'>
           <TitleSmall
-            text={'Cerrar Sesión'}
+            text={load ? 'Saliendo...' : 'Cerrar Sesión'}
             color={TextColors.white}
             className='cursor big:text-[16px] uppercase'
             tag={TextTags.SPAN}
@@ -71,18 +70,18 @@ const Navbar: React.FC<Props> = ({ position = 'top', dark = false }) => {
         {itemsForNavbar.map(item => (
           <Link key={item.key} href={item.to}>
             <TitleSection
-              text={item.name[currentLanguage]}
+              text={item.name.ES}
               className='pointer my-4'
               color={TextColors.black}
               tag={TextTags.SPAN}
             />
           </Link>
         ))}
-        <button onClick={() => toggleLanguage()} className='my-4 cursor-pointer'>
+        <button onClick={signOut} className='my-4 cursor-pointer'>
           <TitleSection
-            text={currentLanguage}
+            text={load ? 'Saliendo...' : 'Cerrar Sesión'}
             color={TextColors.black}
-            className='cursor-pointer'
+            className='cursor-pointer uppercase'
           />
         </button>
         <button onClick={() => setOpen(false)} className='p-2 absolute top-2 right-2'>

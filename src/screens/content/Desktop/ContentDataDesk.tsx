@@ -7,11 +7,11 @@ import InfiniteContentList from './InfiniteContentList'
 import ContentTitle from '../Components/ContentTitle'
 import { useParams } from 'next/navigation'
 import { useDispatch } from 'react-redux'
-import { setSelectedItem } from 'src/redux/features/artistsSlice'
+import { setSelectedItem } from 'src/redux/features/dataSlice'
 
 const ContentData = () => {
   const { id } = useParams()
-  const dataPage = useAppSelector(state => state.artistsReducer.dataPage)
+  const dataPage = useAppSelector(state => state.dataReducer.dataPage)
   const dispatch = useDispatch()
 
   const data = dataPage ? dataPage[id.toString()] : null

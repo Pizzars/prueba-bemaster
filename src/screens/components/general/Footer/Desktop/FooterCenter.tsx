@@ -1,20 +1,19 @@
 import Link from 'next/link'
 import React from 'react'
-import { useAppSelector } from 'src/redux/hooks'
 import TextIcon, { TextIcons, SizeIcons } from 'src/screens/components/icons/TextIcon'
 import TitleSmall from 'src/screens/components/texts/TitleSmall'
 import { TextColors } from 'src/utils/Colors'
 import { itemsForNavbar, socialMediaLinks } from 'src/utils/consts'
 
 const FooterCenter = () => {
-  const currentLanguage = useAppSelector(state => state.languageReducer.language)
+  
   return (
     <section className='flex w-full justify-between backdrop-blur-sm bg-white/10 items-start p-10'>
       <div className='flex flex-col'>
         {itemsForNavbar.map(item => (
           <Link key={item.key} href={item.to} className='customLink'>
             <TitleSmall
-              text={item.name[currentLanguage]}
+              text={item.name.ES}
               color={TextColors.white}
               className='textBesideIcon desk:text-basic desk:leading-basic cursor'
             />

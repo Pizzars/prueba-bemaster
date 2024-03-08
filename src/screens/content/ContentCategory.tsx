@@ -7,7 +7,7 @@ import Navbar from '../components/general/Navbar'
 // import Load from '../components/general/Load'
 // import { PageLoad } from '../components/general/Loading'
 
-const Content = () => {
+const ContentCategory = () => {
   const size = useWindowSize()
   const width = size.width ?? 0
 
@@ -36,4 +36,4 @@ const Content = () => {
   )
 }
 
-export default Content
+export default ContentCategory

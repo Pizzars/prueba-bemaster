@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'next/navigation'
 import { useAppDispatch, useAppSelector } from 'src/redux/hooks'
-import { setSelectedItem } from 'src/redux/features/artistsSlice'
+import { setSelectedItem } from 'src/redux/features/dataSlice'
 import Link from 'next/link'
 import TextIcon, { SizeIcons, TextIcons } from '../components/icons/TextIcon'
 import { TextColors } from 'src/utils/Colors'
@@ -13,10 +13,10 @@ import TextParagraph from '../components/texts/TextParagraph'
 import Navbar from '../components/general/Navbar'
 import TitleMedium from '../components/texts/TitleMedium'
 
-const ContentById = () => {
+const ContentDetails = () => {
   const { id, idSel } = useParams()
-  const selected = useAppSelector(state => state.artistsReducer.selectedItem)
-  const dataPage = useAppSelector(state => state.artistsReducer.dataPage)
+  const selected = useAppSelector(state => state.dataReducer.selectedItem)
+  const dataPage = useAppSelector(state => state.dataReducer.dataPage)
   const dispatch = useAppDispatch()
 
   const data = dataPage ? dataPage[id.toString()] : null
@@ -159,4 +159,4 @@ const ContentById = () => {
   )
 }
 
-export default ContentById
+export default ContentDetails

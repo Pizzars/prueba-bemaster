@@ -27,7 +27,7 @@ const updateList = (list: DataModel[]) => {
 
 const ContentMobileList = ({ className = '' }: Props) => {
   const { id } = useParams()
-  const dataPage = useAppSelector(state => state.artistsReducer.dataPage)
+  const dataPage = useAppSelector(state => state.dataReducer.dataPage)
 
   const data = dataPage ? dataPage[id.toString()] : null
 

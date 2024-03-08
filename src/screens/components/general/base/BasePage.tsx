@@ -1,6 +1,13 @@
+'use client'
+import { useEffect } from 'react'
 import Cursor from '../Cursor'
 import Footer from '../Footer/Footer'
 import Navbar from '../Navbar'
+import { useAppDispatch, useAppSelector } from 'src/redux/hooks'
+import { AuthStatus, authVerification } from 'src/proxy/FirebaseAuth'
+import { setAuthState, setListen } from 'src/redux/features/dataSlice'
+import { usePathname, useRouter } from 'next/navigation'
+import Load from '../Load'
 
 interface Params {
   title?: string
@@ -23,6 +30,27 @@ const BasePage = ({
   paddingMobile = true,
   children
 }: Params) => {
+  const auth = useAppSelector(state => state.dataReducer.auth)
+  const load = useAppSelector(state => state.dataReducer.load)
+  const dispatch = useAppDispatch()
+  const router = useRouter()
+  const pathname = usePathname()
+
+  useEffect(() => {
+    if (auth === AuthStatus.NO_VERIFIED) {
+      dispatch(setListen(true))
+      authVerification(status => {
+        dispatch(setAuthState(status))
+      })
+    }
+    if (auth === AuthStatus.LOGGED && pathname === '/login') {
+      router.push('/')
+    }
+    if (auth === AuthStatus.NO_USER && pathname !== '/login') {
+      router.push('/login')
+    }
+  }, [auth])
+
   return (
     <>
       <head>
@@ -39,6 +67,7 @@ const BasePage = ({
         {children}
         {footer && <Footer />}
         <Cursor />
+        {(auth == AuthStatus.NO_VERIFIED || load) && <Load />}
       </body>
     </>
   )

@@ -4,7 +4,7 @@ import { useParams } from 'next/navigation'
 
 const ContentMobile = () => {
   const { id } = useParams()
-  const dataPage = useAppSelector(state => state.artistsReducer.dataPage)
+  const dataPage = useAppSelector(state => state.dataReducer.dataPage)
 
   const data = dataPage ? dataPage[id.toString()] : null
 

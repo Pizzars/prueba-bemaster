@@ -7,7 +7,7 @@ import { TextColors } from 'src/utils/Colors'
 import { useParams } from 'next/navigation'
 import { DataModel } from 'src/proxy/queries/data/dataModel'
 import { useDispatch } from 'react-redux'
-import { setSelectedItem } from 'src/redux/features/artistsSlice'
+import { setSelectedItem } from 'src/redux/features/dataSlice'
 
 const updateList = (list: DataModel[]) => {
   const targetLength = 50
@@ -23,8 +23,8 @@ const updateList = (list: DataModel[]) => {
 
 const InfiniteContentList = () => {
   const { id } = useParams()
-  const dataPage = useAppSelector(state => state.artistsReducer.dataPage)
-  const selected = useAppSelector(state => state.artistsReducer.selectedItem)
+  const dataPage = useAppSelector(state => state.dataReducer.dataPage)
+  const selected = useAppSelector(state => state.dataReducer.selectedItem)
   const dispatch = useDispatch()
 
   const data = dataPage ? dataPage[id.toString()] : null

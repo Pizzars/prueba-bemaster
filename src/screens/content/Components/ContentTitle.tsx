@@ -7,7 +7,7 @@ import { optionsHome } from 'src/screens/home/components/optionList'
 const ContentTitle = () => {
   const [classText, setClassText] = useState<string>('text-big leading-big')
   // const load = useAppSelector(state => state.loadReducer.artists)
-  // const artist = useAppSelector(state => state.artistsReducer.artist)
+  // const artist = useAppSelector(state => state.dataReducer.artist)
 
   const { id } = useParams()
   const data = optionsHome.find(op => op.id == id)

@@ -7,9 +7,11 @@ export enum StateRequest {
 export interface BaseReducerProps {
   status: StateRequest
   page: number
+  load: boolean
 }
 
 export const baseState: BaseReducerProps = {
   status: StateRequest.EMPTY,
-  page: 1
+  page: 1,
+  load: false
 }

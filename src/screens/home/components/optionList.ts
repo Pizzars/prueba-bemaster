@@ -12,9 +12,9 @@ export interface OptionHome {
 
 export const optionsHome: OptionHome[] = [
   {
-    image: op5.src,
-    name: 'Competidores olímpicos',
-    id: 'competidores'
+    image: op4.src,
+    name: 'Filosofía del Taekwondo',
+    id: 'filosofia'
   },
   {
     image: op3.src,
@@ -32,8 +32,8 @@ export const optionsHome: OptionHome[] = [
     id: 'formas'
   },
   {
-    image: op4.src,
-    name: 'Filosofía del Taekwondo',
-    id: 'filosofia'
+    image: op5.src,
+    name: 'Ejercicios',
+    id: 'exercises'
   }
 ]

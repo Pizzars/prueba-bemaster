@@ -8,7 +8,7 @@ interface Params {
 }
 
 const ContentData = ({ item }: Params) => {
-  const itemRedux = useAppSelector(state => state.artistsReducer.selectedItem)
+  const itemRedux = useAppSelector(state => state.dataReducer.selectedItem)
   const selected = item ?? itemRedux
   // Estilos de animación para la expansión
 
