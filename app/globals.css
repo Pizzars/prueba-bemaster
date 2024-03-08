@@ -295,64 +295,6 @@ body {
   }
 }
 
-.bg-about-mobile {
-  background-image: url(../src/assets/about/back_mobile.jpg);
-  background-size: cover;
-}
-.bg-form-mobile {
-  background-image: url(../src/assets/form/back_mobile.jpg);
-  background-size: cover;
-}
-.bg-gigs-mobile,
-.bg-artists-mobile {
-  background-image: url(../src/assets/artists/back_mobile.jpg);
-  /* background-image: url(../src/assets/gigs/back_desktop.jpg); */
-  background-size: cover;
-}
-
-.bg-home {
-  background-image: url(../src/assets/general/home_back.jpg);
-  background-size: cover;
-}
-.bg-podcasts-mobile {
-  background-image: url(../src/assets/podcasts/back_mobile.jpg);
-  background-size: cover;
-}
-
-@media (min-width: 800px) {
-  .bg-about-mobile,
-  .bg-form-mobile,
-  .bg-gigs-mobile,
-  .bg-artists-mobile,
-  .bg-podcasts-mobile {
-    background-image: none;
-  }
-
-  .bg-about,
-  .bg-form,
-  .bg-gigs,
-  .bg-artists,
-  .bg-podcasts {
-    background-size: cover;
-    background-attachment: fixed;
-  }
-  .bg-about {
-    background-image: url(../src/assets/about/back_desktop.jpg);
-  }
-  .bg-form {
-    background-image: url(../src/assets/form/back_desktop.jpg);
-  }
-  .bg-gigs {
-    background-image: url(../src/assets/gigs/back_desktop.jpg);
-  }
-  .bg-artists {
-    background-image: url(../src/assets/artists/back_desktop.jpg);
-  }
-  .bg-podcasts {
-    background-image: url(../src/assets/podcasts/back_desktop.jpg);
-  }
-}
-
 p,
 h1,
 h2,
@@ -522,37 +464,11 @@ button.customLink,
   font-family: 'swis';
 }
 
-/* @media (min-width: 1190px) and (max-width: 1279px) and (min-height: 830px) {
-  .text-artists {
-    font-size: 28px;
-    line-height: 36.4px;
-  }
+.option-home img {
+  opacity: 0.6;
+  transition: all 300ms all ease;
 }
-
-@media (min-width: 1279px) and (max-width: 1439px) and (min-height: 720px) {
-  .text-artists {
-    font-size: 27px;
-    line-height: 33.75px;
-  }
+.option-home:hover img {
+  opacity: 1;
+  filter: contrast(120%);
 }
-
-@media (min-width: 1440px) and (max-width: 1511px) and (min-height: 800px) {
-  .text-artists {
-    font-size: 27px;
-    line-height: 33.75px;
-  }
-}
-
-@media (min-width: 1512px) and (max-width: 1700px) and (min-height: 800px) {
-  .text-artists {
-    font-size: 39px;
-    line-height: 48.75px;
-  }
-}
-
-@media (min-width: 1700px) {
-  .text-artists {
-    font-size: 44px;
-    line-height: 55px;
-  }
-} */

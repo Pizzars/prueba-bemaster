@@ -8,8 +8,9 @@ const HomePage = () => {
   return (
     <BasePage
       navbar={false}
-      footer={true}
-      className='relative flex flex-col min-h-screen bg-purple-back-app'
+      footer={false}
+      // className='relative flex flex-col min-h-screen bg-purple-back-app'
+      className='relative flex flex-col min-h-screen bg-gray-app'
     >
       <Home />
     </BasePage>

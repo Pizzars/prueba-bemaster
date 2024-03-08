@@ -68,29 +68,9 @@ export const footerButtonsInfo: MenuItemForHome[] = [
 
 export const itemsForNavbar: MenuItemForHome[] = [
   {
-    key: 'artists',
-    to: '/artists',
-    name: { EN: 'ARTISTS', ES: 'ARTISTAS' }
-  },
-  {
-    key: 'gigs',
-    to: '/gigs',
-    name: { EN: 'GIGS', ES: 'EVENTOS' }
-  },
-  {
-    key: 'podcasts',
-    to: '/podcasts',
-    name: { EN: 'PODCASTS', ES: 'PODCASTS' }
-  },
-  {
-    key: 'about',
-    to: '/about',
-    name: { EN: 'ABOUT', ES: 'NOSOTROS' }
-  },
-  {
-    key: 'book',
-    to: '/book',
-    name: { EN: 'BOOK', ES: 'RESERVAR' }
+    key: 'home',
+    to: '/',
+    name: { EN: 'HOME', ES: 'INICIO' }
   }
 ]
 

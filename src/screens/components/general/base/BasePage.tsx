@@ -14,8 +14,8 @@ interface Params {
 }
 
 const BasePage = ({
-  title = 'B4Bookings',
-  description = 'B4Bookings page',
+  title = 'Taekwondo',
+  description = 'Datos del taekwondo',
   className = '',
   footer = true,
   navbar = true,

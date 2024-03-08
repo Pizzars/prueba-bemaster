@@ -1,6 +1,5 @@
 'use client'
 import React, { useState } from 'react'
-import LogoIcon from '../icons/LogoIcon'
 import TitleSmall from '../texts/TitleSmall'
 import Link from 'next/link'
 import { itemsForNavbar } from 'src/utils/consts'
@@ -10,12 +9,14 @@ import { setLanguage } from 'src/redux/features/languageSlice'
 import TitleSection from '../texts/TitleSection'
 import TextIcon, { SizeIcons, TextIcons } from '../icons/TextIcon'
 import { TextTags } from '../texts/TextBase'
+import logo from '../../../assets/general/logo.png'
 
 interface Props {
   position?: string
+  dark?: boolean
 }
 
-const Navbar: React.FC<Props> = ({ position = 'top' }) => {
+const Navbar: React.FC<Props> = ({ position = 'top', dark = false }) => {
   const [open, setOpen] = useState(false)
   const currentLanguage = useAppSelector(state => state.languageReducer.language)
   const dispatch = useAppDispatch()
@@ -29,16 +30,17 @@ const Navbar: React.FC<Props> = ({ position = 'top' }) => {
     <nav
       className={`flex items-center justify-between ${
         position === 'bottom' ? 'fixed desk:absolute bottom-0' : 'fixed desk:absolute top-0'
-      } w-full bg-yellow-app desk:backdrop-blur-sm desk:bg-white/10 py-7 z-20 h-20 desk:h-16 big:h-24`}
+      } w-full bg-yellow-app desk:backdrop-blur-sm ${
+        dark ? 'desk:bg-black/40' : 'desk:bg-white/10'
+      }  py-7 z-20 h-20 desk:h-16 big:h-24`}
       // style={{ height: '72px' }}
     >
-      {' '}
       <div
-        className='md:bg-yellow-lime-app p-[1.35rem] desk:p-[1.45rem] big:p-[2.1rem] w-16 h-16 desk:w-16 desk:h-16 big:w-24 big:h-24 flex justify-center items-center'
+        className='md:bg-yellow-lime-app p-2 w-16 h-16 desk:w-16 desk:h-16 big:w-24 big:h-24 flex justify-center items-center'
         // style={{ height: '72px' }}
       >
         <Link href='/' className='pointer relative'>
-          <LogoIcon />
+          <img src={logo.src} alt='logo' className=' w-full h-full p-1' />
           <div className='w-full h-full top-0 left-0 absolute cursor'></div>
         </Link>
       </div>
@@ -52,11 +54,11 @@ const Navbar: React.FC<Props> = ({ position = 'top' }) => {
             />
           </Link>
         ))}
-        <button onClick={() => toggleLanguage()} className='pt-[0.3rem] cursor-pointer'>
+        <button onClick={() => null} className='pt-[0.3rem] cursor-pointer'>
           <TitleSmall
-            text={currentLanguage}
+            text={'Cerrar Sesión'}
             color={TextColors.white}
-            className='cursor big:text-[16px]'
+            className='cursor big:text-[16px] uppercase'
             tag={TextTags.SPAN}
           />
         </button>

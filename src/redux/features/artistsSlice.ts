@@ -2,6 +2,8 @@ import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
 import { BaseReducerProps, StateRequest, baseState } from './baseReducer'
 import { ArtistModel } from 'src/proxy/queries/artists/artistModel'
 import { getArtist, getArtists } from 'src/proxy/queries/artists/artistQueries'
+import { DataModel } from 'src/proxy/queries/data/dataModel'
+import { dataPage } from 'src/proxy/queries/data/data'
 
 interface typeReducer extends BaseReducerProps {
   data: ArtistModel[] | null
@@ -13,6 +15,9 @@ interface typeReducer extends BaseReducerProps {
   maxId: number | null
   filter: string | null
   artistData: ArtistModel[] | null
+
+  dataPage: Record<string, DataModel[]> | null
+  selectedItem: DataModel | null
 }
 
 const initialState: typeReducer = {
@@ -21,11 +26,15 @@ const initialState: typeReducer = {
   artistById: null,
   minId: null,
   maxId: null,
-  filter: null,
+  filter: 'europe',
   artistData: null,
   artistByIdStatus: StateRequest.EMPTY,
+
   signleStatus: StateRequest.EMPTY,
-  ...baseState
+  ...baseState,
+
+  dataPage: dataPage,
+  selectedItem: null
 }
 
 export const getArtistsData = createAsyncThunk('get-artists', async () => {
@@ -82,6 +91,10 @@ export const artistsSlice = createSlice({
         return false
       })
       state.artistData = list
+    },
+
+    setSelectedItem: (state, action: PayloadAction<DataModel | null>) => {
+      state.selectedItem = action.payload
     }
   },
   extraReducers: builder => {
@@ -109,5 +122,5 @@ export const artistsSlice = createSlice({
   }
 })
 
-export const { selectArtist, setMinId, setMaxId, setFilter } = artistsSlice.actions
+export const { selectArtist, setMinId, setMaxId, setFilter, setSelectedItem } = artistsSlice.actions
 export default artistsSlice.reducer

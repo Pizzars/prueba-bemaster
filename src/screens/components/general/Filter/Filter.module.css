@@ -1,9 +1,0 @@
-.scrollDiv {
-    overflow-x: auto;
-    scrollbar-width: none; 
-    -ms-overflow-style: none; 
-  }
-  
-  .scrollDiv::-webkit-scrollbar {
-    width: 0px;
-  }

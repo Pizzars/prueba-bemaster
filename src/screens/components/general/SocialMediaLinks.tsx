@@ -5,11 +5,8 @@ import { socialMediaLinks } from 'src/utils/consts'
 import LogoIcon from '../icons/LogoIcon'
 import TextIcon, { TextIcons, SizeIcons } from '../icons/TextIcon'
 import TitleSmall from '../texts/TitleSmall'
-import { useAppSelector } from 'src/redux/hooks'
-import { homeTexts } from 'src/screens/home/components/textsHome'
 
 const SocialMediaLinks = () => {
-  const currentLanguage = useAppSelector(state => state.languageReducer.language)
   return (
     <div className='flex w-full bg-white items-center pl-6 z-50'>
       <div className='my-6 flex flex-column w-full flex-col items-start'>
@@ -17,8 +14,8 @@ const SocialMediaLinks = () => {
           <LogoIcon size='22' />
         </div>
         <div className='mb-8'>
-          <TitleSmall text={homeTexts.textFooterMusic[currentLanguage]} />
-          <TitleSmall text={homeTexts.textFooterBooking[currentLanguage]} />
+          <TitleSmall text={'Text 1'} />
+          <TitleSmall text={'Text 2'} />
         </div>
         <div className='flex flex-col space-y-4'>
           {socialMediaLinks.map(social => (
