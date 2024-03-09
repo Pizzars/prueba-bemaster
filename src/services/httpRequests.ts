@@ -15,7 +15,8 @@ enum RESPONSE_TYPES {
   ERROR
 }
 
-const PATH = process.env.NEXT_PUBLIC_BACKEND_URL
+// const PATH = process.env.NEXT_PUBLIC_BACKEND_URL
+const PATH = ''
 
 const baseHeaders = {
   token: '',

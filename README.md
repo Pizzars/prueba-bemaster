@@ -27,6 +27,10 @@ Esta aplicación web fue desarrollada en Next.js y utiliza Firebase para la aute
 Visualiza el proyecto desplegado en:
 https://bemaste-prueba.web.app/
 
+Las credenciales para iniciar sesión son:
+User: test@gmail.com
+Password: 1234567890
+
 ## Contribuciones
 
 ¡Las contribuciones son bienvenidas! Si encuentras errores, mejoras o tienes nuevas ideas, siéntete libre de abrir un problema o enviar una solicitud de extracción.
